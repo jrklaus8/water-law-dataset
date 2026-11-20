@@ -1,0 +1,277 @@
+{
+  "record_id": "RF349D3658F7A",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f297b43e44192ad83f2dda8853c8a288b5e921785888a58bdd3107c848830384",
+  "prompt_sha256": "74f2a7cb85fa1bd5eb66eb757425abdcb0c6c6c88e71446a7baf36f22bd5b778",
+  "started_at": "2026-11-20T16:17:09.909411+00:00",
+  "completed_at": "2026-11-20T16:18:35.574206+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Malaysia",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community water or sanitation service access; focuses entirely on utility-level non-revenue water (NRW) loss management and reduction (pipe leakage, commercial water loss, and utility revenue/efficiency) in Peninsular Malaysia.",
+      "c2": "Passes the plain wording of Criterion 2 (yes) but fails the narrow 2026-10-13 rule-type reading (no). Plain reading: examines statutory, regulatory, institutional, and financing reforms under the Water Services Industry Act (WSIA) 2006 and SPAN Act 2006, including WSP corporatisation/privatisation, federal PAAB asset ownership, centralized NWSC three-year performance licensing, and federalized tariff-review authority. Narrow 2026-10-13 reading: although utility ownership, licensing rules, and tariff/cost-recovery governance are rule-type mechanisms, they are analysed strictly as mechanisms governing utility NRW reduction and capital financing rather than rules directly governing household or community service access. (Even under the plain reading of Criterion 2, overall study eligibility remains exclude because Criteria 1 and 4 fail.)",
+      "c3": "Contains qualitative empirical evidence from 19 in-depth stakeholder interviews (7 federal officials, 10 WSP senior staff/engineers, 2 NGO representatives) analysed via content analysis to build causal loop diagrams (CLDs), supplemented with secondary state NRW statistics and official reports.",
+      "c4": "Reports state/utility Non-Revenue Water (NRW) rates and WSP operational leakage-management capacity as outcomes; does not report outcomes relevant to household or community water access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion (tariff levels and Selangor's free-water policy are discussed only as political constraints on WSP cost recovery and infrastructure investment).",
+      "c5": "Population/unit of analysis (state water service providers in Peninsular Malaysia and 19 sector stakeholders), exposure (2006 Malaysian water sector regulatory, asset-ownership, licensing, and tariff-governance reforms), outcome (NRW rate reduction), and study design (qualitative systems-thinking study using interviews, document review, and causal loop diagrams) are clearly identifiable.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 15 (Abstract)",
+        "quote": "This paper explores the challenges of water sector reform and NRW reduction in Malaysia to identify possible drivers that can accelerate the NRW management reform."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 15 (Section 2.1)",
+        "quote": "seven federal government officials, 10 senior staff or engineers from WSPs in different Malaysian states, and two non-governmental organisation (NGOs) representatives."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 15 (Section 3.2.2)",
+        "quote": "These reforms began with the adoption of two new water policy instruments: the Water Services Industry Act (WSIA) 2006 and the National Water Services Industry Act (SPAN Act) 2006."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 15 (Section 3.2.2)",
+        "quote": "Privatisation was accompanied by a shift in authority to set tariffs from state governments to the federal level."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 15 (Section 3.2.3)",
+        "quote": "By the end of 2016, the first three states to sign and complete the water restructuring exercises – Melaka, Johor, and Negeri Sembilan – achieved substantial reductions in NRW rates"
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "2006 Malaysian national water sector reforms (WSIA 2006 and SPAN Act 2006): WSP corporatisation/privatisation, centralized NWSC licensing tied to NRW KPIs, PAAB federal asset-light financing model, and shift of tariff-setting authority from state to federal level",
+    "outcome": "Utility/state Non-Revenue Water (NRW) percentage rates and WSP operational performance in NRW reduction",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Water service providers (WSPs) across 11 states in Peninsular Malaysia (unit of analysis: utility/state water sector), informed by 19 in-depth stakeholder interviews (7 federal government officials, 10 senior WSP staff/engineers, and 2 NGO representatives) and secondary state NRW data",
+    "rationale": "Excluded (E04: Wrong outcome; also fails c1 service access). While this qualitative systems-thinking study empirically examines Malaysian water utility regulatory, ownership, licensing, and tariff-setting reforms (WSIA 2006 and SPAN Act 2006), it investigates their effects solely on utility-level Non-Revenue Water (NRW) reduction and leakage management rather than household or community water service access, connection, availability, reliability, continuity, quantity, affordability, or exclusion. Under both the active narrow rule-type reading and the plain wording of Criterion 2, the study is excluded for lacking a household/community service-access focus and outcome.",
+    "record_id": "RF349D3658F7A",
+    "study_design": "Qualitative systems-thinking case study using semi-structured stakeholder interviews (content analysis), causal loop diagramming (CLDs), and secondary utility/government document review"
+  }
+}

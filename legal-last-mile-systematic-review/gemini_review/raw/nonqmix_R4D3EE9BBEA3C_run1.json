@@ -1,0 +1,277 @@
+{
+  "record_id": "R4D3EE9BBEA3C",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "40c17b0a1596ea29102aa87b3cedcd83f2c6e360c9638401d44f912ea4d84bfb",
+  "prompt_sha256": "78aef3f644d2fe3abda3c8dedec882ade75acec4c2a853e8f742caa6960e96b2",
+  "started_at": "2026-11-20T17:03:40.084434+00:00",
+  "completed_at": "2026-11-20T17:05:14.156234+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1 (Wrong service, E07). The paper specifically examines hand hygiene policy and practice (handwashing with soap and water, alcohol-based hand rubs, and handwashing stations across domestic, school, healthcare, and public settings), explicitly noting that water and sanitation aspects of WASH were not the main focus of the study and were reviewed only insofar as documents shaped hand hygiene provisions. Furthermore, it maps national policy instruments rather than household or community water or sanitation service access.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: This paper PASSES the plain wording of Criterion 2 because it examines legal, institutional, administrative, and decentralized governance factors (the 2010 Constitution, Water Act, Public Health Act, County Governments Act, devolved national-versus-County mandates, overlapping responsibilities between the Ministry of Health and Ministry of Water, Sanitation, and Irrigation, public finance budget-line coding, and intergovernmental coordination). However, it FAILS the narrow 2026-10-13 rule-type reading of Criterion 2 because it diagnoses macro-level hand hygiene policy gaps, fragmented ministry mandates, general budget-code visibility, and behaviour-change promotion frameworks rather than analyzing a specific rule-type mechanism (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff/cost-recovery rules, discretion/accommodation, enforcement, or utility regulatory structure) directly governing household or community water or sanitation service access. (Even under the plain wording of Criterion 2, the paper is still excluded due to failing Criteria 1 and 4.)",
+      "c3": "Satisfies Criterion 3. The study reports primary qualitative empirical data from semi-structured Key Informant Interviews with 11 stakeholders alongside a systematic review of 20 Kenyan national policy and legal instruments, analysed inductively and deductively using the Health Policy Triangle framework.",
+      "c4": "Fails Criterion 4. The study diagnoses national policy content and governance gaps (definitional gaps, inter-ministerial coordination challenges, absence of dedicated hygiene budget lines, and routine health information system gaps) and explicitly states that it evaluates the national policy and governance environment rather than measuring household or community service access, implementation coverage, behaviour change, or health outcomes.",
+      "c5": "Study design (concurrent qualitative policy analysis using the Health Policy Triangle), unit of analysis, sample (11 key informants and 20 policy/legal documents), governance factors examined, and policy-gap findings are clearly reported; however, those factors and outcomes concern national hand hygiene policy rather than household or community water or sanitation service access.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 20",
+        "quote": "This paper analyses Kenya’s national hand hygiene policy landscape and identifies the underlying governance barriers and systemic opportunities for strengthening hand hygiene policy and practice in Kenya."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 20",
+        "quote": "water and sanitation documents were included if they contained provisions that shaped hand hygiene requirements, financing, infrastructure, coordination or monitoring."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 20",
+        "quote": "Barriers hindering effective implementation include weak inter-sectoral coordinating mechanisms, inadequate financing, and a lack of data. These gaps create governance and operational fragmentation, undermining the sustainability of hand hygiene interventions."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 20",
+        "quote": "Primary data was collected through Key Informant Interviews (KIIs) with 11 strategic stakeholders involved in policy development, implementation, regulation, and programme delivery. Secondary data was through a comprehensive review of 20 policy instruments, including national policies, strategies, protocols, roadmaps, and binding legal documents."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 18 of 20",
+        "quote": "The findings, therefore, should be interpreted as an analysis of the national policy and governance environment rather than a complete assessment of implementation practices within the Country."
+      }
+    ],
+    "exclusion_code": "E07",
+    "exposure": "National hand hygiene policy and governance landscape in Kenya (devolved national-County governance structure, overlapping ministry mandates between MoH and MoWSI, public finance budget-line coding, monitoring systems, and policy definitions)",
+    "outcome": "National hand hygiene policy gaps and governance challenges (institutional/coordination fragmentation, absence of standalone hand hygiene policy and standardized definitions, lack of dedicated hand hygiene budget codes, and fragmented routine monitoring data)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "11 key informants (2 legal/governance experts, 4 national and County ministry representatives, 2 County-level implementation staff from Nairobi, Nakuru, and Kisumu Counties, 2 WASH implementers, and 1 regulatory body representative) and 20 Kenyan national policy and legal instruments (2010–2024)",
+    "rationale": "Excluded as E07 (Wrong service), with additional failures on Criterion 2 (narrow reading) and Criterion 4. First, the study specifically examines Kenya's hand hygiene policy and practice environment (handwashing with soap, alcohol-based hand rubs, and handwashing stations), explicitly stating that water and sanitation were not the main focus of the review (c1 = no). Second, while it passes the plain wording of Criterion 2 by analyzing legal and decentralized governance structures, it fails the narrow 2026-10-13 rule-type reading because it maps macro-level national policy gaps, inter-ministerial coordination, budget-code visibility, and hygiene promotion rather than a rule-type mechanism directly governing water or sanitation service access (c2 = no). Third, it reports national policy-landscape and governance findings rather than empirical household or community water or sanitation service access outcomes (c4 = no). Consequently, the decision is exclude under both the narrow and plain readings of Criterion 2.",
+    "record_id": "R4D3EE9BBEA3C",
+    "study_design": "Concurrent qualitative policy analysis combining semi-structured key informant interviews (n = 11) and systematic document review of policy and legal instruments (n = 20) using the Health Policy Triangle framework"
+  }
+}

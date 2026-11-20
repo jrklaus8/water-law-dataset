@@ -1,0 +1,292 @@
+{
+  "record_id": "R546EB2436B96",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "07fa2ba638ac3c3ca48716b352c3b30b8e986cace960b4044bb1fe41e614f722",
+  "prompt_sha256": "74566354f58e0575a61ca754097f966a8001fd904f36e311574bc45148f5f0ab",
+  "started_at": "2026-11-20T16:48:53.016893+00:00",
+  "completed_at": "2026-11-20T16:50:45.084609+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Sweden",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines the extension of municipal/utility piped water supply (and related drainage/sewerage conditions) to working-class suburban settlements and households in Norrköping and Linköping (with secondary comparison to Stockholm and Malmö) during 1860-1890.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, the study examines municipal governance, urban planning law, and administrative boundaries shaping water infrastructure extension. Under the narrow 2026-10-13 reading, it directly analyses concrete rule-type mechanisms governing service access: (1) tariff and cost-recovery rules (Norrköping's water delivery rule that pipes outside the planned area had to be paid for by building owners themselves, pricing out poor residents, and Linköping Water Company's '10 percent rule' requiring annual fee revenue to cover at least 10% of construction costs); (2) utility ownership and contractual regulatory structure (in Linköping, the split between the joint-stock Linköping Water Company, which approved the 1881 extension under its 10% rule, and the 20%-owner City Council, whose approval was contractually required for extensions outside the planned area and which vetoed the extension; in Norrköping, delegation of local suburban distribution to a private engineering workshop and Waterworks Board/City Council oversight); (3) legal/administrative territorial eligibility and building-code rules (planned-area vs. extra-municipal status, the legal power of the city border, and 1885 municipalsamhälle building codes vis-a-vis building readiness for service pipes); and (4) municipal discretion and conditional accommodation (conditioning Norrköping's 1886 200-metre pipe on fee payment and prior drainage arrangements).",
+      "c3": "Empirical comparative historical case study drawing on primary archival records (Norrköping City Council and Waterworks Board minutes, Linköping City Council and Linköping Water Company minutes, contemporary newspaper accounts of council debates in Norrköpings Tidningar and Östgöta Correspondenten, historical demographic statistics, and GIS-reconstructed pipe network maps), complemented by secondary comparisons. Qualitative socio-legal/historical empirical studies are eligible for the systematic review even without quantitative effect sizes.",
+      "c4": "Reports concrete outcomes on piped water extension, household/standpipe connection, affordability, and service exclusion: few northern-suburb residents in Norrköping could afford owner-financed connections (with illegal taps noted), a conditional 200-metre fee-based pipe was approved for Fredriksdal in 1886 with no further extensions until 1909-1910, and Linköping's City Council rejected Ladugårdsbacke's 1881 connection petition, denying piped water until 1921 despite 1911 incorporation.",
+      "c5": "Population/unit of analysis (working-class suburban districts and their residents/homeowners in Norrköping and Linköping, plus municipal/utility decision units), rule-type legal/institutional/cost-recovery exposures, service connection/exclusion outcomes, and comparative archival case-study design are all clearly identifiable.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 31",
+        "quote": "The aim of this article is to study how the Swedish cities Linköping and Norrköping treated new working-class suburbs during the period from 1860 to 1890, by looking at the extension of piped water supply."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11 of 31",
+        "quote": "The city’s planned area, as it was marked out by the city plan, constituted the actual city in administrative and judicial terms, and the national urban general regulations, building codes, health and fire laws were only applicable there."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 13 of 31",
+        "quote": "be paid for by the building owners themselves, and this meant that few in the northern suburb could afford a connection to the city’s piped water supply."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 20 of 31",
+        "quote": "The contract between the city and the Water Company allowed for extensions outside the city’s planned area, provided the case in question was submitted to the City Council, but it said nothing about expansion outside the city boundary"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 29 of 31",
+        "quote": "Ironically, this may have made it easier to deny Ladugårdsbacke water so consistently, by referring to the legal power of the city border."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 14 of 31",
+        "quote": "A detailed account of the discussion, which was published in the local newspaper Norrköpings Tidningar the day after the meeting, reveals deep disagreement among the members of the Norrköping City Council in this question."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 18 of 31",
+        "quote": "The water pipe was to be about 200 metres long, and it would supply those living adjacent to it with city water for a fee (see Figure 3)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 21 of 31",
+        "quote": "Ladugårdsbacke was denied the city’s piped water until 1921, in spite of its incorporation into the city as early as 1911."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal, administrative, and utility cost-recovery rules governing water network extension outside planned areas and city borders: Norrköping's rule requiring building owners outside the planned area to finance pipes themselves, concession of suburban distribution to a private workshop, 1885 municipalsamhälle building codes, and conditional council approval requiring drainage and fees; Linköping's joint private-municipal utility governance structure (Linköping Water Company's '10 percent rule' cost-recovery threshold vs. City Council contractual veto invoked on city-border and fiscal grounds).",
+    "outcome": "Extension of piped water supply, household and standpipe connection, affordability of connections/fees, and exclusion/denial of piped water service (conditional 200-metre pipe approved in Norrköping's northern suburb in 1886 with no further extension until 1909-1910; rejection of Linköping's Ladugårdsbacke connection request in 1881 and continued denial of piped city water until 1921).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Working-class suburbs and their residents/property owners outside planned or municipal boundaries in Norrköping (northern suburb: Marielund, Fredriksdal, and Sandby, growing from ~60 inhabitants in 1860 to ~3,000 in the 1880s) and Linköping (Ladugårdsbacke in St. Lars rural district, including brewery owner Brogren and 16 homeowners petitioning in 1881), with secondary comparisons to suburbs of Stockholm (Årstadal, Hagalund) and Malmö (Kirseberg); units of analysis are suburban settlements and municipal/utility decision-making bodies.",
+    "rationale": "This empirical archival comparative case study examines piped water extension and exclusion in working-class suburbs of Norrköping and Linköping, Sweden (1860-1890). It satisfies all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2 because it directly investigates how specific legal, contractual, jurisdictional, and cost-recovery rules — including owner-paid pipe rules outside planned areas, Linköping Water Company's '10 percent' cost-recovery rule, contractual veto/approval powers between a joint-stock water company and municipal council, legal city-border demarcations, building codes, and conditional drainage/fee requirements — governed suburban piped water connections and exclusion. Per protocol rules, qualitative socio-legal/historical empirical studies are included for mechanism synthesis even without quantitative effect estimates, and no geographic or historical period restriction applies in INCLUSION_EXCLUSION.md.",
+    "record_id": "R546EB2436B96",
+    "study_design": "Comparative historical archival case study (qualitative)"
+  }
+}

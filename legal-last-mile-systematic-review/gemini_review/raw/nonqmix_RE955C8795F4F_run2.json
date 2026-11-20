@@ -1,0 +1,277 @@
+{
+  "record_id": "RE955C8795F4F",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "bcac6752850b569dac7a7bc9425e9a2f9ca5f91c11f4f183f43f834830241f31",
+  "prompt_sha256": "309652cad913e73d429bd234400c91f27ddd385e775c98e7081023b189677608",
+  "started_at": "2026-11-20T17:18:52.697137+00:00",
+  "completed_at": "2026-11-20T17:19:58.189370+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural household drinking and domestic water service access in Baghmundi CD Block, Puruliya District, West Bengal, including reliance on public water sources (community tube wells, community dug wells, and solar-powered community taps) versus household-financed in-home water sources.",
+      "c2": "Passes the plain/literal wording of Criterion 2 ('include') because it explicitly examines local water governance and multi-level institutional processes (Gram Panchayat, Block administration, PHED, and JJM complaint routing, technical/funding approvals, infrastructure siting, and installation of solar-powered community taps). However, it FAILS the narrow 2026-10-13 rule-type mechanism reading of Criterion 2 ('exclude', E03) because it does not analyse any legal, regulatory, or administrative rule-type mechanism directly governing household service access (such as eligibility screening, applicant administrative burden, tenure/documentation rules, tariff or cost-recovery rules, formal discretion/accommodation rules, enforcement, or utility ownership/regulatory structure). Quantitative models test household socioeconomic and demographic predictors (income, occupation, caste, education, household size) and broad perceptions of local institutional support, while qualitative governance findings describe generic public water infrastructure project delivery, borehole siting/repair requests in hard-rock terrain, and solar community tap rollout; the authors explicitly note that governance findings reflect experiences of water service delivery rather than institutional performance, financing/cost-recovery rules, or legal enforcement.",
+      "c3": "Contains primary mixed-methods empirical evidence from a structured survey of 240 households across six villages (2019-2020) analysed with chi-square, binary logistic regression, and Kruskal-Wallis/Dunn-Bonferroni tests, combined with 10 KIIs, 12 FGDs, 8 informal discussions, field observations, and a 2023-2024 qualitative follow-up (16 interviews and 10 informal discussions).",
+      "c4": "Reports multiple household water access outcomes: reliance on public water service provision, own in-home financial water access initiatives, drinking and domestic water accessibility in normal and scarce seasons, collection distance and time burden, seasonal reliability, and caste-based social exclusion at public water points.",
+      "c5": "Population and unit of analysis (240 rural households in six villages of Baghmundi CD Block, Puruliya District, plus community and official interviewees), exposures (hard-rock hydrogeological constraints, household socioeconomic/caste position, and multi-level public water infrastructure delivery), outcomes, and mixed-methods cross-sectional plus qualitative follow-up study design are clearly identified.",
+      "c6": "Full text is in English (with Bengali interview data transcribed and translated into English by the study authors)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 11 of 36",
+        "quote": "However, the household survey (2019-20) identifies three principal modes of water access: (i) public provision, (ii) household-level financial initiatives, and (iii) natural sources."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 23 of 36",
+        "quote": "Block-level officials described an institutional process in which GP water supply complaints are assessed based on technical feasibility, availability of funds, and departmental approvals."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 32 of 36",
+        "quote": "Finally, while the study considered institutional roles and governance arrangements, it did not undertake a comprehensive analysis of institutional performance, including financing mechanisms"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 36",
+        "quote": "This study employed a mixed-methods research design integrating quantitative household surveys with qualitative KIIs, FGDs, informal discussions, and field observations."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 36",
+        "quote": "Pearson’s chi-square tests examined bivariate associations (Field 2009) between household characteristics and the two binary water-access outcomes: reliance on public water-service provision and financial in-home water access initiatives."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Hard-rock hydrogeological/environmental constraints, household socioeconomic and socio-cultural characteristics (income, occupation, caste, education, household size, gender), and multi-level rural water infrastructure delivery and siting processes (Gram Panchayat, Block administration, PHED, and JJM community tube wells and solar-powered community taps)",
+    "outcome": "Household reliance on public water service provision versus self-financed in-home water sources, physical water accessibility during normal and dry/scarce periods, water collection distance and time burden, source reliability, and social exclusion at communal water points",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "240 purposively sampled rural households across 6 villages (mouzas) in Baghmundi CD Block, Puruliya District, West Bengal, India (2019-2020 survey), plus 10 KIIs, 12 FGDs (7-10 participants each), 8 informal discussions, and 2023-2024 follow-up fieldwork (16 interviews and 10 informal discussions)",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 rule-type mechanism clarification of Criterion 2. Although the paper empirically examines rural household drinking-water access (c1, c3, c4, c5, c6 all satisfied) and discusses local water governance (so it would be included under the plain wording of Criterion 2), its governance component examines generic multi-level public infrastructure delivery, borehole siting/repair routing across Gram Panchayats, Block offices, and PHED, and community solar-tap installation in hard-rock terrain rather than any legal, regulatory, or administrative rule-type mechanism directly governing household service access (such as eligibility rules, documentation/tenure requirements, applicant administrative burden, tariff/cost-recovery rules, legal enforcement, or utility ownership/regulatory structure).",
+    "record_id": "RE955C8795F4F",
+    "study_design": "Mixed-methods study combining a cross-sectional household survey (n = 240) with qualitative key informant interviews, focus group discussions, field observations, and non-panel qualitative follow-up fieldwork"
+  }
+}

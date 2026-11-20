@@ -1,0 +1,267 @@
+{
+  "record_id": "R323554A8B2B1",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "088e4dd8ad00dacbeb00972597587a2778b20b9817f552e2ec9fd30a555729d9",
+  "prompt_sha256": "e265b0e355ca70b20f16a2f7fc2bbb4f36d497dce4f33bf9f0036466cd91eaa5",
+  "started_at": "2026-11-20T16:17:09.902848+00:00",
+  "completed_at": "2026-11-20T16:17:47.287460+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "not reported",
+    "criteria": {
+      "c1_service_access": "unclear",
+      "c2_legal_admin_factor": "unclear",
+      "c3_empirical": "unclear",
+      "c4_access_outcome": "unclear",
+      "c5_pop_exposure_outcome_design": "unclear",
+      "c6_language": "unclear"
+    },
+    "criterion_notes": {
+      "c1": "Target record R323554A8B2B1 (Bah, O M, 1992, 'Community Participation and Rural Water Supply Development in Sierra Leone') cannot be assessed because the retrieved PDF is a completely different paper (Etongo et al., 2018, on rural Uganda). Under the zero-guessing rule, eligibility cannot be inferred from the metadata title alone.",
+      "c2": "Cannot be determined under either the plain wording of Criterion 2 or the narrow 2026-10-13 rule-type mechanism reading because the retrieved full text is a wrong-paper mismatch (Etongo et al., 2018, Uganda) and no text or abstract of the target study (Bah, 1992, Sierra Leone) is available. Under both the plain wording and the narrow 2026-10-13 reading, the target record is therefore 'unclear' / 'cannot_tell'.",
+      "c3": "Unclear because the target paper (Bah, 1992) was not retrieved; only a mismatched 2018 article on Uganda is present.",
+      "c4": "Unclear because the target paper (Bah, 1992) was not retrieved; outcomes cannot be inferred from the title alone.",
+      "c5": "Unclear because population, exposure, outcome and study design of the target record (Bah, 1992) cannot be verified without the actual paper text.",
+      "c6": "Unclear for the target full text because the retrieved PDF is a different publication, although the metadata title of Bah (1992) is in English."
+    },
+    "decision": "cannot_tell",
+    "evidence_quotes": [
+      {
+        "criterion": "mismatch_title",
+        "page": "PDF Page 1 of 18",
+        "quote": "Community-Managed Water Supply Systems in Rural Uganda: The Role of Participation and Capacity Development"
+      },
+      {
+        "criterion": "mismatch_publication",
+        "page": "PDF Page 1 of 18",
+        "quote": "Received: 8 August 2018; Accepted: 13 September 2018; Published: 18 September 2018"
+      },
+      {
+        "criterion": "mismatch_abstract",
+        "page": "PDF Page 1 of 18",
+        "quote": "This study sought to evaluate community participation and capacity development in WUCs in relation to community-managed water supply systems."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "not reported",
+    "outcome": "not reported",
+    "paper_read": "not accessible",
+    "plain_criterion2_decision": "cannot_tell",
+    "population_and_sample": "not reported",
+    "rationale": "WRONG_PAPER_MISMATCH (paper_mention_mismatch; reason: \"full text not accessible\" for target record): Record metadata specifies Bah, O M (1992), 'Community Participation and Rural Water Supply Development in Sierra Leone', whereas the retrieved PDF is a completely different article — Etongo, D., Fagan, G. H., Kabonesa, C. and Asaba B., R. (2018), 'Community-Managed Water Supply Systems in Rural Uganda: The Role of Participation and Capacity Development', Water, 10, 1271 (doi:10.3390/w10091271). Because no text of Bah (1992) is present and guessing from metadata titles is prohibited, both decision and plain_criterion2_decision must be 'cannot_tell' with exclusion_code 'NONE'.",
+    "record_id": "R323554A8B2B1",
+    "study_design": "not reported"
+  }
+}

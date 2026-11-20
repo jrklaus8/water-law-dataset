@@ -1,0 +1,277 @@
+{
+  "record_id": "R1B918BF54680",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b5ba1255ea00985678914d0e79647b32dec12149b5fafcf7102710cf745da18d",
+  "prompt_sha256": "28a771a9d2acdf8cb85b007f5d621c693496b2f583afc4693cb12df303c69fb9",
+  "started_at": "2026-11-20T16:20:41.933767+00:00",
+  "completed_at": "2026-11-20T16:24:10.326938+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Ethiopia",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails C1 (and triggers Exclusion Criterion 7: water-resource studies unrelated to household or community service access). The paper's explicit focus is river-basin-scale water resources management (IWRM) and common-pool water security across irrigation, agro-industry, industrial effluents, hydropower, pastoralism, flood, and drought in the Awash River Basin, with only incidental mentions of urban utilities, WaSHCOs, and non-functional water supply schemes inside a broad basin stakeholder inventory.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the literal/plain broad wording of Criterion 2, the paper examines institutional, regulatory, and governance factors in the water sector (fragmented multi-stakeholder IWRM coordination, overlapping federal/regional/basin licensing of bulk water-resource development, power asymmetries, and weak enforcement of industrial river-pollution proclamations), so Criterion 2 taken in isolation would be satisfied broadly (though the overall plain_criterion2_decision remains exclude because the study fails C1 and C4 as a river-basin water-resources study). Under the active 2026-10-13 narrow rule-type mechanism reading, it fails C2 ('no') because it does not examine a rule-type mechanism directly governing household or community water or sanitation service access (such as eligibility screening, administrative burden, tenure/documentation requirements, tariffs/cost-recovery rules, discretion/accommodation, disconnection/enforcement, or utility regulatory structure governing service access).",
+      "c3": "Satisfies C3. Contains primary empirical evidence collected between July 2015 and February 2016 in the Awash River Basin via 29 key informant interviews (with 1-5 Likert-scale stakeholder and problem ratings), 16 focus group discussions (5 WUAs, 6 men's groups, 5 women's groups), and secondary policy/document review.",
+      "c4": "Fails C4. Reports basin-level stakeholder typology and influence-interest matrices (Table 1, Fig. 3), stakeholder Likert ratings of nine basin-wide water-resource security challenges (pollution, salinity, siltation, drought, flood, conflict, ecosystem deterioration, institutional setting, insufficient data; Table 2), and qualitative accounts of inter-agency coordination gaps, irrigation canal siltation, industrial river pollution, and upstream irrigation water abstractions, rather than household or community water or sanitation service-access outcomes.",
+      "c5": "Satisfies C5 for its own empirical design: clearly identifies the basin stakeholder population, interview/FGD sample, unit of analysis (stakeholder groups/organizations in the Awash River Basin), basin-governance factors examined, perceived basin water-security challenge ratings, and qualitative stakeholder-analysis study design.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "Therefore, in this paper, the authors aim to identify key stakeholders and explore their synergies and coordination with respect to sustainable water resources management to achieve water security."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9",
+        "quote": "As a result, licensing of water resources development is arbitrary and confusing for stakeholders."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14",
+        "quote": "The notable example in the Awash basin is the disconnection between the local level stakeholders such as WUAs, WaSHCO, and AwRBA because community level water resources management does not fall under AwBA’s jurisdiction, scope, and capability."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5",
+        "quote": "Sixteen FGDs were conducted with five WUAs, six men, and five women groups from community members."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13",
+        "quote": "First, broad ranges of water security problems were identified using intensive FGDs with both men and women groups, interviews with experts, and consultations of the literature."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Multi-stakeholder coordination, power asymmetries, overlapping bulk water-resource development licensing mandates, and weak enforcement of industrial river-pollution regulations in river-basin water resources management",
+    "outcome": "Perceived basin-level water security challenges (Likert ratings of pollution, salinity, siltation, drought/scarcity, flood, conflict, ecosystem deterioration, institutional setting, and insufficient data) and stakeholder influence-interest mapping",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Multi-scale river-basin stakeholders in the Awash River Basin across federal, regional, zonal, district, and kebele levels; 29 key informant interviews (water experts, government agencies, NGOs, private enterprises, WUAs, local elders, traditional water managers) and 16 focus group discussions (5 WUAs, 6 men's groups, and 5 women's groups of 6-8 community members each); unit of analysis: basin-level stakeholder organizations and actor groups",
+    "rationale": "Excluded (E01 - Wrong topic; per Exclusion Criterion 7, water-resource study unrelated to household or community service access). Although empirical (29 KIIs and 16 FGDs), this paper is a river-basin-scale Integrated Water Resources Management (IWRM) stakeholder analysis examining inter-agency coordination, power asymmetries, irrigation canal maintenance, upstream agricultural abstractions, and industrial effluent pollution in the Awash River Basin rather than household or community water supply or sanitation service access (failing C1). It also fails C2 under the 2026-10-13 rule-type reading because it examines macro/basin-level resource governance and environmental pollution enforcement rather than a rule-type mechanism directly governing household/community service access, and fails C4 because its empirical outcomes are stakeholder influence-interest matrices and expert Likert ratings of general basin water-resource challenges rather than household/community service-access outcomes. Even under the plain wording of Criterion 2, the study remains excluded due to failing C1 and C4.",
+    "record_id": "R1B918BF54680",
+    "study_design": "Qualitative and descriptive stakeholder analysis case study (key informant interviews with Likert-scale ratings, focus group discussions, and document review)"
+  }
+}
