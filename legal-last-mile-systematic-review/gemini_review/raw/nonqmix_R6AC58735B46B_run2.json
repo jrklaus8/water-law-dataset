@@ -1,0 +1,282 @@
+{
+  "record_id": "R6AC58735B46B",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f3434dfd0bfb69240b27324948fe61f9224f3283c3bf4baea20be74cde788a4f",
+  "prompt_sha256": "fa3c9a646fc9920355705ddf4045cdd3f95c9ec1b9e7ca5e1c23ba3a6d88bda3",
+  "started_at": "2026-11-20T17:18:52.684457+00:00",
+  "completed_at": "2026-11-20T17:22:27.022373+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Multiple countries globally (257 studies: 46% Asia, 40% Africa, 4% Latin America/Caribbean, 4% North America, 2% Oceania, 1% Europe, 4% multiple regions)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household, community, school, and public water and sanitation service access and conditions across 257 empirical studies (115 water, 57 sanitation, 85 both).",
+      "c2": "Passes the plain wording of Criterion 2 but fails the narrow 2026-10-13 rule-type mechanism reading. Plain reading (yes): one of the review's three core conceptual and coding domains is 'Institutional Structures' (173 articles), including '3.a Formal Laws & Policies' (21 articles) as well as community WASH governance and water user committees under 'Decision-making' and 'Leadership'. Narrow 2026-10-13 reading (no): the review's analytic focus is women's and girls' empowerment (agency, bodily integrity, personal/household resources, and gender norms/relations) rather than legal or administrative rule-type mechanisms directly governing WASH service access. In Section 3.a, the synthesis primarily addresses gender quotas and women's representation/voice on community WASH committees, barriers to female WASH entrepreneurship, and watershed project participation (generic community project governance and empowerment outcomes rather than service-access rules). Isolated one-sentence descriptive references to intra-household/personal land ownership, difficulties obtaining toilet subsidies, pay-per-use public toilet costs, school sex-segregated toilet mandates, or public toilet maintenance guidelines summarize individual cited studies under empowerment/resource themes without analyzing any rule-type legal, regulatory, or administrative mechanism governing household or community service access.",
+      "c3": "Systematic empirical synthesis: a PRISMA-reported systematic review and qualitative metasynthesis using best-fit framework synthesis and MMAT appraisal of 257 peer-reviewed empirical studies (129 qualitative, 54 quantitative, 74 mixed-methods).",
+      "c4": "Although primarily synthesizing empowerment subdomains (health, safety/violence, privacy, time, agency), the review also reports outcomes relevant to household latrine/improved sanitation ownership, water source selection and quantity, public toilet affordability, maintenance of public sanitary complexes, and caste- or movement-based exclusion from water and sanitation facilities.",
+      "c5": "Study design (systematic review and qualitative metasynthesis), study populations and units of analysis (individual women and girls and households across 257 studies, ~1,600,348 participants), and bidirectional WASH and empowerment constructs are clearly reported.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 48",
+        "quote": "This review a) identified empirical water and sanitation research that engaged empowerment and/or empowerment-related domains; b) reported empowerment-related terminology used, research locations, methods leveraged, if water and/or sanitation was the focus; and c) synthesized evidence."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 48",
+        "quote": "Any peer-reviewed article presenting primary or secondary research related to water and/or sanitation and either empowerment and/or one of the domains of empowerment from the conceptual model was eligible for inclusion."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 26 of 48",
+        "quote": "Women’s participation in WASH-related governance has been constrained by a lack of awareness about the rules (Uganda [102]), a lack of transparency or distrust in political institutions (Kenya [87]), husbands or sons attending meetings in their place (India [106]), and being ignored by men (Kenya [61])."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 26 of 48",
+        "quote": "WASH policies, and uneven policy awareness, implementation, and enforcement, have posed barriers to women. Female entrepreneurs in Cambodia found certain policies made it hard to run water enterprises [30]. Even when policies exist to address women’s and girls’ needs, they are not always known or enforced."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 48",
+        "quote": "With respect to sanitation, in India, the odds of having a latrine was significantly higher in households where women were the main decision makers [136] and in Kenya, the likelihood of a household owning an improved sanitation facility was significantly higher when women had at least some input on decisions about major household purchases [134]."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 23 of 48",
+        "quote": "Limited household income has forced women to prioritize needs like food over sanitation, whether investing in or paying to use toilets [135, 147, 186]."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Bidirectional water and sanitation conditions, behaviors, and WASH programs/initiatives in relation to domains of women's and girls' empowerment (agency, resources, and institutional structures including gender norms, interpersonal relations, and community governance participation)",
+    "outcome": "Women's and girls' empowerment domains (decision-making, leadership, collective action, freedom of movement, bodily integrity/safety/health/privacy, critical consciousness, financial/productive assets, knowledge/skills, social capital, time, and institutional norms/relations) and associated household/community water and sanitation access, latrine ownership, affordability, and use",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Estimated 1,600,348 participants across 257 peer-reviewed empirical studies (129 qualitative, 54 quantitative, 74 mixed-methods) focusing on women and girls (40% female-only samples, 54% male and female samples, 5% unspecified; 69% adults, 5% adolescents, 22% multiple populations)",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 rule-type mechanism clarification of Criterion 2. This systematic review and qualitative metasynthesis of 257 empirical WASH studies examines the bidirectional relationship between water/sanitation conditions or programs and women's and girls' empowerment (agency, bodily integrity/resources, and social norms/relations). Although it passes the plain wording of Criterion 2 via its 'Institutional Structures' / 'Formal Laws & Policies' coding domain and community WASH governance themes (plain_criterion2_decision: 'include'), Section 3.a predominantly examines gender quotas and women's representation/voice on community water committees, barriers to female water entrepreneurship, and watershed participation rather than rules governing household or community service access, while isolated single-sentence mentions of personal land ownership, subsidy difficulties, pay-per-use toilet fees, school toilet mandates, or public sanitary complex maintenance summarize individual cited studies under broad empowerment/resource themes rather than analyzing a rule-type legal, regulatory, or administrative mechanism directly governing service access.",
+    "record_id": "R6AC58735B46B",
+    "study_design": "Systematic review and qualitative metasynthesis (best-fit framework synthesis of 257 empirical studies: 129 qualitative, 54 quantitative, and 74 mixed-methods)"
+  }
+}

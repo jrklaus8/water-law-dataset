@@ -1,0 +1,277 @@
+{
+  "record_id": "R9E976E52357D",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "c0c579d7ca02ad16007a92b124aa9f4235b3fdcace7b51bd6fd58d7e486b9f4f",
+  "prompt_sha256": "9d39bf5695a178853b0fcbd092e41dac54ddaaf9c1ef2a42ac82db395a9d24f5",
+  "started_at": "2026-11-20T16:26:12.691976+00:00",
+  "completed_at": "2026-11-20T16:27:49.797940+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Canada",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails C1: The paper examines risk perception, attribution of blame and restoration of public trust following an E. coli O157:H7 contamination outbreak in a municipal drinking-water supply (Walkerton, Ontario), rather than household or community access to water or sanitation services.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, the study passes C2 individually because it examines governmental, institutional and regulatory factors surrounding the Walkerton contamination crisis (provincial inspector cutbacks, grandfathering of uncertified local water managers, privatization of laboratory water testing without mandatory reporting, the Walkerton public inquiry, criminal prosecutions, and subsequent Safe Drinking Water Act and Clean Water Act reforms). Under the narrow 2026-10-13 rule-type reading, it fails C2 ('no') because these regulatory and crisis-management factors concern drinking-water quality oversight and public risk communication rather than a rule-type mechanism governing household or community service access (such as eligibility screening, tenure/documentation rules, tariffs, enforcement/disconnection, or utility access governance). Overall study eligibility under plain Criterion 2 remains 'exclude' because C1 and C4 also fail.",
+      "c3": "Satisfies C3: Multimethods qualitative empirical case study combining longitudinal content analysis of 351 national print and broadcast news stories containing public quotes (May 2000 to December 2011) and 10 focus group discussions with 117 Ontario residents (October to November 2005), coded systematically in NVivo9.",
+      "c4": "Fails C4: Reported outcomes are the longitudinal evolution of public blame attribution, public trust/mistrust in government and water-safety oversight, and expectations for risk communication and transparency. It does not measure or analyze water or sanitation access, connection, availability, continuity, quantity, affordability or exclusion (passing mentions of residents drinking bottled water out of distrust or well-upgrade costs are anecdotal context, not analyzed service-access outcomes).",
+      "c5": "Satisfies C5 for the study's own research question: Population/units of analysis (351 national media stories quoting Walkerton/Canadian residents; 117 focus group participants across 10 Ontario communities), event/exposure (May 2000 Walkerton E. coli drinking-water contamination crisis and government regulatory/crisis response), outcomes (blame attribution and public trust), and study design (qualitative multimethods case study) are clearly identifiable.",
+      "c6": "Satisfies C6: Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 19",
+        "quote": "This study examines the evolution of blame and restoration of trust by the public after a localized public health risk event, the contamination of drinking water supplies by E. coli bacteria in Walkerton, Ontario, Canada in May 2000."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 19",
+        "quote": "This article seeks to discover how blame evolves over time and to explore how public perceptions of trust may shift depending on how the institutions responsible handle the immediate management of the issue or crisis as well as accountability measures put in place to prevent such reoccurrences."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 19",
+        "quote": "This multimethods case study used both media presentations of the Walkerton risk event and focus group discussion with select communities in Ontario."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 19",
+        "quote": "Ten two-hour focus groups were conducted in select communities around Ontario (excluding Walkerton). A total of 117 people participated in these discussions."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 6 of 19",
+        "quote": "The initial search using the term ‘Walkerton’ yielded 1876 news stories from 2000–2011 of which 971 met the selection criteria. Of those, 351 stories contained direct quotes from the public, which form the subset used for analysis."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "May 2000 Walkerton municipal drinking-water E. coli contamination crisis and subsequent government crisis management, public inquiry, prosecutions, and water-safety regulatory reforms",
+    "outcome": "Public attribution of blame, public trust/mistrust in government and regulatory oversight, and public expectations regarding risk communication and transparency",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Canadian general public and Walkerton residents quoted in 351 national print and broadcast news stories (May 2000–December 2011), and 117 adults participating in 10 focus groups across 10 Ontario communities (October–November 2005)",
+    "rationale": "Excluded (E01 - Wrong topic): Full-text qualitative multimethods study examining risk perception, the evolution of public blame, and trust in government following the May 2000 E. coli drinking-water contamination outbreak in Walkerton, Ontario. It does not examine water or sanitation service access (C1 = no), does not examine a rule-type mechanism governing service access under the 2026-10-13 Criterion 2 scope clarification (C2 = no; plain C2 is satisfied with respect to water-quality governance/crisis response, but overall plain_criterion2_decision remains exclude due to C1 and C4), and reports no service-access outcome (C4 = no).",
+    "record_id": "R9E976E52357D",
+    "study_design": "Qualitative multimethods case study (longitudinal media content analysis and focus groups)"
+  }
+}

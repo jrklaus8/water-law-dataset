@@ -1,0 +1,277 @@
+{
+  "record_id": "R9D038D79C151",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "a7afc0ae5aa36babb1a28b27629e6714ee8afd12e0fbc06e0d695f361f546ad2",
+  "prompt_sha256": "69df673375a2f81293587d35d812247bb441a7a30b07af4524bb3c0993778df5",
+  "started_at": "2026-11-20T17:03:40.080879+00:00",
+  "completed_at": "2026-11-20T17:04:39.253297+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails C1: The paper examines environmental protection and conflict resolution over natural water resources (watercourse pollution, riparian deforestation, agricultural water abstraction disputes, and river basin management) rather than household or community drinking-water or sanitation service access.",
+      "c2": "Plain wording vs. narrow 2026-10-13 reading: Under the plain wording of Criterion 2, the paper passes (plain=yes) because it examines legal and institutional governance instruments, specifically Article 38, II of Brazil's National Water Resources Policy (Law 9,433/97), Article 1 of the Arbitration Law (Law 9,307/96), and the competence of Basin Committees to arbitrate water conflicts. Under the narrow 2026-10-13 rule-type mechanism reading, however, it fails (narrow=no) because the proposed arbitral mechanism addresses environmental damage and natural water-resource disputes rather than a rule-type mechanism directly governing household or community water or sanitation service access (such as eligibility screening, administrative burden, documentation/tenure requirements, tariffs, accommodation, enforcement, or utility regulation). Under both readings, the overall decision is exclude because C1, C3, C4, and C5 are not met.",
+      "c3": "Fails C3: Purely doctrinal and normative legal commentary presenting legal arguments and proposing statutory amendments to establish Water Arbitration Tribunals in Brazil. Despite loosely referring to the Brazilian state as a 'case study' and briefly citing secondary literature on the Valencia and Florianópolis water tribunals, the paper contains no primary data, no empirical methodology, and no systematic empirical synthesis (exclude E05).",
+      "c4": "Fails C4: Reports no empirical outcomes and no measures of household or community water or sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion.",
+      "c5": "Fails C5: Non-empirical doctrinal essay with no empirical study population, sample, or empirical study design linking an exposure to a measured service-access outcome.",
+      "c6": "Passes C6: Full text is written in English (with abstracts in English, Portuguese, and Spanish)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 18",
+        "quote": "Thus, by using the Brazilian state as a case study to achieve this goal, we will conduct a study of the National Water Resources Policy, based on the part concerning the competence of the Basin Committees in arbitrating conflicts related to water resources, through the use of so-called alternative tools."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 18",
+        "quote": "Legal and extra-legal arguments shall be presented, and the legislative measures that need to be changed in order to give legitimacy to the new method(s) of proposed dispute settlement(s) will be identified, both with the scope of contributing to the improvement of water resources in Brazil."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4 of 18",
+        "quote": "We come to the main point of this study, namely to achieve an understanding of the competence of Basin Committees to “arbitrate” the existing conflicts in their field. Should this arbitration only exist for the administrative management of water resources?"
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 10 of 18",
+        "quote": "For example, a dispute between two farmers for the use of a watercourse: one using an excessive amount of natural resource to the detriment of his neighbor."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 17 of 18",
+        "quote": "Thus, the creation of a Water Arbitration Tribunal, with extrajudicial action parallel with indicated judicial measures, would effectively contribute to the prevention/minimization of environmental damage and the consequent indiscriminate viable access to the natural resource."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Proposed legislative reforms to Brazil's Arbitration Law (Law 9,307/96, Article 1) and National Water Resources Policy (Law 9,433/97, Article 38, II) to establish Water Arbitration Tribunals within Basin Committees",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded as E05 (No empirical evidence). This article is a purely doctrinal and normative legal essay arguing for legislative amendments to Brazil's Arbitration Law (Law 9,307/96) and National Water Resources Policy (Law 9,433/97) so that Watershed/Basin Committees can operate extrajudicial Water Arbitration Tribunals. It involves no empirical data collection, sample, or empirical method, and additionally focuses on natural water-resource conflicts and environmental damage (such as watercourse pollution and agricultural abstraction disputes) rather than household or community water or sanitation service access (failing C1, C2 under the narrow rule-type reading, C3, C4, and C5).",
+    "record_id": "R9D038D79C151",
+    "study_design": "Doctrinal and normative legal commentary (non-empirical)"
+  }
+}

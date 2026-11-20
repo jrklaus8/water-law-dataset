@@ -1,0 +1,277 @@
+{
+  "record_id": "RD9E379F47EA1",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "683581ba38ef2705e00ff9be837decff37128826c360a3784cf9972c14cbc1a2",
+  "prompt_sha256": "a156d47897511ef2c5ed3c7233ed6f33e5077499d50f8d2dda7ecea113be46f5",
+  "started_at": "2026-11-20T17:18:52.679717+00:00",
+  "completed_at": "2026-11-20T17:20:39.724048+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1 (and matches Exclusion Criterion 7: water-resource studies unrelated to household or community service access). The paper examines macro water-resources management, inter-state river transposition disputes (Paraíba do Sul River and Guandu River Basin), bulk raw-water availability, and aquifer protection from landfill leachate in the Metropolitan Region of Rio de Janeiro (RMRJ), mentioning municipal coverage by bulk supply systems only as descriptive background from a secondary report rather than examining household or community water or sanitation service access.",
+      "c2": "Plain wording vs. 2026-10-13 narrow rule-type reading diverge on Criterion 2 itself (though both lead to overall exclusion): Under the plain/broad wording of Criterion 2, the paper WOULD satisfy Criterion 2 because it examines legal, regulatory, institutional, and governance frameworks for water resources (Federal Law 9.433/1997, Rio de Janeiro State Water Laws 3.239/1999 and 4.247/2003, INEA, and the Guandu River Basin Committee), yet plain_criterion2_decision remains 'exclude' because the paper fails c1, c3, c4, and c5. Under the active 2026-10-13 narrow rule-type mechanism reading, c2 is 'no' because river-basin plans, raw-water abstraction grants (outorga), bulk raw-water user charges, inter-state river transposition mediation, and basin committee plenary governance regulate bulk water bodies and environmental resources rather than a rule-type mechanism directly governing household or community service access (such as eligibility screening, tenure/documentation rules, retail utility tariffs, administrative burden, disconnection/enforcement, or utility regulatory structure governing last-mile access).",
+      "c3": "Fails Criterion 3. Framed as 'contributions to the debate', the article relies on a narrative literature review, statutory reading of Federal and State Water Laws, consultation of secondary INEA/COPPETEC technical documents and the Guandu Committee website, and summary of findings from the author's earlier 2014 dissertation (Santos, 2014), without presenting primary empirical data collection or a systematic empirical synthesis.",
+      "c4": "Fails Criterion 4. No household or community service access, connection, continuity, reliability, quantity, affordability, or exclusion outcome is measured or evaluated; the discussion addresses basin-scale raw-water stress risk, river-basin committee plenary representation, and institutional coordination around the CTR Santa Rosa landfill over the Piranema Aquifer.",
+      "c5": "Fails Criterion 5. While the geographic setting (RMRJ / Guandu River Basin) is described, there is no identifiable household/community study population or sample, no last-mile rule-type exposure, no service-access outcome, and no empirical study design evaluating service access.",
+      "c6": "Satisfies Criterion 6. The full text of the article is in English (with abstracts in English, Portuguese, and Spanish)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 17",
+        "quote": "This article aims to contribute to discussions on the management of water resources and the elements associated to water security. The discussion has focused on two main aspects, first, in the theoretical frame about discussions of water security and second, in the presentation of the elements which composes the current scenario of water management in the Metropolitan Region of Rio de Janeiro (RMRJ), based in the discussions about the centrality for Rio de Janeiro’s water supply focused in Paraíba do Sul river, and in the role of agencies and organisms associated to water management in this territory."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 6",
+        "quote": "Also points out that the municipalities of Magé, Guapimirim and part of Duque de Caxias (municipalities members of RMRJ) are not served or are partially served by the Guandu and Imunana/Laranjal Systems, and even with the expansions planned for such systems in the next years, the situation of these municipalities will not be changed – which reinforces the scenario of imminent fragility of the RMRJ’s water supply."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "Equally inspired by the model established by the Federal Water Law, the Water Law of Rio de Janeiro includes six instruments, as follows: a) State Water Resources Plan (PERH); b) State Program of Conservation and Revitalization of Water Resources (PROHIDRO); c) River Basin Plans (PBHS); d) classification of the rivers into classes, according to its predominant uses; e) granting to water resources use; f) charging users for the water resources uses; g) State System of Water Resources Information (SEIRHI-RJ)."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2",
+        "quote": "The methodology that based the discussions proposed in this paper includes two main methods, a review of the literature related to the subject addressed in the article, and the gathering of information about the instruments and mechanisms to promote"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13",
+        "quote": "The existence of an active deliberations forum did not show sufficient condition to ensure the water security of RMRJ, which could denote that the water security concept would also be associated with intertwining institutional capacity."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Macro water-resources legal and institutional framework (Brazilian Water Law 9.433/1997, Rio de Janeiro State Water Law 3.239/1999, State Law 4.247/2003 raw-water charges and abstraction grants, and Guandu River Basin Committee governance)",
+    "outcome": "Basin-level raw-water resource security, inter-state river transposition vulnerability, and institutional coordination over surface water and the Piranema Aquifer (no household or community service access outcome reported)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Metropolitan Region of Rio de Janeiro (RMRJ) and Guandu River Basin / Guandu River Basin Committee (basin- and state-level water resources management entities; no household or community sample)",
+    "rationale": "Excluded as E01 (Wrong topic — water-resources and river-basin governance study unrelated to household or community water or sanitation service access, matching Exclusion Criterion 7). The article discusses the concept of water security, inter-state conflict over Paraíba do Sul river transpositions, bulk raw-water management instruments under Federal Law 9.433/1997 and Rio de Janeiro State Law 3.239/1999 (river basin plans, raw-water abstraction grants, bulk raw-water charges), and institutional coordination in the Guandu River Basin Committee including aquifer vulnerability to landfill leachate. It does not examine household or community water/sanitation service access (c1=no), does not analyze a rule-type mechanism governing service access under the 2026-10-13 clarification (c2=no; although macro water-resource laws and basin committees would satisfy the plain wording of c2 alone, plain_criterion2_decision is still 'exclude' due to failing c1, c3, c4, and c5), relies on a narrative review of secondary literature, statutes, agency documents, and a prior dissertation rather than primary empirical service-access data (c3=no), and reports no household or community access outcome (c4=no).",
+    "record_id": "RD9E379F47EA1",
+    "study_design": "Narrative literature and documentary policy overview (secondary review of water legislation, agency technical documents, committee website, and prior dissertation)"
+  }
+}

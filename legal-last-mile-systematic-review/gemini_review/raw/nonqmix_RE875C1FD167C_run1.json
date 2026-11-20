@@ -1,0 +1,272 @@
+{
+  "record_id": "RE875C1FD167C",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b74f4aecc272d2396f28fd2777d8661f0b90be71a8c27d554bf3b4aa27633941",
+  "prompt_sha256": "8ca5309b8df420cae669c981e858be9695f74bda5c724829544b41487d9103a2",
+  "started_at": "2026-11-20T16:24:10.385427+00:00",
+  "completed_at": "2026-11-20T16:26:06.680216+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1. The paper examines groundwater contamination vulnerability and strategies to protect drinking-water quality (specifically well-casing depths, septic setback distances, and source-water capture zones) in unsewered rural subdivisions using private domestic wells and septic systems, rather than household or community access to water or sanitation services.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, the paper DOES examine legal, regulatory, and governance factors—specifically state well-construction and septic-setback codes (Table 1), Wisconsin statutory limits preempting Sauk County planners from mandating stricter well-casing depths as a condition of subdivision approval, and unenforceable developer subdivision covenants. Under the narrow 2026-10-13 rule-type reading, it FAILS Criterion 2 because those technical well-construction and environmental water-quality standards do not directly govern household service access, connection, eligibility, tariff/affordability, or disconnection. Note that even under the plain Criterion 2 wording, the overall decision remains exclude because the paper fails Criteria 1 and 4 (water-quality protection rather than service access).",
+      "c3": "Satisfies Criterion 3. Combines calibrated/parameterized groundwater flow modeling (informed by over 20 monitoring wells at Savannah Valley and drillers' well-construction logs near East Lake Virginia Estates) with a 50-state review of well setback regulations and an empirical retrospective analysis of 14 domestic wells drilled in East Lake Virginia Estates (2004-2008) and homeowner behavior in Savannah Valley.",
+      "c4": "Fails Criterion 4. Reported outcomes are simulated groundwater source-water area lengths (2-, 5-, 10-, and 20-year travel-time capture zones assessing septic contaminant cycling) and water-quality protection behaviors (well casing depths of 30-60 feet vs. recommended 100-135 feet, or home water-treatment installation). It reports no outcome measuring water or sanitation access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion.",
+      "c5": "Satisfies Criterion 5. Clearly identifies the study sites/units of analysis (two southern Wisconsin subdivisions of 48 and 30 lots, individual domestic wells, and state well codes), the regulatory/informational exposures, the hydrogeologic and well-construction outcomes, and the modeling plus retrospective case-study design.",
+      "c6": "Satisfies Criterion 6. Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 11",
+        "quote": "We aimed to assess existing regulations for domestic wells and septic systems and illustrate how groundwater models can be used to evaluate strategies for additional drinking-water protection in unsewered residential subdivisions."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 11",
+        "quote": "Based on model results, Sauk County planners attempted to require 100 feet of well casing below the water table to mitigate the impacts of fertilizers and septic systems in the subdivision."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 10 of 11",
+        "quote": "In other words, none of the wells meet the model-based guidelines. Furthermore, ownership records indicate that the developer built at least four spec homes within the subdivision, but did not follow his own recommendations for well design."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 11",
+        "quote": "Several residents who purchased lots at a later date, when informed of the model results, chose to incur the expense of deeper wells and casings or installed water treatment systems in their homes to improve drinking-water quality."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "State and county well-construction and septic-setback regulations, dissemination of subdivision-scale groundwater capture-zone model results, and non-binding subdivision covenant recommendations for deeper well casings",
+    "outcome": "Simulated groundwater source-water area lengths and 2- to 20-year capture zones for drinking-water quality vulnerability to septic effluent, plus domestic well casing depths and homeowner adoption of deeper casings or point-of-use water treatment for water quality",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Two unsewered rural residential subdivisions in southern Wisconsin, United States: East Lake Virginia Estates in Sauk County (48 lots on 36 acres, including 14 domestic wells drilled between 2004 and 2008) and Savannah Valley in Dane County (30 lots on 78 acres, with over 20 monitoring wells); plus state domestic well setback codes across 50 U.S. states",
+    "rationale": "Excluded (E01: Wrong topic; also lacks a service-access outcome). Full text matches the record metadata (Wilcox et al., 2010, JAPA). The study uses hydrogeologic groundwater flow models and a two-subdivision case-study retrospective in Wisconsin to evaluate septic-to-well contaminant travel times, state setback/casing regulations, local statutory preemption, and actual well-casing depths installed to protect drinking-water quality. Although it examines regulatory and covenant mechanisms affecting well-casing construction (passing Criterion 2 under the plain wording, though failing the narrow 2026-10-13 rule-type access mechanism reading), all households in these subdivisions have private wells and septic systems and the study strictly addresses groundwater contamination / drinking-water quality protection rather than water or sanitation service access, connection, availability, reliability, quantity, affordability, or exclusion (failing Criteria 1 and 4 under both readings).",
+    "record_id": "RE875C1FD167C",
+    "study_design": "Hydrogeologic groundwater flow modeling combined with a two-site empirical case-study retrospective and 50-state regulatory code review"
+  }
+}

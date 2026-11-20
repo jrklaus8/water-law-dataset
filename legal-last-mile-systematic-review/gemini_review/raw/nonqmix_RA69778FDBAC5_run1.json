@@ -1,0 +1,277 @@
+{
+  "record_id": "RA69778FDBAC5",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "571c2650b7d6ab2fae79a82a1f498c2c8ec42905ee03e4de467e80849efd27a8",
+  "prompt_sha256": "0bf5817d085bed25e41b42ff89a0341815de67343aa46044d20aa60f9e614a4a",
+  "started_at": "2026-11-20T16:48:53.050067+00:00",
+  "completed_at": "2026-11-20T16:50:02.269499+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails c1: The item is a brief trade-journal case-law summary of a dispute between water utilities/associations and the Florida Public Service Commission over utility accounting for contributions in aid of construction (CIAC) against margin reserves, rather than household or community water or sanitation service access.",
+      "c2": "Plain wording vs. narrow 2026-10-13 reading: Under the plain broad wording of Criterion 2, this item passes Criterion 2 because it summarizes a regulatory rule proposed by the Florida Public Service Commission and an appellate court decision reviewing its validity (though overall plain_criterion2_decision remains exclude due to failing c1, c3, c4, and c5). Under the narrow 2026-10-13 rule-type reading, it fails Criterion 2 (no) because the rule addresses utility reserve accounting (imputing 50 percent of projected CIAC against margin reserves) — which the court stated had only the most tenuous connection with rate-making issues — rather than a rule-type mechanism directly governing household or community service access.",
+      "c3": "Fails c3: This is a three-paragraph legal news digest in Journal AWWA summarizing a single Florida appellate decision (Florida Public Service Commission v. Florida Waterworks), with no empirical data, no empirical methodology, and no systematic empirical synthesis (exclude E05).",
+      "c4": "Fails c4: The only reported outcome is the appellate court's legal holding that the proposed accounting rule was valid; no household or community water or sanitation access, connection, availability, continuity, quantity, affordability, or exclusion outcome is measured or reported.",
+      "c5": "Fails c5: As a brief doctrinal case-law summary, there is no empirical study population, sample, unit of analysis, empirical exposure-outcome analysis, or empirical study design.",
+      "c6": "Passes c6: Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 1 (p. 12)",
+        "quote": "Mayo H. Stiegler, 1728 Caminito Ardiente, La Jolla, CA 92037, who prepared these summaries."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 1 (p. 12, Proposed Rule Invalidated, Then Reinstated)",
+        "quote": "FWA and FWSC maintained that the utilities’ margin reserves should never be reduced to reflect CIAC"
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 1 (p. 12, Proposed Rule Invalidated, Then Reinstated)",
+        "quote": "The appellate court concluded that the proposed rule had only the most tenuous connection with rate-making issues and did not purport to include or exclude any particular type or class of expenditure from the rate base."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 1 of 1 (p. 12, Proposed Rule Invalidated, Then Reinstated)",
+        "quote": "Thus, the court said that initially imputing less than 100 percent against the margin reserves was justified by the time value of money. The proposed rule was found to be valid."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 1 (p. 12, Proposed Rule Invalidated, Then Reinstated)",
+        "quote": "Florida Public Service Commission v. Florida Waterworks, District Court of Appeal of Florida, May 7, 1999"
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Proposed Florida Public Service Commission rule authorizing immediate imputation of 50 percent of projected contributions in aid of construction (CIAC) against utility margin reserves",
+    "outcome": "Legal validity of the proposed administrative rule (no empirical service-access outcome reported)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded under E05 (No empirical evidence). The retrieved text is a three-paragraph case-law summary column by Mayo H. Stiegler in Journal AWWA (January 2000, p. 12) reporting the Florida District Court of Appeal's decision in Florida Public Service Commission v. Florida Waterworks regarding utility accounting treatment of contributions in aid of construction (CIAC) relative to margin reserves. It contains no empirical data, methods, or systematic synthesis, and reports no household or community water or sanitation service-access outcomes.",
+    "record_id": "RA69778FDBAC5",
+    "study_design": "Non-empirical case-law summary / legal news column"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "record_id": "RF81354379727",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "55ac2efff6e472ceccfea490500bf5e6a2c5d29032902e4694e2f068f50191ce",
+  "prompt_sha256": "53a1c0048bddc91d0c1f75f2ff22efc0c9e93deaa4f61e43141fcfca7ff2472a",
+  "started_at": "2026-11-20T16:52:51.054350+00:00",
+  "completed_at": "2026-11-20T16:54:58.032717+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Zambia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban water supply and sanitation infrastructure and service provision for low-income urban communities (compounds) in Lusaka and the Copperbelt cities of Zambia.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, this paper would satisfy Criterion 2 itself because it discusses institutional and governance dimensions of urban water and sanitation delivery (community participation structures, municipal council bureaucratic reorientation, NGO partnerships, and donor capital financing), though plain_criterion2_decision remains exclude because the paper fails Criterion 3 (E05, non-empirical essay/project overview). Under the active 2026-10-13 narrow rule-type reading, Criterion 2 is no: the paper critiques macro-development poverty discourse ('Fordist' vs. flexible investment) and describes participatory project delivery and community facilitation in a World Bank project rather than empirically examining a legal, regulatory, or administrative rule-type mechanism directly governing household service access (mentioning organizational preconditions and a per-capita project investment ceiling/upfront O&M contribution only as descriptive features of prospective project design).",
+      "c3": "No empirical study design, data collection methodology, sample, or primary empirical evidence is reported ( nor is it a systematic empirical synthesis). The article is a Foucauldian theoretical/conceptual essay on urban poverty and infrastructure discourse paired with a brief policy description of a World Bank project in its initial stages of implementation drawn from a secondary World Bank (1994) outline -> exclude as E05.",
+      "c4": "No empirical service-access outcome of an evaluated exposure is measured or reported. The Zambian project component described was only in the initial stages of implementation (with financial investment expected up to a year after start-up), and access problems in Lusaka are cited only as secondary background illustrations (e.g., World Bank 1994; Rakodi 1987).",
+      "c5": "Lacks an identifiable empirical study design, sample, and evaluated exposure-outcome relationship because it is a conceptual essay and prospective project overview.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 7 of 9",
+        "quote": "The component has the dual objectives of developing sustainable water supply and sanitation systems in low income urban communities and of facilitating a process of participatory institution building at the community level"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 9",
+        "quote": "The emphasis is on relational networks and broad band communication between levels rather than institution building as such at either the community or municipal level."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 9",
+        "quote": "It is used here as a tool to open up the framework within which urban poverty is discussed, a Foucauldian attempt to free that which purports to be natural in order to alter both the theoretical parameters and the empirical interventions."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 9",
+        "quote": "The project description is drawn from an outline in the Zambia Urban Poverty Assessment (World Bank 1994: 49,50)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 9",
+        "quote": "It is expected that financial investment will take place up to a year after project start up to allow for the facilitation of participatory structures"
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Flexible, participatory urban water and sanitation project delivery and development discourse (low-income component of the World Bank Zambia Urban Restructuring and Water Supply Project)",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Low-income urban communities in Lusaka and the Copperbelt cities, Zambia (no empirical sample reported)",
+    "rationale": "Excluded under E05 (No empirical evidence). Cottam (1997) is a Foucauldian theoretical and policy essay in IDS Bulletin critiquing orthodox urban poverty and 'Fordist' infrastructure discourse, illustrated with a brief prospective overview of the low-income component of the World Bank-funded Zambia Urban Restructuring and Water Supply Project. As Footnote 3 notes, the project description is drawn from an outline in World Bank (1994), the project was only in the initial stages of implementation (with financial investment expected up to a year after start-up), and the article reports no empirical methods, primary data, sample, or measured access outcomes. In addition, under the 2026-10-13 narrow rule-type reading of Criterion 2, the paper focuses on macro-development discourse and participatory project delivery rather than examining a rule-type legal/administrative mechanism governing service access; even under the plain broad wording of Criterion 2, the study remains excluded for lack of empirical evidence (E05).",
+    "record_id": "RF81354379727",
+    "study_design": "Theoretical/conceptual essay and prospective project policy overview (non-empirical)"
+  }
+}

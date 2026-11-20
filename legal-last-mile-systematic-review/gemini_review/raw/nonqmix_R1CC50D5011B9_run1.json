@@ -1,0 +1,282 @@
+{
+  "record_id": "R1CC50D5011B9",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "99105e082a3700c0ed6d78b95b582c3df48846f0292b2fa1a35cb3b394c2febe",
+  "prompt_sha256": "31d3288d43fad14d69d43f9e8b3ffb0ec587395433699ffb453afbd1cbd060d7",
+  "started_at": "2026-11-20T17:03:40.078538+00:00",
+  "completed_at": "2026-11-20T17:04:57.324579+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Algeria",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails C1. The paper develops a municipal land-use optimization model focused on economic activities and ambient surface/groundwater resource depletion and BOD/COD pollution loads, not household or community water or sanitation service access. Baseline public water network coverage (54.7% in Reghaïa and 62% in Heraoua) is mentioned solely as an input to estimate sectoral surface vs. groundwater extraction, and the author explicitly notes on p. 957 (PDF p. 21) that optimising water supply or sewage disposal are alternative targets not pursued here.",
+      "c2": "Fails C2 under the narrow 2026-10-13 rule-type reading; borderline/broadly planning-related under the plain wording, though overall study decision remains exclude under both readings. Under the plain wording of Criterion 2, the study discusses municipal land-use planning (master plans, zoning, and hypothetical environmental policy scenarios), although the author explicitly states that the model disregards 'the underlying regulatory and financial system' (PDF p. 2). Under the active 2026-10-13 narrow rule-type reading, it clearly fails C2 because it examines no rule-type legal, administrative, regulatory, or institutional mechanism governing household or community water/sanitation service access (such as eligibility rules, tenure/documentation requirements, tariffs, administrative burden, enforcement, or utility governance); the simulated 'water quantity' and 'water quality' policies are technical sectoral assumptions (20% irrigation saving, desalination-enabled 20% domestic consumption increase, 20% industrial wastewater reuse, and 80% lake-discharge wastewater treatment).",
+      "c3": "Fails C3. As the author explicitly distinguishes on PDF p. 19, this is a normative mathematical land-use optimization and numerical simulation model calibrated with secondary aggregate statistics (from PAC reports, DGE 2001, and Google Earth) rather than an empirical study or systematic empirical synthesis estimating real-world outcomes.",
+      "c4": "Fails C4. Simulated outputs (Tables 7–10) are optimal spatial land-use shares across seven municipal zones and projected changes in weighted GDP, employment, urban/industrial land area, aggregate sectoral groundwater and surface water extraction (m3), solid waste (t), and ambient BOD/COD loads (t) in aquifer, lake, and sea water. No household or community service-access, connection, reliability, continuity, affordability, or exclusion outcome is measured or reported.",
+      "c5": "Fails C5 for review scope. While the mathematical optimization framework and seven spatial zones in Reghaïa and Heraoua are clearly specified, there is no identifiable household/community study population, legal/administrative service-access exposure, or empirical service-access outcome.",
+      "c6": "Satisfies C6. Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 23",
+        "quote": "Because the range of effects is large, I will focus on depletion and pollution of surface water and groundwater as a result of economic activities."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 21 of 23",
+        "quote": "Alternative rational targets could be chosen for sustainable urban development, such as reducing urban trafﬁc or improving air quality, as in the study by Borrego and others (2006), or such as optimising house heating or water supply or sewage disposal."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 23",
+        "quote": "On this basis I will focus on urban planning, and speciﬁcally on the use of zoning ordinances, land-use coefﬁcients, and public investment to support municipal decisions, while disregarding the underlying regulatory and ﬁnancial system."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14 of 23",
+        "quote": "Three main policies that affect the quantity of water have been suggested by PAC (2004a): a 20% water saving in agriculture due to the introduction of innovative irrigation techniques; a 20% increase in domestic water consumption permitted by the use of desalination facilities; and a 20% water saving in industry arising from the re-use of treated wastewater."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 19 of 23",
+        "quote": "Instead, the present model predicts land-use dynamics as a function of the objectives and values deﬁned by policy-makers and stakeholders in different scenarios."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13 of 23",
+        "quote": "The goal of the model was to maximise the weighted economic value obtained by changing the current land uses, constrained by the potential land uses."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Simulated municipal land-use allocation choices and hypothetical technical water-resource/pollution policy scenarios (agricultural irrigation efficiency, desalination capacity, industrial wastewater reuse, and 80% wastewater treatment of lake discharges)",
+    "outcome": "Optimal land-use proportions across seven municipal zones (agriculture, industry, tourism, urban housing development, environmental conservation) and simulated changes in weighted GDP, employment, urban/industrial area, aggregate sectoral groundwater and surface water extraction, solid waste, and ambient BOD/COD pollution loads",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Two coastal municipalities in Algeria (Reghaïa and Heraoua, Province of Alger), modeled across seven spatial land-use zones (A1–A7, 0.52 to 2.08 km2 each)",
+    "rationale": "Exclude (E01: Wrong topic). Full text matches metadata (Zagonari 2011, Environmental Management). The paper develops and calibrates a normative mathematical optimization model for municipal land-use allocation (maximizing area-weighted GDP across agriculture, industry, tourism, housing, and conservation) under aggregate surface/groundwater extraction and ambient BOD/COD water-pollution constraints in two Algerian municipalities. It does not examine household or community water or sanitation service access (C1=no; Exclusion Criterion 7), does not analyze a rule-type legal, regulatory, or administrative mechanism governing service access (C2=no; explicitly disregarding the underlying regulatory and financial system and simulating technical irrigation, desalination, industrial reuse, and lake-treatment scenarios), presents normative numerical optimization simulations rather than empirical access evidence (C3=no), and reports no service-access outcomes (C4=no). Under both the plain wording and the narrow 2026-10-13 reading of Criterion 2, the decision is exclude.",
+    "record_id": "R1CC50D5011B9",
+    "study_design": "Normative mathematical land-use optimization and numerical simulation model calibrated with secondary municipal, provincial, and regional data"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "record_id": "R4AC51952E861",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "21f3c02f962a4d319056afd40f80392796cf08304afed1e32b879371c2dc29c4",
+  "prompt_sha256": "7278d4a7b3dc067a58b3d2872880c8de8a31f2dd18b6c1b8c6199b2043f20b09",
+  "started_at": "2026-11-20T16:26:12.682911+00:00",
+  "completed_at": "2026-11-20T16:27:39.129466+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1 (and matches Exclusion Criterion 7: water-resource studies unrelated to household or community service access). Although background sections cite secondary IBGE 2000 water/sewer coverage statistics and review urban watershed degradation in Metropolitan Sao Paulo, the empirical study examines river-basin/watershed resource management subcommittees (Alto Tiete) rather than household or community water or sanitation service access.",
+      "c2": "Passes the plain wording of Criterion 2 (plain = yes) because it empirically examines institutional and participatory governance factors—specifically social capital and state-society network interactions within statutory watershed basin subcommittees established under State Law 7663/91 and Federal Law 9433/1997. However, it fails the narrow 2026-10-13 rule-type mechanism reading (narrow = no): the empirical exposure is committee members' social capital (trust, reciprocity, cooperation, associational life) in basin-level natural resource governance, not a rule-type mechanism directly governing household or community service access. (A brief narrative background remark on p. 10 notes that municipalities cannot provide urban infrastructure in unregulated watershed areas, but this land-tenure/legalization rule is never empirically studied.) Even under the plain reading of Criterion 2, the overall decision remains exclude because Criteria 1 and 4 are not met.",
+      "c3": "Contains primary empirical data from structured questionnaires administered to 117 elected stakeholder members across five subcommittees of the Alto Tiete Watershed Committee, supplemented by meeting observations and informal interviews, analyzed via composite indices, t-tests, correlation coefficients, and social network analysis.",
+      "c4": "Fails Criterion 4. The empirical dependent variable is an Institutional Performance Index (IP) measuring members' perceptions of internal committee processes (planning/evaluation, resource mobilization, communication/coordination, and conflict resolution), plus stakeholder network centrality. The authors explicitly exclude external outcomes from the index, and no outcome related to water or sanitation access, connection, availability, reliability, quantity, affordability, or exclusion is reported.",
+      "c5": "Population and unit of analysis (117 elected members across five Alto Tiete watershed subcommittees), exposure (Social Capital Index), outcome (Institutional Performance Index), and study design (cross-sectional comparative survey and case study with social network analysis) are clearly identifiable for the study conducted, though none measure household or community service access.",
+      "c6": "Full text is written in English, an eligible review language without translation."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 11 of 21",
+        "quote": "Considering the context of this institutional change, the research (Jacobi et al., 2006) focused on how this newly and creative institutional settings may contribute to an improvement in the watershed’s overall governance."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 21",
+        "quote": "If the area is not regulated, the municipality may neither collect taxes nor provide any kind of urban infrastructure."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12 of 21",
+        "quote": "Data was collected through a questionnaire answered by the elected members of five watershed committees"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 12 of 21",
+        "quote": "The four categories of indicators were then combined to form an index of institutional performance (IP). The index reflects the general member’s perception about the activities carried out collectively by the watershed committee. Indicators were carefully selected indicators related to the way each group conducts its internal activities. Observations that are not directly related to the committee’s activities are not considered as the object of institutional performance analysis."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 17 of 21",
+        "quote": "Thus, we can say that there is in fact a positive relation between our independent variable – the social capital, and the dependent variable – the institutional performance."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Social Capital Index (SCI) of watershed subcommittee members (associational life, trust, reciprocity, and cooperation) and stakeholder network ties",
+    "outcome": "Institutional Performance Index (IP) of watershed subcommittees (member perceptions of internal decision-making, resource mobilization, communication/coordination, and conflict resolution) and stakeholder participation parity",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "117 interviewed stakeholders (elected members representing State, municipalities, and civil society) across five subcommittees of the Alto Tiete Watershed Committee (Billings, Cotia-Guarapiranga, Pinheiros-Pirapora, Juqueri-Cantareira, and Tiete Cabeceiras) in Metropolitan Sao Paulo; unit of analysis: individual committee member and watershed subcommittee",
+    "rationale": "Excluded as E01 (Wrong topic; water-resources watershed committee governance unrelated to household or community service access, per Exclusion Criterion 7), and also failing Criterion 2 (narrow rule-type reading) and Criterion 4 (no service access outcome). While narrative background sections mention secondary IBGE water/sewerage statistics and land-use legislation in Sao Paulo's watershed protection areas, the empirical study surveys 117 members of five Alto Tiete watershed subcommittees to test the correlation between members' social capital (SCI) and internal committee institutional performance (IP). No rule-type mechanism governing water or sanitation service access and no service-access outcome are empirically analyzed. Under the plain reading of Criterion 2 the paper would still be excluded because Criteria 1 and 4 fail.",
+    "record_id": "R4AC51952E861",
+    "study_design": "Cross-sectional comparative case study and stakeholder survey with composite index correlation, t-test, qualitative meeting observation, and social network analysis"
+  }
+}

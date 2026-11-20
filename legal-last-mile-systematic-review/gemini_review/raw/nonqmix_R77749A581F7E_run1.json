@@ -1,0 +1,272 @@
+{
+  "record_id": "R77749A581F7E",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "151d834c74f4be2c29eb2d4df890c3577176db78f85bda8fff5714dd2deb7602",
+  "prompt_sha256": "64ccbac01c0715fe1c4b20cfa97da67e029f76dbf3c31eb80b694d01d1869083",
+  "started_at": "2026-11-20T17:12:13.975435+00:00",
+  "completed_at": "2026-11-20T17:12:58.486825+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "not reported",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community water or sanitation service access; focuses on global and transboundary water resources management, international river basins, irrigated agriculture, and hydropower releases, mentioning drinking and communal water needs only in passing as general normative principles.",
+      "c2": "Under the plain wording of Criterion 2, the paper discusses legal, institutional, and governance frameworks at a broad level (international water treaties such as the 1997 UN Convention, river basin commissions, national water codes, and institutional hierarchies), so it touches on water governance broadly though for water resources rather than household service access. Under the narrow 2026-10-13 rule-type reading, it fails Criterion 2 because it presents macro-governance commentary and transboundary water-allocation proposals rather than analyzing a specific rule-type mechanism (such as eligibility screening, administrative burden, documentation/tenure rules, tariff/cost-recovery rules, enforcement, or utility regulatory structure) directly governing household or community water or sanitation service access. Even under the plain wording of Criterion 2, the overall decision remains exclude due to the lack of empirical evidence (C3) and lack of household/community service access scope and outcomes (C1, C4).",
+      "c3": "Non-empirical discussion and policy proposal paper prepared for World Water Council preparatory groups; contains no empirical methodology, primary data collection, empirical case analysis, or systematic empirical synthesis (cites secondary reports, treaties, and illustrative transboundary river examples only). Excluded as E05.",
+      "c4": "Reports no empirical outcomes measuring household or community water or sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion; mentions only secondary macro indicators such as global asset distribution, irrigated land area, and river basin runoff regimes.",
+      "c5": "No empirical study design, study population, sample, exposure, or outcome can be identified because the article is a normative policy and governance overview.",
+      "c6": "Full text is written in English (with a bilingual French abstract)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 1 of 10",
+        "quote": "This paper has been prepared to support the discussion on global water governance that was launched by the World Water Council (WWC) preparatory groups."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 7 of 10",
+        "quote": "Based on the above considerations, we propose to consider strengthening the system of water governance by integrated measures that encompass legal, institutional, ﬁnancial, and social components with the purpose of coordination of all levels of the water management hierarchy."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 6 of 10",
+        "quote": "The downstream countries expect to get water for irrigation (summer regime of water releases), whereas the upstream countries are interested in water for hydropower production (winter regime of water releases)."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 5 of 10",
+        "quote": "The author points out that ‘‘there is a fundamental difference between the governance of delivering water as a service and managing water as a resource’’."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "not reported",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded under E05 (No empirical evidence). This 10-page article is a conceptual/normative discussion and policy proposal paper prepared for World Water Council preparatory groups on global and transboundary water resources governance, international water law treaties, river basin commissions, irrigated agriculture, and hydropower allocation. It has no empirical study design, no primary data, and is not a systematic empirical synthesis; additionally, it focuses on macro/transboundary water resources management rather than rule-type mechanisms governing household or community water or sanitation service access and reports no household/community service access outcomes.",
+    "record_id": "R77749A581F7E",
+    "study_design": "not reported"
+  }
+}

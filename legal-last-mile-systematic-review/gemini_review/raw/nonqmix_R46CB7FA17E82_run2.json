@@ -1,0 +1,277 @@
+{
+  "record_id": "R46CB7FA17E82",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "a40e0f1fa0224337b83fbf873fba5debc31a4b97ce6ffee091e1892ba3dd874d",
+  "prompt_sha256": "f18e86a137a00d600ea599e74a73977a2a834536296b55badad29df0b53b4ebd",
+  "started_at": "2026-11-20T17:18:52.695266+00:00",
+  "completed_at": "2026-11-20T17:20:00.884191+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Spain",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "No. The study explicitly models the municipal capital cost of physical water-cycle infrastructure stock (\"utility infrastructure\") rather than household or community water or sanitation service delivery or access (\"utility service\").",
+      "c2": "No under both readings. Plain wording: The econometric model tests demographic scale (population Y1, dwellings Y2), engineering construction input prices (P1-P3), and spatial settlement dispersion (number of population clusters Z1, urban surface area Z2); municipal consolidation, land-use planning, and Spanish Law 7/85 appear only as background or policy discussion rather than an empirically analyzed legal, administrative, regulatory, or governance variable (and even if municipal spatial/jurisdictional scale were loosely treated as meeting plain Criterion 2, the study still fails C1 and C4 so plain_criterion2_decision is exclude). Narrow 2026-10-13 rule-type reading: Clearly fails because no rule-type mechanism governing service access (eligibility screening, administrative burden, tenure/documentation rules, tariff/cost-recovery rules, discretion, enforcement, or utility ownership/regulatory structure governing access) is examined.",
+      "c3": "Yes. Quantitative empirical study estimating a parametric translog stochastic cost frontier across 999 municipalities in Castilla y León using the 2005 Spanish Local Infrastructure and Equipment Survey (LIES) and engineering unit cost data.",
+      "c4": "No. Outcomes are municipal gross capital stock cost of water/sewage/wastewater infrastructure, economies of scale (SCE) and urban density (DNE), optimal municipal population density (3405.6 inhab./km2), and municipal cost inefficiency scores (mean 18.1%), with no measure of household or community water/sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion.",
+      "c5": "Yes. Population/unit of analysis (999 municipalities in Castilla y León, Spain), exposures/explanatory variables (inhabitants, dwellings, engineering unit prices, number of population clusters, urban area in km2), outcomes (infrastructure stock cost and cost inefficiency), and study design (cross-sectional stochastic frontier econometric analysis) are all clearly reported.",
+      "c6": "Yes. Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 5",
+        "quote": "the main novelty of the present study is that our focus is on the physical dimension of the provision technology: “utility infrastructure”, rather than on the production of its associated “utility service”."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 21",
+        "quote": "Particularly, we make use of the translog speciﬁcation and estimate the elasticities conforming our deﬁnitions of economies of scale and density, as well as cost efﬁciency, in the provision of the infrastructure related to water distribution, sewage collection and cleansing of wastewater"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 14",
+        "quote": "We have found reliable statistical data for 999 municipalities."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13",
+        "quote": "The cost of provision that we obtain by multiplying the prices Pi by the existing physical infrastructure Xi is considered as the provision stock of urban infrastructure."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 20",
+        "quote": "Finally, as a result of the cost frontier estimation we obtain cost efﬁciency values in the provision of the water cycle infrastructure"
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Urban settlement patterns and scale: number of population clusters (Z1), urban surface area in km2 (Z2), municipal population (Y1), number of dwellings (Y2), and engineering unit construction prices (P1-P3)",
+    "outcome": "Municipal gross capital stock cost of water distribution, sewage collection, and wastewater cleansing infrastructure, economies of scale and density, optimal population density, and municipal cost inefficiency scores",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "999 municipalities in the region of Castilla y León, Spain (representing 45% of the region's municipalities and 67.3% of its 1,356,000 inhabitants in the 2005 Local Infrastructure and Equipment Survey)",
+    "rationale": "Excluded (E01 - Wrong topic; also fails C2 and C4). This urban-planning and public-economics study estimates a stochastic translog cost frontier for the physical capital stock of municipal water distribution, sewage collection, and wastewater treatment infrastructure across 999 municipalities in Castilla y León, Spain. It explicitly studies municipal infrastructure construction/capital stock costs and cost inefficiency as a function of urban spatial dispersion (number of clusters and urban surface area), population/housing scale, and engineering unit prices—not household or community water or sanitation service access (C1=no), not a legal, administrative, regulatory, or governance rule-type mechanism governing access (C2=no under both narrow and plain readings), and with no access, connection, availability, reliability, affordability, or exclusion outcome (C4=no).",
+    "record_id": "R46CB7FA17E82",
+    "study_design": "Cross-sectional econometric study using parametric Stochastic Frontier Analysis (translog cost frontier)"
+  }
+}
