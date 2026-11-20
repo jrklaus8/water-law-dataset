@@ -1,0 +1,463 @@
+{
+  "study_id": "S019",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "1ed88e5f5d350a6258b879085310cd369421859524e575b7c5279450c75ced4e",
+  "input_text_sha256": "8df3051413ec2e24a9be1fb7df83d09fc6449acac1af5935e2da0947e7fc2494",
+  "prompt_sha256": "a77771b3d4389ef7f58e21be95c96f1d30216e767d34cce5f9090346266e4e2b",
+  "started_at": "2026-11-19T19:14:36.915750+00:00",
+  "completed_at": "2026-11-19T19:16:47.442877+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S019\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S019\n- Record ID: R5D8BA8CBD832\n- Citation: Ilangovan K, Sankar JG, Srinivasan M (2026) Systematic review of rural drinking water interventions under Jal Jeevan mission. Discover Environment 4:189\n- DOI: 10.1007/s44274-026-00676-6\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: 8df3051413ec2e24a9be1fb7df83d09fc6449acac1af5935e2da0947e7fc2494) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=48301, sha256=8df3051413ec2e24a9be1fb7df83d09fc6449acac1af5935e2da0947e7fc2494]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "No structured PICO/PEO research question or comparator is specified; eligibility criteria broadly cover rural drinking water interventions and the Jal Jeevan Mission (JJM), and even include a Kenyan study (Agesa & Agesa 2019) unrelated to JJM.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No pre-registered or pre-specified written protocol (e.g., PROSPERO or OSF) is reported, and no protocol deviations are addressed.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Section 3.4 states that scholarly articles, review papers, and book chapters were included, without justifying the selection of study designs or the mixing of empirical studies with policy commentaries/reviews.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Although multiple databases/platforms and keywords are named, no full Boolean search strings or database-specific queries are provided, grey literature and non-English studies were excluded without justification, and an arbitrary 20-article stopping rule was applied to Google Scholar.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Section 3.1 reports that records were screened independently by the authors on titles/abstracts and full texts, with disagreements resolved through discussion among the authors.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Author contributions (p. 13) state that data collection and analysis were performed by a single author (Malini Srinivasan), with subsequent review of NVivo coding by co-authors rather than independent duplicate data extraction.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "Four full-text articles were reportedly excluded at the eligibility stage, but no bibliographic list of excluded full-text studies with individual exclusion reasons is provided.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Table 1 lists only author names and titles (with a broken reference pointer for S. No. 10), providing no per-study details on populations, sample sizes, study designs, comparators, settings, or outcomes.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "No formal risk-of-bias or critical appraisal tool (e.g., ROBINS-I, MMAT, CASP, JBI) was used; Section 3.9 states only that publications from 'reliable and reputed scholarly journals and books' were read by the three authors.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Sources of funding for the 20 included studies are not reported anywhere in the review.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No quantitative synthesis or meta-analysis was performed; the review used qualitative thematic analysis in NVivo 12.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Risk of bias in individual studies was neither formally assessed nor accounted for when interpreting thematic findings or formulating policy conclusions.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "While regional implementation disparities across Indian states are narratively noted, methodological heterogeneity across study designs (surveys, case studies, policy commentaries, and an uncited Kenyan study) is neither explained nor analyzed.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis was conducted, so publication/small-study bias was not statistically investigated.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "The authors explicitly report their funding source (Indian Council of Social Science Research, ICSSR) and declare no competing interests on page 14.",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "Google Scholar, Scopus, ScienceDirect, Sage, Taylor & Francis, DOAJ, Elsevier, and ResearchGate (plus backward and forward citation searching via Google Scholar)",
+    "evidence_quotes": [
+      {
+        "criterion": "Self-described PRISMA 2020 systematic review design",
+        "page": "Page 3",
+        "quote": "The systematic review followed the PRISMA 2020 guidelines."
+      },
+      {
+        "criterion": "Initial database search yield reported",
+        "page": "Page 4",
+        "quote": "A total of 62 records were initially identified through database searching."
+      },
+      {
+        "criterion": "Arbitrary search stopping rule applied to Google Scholar",
+        "page": "Page 5",
+        "quote": "In the study, for the Google scholar database, the search was limited to 20 articles as"
+      },
+      {
+        "criterion": "Qualitative thematic synthesis method",
+        "page": "Page 6",
+        "quote": "thematic analysis was performed using NVivo 12 software."
+      },
+      {
+        "criterion": "Governance and Gram Panchayat scope (Criterion 2 borderline fit)",
+        "page": "Page 10",
+        "quote": "The active community participation and local governance plays a vital role in the success"
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Singh",
+        "title_or_topic": "Rural drinking water supply program and societal development: evidence from the early implementation phase of India's Jal Jeevan Mission",
+        "where_in_review": "Table 1 (S. No. 1, p. 7), Themes 1, 3, 4 & Conclusion (pp. 8-10, 12), Ref [6]",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Joshi",
+        "title_or_topic": "A review of Har Ghar Nal Yojana (Jal Jeevan Mission): a case study of 10 villages",
+        "where_in_review": "Table 1 (S. No. 2, p. 7), Theme 3 (p. 9), Ref [7]",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Patil",
+        "title_or_topic": "Potential Health and Economic Gains From Jal Jeevan Mission: A Comprehensive Analysis",
+        "where_in_review": "Table 1 (S. No. 3, p. 7), Themes 1, 2, 4 (pp. 8-10), Ref [8]",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kumar",
+        "title_or_topic": "Impact Assessment of the Jal Jeevan Mission in Rural Jharkhand: An Analysis of Tap Water",
+        "where_in_review": "Table 1 (S. No. 4, p. 7), Themes 1, 3, 4 (pp. 8-10), Ref [9]",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Chaudhuri",
+        "title_or_topic": "Water for all (Har Ghar Jal): rural water supply services (RWSS) in India (2013-2018), challenges and opportunities",
+        "where_in_review": "Table 1 (S. No. 5, p. 7), Theme 3 (p. 10), Ref [10]",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Sheel",
+        "title_or_topic": "Water as a social determinant of health: bringing policies into action",
+        "where_in_review": "Table 1 (S. No. 6, p. 7), Themes 2 & 4 (pp. 9, 11), Ref [11]",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Chitra",
+        "title_or_topic": "Current Scenario of Dynamic Water Resources in Tamil Nadu",
+        "where_in_review": "Table 1 (S. No. 7, p. 7), Theme 3 (p. 10), Ref [12]",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Agesa",
+        "title_or_topic": "Time spent on household chores (fetching water) and the alternatives forgone for women in Sub-Saharan Africa: evidence from Kenya",
+        "where_in_review": "Table 1 (S. No. 8, p. 7), Ref [13] (never cited in synthesis prose)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Ahmed",
+        "title_or_topic": "Fulfilling Domestic Water Demand in Semiarid Regions of North Karnataka: challenges and Way Forward",
+        "where_in_review": "Table 1 (S. No. 9, p. 7), Theme 4 & Conclusion (pp. 10, 13), Ref [14]",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kumar",
+        "title_or_topic": "Water policy review: Ensuring sustainable water management for India (by Kumar & Goyal)",
+        "where_in_review": "Table 1 (S. No. 10, p. 7; mis-indexed as [9] with no separate entry or year in References)",
+        "year": "not stated"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Ahankari",
+        "title_or_topic": "Access to a piped water supply is positively associated with haemoglobin levels in females living in rural Maharashtra State, India",
+        "where_in_review": "Table 1 (S. No. 11, p. 7), Theme 1 (p. 8), Ref [15]",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Bhuyan",
+        "title_or_topic": "Investigating the geographies of water use and water cover in the rural areas of Nagaon District, Assam (India): unraveling the micro-ecological implications",
+        "where_in_review": "Table 1 (S. No. 12, p. 7), Theme 4 (p. 10), Ref [16]",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kalimuthu",
+        "title_or_topic": "Evaluating the Effectiveness of The Jal Jeevan Mission In Ensuring Sustainable And Affordable Drinking Water In The Select Taluks Of Tiruppur City, Tamilnadu",
+        "where_in_review": "Table 1 (S. No. 13, p. 7), Theme 4 (p. 11), Ref [17]",
+        "year": "2025"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Basu",
+        "title_or_topic": "Safe Drinking Water: a Myth or Reality in the Indian Subcontinent?",
+        "where_in_review": "Table 1 (S. No. 14, p. 7), Themes 1-4 (pp. 8-11), Ref [18]",
+        "year": "2025"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Sahoo",
+        "title_or_topic": "India's prospects for attaining Sustainable Development Goals on health & sanitation: a critical analysis of Swachh Bharat Abhiyan & Jal Jeevan Mission",
+        "where_in_review": "Table 1 (S. No. 15, p. 7), Themes 2-4 (pp. 9-10), Ref [19]",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Sarkar",
+        "title_or_topic": "Achieving Sustainable Development Goals in water and sanitation sectors in India",
+        "where_in_review": "Table 1 (S. No. 16, p. 7), Theme 4 (p. 11), Ref [20]",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Khalid",
+        "title_or_topic": "Concerns of developing countries and the Sustainable Development Goals: case for India",
+        "where_in_review": "Table 1 (S. No. 17, p. 7), Theme 1 (p. 8), Ref [21]",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Brar",
+        "title_or_topic": "The Issues and Concerns related to Water and Sanitation: the Role of Local Government",
+        "where_in_review": "Table 1 (S. No. 18, p. 7), Theme 4 (p. 10), Ref [22]",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wescoat",
+        "title_or_topic": "District drinking water planning for sustainability in Maharashtra: between local and global scales",
+        "where_in_review": "Table 1 (S. No. 19, p. 7), Theme 4 (p. 10), Ref [23]",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wescoat",
+        "title_or_topic": "A sustainability planning framework and methods for rural drinking water in Satara District, Maharashtra, India",
+        "where_in_review": "Table 1 (S. No. 20, p. 7), Theme 4 (p. 11), Ref [24]",
+        "year": "2022"
+      }
+    ],
+    "included_studies_count_reported": 20,
+    "included_studies_list_completeness": "complete_inline_table_or_list",
+    "methodological_notes": "Although titled a PRISMA 2020 'Systematic review' (SLR), this paper is methodologically a low-rigour qualitative thematic/scoping synthesis (NVivo 12) of 20 heterogeneous sources including empirical surveys/case studies, secondary policy commentaries, and a book chapter, making AMSTAR 2 only borderline-applicable and yielding Critically Low confidence (5 critical flaws: Q2, Q4, Q7, Q9, Q13). Multiple internal reporting anomalies exist: (1) Section 2 lists 5 databases/platforms whereas Section 3.1 lists 8 (including publisher platforms Elsevier/ScienceDirect counted separately and ResearchGate); (2) Section 3.5 states 62 database records yielded 24 unique records after deduplication, whereas Section 4 states 62 database records plus 8 citation-chasing records (70 total) yielded the same 24 records; (3) Google Scholar was truncated at 20 hits; (4) the search window began in January 2002 even though Jal Jeevan Mission launched in 2019, resulting in pre-JJM or non-JJM inclusions such as a 2019 study of women fetching water in Kenya (Agesa & Agesa [13], never cited in the Results); (5) Table 1 S. No. 10 ('Kumar & Goyal [9]') erroneously duplicates reference number [9] (Ranjeet Kumar 2024) and lacks a reference list entry; (6) Table 3 research method counts sum to 23 across 20 included studies; and (7) PRISMA 2020 (Page et al. 2021) is cited twice as Ref [1] and Ref [4]. On scope (Criterion 2), the review is primarily a broad programme evaluation of JJM (socio-economic/gender, health, infrastructure), touching only secondarily on local administrative governance (Gram Panchayat roles, contractor/local-government responsibility ambiguity, and missing grievance redressal mechanisms), so it is rated borderline_narrow_c2. References [25]-[32] appear only as external comparative/discussion citations in Sections 6.2, 6.4, 6.6, and 7 and are excluded from the 20 synthesized studies in Table 1.",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "systematic review (PRISMA 2020 qualitative thematic synthesis / SLR)",
+    "study_id": "S019"
+  }
+}

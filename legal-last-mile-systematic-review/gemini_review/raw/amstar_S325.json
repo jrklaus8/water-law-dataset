@@ -1,0 +1,687 @@
+{
+  "study_id": "S325",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d37468c20053a65aced92fb9f7f0d2507bfc74723fd661fef24807d26bd9c458",
+  "input_text_sha256": "b77a412e9d62e4999df1912c96fa81f00f39b4406127ff0db8613fb88aa1b22f",
+  "prompt_sha256": "e06a4583c3df9ca84fc9b99fa24475b5366a69c43b2c4703223057abad26b192",
+  "started_at": "2026-11-19T19:19:05.143304+00:00",
+  "completed_at": "2026-11-19T19:21:33.594961+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S325\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S325\n- Record ID: R649C5222FEA1\n- Citation: Silva Rodríguez de San Miguel JA (2021). Improving Rural Water Supply in the United States. Cuad Desarro Rural 18.\n- DOI: 10.11144/Javeriana.cdr18.irws\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: b77a412e9d62e4999df1912c96fa81f00f39b4406127ff0db8613fb88aa1b22f) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=52747, sha256=b77a412e9d62e4999df1912c96fa81f00f39b4406127ff0db8613fb88aa1b22f]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "No PICO components (population, intervention/exposure, comparator, outcome) are formulated; the review addresses a broad policy question on improving rural US water supply and explicitly includes both empirical and non-empirical sources.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No pre-registered or a priori review protocol is reported or referenced, and no protocol deviations are discussed.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "The author states that both empirical and non-empirical sources were chosen while simultaneously asserting they had to use quantitative analytical approaches (p. 4), providing no coherent methodological rationale for study-design eligibility and citing blog posts, books, and conceptual essays.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Although multiple databases and general search terms are listed (pp. 3-4), no reproducible search strings are provided, no reference-list or expert searches are reported, and sources were arbitrarily filtered by selecting journals with the largest impact factors in Web of Science and restricting to public administration and social sciences without methodological justification.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Single-authored review with no independent duplicate screening reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Single-authored review with no independent duplicate data extraction reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Inline narrative descriptions do not systematically report primary study designs, sample sizes, interventions, comparators, or outcomes, Table 1 (pp. 5-7) is rendered as an unindexed image in the PDF text layer, and numerous inline citations misattribute unrelated non-US or conceptual papers to US rural water statistics.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "The text reports excluding 10 duplicates and 19 screened papers out of 65 records (p. 8), but provides no bibliographic list of excluded full-text studies or study-specific exclusion justifications.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "No risk-of-bias or methodological quality assessment tool was applied to individual included studies; only journal impact factors in Web of Science were checked (p. 4).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Sources of funding for the included studies are not reported anywhere in the review.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No quantitative synthesis or meta-analysis was performed; findings are summarized strictly as a thematic narrative essay.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Risk of bias in individual studies was neither assessed nor accounted for when interpreting findings and formulating policy recommendations.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Heterogeneity in study designs, geographies, or findings across included works is neither systematically analyzed nor explained.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis was performed, and publication bias was not investigated.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "No conflict-of-interest statement or review funding disclosure is reported in the article.",
+        "rating": "No"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "Web of Science, MDPI (listed twice as Molecular Diversity Preservation International and Multidisciplinary Digital Publishing Institute), Scopus, Water Resources Abstracts, Environment Complete, Environment Index, Google Scholar, and Google web search",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_and_c2_scope",
+        "page": "1",
+        "quote": "the most significant legal and institutional considerations that hinder water access. A PRISMA guideline was implemented in order conduct"
+      },
+      {
+        "criterion": "prisma_claim",
+        "page": "3",
+        "quote": "The researcher implemented the use of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses"
+      },
+      {
+        "criterion": "search_impact_factor_filter",
+        "page": "4",
+        "quote": "The searches conducted in the aforementioned databases helped in pinpointing which journals had the largest"
+      },
+      {
+        "criterion": "eligibility_empirical_and_non_empirical",
+        "page": "4",
+        "quote": "Both empirical and non-empirical sources were chosen with the due basis being drawn on three key factors including:"
+      },
+      {
+        "criterion": "included_studies_count",
+        "page": "8",
+        "quote": "36 documents were identified as suitable for inclusion considering the inclusion criteria defined by the researcher."
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Adank",
+        "title_or_topic": "Guidelines for Planning and Providing Multiple-Use Water Services",
+        "where_in_review": "Discussion synthesis (p. 13; also p. 3) & References (p. 14)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Alcamo",
+        "title_or_topic": "Environmental Futures: The Practice of Environmental Scenario Analysis",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 14)",
+        "year": "2008"
+      },
+      {
+        "doi_if_printed": "10.1080/00049180500511962",
+        "first_author_surname": "Allon",
+        "title_or_topic": "Everyday water: Cultures in transition",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 14)",
+        "year": "2006"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "American Ground Water Trust",
+        "title_or_topic": "Rural Drinking Water: Private Wells Or Public Water Supply?",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 14)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "10.1289/ehp.02110s2259",
+        "first_author_surname": "Arquette",
+        "title_or_topic": "Holistic Risk-Based Environmental Decision Making: A Native Perspective",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 14)",
+        "year": "2002"
+      },
+      {
+        "doi_if_printed": "10.1080/0004918024000193702",
+        "first_author_surname": "Askew",
+        "title_or_topic": "Watering the suburbs: distinction, conformity and the suburban garden",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 14)",
+        "year": "2004"
+      },
+      {
+        "doi_if_printed": "10.3390/w3020566",
+        "first_author_surname": "Bain",
+        "title_or_topic": "Historical Legacies, Information, and Contemporary Water Science and Management",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 14)",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.1016/j.envsci.2012.03.005",
+        "first_author_surname": "Bark",
+        "title_or_topic": "Adaptive basin governance and the prospects for meeting Indigenous water claims",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 14)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "10.1177/S0038038501000177",
+        "first_author_surname": "Bhatti",
+        "title_or_topic": "Cultivating Natures: Homes and Gardens in Late Modernity",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 14)",
+        "year": "2001"
+      },
+      {
+        "doi_if_printed": "10.1007/978-3-662-10868-0",
+        "first_author_surname": "Biswas",
+        "title_or_topic": "Water Resources of North America",
+        "where_in_review": "Discussion synthesis (p. 9) & References (p. 14)",
+        "year": "2003"
+      },
+      {
+        "doi_if_printed": "10.1108/20408021111162209",
+        "first_author_surname": "Boyce",
+        "title_or_topic": "Sustainability in Austerity: How Local Government Can Deliver During Times of Crisis",
+        "where_in_review": "Discussion synthesis (p. 9) & References (p. 14)",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.1016/j.envsci.2012.11.008",
+        "first_author_surname": "Cornell",
+        "title_or_topic": "Opening up knowledge systems for better responses to global environmental change",
+        "where_in_review": "Discussion synthesis (p. 9) & References (p. 14)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.3390/w8030097",
+        "first_author_surname": "Cosens",
+        "title_or_topic": "Adaptive Governance of Water Resources Shared with Indigenous Peoples: The Role of Law",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 14)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "10.1080/08941920701338059",
+        "first_author_surname": "Cronin",
+        "title_or_topic": "Democracy, Participation, and Native American Tribes in Collaborative Watershed Management",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 14)",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Danert",
+        "title_or_topic": "People, Politics, the Environment (RWSN-IFAD Rural Water Supply Series)",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 14)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "De Albuquerque",
+        "title_or_topic": "On The Right Track: Good practices on realizing the rights to water and sanitation",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 14)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "10.1126/science.1091015",
+        "first_author_surname": "Dietz",
+        "title_or_topic": "The Struggle to Govern the Commons",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 14)",
+        "year": "2003"
+      },
+      {
+        "doi_if_printed": "10.1016/j.gloenvcha.2010.11.006",
+        "first_author_surname": "Dilling",
+        "title_or_topic": "Creating usable science: Opportunities and constraints for climate knowledge use and their implications for science policy",
+        "where_in_review": "Discussion synthesis (pp. 8-9) & References (p. 15)",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Foushee",
+        "title_or_topic": "Sacred Water: Water for Life",
+        "where_in_review": "Discussion synthesis (p. 9) & References (p. 15)",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Franks",
+        "title_or_topic": "The Uses of the Practicably Irrigable Acreage Standard in the Quantification of Reserved Water Rights",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 15)",
+        "year": "1991"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Fuller",
+        "title_or_topic": "Rural Water Supplies and Water-Quality Issues (Healthy Housing Reference Manual)",
+        "where_in_review": "Discussion synthesis (p. 9) & References (p. 15)",
+        "year": "2006"
+      },
+      {
+        "doi_if_printed": "10.1007/s10584-013-0737-0",
+        "first_author_surname": "Gautam",
+        "title_or_topic": "Climate change in arid lands and Native American socioeconomic vulnerability: The case of the Pyramid Lake Paiute Tribe",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 15)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1007/s11625-014-0245-9",
+        "first_author_surname": "Heras",
+        "title_or_topic": "Let's play transformations! Performative methods for sustainability",
+        "where_in_review": "Discussion synthesis (p. 13 as Heras 2014; also p. 2) & References (p. 15)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.1080/08941920.2015.1095375",
+        "first_author_surname": "Heras",
+        "title_or_topic": "Conservation Theatre. Mirroring experiences and performing stories in community management of Natural Resources",
+        "where_in_review": "Discussion synthesis (pp. 9, 13) & References (p. 15)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Huitema",
+        "title_or_topic": "Adaptive Water Governance: Assessing the Institutional Prescriptions of Adaptive (Co-)Management from a Governance Perspective and Defining a Research Agenda",
+        "where_in_review": "Discussion synthesis (pp. 12-13) & References (p. 15)",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "10.1080/08941920.2016.1185559",
+        "first_author_surname": "Llausàs",
+        "title_or_topic": "A Research Synthesis and Theoretical Model of Relationships Between Factors Influencing Outdoor Domestic Water Consumption",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 15)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Loftus",
+        "title_or_topic": "Everyday Environmentalism: Creating an Urban Political Ecology",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 15)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "10.3390/w8060264",
+        "first_author_surname": "López Zavala",
+        "title_or_topic": "Potential of Rainwater Harvesting and Greywater Reuse for Water Consumption Reduction and Wastewater Minimization",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 15)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "10.1177/0037549705053167",
+        "first_author_surname": "López-Paredes",
+        "title_or_topic": "Urban Water Management with Artificial Societies of Agents: The FIRMABAR Simulator",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 15)",
+        "year": "2005"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Loretta",
+        "title_or_topic": "An Assessment of Agriculture and Natural Resource Extension Program Needs on American Indian Reservations in Idaho, Nevada, Oregon, and Washington",
+        "where_in_review": "Discussion synthesis (pp. 8-10) & References (p. 16)",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.1016/j.ecolecon.2012.07.006",
+        "first_author_surname": "March",
+        "title_or_topic": "Water futures: Reviewing water-scenario analyses through an original interpretative framework",
+        "where_in_review": "Discussion synthesis (pp. 9-10) & References (p. 16)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "McGregor",
+        "title_or_topic": "Linking Traditional Ecological Knowledge And Western Science: Aboriginal Perspectives From The 2000 State Of The Lakes Ecosystem Conference",
+        "where_in_review": "Discussion synthesis (pp. 10-11) & References (p. 16)",
+        "year": "2008"
+      },
+      {
+        "doi_if_printed": "10.18584/iipj.2012.3.3.11",
+        "first_author_surname": "McGregor",
+        "title_or_topic": "Traditional Knowledge: Considerations for Protecting Water in Ontario",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 16)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Pahl-Wostl",
+        "title_or_topic": "The Growing Importance of Social Learning in Water Resources Management and Sustainability Science",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 16)",
+        "year": "2008"
+      },
+      {
+        "doi_if_printed": "10.1017/9781316481066.013",
+        "first_author_surname": "Redsteer",
+        "title_or_topic": "Accounts from Tribal Elders: Increasing Vulnerability of the Navajo People to Drought and Climate Change in the Southwestern United States",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 16)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.1016/j.jup.2016.04.015",
+        "first_author_surname": "Ricart Casadevall",
+        "title_or_topic": "Improving the management of water multi-functionality through stakeholder involvement in decision-making processes",
+        "where_in_review": "Discussion synthesis (pp. 12-13) & References (p. 16)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "10.3390/w11061143",
+        "first_author_surname": "Rodríguez-de-Francisco",
+        "title_or_topic": "Payment for Ecosystem Services and the Water-Energy-Food Nexus: Securing Resource Flows for the Affluent?",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 16)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "10.1080/02508060208686990",
+        "first_author_surname": "Rosegrant",
+        "title_or_topic": "Global Water Demand and Supply Projections",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 16)",
+        "year": "2002"
+      },
+      {
+        "doi_if_printed": "10.3390/w8050173",
+        "first_author_surname": "Rozema",
+        "title_or_topic": "Constructed Wetlands for Agricultural Wastewater Treatment in Northeastern North America: A Review",
+        "where_in_review": "Discussion synthesis (pp. 12-13) & References (p. 16)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Rykiel Jr.",
+        "title_or_topic": "Science and Decision Making",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 16)",
+        "year": "2002"
+      },
+      {
+        "doi_if_printed": "10.1002/2016EF000511",
+        "first_author_surname": "Sankarasubramanian",
+        "title_or_topic": "Synthesis of public water supply use in the United States: Spatio-temporal patterns and socio-economic controls",
+        "where_in_review": "Discussion synthesis (p. 9) & References (p. 17)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "10.1146/annurev-environ-013113-142651",
+        "first_author_surname": "Saurí",
+        "title_or_topic": "Water Conservation: Theory and Evidence in Urban Areas of the Developed World",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 17)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1073/pnas.1406493112",
+        "first_author_surname": "Schultz",
+        "title_or_topic": "Adaptive governance, ecosystem management, and natural capital",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 17)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.1002/rra.968",
+        "first_author_surname": "Singer",
+        "title_or_topic": "The Influence Of Major Dams On Hydrology Through The Drainage Network Of The Sacramento River Basin, California",
+        "where_in_review": "Discussion synthesis (p. 13) & References (p. 17)",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "10.1016/j.envsci.2014.03.007",
+        "first_author_surname": "Smith Jr.",
+        "title_or_topic": "Climate change perception, observation and policy support in rural Nevada: A comparative analysis of Native Americans, non-native ranchers and farmers, and mainstream America",
+        "where_in_review": "Discussion synthesis (pp. 9-10, also cited as Williams James 2014 on p. 10) & References (p. 17)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Staedter",
+        "title_or_topic": "There's a Huge Drinking Water Problem Plaguing Rural America, Too (Gizmodo)",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 17)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "10.1002/eet.530",
+        "first_author_surname": "Tàbara",
+        "title_or_topic": "The climate learning ladder. A pragmatic procedure to support climate adaptation",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 17)",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "10.1016/j.envsci.2012.11.005",
+        "first_author_surname": "Tàbara",
+        "title_or_topic": "Coupling Human Information and Knowledge Systems with social-ecological systems change Reframing research, education, and policy for sustainability",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 17)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1080/09640568.2012.716365",
+        "first_author_surname": "Tàbara",
+        "title_or_topic": "Transformative targets in sustainability policy-making: The case of the 30% EU mitigation goal",
+        "where_in_review": "Discussion synthesis (p. 12) & References (p. 17)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "University of Oxford",
+        "title_or_topic": "Rapid urbanization increasing pressure on rural water supplies globally (ScienceDaily)",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 17)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "10.1029/2004EO480001",
+        "first_author_surname": "Vörösmarty",
+        "title_or_topic": "Humans Transforming the Global Water System",
+        "where_in_review": "Discussion synthesis (p. 11) & References (p. 17)",
+        "year": "2004"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "World Health Organization",
+        "title_or_topic": "Glass 2012 Report. Un-Water Global Analysis and Assessment of Sanitation and Drinking-Water: The Challenge of Extending and Sustaining Services",
+        "where_in_review": "Discussion synthesis (p. 10) & References (p. 17)",
+        "year": "2012"
+      }
+    ],
+    "included_studies_count_reported": 36,
+    "included_studies_list_completeness": "partial_inline_citations_only",
+    "methodological_notes": "Although the author self-describes the paper as a PRISMA 'systematic review' (pp. 1, 3) reporting 65 identified records, 10 duplicates removed, 19 excluded at screening, and 36 included documents (p. 8), the study is methodologically a single-author pseudo-systematic narrative essay of Critically Low quality under AMSTAR 2. First, no protocol, PICO framework, duplicate screening/extraction, excluded-study list, risk-of-bias appraisal, or conflict-of-interest disclosure is provided, and candidate journals were arbitrarily filtered by Web of Science impact factor (p. 4). Second, eligibility criteria are internally contradictory—claiming 'Both empirical and non-empirical sources were chosen' while immediately requiring 'quantitative approaches on the issue at hand with an analytical rather than descriptive methodology' and data 'taken from the US government' (p. 4)—yet the synthesis relies heavily on Gizmodo/ScienceDaily news posts, books, UN/WHO reports, conceptual essays, and secondary reviews (e.g., Llausàs & Saurí 2017; March et al. 2012; Rozema et al. 2016; Saurí 2013). Third, Table 1 ('Literature analyzed', pp. 5-7) was embedded as a non-OCR raster image in the source PDF so its 36 rows are blank in extracted text; meanwhile, 52 distinct works are cited across the thematic synthesis sections (pp. 8-13, extracted above separately from Introduction-only citations), with pervasive citation misattribution (e.g., citing Spanish conservation-theatre, EU 30% climate-target, and Australian suburban-garden studies for US rural aquifer, Florida wastewater, and California desalination claims). Substantively, it is borderline on narrow Criterion 2 because it discusses public vs. investor-owned/cooperative/self-supply ownership, reserved water rights, regulatory oversight, tariffs/cost recovery, and federal farm-bill conservation subsidies, but conflates agricultural land-stewardship programs (CSP, EQIP) with household rural drinking-water governance without rigorous empirical synthesis.",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "Self-described PRISMA systematic review (in practice a hybrid/pseudo-systematic qualitative narrative policy review including both empirical and non-empirical sources)",
+    "study_id": "S325"
+  }
+}

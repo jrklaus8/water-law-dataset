@@ -1,0 +1,533 @@
+{
+  "study_id": "S438",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "6a7ae3ec3f43c494ec9fd8795c2fcda89f1b84a3b9b701769a0c57e1bdeef7de",
+  "input_text_sha256": "28f9f2b53fe0d0cfb6ff8d6955c1247f37d9b25c787382d70664ae681ebf1634",
+  "prompt_sha256": "3c3cdecfd1d264531043bfcce14296b0f4436f3892a7ece30e23f2055075f9a8",
+  "started_at": "2026-11-20T00:59:02.104246+00:00",
+  "completed_at": "2026-11-20T01:04:42.229743+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S438\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S438\n- Record ID: R0255940A3596\n- Citation: Majuru B, Suhrcke M, Hunter PR (2016). How Do Households Respond to Unreliable Water Supplies? A Systematic Review. International Journal of Environmental Research and Public Health.\n- DOI: 10.3390/ijerph13121222\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: 28f9f2b53fe0d0cfb6ff8d6955c1247f37d9b25c787382d70664ae681ebf1634) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=73398, sha256=28f9f2b53fe0d0cfb6ff8d6955c1247f37d9b25c787382d70664ae681ebf1634]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "appropriate_systematic_or_meta",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Research questions (Section 1, p. 2) and selection criteria (Section 2.2, p. 3) define Population (households in developing countries), Exposure/context (unreliability in performance or functionality of domestic water supply systems), and Outcomes (coping strategies, coping costs, socio-economic distribution, health/social outcomes, effectiveness), but no Comparator group is defined because the included studies are descriptive cross-sectional and qualitative studies.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No a priori review protocol or registration (e.g., PROSPERO) is reported; Section 2.3 cites Hellebrandt et al.'s protocol [26] only as the source from which quality appraisal domains were adapted, with no protocol or deviation reporting for this review itself.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Inclusion criteria specify only 'Based on empirical research' and exclude papers merely listing coping strategies without detail, without explaining or justifying the selection of specific quantitative or qualitative study designs.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Authors searched seven bibliographic databases (CINAHL EBSCOHost, Embase Ovid, PubMed Central, Scopus, ScienceDirect, Scirus, Web of Knowledge), provided the exact Boolean search string, searched grey literature via Google and Google Scholar (first 50 hits), and screened reference lists (identifying 4 studies). However, exact search dates were omitted and the English-only language restriction was noted only as a limitation in Discussion rather than methodologically justified, failing strict AMSTAR 2 criteria for full/partial compliance if language justification is required; rated Partial Yes noting the restriction caveat.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Study selection was not reported as performed in duplicate; Author Contributions (p. 18) state that Batsirai Majuru performed the literature search and drafted the manuscript while co-authors critically reviewed the manuscript.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "No duplicate data extraction or independent verification process is described in Methods or Author Contributions.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "Figure 1 reports that 13 full-text studies were excluded ('not fully meeting inclusion criteria'), but no bibliography or study-by-study list of excluded full texts with individual exclusion reasons is provided.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Table 2 reports study objectives, setting/location, type of water supply, and sample/design, and Table 3 maps coping strategies across all included studies; however, quantitative outcome/cost estimates and study timeframes are not systematically tabulated, and Cook et al. (2016) [28] was inadvertently omitted from Table 2 despite appearing in Tables 1 and 3.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "Quality appraisal (Section 2.3, Table 1) adapted generic reporting items from Hellebrandt et al. [26] (clarity of objective, description of methods/conditions, reporting of results, researcher bias, other validity issues) summed into a 0-12 composite score. It conflates reporting quality with risk of bias and does not systematically evaluate confounding, non-response bias, or measurement validity required for observational cross-sectional studies.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Funding sources for individual included primary studies are not systematically extracted or reported (aside from incidental mention of World Bank sponsorship for early conceptual studies [16, 18, 21]).",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No meta-analysis or statistical pooling was performed; the authors used a thematic narrative synthesis due to disciplinary and methodological heterogeneity.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was performed.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Although Table 1 classifies 3 studies as high risk of bias ([16/17], [29], [44]) and 14 as moderate risk of bias, the Results and Discussion rely heavily on high-risk studies (notably Chaminuka & Nyatsanza 2013 [29]) without qualifying specific synthesis findings or conducting sensitivity discussion by study risk of bias.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Sections 3.3 and 4 explicitly examine heterogeneity in coping cost-to-income ratios and willingness-to-pay estimates across settings, attributing variation to local hydrological/infrastructure context, erosion of consumer trust in utilities, and differences in which cost components (such as travel time valuation) were measured.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis/meta-analysis was performed.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "Page 18 explicitly states 'Conflicts of Interest: The authors declare no conflict of interest' (though specific funding support for conducting the review itself is not stated).",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "CINAHL EBSCOHost, Embase Ovid, PubMed Central, Scopus, ScienceDirect, Scirus, Web of Knowledge; plus Google and Google Scholar (first 50 hits) and reference lists",
+    "evidence_quotes": [
+      {
+        "criterion": "databases_searched",
+        "page": "3",
+        "quote": "Literature searches were conducted in CINAHL EBSCOHost, Embase Ovid, PubMed"
+      },
+      {
+        "criterion": "inclusion_criteria_scope",
+        "page": "3",
+        "quote": "Report on coping strategies relating to unreliability in the performance or functionality of water"
+      },
+      {
+        "criterion": "included_studies_count",
+        "page": "4",
+        "quote": "found from perusing reference lists of other studies, bringing the total number of studies reviewed to"
+      },
+      {
+        "criterion": "narrow_criterion2_touchpoint_tenure_ownership",
+        "page": "12",
+        "quote": "own the property they live on are more likely to engage in capital-intensive strategies such as"
+      },
+      {
+        "criterion": "synthesis_method",
+        "page": "16",
+        "quote": "In this review we used a thematic approach to analyse the literature."
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Baisa",
+        "title_or_topic": "The welfare costs of unreliable water service (urban Mexico)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [10]",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Dutta",
+        "title_or_topic": "Cost of services and willingness to pay for reliable urban water supply: A study from Delhi, India",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [13]",
+        "year": "2005"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Mycoo",
+        "title_or_topic": "Water Provision Improvements: A Case Study of Trinidad: Willingness to Pay, Pricing Policy, Cost Reduction and Institutional Strengthening",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [14]",
+        "year": "1996"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Humplick",
+        "title_or_topic": "Modeling Household Responses to Water Supply: A Service Quality Approach (urban Pakistan and Turkey; paired with Madanat & Humplick 1993 as one study)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [16]",
+        "year": "1993"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Madanat",
+        "title_or_topic": "A model of household choice of water supply systems (urban Pakistan and Turkey; paired with Humplick et al. 1993 as one study)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [17]",
+        "year": "1993"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kudat",
+        "title_or_topic": "Reliability of urban water supply in developing countries: The emperor has no clothes (India, Pakistan, Turkey)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [18]",
+        "year": "1993"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kudat",
+        "title_or_topic": "A Social Assessment of the Baku Water Supply Project (urban Azerbaijan)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [21]",
+        "year": "1997"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Choe",
+        "title_or_topic": "Coping with Intermittent Water Supply: Problems and Prospects (Dehra Dun, urban India)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [22]",
+        "year": "1996"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Zérah",
+        "title_or_topic": "How to assess the quality dimension of urban infrastructure: The case of water supply in Delhi (paired with Zérah 2000 as one study)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [23]",
+        "year": "1998"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Zérah",
+        "title_or_topic": "Household strategies for coping with unreliable water supplies: The case of Delhi (paired with Zérah 1998 as one study)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [24]",
+        "year": "2000"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Pattanayak",
+        "title_or_topic": "Coping with unreliable public water supplies: averting expenditures by households in Kathmandu, Nepal",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [27]",
+        "year": "2005"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Cook",
+        "title_or_topic": "The costs of coping with poor water supply in rural Kenya",
+        "where_in_review": "Table 1, Table 3, Results text, Ref [28] (omitted from Table 2)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Chaminuka",
+        "title_or_topic": "An assessment of water shortages and coping mechanisms of Harare residents: A case of Msasa Park and Dzivaresekwa Extension (Zimbabwe)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [29]",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Nganyanyuka",
+        "title_or_topic": "Accessing water services in Dar es Salaam: Are we counting what counts? (Tanzania)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [30]",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Olsson",
+        "title_or_topic": "Women's Access to Safe Water in Times of Change and Uncertainty: A Case Study from Mangapwani in Zanzibar, Tanzania",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [31]",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Potter",
+        "title_or_topic": "Contemporary social variations in household water use, management strategies and awareness under conditions of water stress: The case of Greater Amman, Jordan",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [32]",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Virjee",
+        "title_or_topic": "Coping with poor water services and the demand for change in Trinidad and Tobago",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [34]",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Caprara",
+        "title_or_topic": "Irregular water supply, household usage and dengue: A bio-social study in the Brazilian Northeast",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [35]",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Smiley",
+        "title_or_topic": "Water availability and reliability in Dar es Salaam, Tanzania",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [36]",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Gulyani",
+        "title_or_topic": "Water for the Urban Poor: Water Markets, Household Demand, and Service Preferences in Kenya",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [37]",
+        "year": "2005"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Widiyati",
+        "title_or_topic": "Willingness to Pay to Avoid the Cost of Intermittent Water Supply: A Case Study of Bandung, Indonesia",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [38]",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Gerlach",
+        "title_or_topic": "Regulating water services for the poor: The case of Amman (Jordan)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [39]",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Ngwenya",
+        "title_or_topic": "HIV/AIDS and access to water: A case study of home-based care in Ngamiland, Botswana",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [40]",
+        "year": "2006"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Katuwal",
+        "title_or_topic": "Coping with poor water supplies: Empirical evidence from Kathmandu, Nepal",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [41]",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Vásquez",
+        "title_or_topic": "Willingness to pay for safe drinking water: Evidence from Parral, Mexico",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [42]",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Vásquez",
+        "title_or_topic": "Willingness to pay for reliable supplies of safe drinking water in Guatemala: A referendum contingent valuation study",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [43]",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Jamal",
+        "title_or_topic": "Adopted community strategies to offset utility crises in a middle income locality of Dhaka, Bangladesh",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [44]",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Vásquez",
+        "title_or_topic": "Reliability perceptions and water storage expenditures: Evidence from Nicaragua",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [45]",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Altaf",
+        "title_or_topic": "The economics of household response to inadequate water supplies (Pakistan)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [46]",
+        "year": "1994"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Matsinhe",
+        "title_or_topic": "The effects of intermittent supply and household storage in the quality of drinking water in Maputo (Mozambique)",
+        "where_in_review": "Table 1, Table 2, Table 3, Ref [47]",
+        "year": "2014"
+      }
+    ],
+    "included_studies_count_reported": 28,
+    "included_studies_list_completeness": "complete_inline_table_or_list",
+    "methodological_notes": "Self-described systematic review with PRISMA-style selection flow diagram (Figure 1), explicit Boolean search string across 7 bibliographic databases plus Google/Google Scholar and backward citation tracking, custom risk-of-bias scoring (Table 1), study characteristics table (Table 2), coping-strategy matrix (Table 3), and thematic narrative synthesis of 28 empirical cross-sectional/qualitative studies (30 publications, as Humplick et al. 1993 [16] + Madanat & Humplick 1993 [17] and Zérah 1998 [23] + Zérah 2000 [24] share datasets and were each counted as 1 study by the authors; all 30 publications are extracted in included_primary_studies to ensure complete overlap detection). Rated borderline_narrow_c2 because the review's primary inclusion criteria and synthesis target behavioural/economic household coping strategies and averting expenditures/willingness-to-pay for infrastructurally unreliable water supplies rather than legal or regulatory rules per se, although property ownership/land tenure (Abstract; Section 3.2), mandatory fixed utility bills/tariffs (Section 3.3), illegal pipe connections (Section 3.1.1), and regulatory oversight of pro-poor/informal water services (Gerlach & Franceys 2009 [39]; Discussion p. 16) appear as secondary sub-themes. Internal reporting discrepancies noted during audit: (1) text cross-references to Table 1 and Table 2 on pp. 4-5 are swapped; (2) text p. 5 reports 12 low, 13 moderate, and 3 high RoB studies, whereas Table 1 lists 11 low, 14 moderate, and 3 high RoB studies; and (3) Cook et al. (2016) [28] is included in Table 1, Table 3, and Results text (rural Kenya) but was inadvertently omitted from Table 2 (leaving 27 rows in Table 2). AMSTAR 2 overall confidence is Critically Low due to multiple critical flaws: no pre-registered protocol (Q2), no list of the 13 excluded full-text articles (Q7), an adapted reporting-heavy quality score that does not adequately assess observational confounding/selection/measurement bias (Q9), and lack of RoB-stratified interpretation despite heavy reliance on high-RoB studies in Results (Q13).",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "systematic review (with thematic synthesis)",
+    "study_id": "S438"
+  }
+}

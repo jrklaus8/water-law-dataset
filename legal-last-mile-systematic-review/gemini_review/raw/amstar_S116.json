@@ -1,0 +1,722 @@
+{
+  "study_id": "S116",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d8cf75906350d1eae7a6fc2dd1efe1a0d661d48e5ff70a15ffc357009e230fb6",
+  "input_text_sha256": "46df07719efcdca5d81907a081c1e65d4e5520461c00437acf743820ddb2c5f7",
+  "prompt_sha256": "1d02df2ef033c14502c3546af2e01add14b6738f33c0fca240e01a29e80dcb62",
+  "started_at": "2026-11-19T19:14:36.922415+00:00",
+  "completed_at": "2026-11-19T19:18:37.389008+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S116\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S116\n- Record ID: RC738D26100A7\n- Citation: Castleden HE, Hart C, Harper S, Martin D, Cunsolo A, Stefanelli R, Day L, Lauridsen K (2017). Implementing Indigenous and Western Knowledge Systems in Water Research and Management (Part 1): A Systematic Realist Review to Inform Water Policy and Governance in Canada. The International Indigenous Policy Journal 8(4).\n- DOI: 10.18584/iipj.2017.8.4.6\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: 46df07719efcdca5d81907a081c1e65d4e5520461c00437acf743820ddb2c5f7) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=95716, sha256=46df07719efcdca5d81907a081c1e65d4e5520461c00437acf743820ddb2c5f7]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "No PICO structure is used; eligibility criteria (Table 2, Box 1) specify a Canadian Indigenous context, water focus, empirical data, and integrative Indigenous-Western knowledge processes rather than PICO population, intervention, comparator, and outcomes.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No registered or published protocol is cited, no risk-of-bias assessment plan was pre-specified, and formal protocol deviations are not tracked, although inclusion criteria and reflective questions were co-developed with a National Advisory Committee and at a 2014 Water Gathering and an updated search to August 2015 was added at the NAC's direction.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Authors explicitly explain including empirical peer-reviewed studies as well as grey literature (theses, dissertations, government and NGO reports) to capture contemporary integrative water research and management practices in Canada beyond conventional academic outlets (p. 5, Box 1).",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Authors searched three academic databases/aggregators (Scopus, Web of Science, Google Scholar) plus grey-literature databases/websites (Library and Archives Canada, Canadian Public Policy Collection, Government of Canada Publications, Google, agency websites), consulted a librarian and NAC experts, and printed search strings (Table 1); however, they restricted inclusion to English-only without methodological justification (acknowledging French exclusion as a key limitation on p. 24) and did not report backward citation/reference-list searching.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Citations from Scopus and Web of Science were screened in two stages (title/abstract then full text) by two independent reviewers, with disagreements resolved through team consensus meetings (p. 5).",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Data extraction was not performed in duplicate; instead, the included literature was partitioned into four groups (First Nations, Inuit, Metis, and multi-site contexts) and coded across three team members using the 33-question SRR Reporting Tool without duplicate independent extraction or inter-rater reliability checks (p. 7).",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "Only aggregate exclusion counts are reported in the Findings text (p. 13; Figure 1 is blank in the PDF), and no list of full-text excluded studies with individual exclusion reasons is provided.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "No characteristics-of-included-studies table or complete list of the 63 included documents is provided; results are reported only as aggregate descriptive statistics and selective narrative examples.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "No risk-of-bias or methodological quality appraisal of individual included primary studies or grey-literature reports was conducted.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Although 'Funding agency' is listed as Variable 12 in the extraction Reporting Tool (Table 3, p. 9) and p. 22 briefly notes a dearth of science/engineering funding, funding sources of individual included studies are never reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No quantitative meta-analysis was conducted; the review presents descriptive counts and qualitative realist thematic synthesis.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Study-level risk of bias or methodological quality was neither assessed nor accounted for when interpreting and discussing findings.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Authors discuss substantive contextual, regional, and disciplinary variation across included records, including differences between social science vs. engineering/natural science studies, treaty vs. non-treaty/land-claim contexts (e.g., British Columbia vs. northern territories), and drinking water vs. broader environmental/ice contexts.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis/meta-analysis was performed.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "Funding from the Canadian Water Network is acknowledged (p. 2), but there is no conflict-of-interest disclosure or management statement, even though several co-authors' own primary studies (e.g., Daley et al. 2014, Harper et al. 2011, Martin et al. 2007) are included in the review.",
+        "rating": "No"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "Scopus, Web of Science, Google Scholar; grey literature searched via Library and Archives Canada, Canadian Public Policy Collection, Government of Canada Publications, Google (first 50 results), and organization/agency websites (Jan 1979–Oct 2014, updated to Aug 2015)",
+    "evidence_quotes": [
+      {
+        "criterion": "abstract_count_and_method",
+        "page": "PDF p. 2",
+        "quote": "approaches to water research and management identified 279 items of which 63 were relevant inclusions;"
+      },
+      {
+        "criterion": "review_design_self_description",
+        "page": "PDF p. 4",
+        "quote": "review (SRR) was to examine the extent, range, and nature of peer-reviewed and grey literature that"
+      },
+      {
+        "criterion": "databases_searched",
+        "page": "PDF p. 5",
+        "quote": "(Scopus, Web of Science, and Google Scholar), using keywords established by the authors and refined"
+      },
+      {
+        "criterion": "included_studies_count_reported",
+        "page": "PDF p. 13",
+        "quote": "In sum, 279 documents were reviewed, and 63 documents were included in our SRR."
+      },
+      {
+        "criterion": "language_restriction_limitation",
+        "page": "PDF p. 24",
+        "quote": "limitation to a Canadian-focused review as the country has two official languages, English and French,"
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Anderson",
+        "title_or_topic": "Notokwe opikiheet/old-lady raised: Aboriginal women's reflections on ethics and methodologies in health research",
+        "where_in_review": "Findings p. 17; References p. 27",
+        "year": "2008"
+      },
+      {
+        "doi_if_printed": "10.1016/j.jclepro.2011.10.023",
+        "first_author_surname": "Anderson",
+        "title_or_topic": "Carriers of water: Aboriginal women's experiences, relationships, and reflections",
+        "where_in_review": "Findings pp. 17, 21; References p. 27",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.1016/j.gloenvcha.2011.04.006",
+        "first_author_surname": "Armitage",
+        "title_or_topic": "Co-management and the co-production of knowledge: Learning to adapt in Canada's Arctic",
+        "where_in_review": "Findings pp. 17, 18, 20, 21; References p. 27",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Baird",
+        "title_or_topic": "Gaining insights about water: The value of surveys in First Nations communities to inform water governance",
+        "where_in_review": "Findings pp. 16, 17, 18, 20; References p. 27",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1080/08920750600970487",
+        "first_author_surname": "Berkes",
+        "title_or_topic": "Collaborative integrated management in Canada's North: The role of local and traditional knowledge and community-based monitoring",
+        "where_in_review": "Findings pp. 16, 18, 19, 20; References p. 28",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Caine",
+        "title_or_topic": "Bourdieu in the north: Practical understanding in natural resource governance",
+        "where_in_review": "Findings pp. 17, 18, 21; References p. 28",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Cave",
+        "title_or_topic": "Exploring the influences of institutions on water governance and management: A First Nation case study (Master's thesis)",
+        "where_in_review": "Findings pp. 16, 18, 21; References p. 28",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Chiefs of Ontario",
+        "title_or_topic": "Aboriginal traditional knowledge and source water protection final report",
+        "where_in_review": "Findings p. 20; References p. 28",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "10.1080/14615517.2012.760227",
+        "first_author_surname": "Chilima",
+        "title_or_topic": "Institutional considerations in watershed cumulative effects assessment and management",
+        "where_in_review": "Findings p. 18; References p. 28",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.3402/ijch.v73.23843",
+        "first_author_surname": "Daley",
+        "title_or_topic": "Municipal water quantities and health in Nunavut households: An exploratory case study in Coral Harbour, Nunavut, Canada",
+        "where_in_review": "Findings p. 20; References p. 29",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.3390/ijerph110605889",
+        "first_author_surname": "Dupont",
+        "title_or_topic": "Drinking water management: Health risk perceptions and choices in First Nations and non-First Nations communities in Canada",
+        "where_in_review": "Findings p. 16; References p. 29",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Finn",
+        "title_or_topic": "The multiple barrier approach to safe drinking water for First Nations communities: A case study (Master's thesis)",
+        "where_in_review": "Findings pp. 16, 21 (Box 2 & text); References p. 29",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Fresque-Baxter",
+        "title_or_topic": "Participatory photography as a means to explore young people's experience of water resource change",
+        "where_in_review": "Findings p. 17; References p. 29",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Gajadhar",
+        "title_or_topic": "Drinking water quality in Canadian First Nations communities: Do divergent strategies for addressing the issue contribute to the problems (Master's thesis)",
+        "where_in_review": "Findings p. 18; References p. 29",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.3390/ijerph13050505",
+        "first_author_surname": "Gearheard",
+        "title_or_topic": "It's not that simple: A collaborative comparison of sea ice environments, their uses, observed changes, and adaptations in Barrow, Alaska, USA, and Clyde River, Nunavut, Canada",
+        "where_in_review": "Findings pp. 17, 21; References p. 29",
+        "year": "2006"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Geertsema",
+        "title_or_topic": "Contributions of Cree knowledge: Nakatehtamasoyahk ote nekan nitaskenan (Caring for the land for the future) (Master's thesis)",
+        "where_in_review": "Findings p. 19; References p. 30",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Goldhar",
+        "title_or_topic": "Rethinking existing approaches to water security in remote communities: An analysis of two drinking water systems in Nunatsiavut, Labrador, Canada",
+        "where_in_review": "Findings pp. 18, 20; References p. 30",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Graham",
+        "title_or_topic": "Summary report of the impact analyses of the proposed Federal Legislative Framework for Drinking Water and Wastewater in First Nations Communities",
+        "where_in_review": "Findings pp. 18, 21 (Box 2); References p. 30",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Grimwood",
+        "title_or_topic": "From river trails to adaptive co-management: Learning and relating with Inuit inhabitants of the Thelon River, Canada",
+        "where_in_review": "Findings pp. 17, 18, 19, 20; References p. 30",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1007/s10393-011-0690-1",
+        "first_author_surname": "Harper",
+        "title_or_topic": "Weather, water quality and infectious gastrointestinal illness in two Inuit communities in Nunatsiavut, Canada: Potential implications for climate change",
+        "where_in_review": "Findings pp. 18, 20, 21; References p. 30",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Health Canada",
+        "title_or_topic": "Drinking water advisories in First Nations communities",
+        "where_in_review": "Findings p. 18; References p. 30",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.14430/arctic4143",
+        "first_author_surname": "Huntington",
+        "title_or_topic": "Integrating traditional and scientific knowledge through collaborative natural science field research: Identifying elements for success",
+        "where_in_review": "Findings pp. 19, 20; References p. 30",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Joe-Strack",
+        "title_or_topic": "Respect, resilience and prosperity: Recommendations for the Yukon's water strategy",
+        "where_in_review": "Findings pp. 18, 21 (Box 2); References p. 30",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "10.5751/ES-03225-150112",
+        "first_author_surname": "Jones",
+        "title_or_topic": "Haida marine planning: First Nations as a partner in marine conservation",
+        "where_in_review": "Findings pp. 16, 18; References p. 30",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "10.1023/B:INEA.0000040418.31663.61",
+        "first_author_surname": "King",
+        "title_or_topic": "Competing knowledge systems in the management of fish and forests in the Pacific Northwest",
+        "where_in_review": "Findings pp. 16, 18; References p. 31",
+        "year": "2004"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Lavalley",
+        "title_or_topic": "Aboriginal traditional knowledge and source water protection: First Nations' views on taking care of water",
+        "where_in_review": "Findings p. 20; References p. 31",
+        "year": "2006"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Lawrence",
+        "title_or_topic": "Implementation of the Drinking Water Safety Program in First Nation communities in British Columbia, Health Canada, First Nations Environmental Health Services",
+        "where_in_review": "Findings p. 20; References p. 31",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.4296/cwrj3503317",
+        "first_author_surname": "Lebel",
+        "title_or_topic": "The capacity of Montreal Lake, Saskatchewan to provide safe drinking water: Applying a framework for analysis",
+        "where_in_review": "Findings p. 18; References p. 31",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Lemoine",
+        "title_or_topic": "Exploring water governance in northern Saskatchewan: Opportunities for a watershed council (Master's thesis)",
+        "where_in_review": "Findings pp. 18, 19; References p. 31",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Longboat",
+        "title_or_topic": "First Nation water security and collaborative governance: Chippewas of Kettle and Stony Point First Nations, Ontario, Canada (Doctoral dissertation)",
+        "where_in_review": "Findings pp. 17, 18; References p. 31",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Martin",
+        "title_or_topic": "Drinking water and potential threats to human health in Nunavik: Adaptation strategies under climate change conditions",
+        "where_in_review": "Findings p. 18; References p. 31",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "McGregor",
+        "title_or_topic": "Linking traditional ecological knowledge and Western science: Aboriginal perspectives from the 2000 State of the Lakes Ecosystem Conference",
+        "where_in_review": "Findings pp. 19, 20; References p. 32",
+        "year": "2008"
+      },
+      {
+        "doi_if_printed": "10.1016/j.jenvman.2009.09.038",
+        "first_author_surname": "McGregor",
+        "title_or_topic": "Aboriginal/non-Aboriginal relations and sustainable forest management in Canada: The influence of the Royal Commission on Aboriginal Peoples",
+        "where_in_review": "Findings p. 17; References p. 32",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.18584/iipj.2012.3.3.11",
+        "first_author_surname": "McGregor",
+        "title_or_topic": "Traditional knowledge: Considerations for protecting water in Ontario",
+        "where_in_review": "Findings p. 17; References p. 32",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Miltenberger",
+        "title_or_topic": "Northern Voices, northern waters: Traditional knowledge and water policy development in the Northwest Territories",
+        "where_in_review": "Findings p. 21; References p. 32",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.1080/13504500009470055",
+        "first_author_surname": "Natcher",
+        "title_or_topic": "Constructing change: The evolution of land and resource management in Alberta, Canada",
+        "where_in_review": "Findings p. 21; References p. 32",
+        "year": "2000"
+      },
+      {
+        "doi_if_printed": "10.14430/arctic484",
+        "first_author_surname": "Nichols",
+        "title_or_topic": "Climate change and sea ice: Local observations from the Canadian Western Arctic",
+        "where_in_review": "Findings p. 19; References p. 32",
+        "year": "2004"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Norman",
+        "title_or_topic": "Cultural politics and transboundary resource governance in the Salish Sea",
+        "where_in_review": "Findings p. 18; References p. 32",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "10.1016/j.healthplace.2010.10.005",
+        "first_author_surname": "Patrick",
+        "title_or_topic": "Uneven access to safe drinking water for First Nations in Canada: Connecting health and place through secure source water protection",
+        "where_in_review": "Findings p. 18; References p. 32",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.3402/ijch.v71i0.18412",
+        "first_author_surname": "Peace",
+        "title_or_topic": "Community-based participatory process—climate change and health adaptation program for northern First Nations and Inuit in Canada",
+        "where_in_review": "Findings pp. 16, 17, 21; References p. 33",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Perron",
+        "title_or_topic": "Indigenous waterways: A community-based research workshop series on the social context of safe drinking water in British Columbia",
+        "where_in_review": "Findings p. 19; References p. 33",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "10.1016/j.gloenvcha.2013.03.005",
+        "first_author_surname": "Plummer",
+        "title_or_topic": "An integrative assessment of water vulnerability in First Nation communities in Southern Ontario, Canada",
+        "where_in_review": "Findings pp. 16, 17; References p. 33",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Restoule",
+        "title_or_topic": "Learning from place: A return to traditional Mushkegowuk ways of knowing",
+        "where_in_review": "Findings p. 17; References p. 33",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1017/S0032247400017058",
+        "first_author_surname": "Riedlinger",
+        "title_or_topic": "Contributions of traditional knowledge to understanding climate change in the Canadian Arctic",
+        "where_in_review": "Findings pp. 16, 17, 18; References p. 33",
+        "year": "2001"
+      },
+      {
+        "doi_if_printed": "10.1504/IJW.2013.054859",
+        "first_author_surname": "Rizvi",
+        "title_or_topic": "First Nation capacity in Quebec to practice integrated water resources management",
+        "where_in_review": "Findings p. 18; References p. 33",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Sam",
+        "title_or_topic": "Oral narratives, customary laws and Indigenous water rights in Canada (Doctoral dissertation)",
+        "where_in_review": "Findings pp. 16, 17, 18, 19; References p. 33",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1139/s06-023",
+        "first_author_surname": "Smith",
+        "title_or_topic": "Public health evaluation of drinking water systems for First Nations reserves in Alberta, Canada",
+        "where_in_review": "Findings p. 21 (Box 2); References p. 34",
+        "year": "2006"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Szach",
+        "title_or_topic": "Keepers of the water: Exploring Anishinaabe and Metis women's knowledge of water and participation in water governance in Kenora, Ontario (Master's thesis)",
+        "where_in_review": "Findings pp. 17, 19, 20; References p. 34",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "von der Porten",
+        "title_or_topic": "Water challenges and solutions in First Nations communities: Summary findings from the workshop sharing water challenges and solutions",
+        "where_in_review": "Findings pp. 16, 18, 20, 21 (Box 2); References p. 34",
+        "year": "2010"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "von der Porten",
+        "title_or_topic": "Collaborative environmental governance and Indigenous governance: A synthesis (Doctoral dissertation)",
+        "where_in_review": "Findings pp. 16, 17, 18, 21; References p. 34",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1016/j.geoforum.2013.09.001",
+        "first_author_surname": "von der Porten",
+        "title_or_topic": "Collaborative approaches to governance for water and Indigenous Peoples: A case study for British Columbia, Canada",
+        "where_in_review": "Findings pp. 16, 18; References p. 35",
+        "year": "2013a"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "von der Porten",
+        "title_or_topic": "Water governance and Indigenous governance: Towards a synthesis",
+        "where_in_review": "Findings pp. 16, 18; References p. 35",
+        "year": "2013b"
+      },
+      {
+        "doi_if_printed": "10.2166/wp.2013.046",
+        "first_author_surname": "von der Porten",
+        "title_or_topic": "Water policy reform and Indigenous governance",
+        "where_in_review": "Findings pp. 16, 20; References p. 35",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.18584/iipj.2012.3.3.3",
+        "first_author_surname": "White",
+        "title_or_topic": "Water and Indigenous Peoples: Canada's paradox",
+        "where_in_review": "Findings pp. 19, 20; References p. 35",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Willms & Shier Environmental Lawyers, LLP",
+        "title_or_topic": "Report of the Expert Panel on Safe Drinking Water for First Nations—Volume 2",
+        "where_in_review": "Findings p. 18; References p. 35",
+        "year": "2006"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wolfe",
+        "title_or_topic": "From isotopes to TK interviews: Towards interdisciplinary research in Fort Resolution and the Slave River Delta, Northwest Territories",
+        "where_in_review": "Findings pp. 17, 20, 21 (Box 2); References p. 35",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Woo",
+        "title_or_topic": "Science meets traditional knowledge: Water and climate in the Sahtu (Great Bear Lake) region, Northwest Territories, Canada",
+        "where_in_review": "Findings pp. 16, 19; References p. 35",
+        "year": "2007"
+      }
+    ],
+    "included_studies_count_reported": 63,
+    "included_studies_list_completeness": "partial_inline_citations_only",
+    "methodological_notes": "1. Hybrid Design & AMSTAR 2 Fit: Castleden et al. (2017) describe their study as a combined 'systematic and realist review (SRR)' examining the 'extent, range, and nature' of academic and grey literature on integrative Indigenous and Western knowledge approaches to water research and management in Canada (1979–Aug 2015), using a 33-item Context-Mechanism-Outcome reporting tool co-created with a National Advisory Committee and Water Gathering participants. AMSTAR 2 is borderline for this scoping/realist hybrid, and the review scores Critically Low due to lack of a registered protocol, exclusion of French-language Canadian literature without methodological justification, non-duplicate partitioned extraction, no list of excluded studies, no table of included studies, no risk-of-bias/quality assessment, and no conflict-of-interest statement (despite co-authors' own primary studies—Daley 2014, Harper 2011, Martin 2007—being included). 2. Screening Flow Discrepancies: Figure 1 is blank in the published PDF, and the narrative screening numbers on p. 13 do not reconcile cleanly (226 academic records retrieved -> 29 included + 37 excluded + 36 full-text reviewed = 102 accounted for, followed by 'a total of 40 included; 64 excluded' = 104; plus 53 grey-literature documents yielding 12 reports and 11 theses/dissertations, for a reported total of 279 reviewed and 63 included). 3. Incomplete Identification of Included Studies: No included-studies table, appendix, or bibliography marker is printed; 57 of the 63 included records are identifiable via inline citations in Findings (pp. 16–21), whereas several Canadian water papers in the Reference list (e.g., Basdeo & Bharadwaj 2013, Mascarenhas 2007, Phare 2011, Sanderson et al. 2015, Walkem 2007) appear only in the Introduction or Discussion and cannot be verified as formally included. Note also that the printed DOI for Gearheard et al. (2006) on p. 29 ('10.3390/ijerph13050505') is a copy-paste error duplicating Galway (2016). 4. Narrow Criterion 2 Fit: Borderline—only 26% of included studies focused on drinking water and ~14 examined water governance, treaty/Aboriginal water rights, operator certification, or First Nations drinking-water legislative frameworks, while the main review object is methodological/epistemological knowledge co-production across all water environments (including Arctic sea ice, marine planning, fish/forests, and watersheds).",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "systematic realist review (combined systematic and realist review of peer-reviewed and grey literature)",
+    "study_id": "S116"
+  }
+}

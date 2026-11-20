@@ -1,0 +1,322 @@
+{
+  "study_id": "S370",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "5ed09d1e9de8ca23d8d3db2f9fd486b8fa2daf13afbdee6bfff01a1f7d2cee9f",
+  "input_text_sha256": "ee8c9d6f8ae354c870578236f9223f61ec39336b519297a62bb45699eb7de61e",
+  "prompt_sha256": "ec8e8f717e421ce9dc5ff8b5ca23af40fcca7f8e0d9369f50cfdeeb3bd89073b",
+  "started_at": "2026-11-19T19:19:05.155313+00:00",
+  "completed_at": "2026-11-19T19:21:14.555479+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S370\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S370\n- Record ID: RBFF9D3F5FAD2\n- Citation: Macura B, Foggitt E, Liera C, Soto A, Orlando A, Del Duca L, Carrard N, Hannes K, Sommer M, Dickin S (2023). Systematic mapping of gender equality and social inclusion in WASH interventions: knowledge clusters and gaps. BMJ Global Health 8:e010850.\n- DOI: 10.1136/bmjgh-2022-010850\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: ee8c9d6f8ae354c870578236f9223f61ec39336b519297a62bb45699eb7de61e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=52122, sha256=ee8c9d6f8ae354c870578236f9223f61ec39336b519297a62bb45699eb7de61e]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Population (all study participants in LMICs per World Bank 2020 classification), Interventions (defined WASH interventions across household, school, healthcare, community, and workplace settings), and Outcomes (inclusive and transformative GESI outcomes) are explicitly specified; comparator groups were unrestricted because qualitative, observational, and experimental designs were all eligible for mapping.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "An a priori mixed-method systematic review protocol was published in Campbell Systematic Reviews (Macura et al., 2021, ref. 24) containing review questions, search strategy, eligibility criteria, theory of change, and planned critical appraisal, and the authors explicitly report their deviation to conduct a systematic mapping without critical appraisal or effect-size data extraction.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "The authors explicitly justify including qualitative, quantitative, and mixed-method empirical intervention designs (while excluding commentary, theoretical, and modelling papers) in order to comprehensively map GESI outcomes, noting that a prior WASH evidence and gap map omitted qualitative evidence.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Comprehensive academic and grey literature searches were conducted (January 2010 to November 2020; submitted October 2022, within 24 months) across 15/16 bibliographic databases, 53/57 specialist organisation websites in English and Spanish, bibliographies of 46 reviews, stakeholder consultations, and search-string validation against a 32-article benchmark list (search strings in online supplemental tables S1-S3).",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Consistency checking on samples achieved 88%-95% agreement across 600 titles/abstracts (with 3,642 of 14,040 manually screened records dual-screened) and 78%-95% across 132 full texts, with mandatory re-checking whenever agreement fell below 80%; note, however, that 39,091 records in the lowest three machine-learning relevance probability deciles (0%-29%) were excluded without human screening.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Metadata coding consistency was checked across 132 records in three rounds before single-reviewer extraction, but numeric inter-rater agreement (>=80%) is not reported for metadata extraction and no study outcome/effect data extraction was performed.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "The authors report that a complete list of excluded full texts with reasons for exclusion is provided in online supplemental table S5 (with summary exclusion counts also shown in the Figure 1 PRISMA 2020 flow diagram).",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "No individual included studies are described in the main manuscript; online supplemental table S6 provides high-level metadata coding (location, design, intervention type, population descriptors, outcome theme tags), but comparators, intervention dosages/follow-up timeframes, sample sizes, and study results were not extracted.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "The authors explicitly state in Methods that no critical appraisal (risk of bias assessment) was conducted in this systematic map.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Funding sources of the 463 included primary studies were neither extracted in the metadata coding scheme nor reported in the review.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No meta-analysis or quantitative effect synthesis was conducted; synthesis was limited to descriptive frequency counts of coded metadata categories.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Because no critical appraisal / risk of bias assessment was conducted, study quality and risk of bias were not accounted for when interpreting or discussing results.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Because primary study outcome effects were not extracted or synthesized, heterogeneity in intervention effects was neither assessed nor explained (only geographic, sectoral, and setting distributions of metadata tags were described).",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis / meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "The authors report funding from the Centre of Excellence for Development Impact and Learning (CEDIL, UK aid), explicitly state that the funder had no role in study design, collection, analysis, interpretation, or writing, and declare no competing interests.",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "15 bibliographic sources (reported as 16 bibliographic databases and 53 specialist websites in the Abstract, and as 15 bibliographic sources plus 57 organisation websites and 46 review bibliographies in Methods; exact database names are in online supplemental tables S1-S3 and are not printed in the article PDF)",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_and_search",
+        "page": "Page 1",
+        "quote": "We applied a systematic mapping methodology and searched for both academic and grey literature published between 2010 and 2020 in 16 bibliographic databases and 53 specialist websites."
+      },
+      {
+        "criterion": "protocol_deviation_and_no_critical_appraisal",
+        "page": "Page 2",
+        "quote": "Detailed methodology is available in a previously published protocol.24 However, no critical appraisal and data extraction was conducted in this review. We undertook a systematic mapping of the primary research studies instead."
+      },
+      {
+        "criterion": "included_studies_count",
+        "page": "Page 4",
+        "quote": "The evidence base included 499 publications in total across 463 studies (66 publications described 30 studies)."
+      },
+      {
+        "criterion": "supplement_only_study_lists",
+        "page": "Page 4",
+        "quote": "A list of excluded full texts with reasons for exclusion is available in online supplemental table S5 and all included studies with coded metadata are available in online supplemental table S6."
+      },
+      {
+        "criterion": "scope_and_no_effect_synthesis",
+        "page": "Page 8",
+        "quote": "This systematic map was also not set to evaluate the impacts of WASH interventions on GESI outcomes, but the evidence collated in this work provides a basis for such investigations."
+      }
+    ],
+    "included_primary_studies": [],
+    "included_studies_count_reported": 463,
+    "included_studies_list_completeness": "none_printed",
+    "methodological_notes": "1. Review Design & Criterion 3 Status: Although grounded in a published Campbell Systematic Reviews protocol (Macura et al., 2021), the authors deviated from a full systematic review to a CEE-style systematic map (evidence and gap map with metadata coding and descriptive frequency counts). They explicitly performed no critical appraisal and no outcome effect extraction (\"This systematic map was also not set to evaluate the impacts of WASH interventions on GESI outcomes\"). Consequently, AMSTAR 2 is only borderline-applicable (\"borderline_scoping_realist_or_hybrid\"), and overall confidence under AMSTAR 2 is \"Critically Low\" due to two critical omissions by design (Q9 and Q13: absence of risk-of-bias assessment and interpretation). 2. Narrow Criterion 2 Fit: Fails narrow Criterion 2 (\"fails_narrow_c2_e03\"). The map catalogues broad WASH interventions (behaviour change 50.5%, WASH infrastructure 40%, training/capacity building 24.8%) across 25 GESI outcome themes (equitable access, WASH knowledge, time use, participation, attitudes, MHM, empowerment). It does not examine legal, statutory, regulatory, tenure, property-right, or administrative rules governing the WASH \"Legal Last Mile\" (mentioning \"affordability\" [19.9%] and \"financial support (such as the provision of tariffs, loans and subsidies) (13.5%)\" of the 104 GESI-mainstreamed studies solely as high-level metadata frequency tags). 3. Minor Internal Reporting Discrepancy: The Abstract reports searching \"16 bibliographic databases and 53 specialist websites\", whereas Methods and Figure 1 report \"15 bibliographic sources\" and \"57 organisations\" (56 searched in English, 12 in Spanish). 4. Double-Counting Audit / Primary Studies: The map includes 463 studies across 499 publications, but ZERO included primary studies are named, tabulated, or cited anywhere in the main text, figures, or 59-item reference list; the entire dataset resides in online supplemental table S6 and an external EviAtlas webpage.",
+    "narrow_criterion2_fit": "fails_narrow_c2_e03",
+    "paper_read": "full text",
+    "review_design_self_description": "systematic mapping (systematic map / evidence map with metadata coding and narrative synthesis)",
+    "study_id": "S370"
+  }
+}

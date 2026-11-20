@@ -1,0 +1,589 @@
+{
+  "study_id": "S521",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ff9211bc8306c3f90c2b7798738d36cd0e55e47adaebf1d814476d5f1cbbc558",
+  "input_text_sha256": "3129f042586b465127724017ccf441484655636ea1ce37a9e944da52e9d4d154",
+  "prompt_sha256": "c293616b31e9e0e01160cc74f89700cf688e4ee165911d822b9f5ec6cffaab49",
+  "started_at": "2026-11-20T01:05:17.834454+00:00",
+  "completed_at": "2026-11-20T01:08:08.066954+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S521\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S521\n- Record ID: R5104D5ACF77A\n- Citation: Fono M.A., Chapman F., Christie V., Parter C., Knight J., Sherriff S., Rambaldini U.B., Moggridge B., Gwynne K. (2025). Aboriginal and Torres Strait Islander Perspectives in Drinking Water Policy: A Realist Review. Australian Journal of Social Issues 60:602-620.\n- DOI: 10.1002/ajs4.70020\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: 3129f042586b465127724017ccf441484655636ea1ce37a9e944da52e9d4d154) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=82019, sha256=3129f042586b465127724017ccf441484655636ea1ce37a9e944da52e9d4d154]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Research questions and eligibility criteria are framed around realist Context-Mechanism-Outcome (CMO) configurations (population: Aboriginal and Torres Strait Islander peoples; geography: Australia; phenomenon: Indigenous engagement in mandatory-compliance government drinking water policy linked to accountability mechanisms) rather than PICO intervention/comparator/outcome elements.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No a priori registered or published protocol for this drinking water realist review (e.g., PROSPERO or OSF) is reported, and no protocol deviations are addressed (Fono et al. 2024 is cited only regarding the Co-design Brains Trust governance structure, not as a protocol for this review).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Sections 2.5–2.7 explain the selection of a realist review design capable of integrating diverse evidence types (qualitative and quantitative studies alongside downloadable government policy documents, reports, and local case studies) to build a CMO programme theory.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Authors searched 8 databases/engines in May 2024 (PubMed, Medline, Embase, Scopus, Web of Science, Academic Search Premier, AIATSIS, Google Scholar) with assistance from a university librarian, reported full Boolean search strings, and searched grey literature portals and government websites; however, they did not report searching reference lists of included studies or trial/study registries, nor justify English-language restriction beyond translation convenience.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Authors 1–3 screened titles/abstracts and reviewed full texts against eligibility criteria, with Author 2 resolving discrepancies.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Data extraction was performed by a single reviewer (Author 1) and subsequently verified by co-authors (Authors 2–6 and 9), rather than independent duplicate extraction or >=80% consensus calibration on a sample.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "Although a PRISMA flow diagram (Figure 1) is referenced, no bibliographic list of excluded full-text articles with individual study-level reasons for exclusion is provided in the text or appendices.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Table 1 reports only Evidence type, Author/year, Title, and System level (Macro/Meso/Micro); it omits study designs, methods, sample sizes/populations, specific policy mechanisms, and study-level findings despite Section 2.9 stating these were extracted.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "In Appendix A, the 5 'peer-reviewed' items (themselves secondary reviews, a policy/legal commentary, an industry report, and a perspective paper) were appraised using a custom cultural-relevance checklist plus JBI Systematic Review or JBI Textual Evidence: Expert Opinion checklists rather than primary-study risk-of-bias tools, and the 33 grey literature documents/case studies/media items received no formal risk-of-bias assessment.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Sources of funding for the individual included studies and reports are not reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No quantitative synthesis or meta-analysis was conducted; synthesis used thematic coding into realist CMO configurations and collaborative yarning circles.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Although Section 5 notes generally that the rigour of local case studies may be subject to scrutiny and Section 4 notes the dominance of non-Indigenous-led research, the synthesis does not account for the low appraisal scores and flagged bias concerns in Appendix A (e.g., Study 1 ~35% and Study 2 ~54% flagged with 'questionable sources, political bias concern', Study 3 ~41%) when relying on those sources for core claims.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Qualitatively explains substantial heterogeneity across macro (national), meso (state/territory), and micro (local/remote vs. urban) jurisdictions and governance arrangements across Australia.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "Funding sources (Macquarie University, UNSW, Australian Government RTP Scholarship, Onehealth Organisation), a no-conflict-of-interest declaration, and a detailed author positionality statement are transparently reported (though note co-author B. Moggridge authored several included items).",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "PubMed, Medline, Embase, Scopus, Web of Science, Academic Search Premier, Indigenous Studies (AIATSIS), Google Scholar; plus grey literature sources (Analysis and Policy Observatory, Indigenous HealthInfoNet, CSIRO, and national, state, and local water governing websites)",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_and_included_count",
+        "page": "p. 602 (PDF p. 1)",
+        "quote": "We systematically searched electronic databases and grey literature, resulting in five peer-reviewed studies and 33 grey literature"
+      },
+      {
+        "criterion": "databases_searched",
+        "page": "p. 604 (PDF p. 3)",
+        "quote": "databases: PubMed, Medline, Embase, Scopus, Web"
+      },
+      {
+        "criterion": "narrow_criterion2_regulatory_delegation",
+        "page": "p. 610 (PDF p. 9)",
+        "quote": "regulatory enforcement, thereby delegating safe drinking water"
+      },
+      {
+        "criterion": "narrow_criterion2_statutory_rights_gap",
+        "page": "p. 611 (PDF p. 10)",
+        "quote": "with safe drinking water does not inherently constitute a breach"
+      },
+      {
+        "criterion": "case_study_rigour_limitation",
+        "page": "p. 612 (PDF p. 11)",
+        "quote": "subject to scrutiny, we relied on their insights to form a basic"
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "10.1016/j.scitotenv.2023.166559",
+        "first_author_surname": "Balasooriya",
+        "title_or_topic": "A review of drinking water quality issues in remote and indigenous communities in rich nations with special emphasis on Australia [Note: secondary literature review]",
+        "where_in_review": "Table 1 (Peer-reviewed studies #1, p. 606) & Appendix A (Study 1, p. 616)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "10.1080/13241583.2021.1917098",
+        "first_author_surname": "Howey",
+        "title_or_topic": "Drinking water security: the neglected dimension of Australian water reform (Howey & Grealy) [Note: legal/policy analysis appraised as textual expert opinion]",
+        "where_in_review": "Table 1 (Peer-reviewed studies #2, p. 606) & Appendix A (Study 2, p. 617)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "10.1038/s41545-022-00174-1",
+        "first_author_surname": "Wyrwoll",
+        "title_or_topic": "Measuring the gaps in drinking water quality and policy across regional and remote Australia",
+        "where_in_review": "Table 1 (Peer-reviewed studies #3, p. 606) & Appendix A (Study 3, p. 617)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Vanweydeveld",
+        "title_or_topic": "Closing the water for people and communities gap: improving water services to Aboriginal and Torres Strait Islander remote communities (Vanweydeveld & Water Services Association of Australia) [Note: industry review report]",
+        "where_in_review": "Table 1 (Peer-reviewed studies #4, p. 606) & Appendix A (Study 4, p. 618)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Moggridge",
+        "title_or_topic": "Cultural value of water and western water management: an Australian Indigenous perspective (Moggridge & Thompson) [Note: perspective article appraised as textual expert opinion]",
+        "where_in_review": "Table 1 (Peer-reviewed studies #5, p. 606) & Appendix A (Study 5, p. 619)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Australian Government National Health and Medical Research Council",
+        "title_or_topic": "Australian Drinking Water Guidelines",
+        "where_in_review": "Table 1 (Government documents #1, p. 606)",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Australian Government Productivity Commission",
+        "title_or_topic": "National Water Reform 2024",
+        "where_in_review": "Table 1 (Government documents #2, p. 606)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Commonwealth Scientific and Industrial Research Organisation (CSIRO)",
+        "title_or_topic": "Water supply for remote Australian communities. Water quality review and treatment technology framework for remote community water supply",
+        "where_in_review": "Table 1 (Government documents #3, p. 606)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Green",
+        "title_or_topic": "Australia State of the Environment 2024 (Green, Moggridge & Australian Government Department of Environment and Energy)",
+        "where_in_review": "Table 1 (Government documents #4, p. 606)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Australian Government Department of Climate Change, Energy, the Environment and Water (DCCEEW)",
+        "title_or_topic": "First Nations water policy",
+        "where_in_review": "Table 1 (Government documents #5, p. 606)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "DCCEEW",
+        "title_or_topic": "Committee on Aboriginal and Torres Strait Islander Water Interests Insights Paper",
+        "where_in_review": "Table 1 (Government documents #6, p. 606)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Australian Government Department of Environment and Energy",
+        "title_or_topic": "Partnering with Indigenous organisations for a sustainable environment",
+        "where_in_review": "Table 1 (Government documents #7, p. 606)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "DCCEEW",
+        "title_or_topic": "National Water Initiative",
+        "where_in_review": "Table 1 (Government documents #8, p. 606)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Moggridge",
+        "title_or_topic": "Indigenous principles for water quality (Australian and New Zealand Guidelines for Fresh and Marine Water Quality) (Moggridge & Mihinui)",
+        "where_in_review": "Table 1 (Government documents #9, p. 606)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Australian Government National Water Grid",
+        "title_or_topic": "First Nations Water",
+        "where_in_review": "Table 1 (Government documents #10, p. 607)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Watertrust Australia Ltd.",
+        "title_or_topic": "First Nations engagement in water policy reform",
+        "where_in_review": "Table 1 (Government documents #11, p. 607)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Watertrust Australia Ltd.",
+        "title_or_topic": "The landscape of First Nations water rights and interests",
+        "where_in_review": "Table 1 (Government documents #12, p. 607)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Watertrust Australia Ltd.",
+        "title_or_topic": "Exploring a First Nations voice in water policy reform",
+        "where_in_review": "Table 1 (Government documents #13, p. 607)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "New South Wales Department of Climate Change, Energy, the Environment and Water",
+        "title_or_topic": "Aboriginal Communities Water and Sewerage Program",
+        "where_in_review": "Table 1 (Government documents #14, p. 607)",
+        "year": "2008-current"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Victoria State Government Department of Environment, Energy and Climate Action (DEECA)",
+        "title_or_topic": "Aboriginal Water Program",
+        "where_in_review": "Table 1 (Government documents #15, p. 607)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "DEECA",
+        "title_or_topic": "Water, Country and Community Program (2020-2024)",
+        "where_in_review": "Table 1 (Government documents #16, p. 607)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Government of Western Australia Department of Water and Environmental Regulation",
+        "title_or_topic": "Aboriginal Water and Environment Advisory Group",
+        "where_in_review": "Table 1 (Government documents #17, p. 607)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Government of Western Australia Department of Water and Environmental Regulation",
+        "title_or_topic": "Bring Together Walk Together Aboriginal Partnership Framework",
+        "where_in_review": "Table 1 (Government documents #18, p. 607)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Northern Territory Government",
+        "title_or_topic": "Territory Water Plan",
+        "where_in_review": "Table 1 (Government documents #19, p. 607)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Tasmania Government Department of Natural Resources and Environment",
+        "title_or_topic": "Aboriginal Freshwater Interests",
+        "where_in_review": "Table 1 (Government documents #20, p. 607)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Government of South Australia Department for Environment and Water",
+        "title_or_topic": "Annual Water Security Update 2024",
+        "where_in_review": "Table 1 (Government documents #21, p. 607)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Government of South Australia Department for Environment and Water",
+        "title_or_topic": "Water Security Statement 2022 Water for Sustainable Growth",
+        "where_in_review": "Table 1 (Government documents #22, p. 607)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Queensland Government Department of Regional Development, Manufacturing and Water",
+        "title_or_topic": "First Nations Water Strategy",
+        "where_in_review": "Table 1 (Government documents #23, p. 607)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "ACT Government",
+        "title_or_topic": "ACT Water Strategy 2014-44. Striking the Balance.",
+        "where_in_review": "Table 1 (Government documents #24, p. 607)",
+        "year": "2014-2044"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Vanweydeveld",
+        "title_or_topic": "Northern Territory: A successful Aboriginal engagement through honest and genuine trusted relationships: the case of Borroloola (Vanweydeveld & WSAA case study)",
+        "where_in_review": "Table 1 (Case studies #1, p. 608)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Unstated (blank cell under Vanweydeveld & WSAA)",
+        "title_or_topic": "South Australia: Building community resilience in partnership with remote communities. The Anangu Pitjantjatjara Yankunytjatjara lands",
+        "where_in_review": "Table 1 (Case studies #2, p. 608)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Unstated (blank cell under Vanweydeveld & WSAA)",
+        "title_or_topic": "Queensland: Safe and Healthy Drinking Water in Indigenous Local Government Areas Program",
+        "where_in_review": "Table 1 (Case studies #3, p. 608)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Unstated (blank cell under Vanweydeveld & WSAA)",
+        "title_or_topic": "Western Australia: Water Corporation 'Yesterday, Today, and Tomorrow'",
+        "where_in_review": "Table 1 (Case studies #4, p. 608)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Australian Government National Water Grid",
+        "title_or_topic": "Closing the Gap: $150 million towards First Nations water security",
+        "where_in_review": "Table 1 (Media #1, p. 608)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Jasper",
+        "title_or_topic": "Better climate science, greater First Nations participation flagged in national water policy overhaul (ABC Rural)",
+        "where_in_review": "Table 1 (Media #2, p. 608)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Australian Government Department of the Prime Minister and Cabinet",
+        "title_or_topic": "Next step towards closing the gap",
+        "where_in_review": "Table 1 (Media #3, p. 608)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Moggridge",
+        "title_or_topic": "Countless reports show water is undrinkable in many Indigenous communities. Why has nothing changed? (Moggridge, Beal & Lansbury, The Conversation)",
+        "where_in_review": "Table 1 (Media #4, p. 608)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Litjens",
+        "title_or_topic": "NT government's first water plan to focus on safe drinking water for remote communities (ABC)",
+        "where_in_review": "Table 1 (Media #5, p. 608)",
+        "year": "2023"
+      }
+    ],
+    "included_studies_count_reported": 38,
+    "included_studies_list_completeness": "complete_inline_table_or_list",
+    "methodological_notes": "Self-described realist review combining systematic database/grey-literature searching (8 databases + policy/government portals), explicit eligibility criteria, a PRISMA selection flow diagram (Figure 1, rendered as an image on p. 605), JBI + culturally adapted CREATE appraisal (Appendix A), and Indigenous collaborative 'yarning circles' with a Co-design Brains Trust. Two critical methodological caveats apply for Task I overlap and eligibility auditing: (1) Borderline Narrow Criterion 2 fit: Although the review defines policy as mandatory compliance with consequences, includes linkage to accountability mechanisms (e.g., regulation) as an inclusion criterion, and analyzes the non-enforceable legal status of the Australian Drinking Water Guidelines (ADWG) and lack of statutory human-right-to-water obligations across federal/state/local law, its primary research questions examine participatory co-design and integration of Indigenous knowledge in policy formulation rather than empirically testing legal, regulatory, tenure, or tariff rules governing last-mile WASH access. (2) Near-absence of primary empirical WASH studies among the 38 included sources: Table 1 lists 5 'peer-reviewed studies' and 33 grey literature files (24 government policy/strategy documents, 4 WSAA local case study vignettes, and 5 media releases/articles). Even within the 5 'peer-reviewed studies', only Wyrwoll et al. (2022) is an empirical water-quality/policy dataset analysis; Balasooriya et al. (2023) is itself a secondary literature review, Howey & Grealy (2021) is a legal/policy analysis appraised as expert opinion, Vanweydeveld & WSAA (2022) is an industry review report (not a peer-reviewed journal article, and also the apparent source of Case Study #1), and Moggridge & Thompson (2021) is an Indigenous perspective article (whose numbered superscript 42 in Table 1 was omitted from the alphabetical reference list). AMSTAR 2 is only borderline-fit for realist policy reviews and rates Critically Low due to lack of a registered protocol (Q2), no excluded-studies list (Q7), non-standard RoB assessment omitted entirely for 33/38 sources (Q9), and failure to incorporate appraisal flaws into result interpretation (Q13).",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "realist review",
+    "study_id": "S521"
+  }
+}

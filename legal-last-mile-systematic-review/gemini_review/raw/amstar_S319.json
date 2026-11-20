@@ -1,0 +1,379 @@
+{
+  "study_id": "S319",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "72b6426599937b1f3c8d029acbf7015add49124a67dc04cdc2441b8751e5aac1",
+  "input_text_sha256": "944678760545061ef257d0961d00bd97387a93636931e5484878f626ddf5eac1",
+  "prompt_sha256": "7db15944e9a5715cc0af7669d832f486adcf1e8edeac127b519f47d21598a058",
+  "started_at": "2026-11-19T19:19:05.136495+00:00",
+  "completed_at": "2026-11-19T19:20:53.702728+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S319\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S319\n- Record ID: R3BD9029322FD\n- Citation: Yoanita E, Wardhana YMA, Sutjiningsih D (2025). Enhancing Rural Water Utility Sustainability Through Creative Financing Mechanisms: A Systematic PRISMA Review. J Korean Soc Environ Eng.\n- DOI: 10.11628/ksppe.2025.28.5.581\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: 944678760545061ef257d0961d00bd97387a93636931e5484878f626ddf5eac1) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=86585, sha256=944678760545061ef257d0961d00bd97387a93636931e5484878f626ddf5eac1]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "appropriate_systematic_or_meta",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Research questions and eligibility criteria explicitly apply the PICO framework (Population: rural piped water utilities; Intervention: creative financing mechanisms; Comparison: conventional financing models; Outcome: sustainability measures), mapped in Abstract, Methods (p. 4), and Table 3 (p. 9).",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No pre-registered review protocol (e.g., PROSPERO or OSF) or written a priori protocol is reported, and no protocol deviations are discussed.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Authors state they restricted inclusion to peer-reviewed journal articles for writing and review standards (p. 4), but do not explain or justify eligible empirical study designs (mixing LCCA, mixed-methods field studies, system dynamics simulations, descriptive case reports, and an existing systematic review of 97 articles).",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Only a single database (Scopus) was searched (May 2024), restricted to English-language articles from 2009–2024, with no grey literature, reference list hand-searching, trial/study registries, or expert consultation.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Page 4 explicitly reports duplicate independent study selection: 'Screening was performed independently by two reviewers, with discrepancies resolved through discussion.'",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Page 4 notes that data extraction captured study descriptors, financing mechanisms, and sustainability findings, without stating that extraction was performed independently in duplicate or verified by a second reviewer.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "No list of full-text excluded studies with individual citations and exclusion reasons is provided anywhere in the article.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Tables 1–4 summarize authorship, country/setting, methods, populations, financing interventions, comparators, and outcomes, though sample sizes, data collection dates, and follow-up timeframes are missing for several included studies.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "Authors applied a generic 5-item adapted CASP reporting checklist (clarity of aims, methodology appropriateness, intervention description, outcome reporting, data quality) rather than a valid risk-of-bias tool addressing confounding, selection bias, and measurement bias in non-randomized comparative studies; moreover, Table 5 contains unedited second-person prompt artifacts ('in your summary', 'in your description') based on secondary summaries rather than primary study appraisal.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "The review discusses utility financing mechanisms, but does not report the research funding sources or sponsors of the 8 individual included studies.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No quantitative meta-analysis was performed; findings were synthesized narratively across heterogeneous study designs and metrics.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No quantitative meta-analysis was performed.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Although the Methods state that RoB judgments informed synthesis weighting, the Discussion does not incorporate study-level RoB into its causal claims, and the text (Abstract and p. 11: 5 Moderate, 3 Low) directly contradicts Table 5 (p. 12: 7 Moderate, 1 Low).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "The review discusses contextual heterogeneity across countries and utility governance models (e.g., institutional capacity, rural income levels, regulatory maturity, and creditworthiness explaining varying financing effectiveness).",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative meta-analysis was conducted, though the single-database English-only search creates substantial unexamined publication and indexing bias.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "University grant funding is acknowledged on page 1, but no declaration of authors' competing interests or conflicts of interest is reported.",
+        "rating": "No"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "Scopus (single database searched in May 2024; English-language peer-reviewed articles, 2009–2024)",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_self_description",
+        "page": "Page 1",
+        "quote": "A targeted systematic review following PRISMA 2020 guidelines was conducted."
+      },
+      {
+        "criterion": "databases_searched",
+        "page": "Page 1",
+        "quote": "performed in the Scopus database in May 2024, limited to peer-reviewed articles published in English from 2009 to 2024."
+      },
+      {
+        "criterion": "included_studies_count_reported",
+        "page": "Page 1",
+        "quote": "records identified, 8 studies met the inclusion criteria. Risk of bias was assessed using adapted CASP criteria."
+      },
+      {
+        "criterion": "narrow_criterion2_fit",
+        "page": "Page 1",
+        "quote": "The identified creative financing mechanisms included prepaid tariff schemes, community financing, repayable"
+      },
+      {
+        "criterion": "methodological_notes",
+        "page": "Page 12",
+        "quote": "The findings should be presented clearly, complete with relevant data and facts. They should also be related to"
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "10.2166/washdev.2020.037",
+        "first_author_surname": "Grant",
+        "title_or_topic": "Life-cycle costs approach for private piped water service delivery: a study in rural Viet Nam",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 9, 10, 12) & References (p. 18)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "10.1111/wej.12396",
+        "first_author_surname": "Kumasi",
+        "title_or_topic": "Rural water asset management practices in Ghana: the gaps and needs",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 9, 10, 12) & References (p. 18)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "10.13044/j.sdewes.d6.0195",
+        "first_author_surname": "Kumasi",
+        "title_or_topic": "Financing sustainable water service delivery of small town water systems in Ghana: The Gaps and Needs",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 9, 10, 12) & References (p. 18)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.1021/es505975h",
+        "first_author_surname": "Walters",
+        "title_or_topic": "Long-term functionality of rural water services in developing countries: A system dynamics approach to understanding the dynamic Interaction of factors (note: secondary systematic review of 97 articles + CLD modelling)",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 9, 10, 12) & References (p. 20)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.2166/ws.2021.301",
+        "first_author_surname": "Fan",
+        "title_or_topic": "Evaluation of rural water supply sustainable operation and management based on cyclic correction framework - a case study of Chongqing, China",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 8, 9, 10, 12) & References (p. 18)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1021/acs.est.2c00939",
+        "first_author_surname": "Chintalapati",
+        "title_or_topic": "Improving the reliability of water service delivery in rural Kenya through professionalized maintenance: A System dynamics perspective",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 8, 9, 11, 12) & References (p. 17)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1016/j.envsci.2022.07.023",
+        "first_author_surname": "Walters",
+        "title_or_topic": "Challenges and solutions to rural water service sustainability in East African countries: A 'systems scaffolding' perspective",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 8, 9, 11, 12) & References (p. 20)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.2166/washdev.2012.007",
+        "first_author_surname": "Meleg",
+        "title_or_topic": "SISAR: a sustainable management model for small rural decentralized water and wastewater systems in developing countries",
+        "where_in_review": "Tables 1, 2, 3, 4, 5 (pp. 7, 8, 9, 11, 12) & References (p. 19)",
+        "year": "2012"
+      }
+    ],
+    "included_studies_count_reported": 8,
+    "included_studies_list_completeness": "complete_inline_table_or_list",
+    "methodological_notes": "Substantive scope passes narrow Criterion 2 (examines tariff-setting regulations, prepaid vs. postpaid tariff rules, cross-subsidization, private/cooperative/community utility ownership and governance models in rural piped water supply). However, methodological quality under AMSTAR 2 is Critically Low due to multiple critical flaws (no registered protocol, single-database Scopus-only search yielding 49 hits and 8 included studies, no excluded-studies list, inadequate adapted-CASP RoB tool, and contradictory RoB integration). Forensic audit also reveals severe editorial/reporting defects: (1) p. 6 erroneously refers to 'the fifteen articles... presented in Table 2' whereas Table 2 and the entire review include 8 studies; (2) Abstract and p. 11 report 5 Moderate RoB and 3 Low RoB studies, contradicting Table 5 (p. 12), which rates 7 studies Moderate and only 1 (Grant et al., 2020) Low; (3) Table 5 contains unedited second-person LLM/reviewer prompt text ('in your summary is limited', 'acceptable in your description'); (4) the opening paragraph of the Discussion (p. 12) prints raw manuscript-template instructions verbatim; (5) Table 3 (p. 9) attributes ~15% coverage increase and >90% cost coverage from bank loans/cross-subsidy to Kumasi (2018) (duplicating Meleg 2012's outcomes), contradicting Table 4 (p. 10) which notes banks in Ghana granted zero loans to WSMTs; and (6) one of the 8 included studies (Walters & Javernick-Will, 2015) is itself a systematic literature review of 97 articles rather than a primary empirical study. Note that journal header prints Journal of People, Plants, and Environment (JPPE) rather than J Korean Soc Environ Eng.",
+    "narrow_criterion2_fit": "passes_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "targeted systematic review following PRISMA 2020 guidelines (with self-noted scoping nature and narrative PICO synthesis)",
+    "study_id": "S319"
+  }
+}
