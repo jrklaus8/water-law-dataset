@@ -1,0 +1,281 @@
+{
+  "record_id": "RA460D449393A",
+  "order": 46,
+  "run": 2,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "934c579492bbb28b82c71ef2bbb8b50011d15d2118a5994b34e8d75409ebc4ff",
+  "input_text_sha256": "cb2b88ee818db3af9f380f7c303a6141ed983342c8ccfe20a2e34ac76c3a73c1",
+  "prompt_sha256": "cfdda1f8c50edfcd86db9f052ba7cc513b312466df933d15c6998a0f51b78153",
+  "started_at": "2026-11-20T17:24:01.835138+00:00",
+  "completed_at": "2026-11-20T17:25:22.801578+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RA460D449393A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RA460D449393A\n- Title: Implementation and adaptation of WASH FIT in healthcare facilities: A systematic scoping review\n- Authors: Kpodzro S.; Cronk R.; Lineberger H.; Lansing L.; Anderson D.M.\n- Year: 2026\n- DOI: 10.1016/j.wds.2026.100291\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: cb2b88ee818db3af9f380f7c303a6141ed983342c8ccfe20a2e34ac76c3a73c1) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=71137, sha256=cb2b88ee818db3af9f380f7c303a6141ed983342c8ccfe20a2e34ac76c3a73c1]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Multiple low- and middle-income countries (20 included studies; primarily African and Southeast Asian regions, plus Ecuador and Venezuela)",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1: the review examines environmental health continuous quality improvement (WASH FIT) implementation and process adaptation in institutional healthcare facilities (hospitals and health centers), not household or community water or sanitation service access, and focuses on process steps rather than service access itself.",
+      "c2": "Under the active 2026-10-13 narrow rule-type reading, Criterion 2 is NOT met (no): WASH FIT is a voluntary, participatory continuous quality improvement (CQI) facility assessment and action-planning tool (generic program delivery / internal facility quality management), not a rule-type legal, regulatory, or administrative mechanism directly governing service access (such as eligibility screening, documentation/tenure rules, tariffs, enforcement, or utility regulatory structure). Under the literal/plain broad wording of Criterion 2, the paper arguably touches on institutional and administrative implementation factors (e.g., Ministry of Health leadership, local government coordination, facility hierarchy, and WASH FIT team decision-making autonomy), so it could pass plain Criterion 2 narrowly, but plain_criterion2_decision remains exclude because the study still fails Criterion 1 (institutional healthcare facilities rather than household/community service access) and Criterion 4 (reports only CQI process steps and implementation facilitators, with no water or sanitation access outcomes).",
+      "c3": "Meets Criterion 3: systematic scoping review synthesizing 20 peer-reviewed and grey-literature empirical/programmatic studies across 719 healthcare facilities using an explicit search strategy, dual full-text screening, and dual data extraction.",
+      "c4": "Fails Criterion 4: reports only implementation process and adaptation outcomes—specifically facility/stakeholder context descriptors, completion or modification of the five WASH FIT cycle steps (assessors vs. improvers), and self-reported implementation best practices/barriers. It reports no water or sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion outcomes (noting that WASH FIT effectiveness on WASH services is examined in a separate unpublished review).",
+      "c5": "Meets Criterion 5: population/unit of analysis (719 healthcare facilities across 20 studies in LMICs), exposure/intervention (WHO/UNICEF WASH FIT implementation and adaptation), outcomes (CQI step completion/adaptation and implementation facilitators/barriers), and study design (systematic scoping review) are clearly identifiable.",
+      "c6": "Meets Criterion 6: full text is in English. (Retrieved text is the 2024 medRxiv preprint matching the exact title and all five authors of the 2026 publication.)"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4 of 22",
+        "quote": "We included studies that described the implementation and/or adaptation of WASH FIT in at least one healthcare facility in a low- or middle-income country."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 5 of 22",
+        "quote": "Across all studies, WASH FIT was implemented in 719 healthcare facilities, with an average of 36 facilities per study (ranging from 1 to 256)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 22",
+        "quote": "WASH FIT is a risk-based, continuous quality improvement tool that aims to help healthcare facilities plan, prioritize, implement, and monitor improvements to environmental health services using a participatory approach (WHO/UNICEF, 2022f)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11 of 22",
+        "quote": "Multiple studies reported the benefits of leadership and coordination with the government and the Ministry of Health (Dorji, 2020; Kabir et al., 2023; Maina et al., 2019; Report on Piloting of WASH FIT, 2021; Teme, 2023; Weber et al., 2018)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 3 of 22",
+        "quote": "Our specific research objectives were to (1) describe contexts and stakeholders involved in WASH FIT implementation, (2) describe the WASH FIT process and identify any adaptations, and (3) assess good practices for implementing WASH FIT."
+      }
+    ],
+    "exclusion_code": "E02",
+    "exposure": "Implementation and adaptation of the WHO/UNICEF Water and Sanitation for Health Facility Improvement Tool (WASH FIT), a five-step continuous quality improvement (CQI) tool",
+    "outcome": "Process and implementation outcomes only: stakeholder roles, completion and adaptation of the five WASH FIT cycle steps (WASH FIT assessors vs. WASH FIT improvers), and self-reported implementation facilitators and barriers (no water or sanitation service access outcomes reported)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Healthcare facilities in low- and middle-income countries (20 included studies covering 719 healthcare facilities, averaging 36 facilities per study, range 1 to 256; unit of analysis: study / healthcare facility)",
+    "rationale": "Exclude (E02 Wrong population; also fails c2 narrow rule-type exposure and c4 access outcome). The retrieved full text (the 2024 medRxiv preprint matching the exact title and all five authors of the 2026 article) is a systematic scoping review of 20 studies examining how the WHO/UNICEF Water and Sanitation for Health Facility Improvement Tool (WASH FIT) is implemented and adapted in 719 institutional healthcare facilities in low- and middle-income countries. First, the study examines institutional healthcare facilities rather than household or community water or sanitation service access (c1=no, E02). Second, WASH FIT is a participatory continuous quality improvement (CQI) facility assessment and planning tool rather than a rule-type legal, regulatory, or administrative mechanism governing service access under the 2026-10-13 Criterion 2 clarification (c2=no). Third, the review extracts only CQI process fidelity/adaptation steps and qualitative implementation facilitators/barriers, reporting no water or sanitation service access, availability, reliability, or affordability outcomes (c4=no; effectiveness is deferred to a separate unpublished review). Even under the plain broad wording of Criterion 2 (where Ministry of Health leadership and facility team autonomy represent institutional/administrative factors), the decision remains exclude due to failing Criteria 1 and 4.",
+    "record_id": "RA460D449393A",
+    "study_design": "Systematic scoping review (synthesizing 20 peer-reviewed and grey-literature studies)"
+  }
+}

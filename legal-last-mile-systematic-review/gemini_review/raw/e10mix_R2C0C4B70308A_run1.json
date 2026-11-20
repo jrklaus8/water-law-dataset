@@ -1,0 +1,286 @@
+{
+  "record_id": "R2C0C4B70308A",
+  "order": 128,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d5d2a0e538577b31d4d18f83301373e656a6412df4262997b39c309d450847e6",
+  "input_text_sha256": "ddb7650e165d40fcfe58baaf493eb926559bcccb86a28f0a257b1dad0faa5954",
+  "prompt_sha256": "7a52cdcd1b0a1a006c4d4d6e35da114f2bcb0cbfaa1b2482df8dca8e26159770",
+  "started_at": "2026-11-20T17:02:44.827973+00:00",
+  "completed_at": "2026-11-20T17:05:29.665884+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R2C0C4B70308A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R2C0C4B70308A\n- Title: La Guerra de Agua; Notions of Morality, Respectability, and Community in a Madrid Neighborhood\n- Authors: Ofer, Inbal\n- Year: 2009\n- DOI: 10.1177/0096144208327910\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: ddb7650e165d40fcfe58baaf493eb926559bcccb86a28f0a257b1dad0faa5954) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=56586, sha256=ddb7650e165d40fcfe58baaf493eb926559bcccb86a28f0a257b1dad0faa5954]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Spain",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community water and sanitation access ('la Guerra de Agua') in the Madrid shantytown of Orcasitas from the 1950s to 1986, including walking 1.5 km to highway fountains, twice-weekly municipal water tank deliveries, absence of drainage and indoor toilets/baths, clandestine tapping of water pipes for a communal bathroom, negotiation for a public fountain, and eventual piped water infrastructure (Canal de Isabel II) and apartment reconstruction.",
+      "c2": "PASSES PLAIN WORDING -> FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the plain/literal wording of Criterion 2 ('Examines a legal, administrative, institutional, regulatory or governance factor'), this study would pass (plain_criterion2_decision = 'include') because it substantially examines institutional and political-governance dynamics—how grassroots mobilization, legalization of the Orcasitas Neighborhood Association, Supreme Court petitions, and strategic negotiations with Francoist municipal officials ('aperturista' Falangists) and post-Franco city councils interacted during Spain's transition to democracy to secure neighborhood water and housing infrastructure. Under the active 2026-10-13 A16 rule-type mechanism scope, however, Criterion 2 is 'no': the article is an urban cultural and social history whose analytical focus is how material water deprivation shaped notions of cleanliness, respectability, family bathing rituals, moral justification of water theft, female socialization, and collective identity against macro-governance background (late Francoism and democratization) and social-movement mobilization. Passing narrative anecdotes—such as fear of police shack demolition deterring separate toilet shacks (PDF Page 5), a councilman granting a public fountain after a street sit-down over a clandestine pipe tap (PDF Page 8), and Canal de Isabel II representatives requesting neighborhood interlocutors regarding canal costs (PDF Page 13)—do not constitute an empirical analysis of a rule-type mechanism (eligibility screening, tenure/documentation requirements, tariff/cost-recovery rules, administrative burden, or regulatory enforcement/discretion rules) directly governing service access.",
+      "c3": "Empirical qualitative urban-history case study drawing on primary oral-history interviews conducted by the author in Madrid (June and September 2006), archival records from the Spanish Ministry of Housing / Archivo Regional de la Comunidad de Madrid (including a 1965 soil/water survey, 49 shack floor plans, and an author-compiled database of 230 families settled between 1950 and 1971), published neighborhood testimonies, and press reports.",
+      "c4": "Descriptively reports household and community water and sanitation access conditions and milestones—including lack of running water and drainage in 1,500 shacks, unreliable and unaffordable twice-weekly municipal water tank deliveries (from 1960), 50% of houses having only primitive toilets and 80% lacking baths/showers in 1973, communal bath/toilet access via clandestine pipe tapping (1972), installation of a municipal public fountain, Canal de Isabel II canal construction (from 1970), and eventual neighborhood reconstruction with indoor toilets (completed 1986)—although the author's primary analytical outcomes are sociocultural perceptions of respectability, morality, and identity.",
+      "c5": "Population and units of analysis (migrant households/residents and the Orcasitas shantytown community in Madrid), study design (qualitative historical and oral-history single-neighborhood case study), and the paper's studied exposures (water/sanitation deprivation, grassroots mobilization, and macro-regime transition) and outcomes (sociocultural identity/morality and neighborhood infrastructure transformation) are clearly identifiable, though a rule-type legal/administrative exposure per Criterion 2 is absent.",
+      "c6": "Full text is written in English (with translated Spanish interviews and archival sources)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1",
+        "quote": "This article looks at one aspect of this process: the struggle to obtain running water and sanitation services and the way this struggle shaped and was shaped by the inhabitants’ perceptions of morality, respectability, and community life."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4",
+        "quote": "Starting in 1960, Madrid’s city council provided for a regular service of water tanks that arrived into the neighborhood twice a week to sell water. But the schedule was unreliable and the price often higher than what most people could afford. As far as drainage and sanitation services were concerned, a report that appeared in one of Madrid’s daily newspapers, Cambio 16, stated that by 1973, only 50 percent of the houses in Orcasitas had some sort of separate, if primitive, toilets."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11",
+        "quote": "The current research does not look for formal definitions of democracy, but rather, focuses on a variety of projects that contributed to the institution of more participatory civic practices. In doing so, it points to the complicated relations of different populations with both the crumbling institutions of the dictatorship and the newly emerged ones of the democratic state."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12",
+        "quote": "For the purpose of my research, I compiled a database containing information about 230 of the 1,500 families that settled in Orcasitas between the years 1950 and 1971."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 13",
+        "quote": "In October 1970, representatives of the company that was building the water canal Isabel II, which was to provide running water for Madrid’s southern suburbs, came to Orcasitas. The representatives had to inform the neighbors of the costs of having the canal run through their barrio and secure their agreement."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14",
+        "quote": "Such deprivation, in its turn, influences sociocultural notions regarding morality, respectability, and the meaning of communal life."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Material water and sanitation deprivation and grassroots neighborhood mobilization (Asociación de Vecinos protests, petitions, and political alliances) across the late Franco dictatorship and Spain's transition to democracy; no rule-type legal, administrative, or regulatory mechanism directly governing water/sanitation access is analyzed",
+    "outcome": "Primary analytical outcomes are residents' notions of cleanliness, respectability, family bathing norms, morality of water theft, women's socialization at the fountain, and collective civic/class identity; descriptively reports community and household water/sanitation milestones (unreliable/unaffordable municipal water tankers, 50% primitive toilet coverage and 80% lacking baths/showers in 1973, clandestine communal bath connection, municipal public fountain installation, Canal de Isabel II network construction, and neighborhood housing reconstruction with indoor toilets by 1986)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Internal working-class migrant inhabitants of Orcasitas, a shantytown of 1,500 shacks on the southern outskirts of Madrid (1950s–1986); units of analysis are the neighborhood/community and residents/households (based on author oral-history interviews in 2006, 49 Ministry of Housing shack plans, and an archival database of 230 families settled between 1950 and 1971)",
+    "rationale": "Excluded as E03 (Wrong exposure) under the 2026-10-13 rule-type Criterion 2 scope. Although this empirical urban-history case study examines water and sanitation deprivation and community struggle ('la Guerra de Agua') in Madrid's Orcasitas shantytown using oral histories and Ministry of Housing archives, its analytical focus is how material water scarcity and grassroots mobilization shaped notions of cleanliness, respectability, family bathing intimacy, moral justification of stealing water, female socialization, and collective identity during Spain's macro-political transition from Francoism to democracy. It does not analyze a rule-type legal, administrative, or regulatory mechanism directly governing water or sanitation service access (such as eligibility rules, documentation or tenure requirements for utility connection, tariff structures, administrative burden, or formal regulatory enforcement/discretion rules). Under the literal/plain broad wording of Criterion 2 ('institutional... or governance factor'), it would be included (plain_criterion2_decision = 'include') due to its analysis of civic mobilization and municipal/state negotiations across regime transition.",
+    "record_id": "R2C0C4B70308A",
+    "study_design": "Qualitative historical and oral-history single-neighborhood case study"
+  }
+}

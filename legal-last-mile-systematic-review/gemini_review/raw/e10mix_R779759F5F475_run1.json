@@ -1,0 +1,276 @@
+{
+  "record_id": "R779759F5F475",
+  "order": 136,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "6d87afcd21548bd59b568cd7de1753e75aece5d4053778fb8e0c87d46acfe0c0",
+  "input_text_sha256": "7a102b76df6f5d556b9299020fdbc7e50cc9335a90e76a4d8c1f9b12be575681",
+  "prompt_sha256": "fdadcdcae40fe7aae8cad9524261b5cdbdb5dcf34a51cc3a78420b2a77c5be2c",
+  "started_at": "2026-11-20T17:06:36.554822+00:00",
+  "completed_at": "2026-11-20T17:09:28.011588+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R779759F5F475\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R779759F5F475\n- Title: The Use of Sanitary Latrines and the Practice of Open-Air Defecation in a Rural Setup in Perambalur District: A Cross-Sectional Study\n- Authors: Zulkaflay, MS; Fang, LLP; Jeing, YD; Ahmad, A; Gendeh, H\n- Year: 2022\n- DOI: 10.7759/cureus.32547\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 7a102b76df6f5d556b9299020fdbc7e50cc9335a90e76a4d8c1f9b12be575681) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=25433, sha256=7a102b76df6f5d556b9299020fdbc7e50cc9335a90e76a4d8c1f9b12be575681]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household sanitation service access in rural villages, specifically availability of household latrines, shared toilets, underground drainage/sewage disposal, and open-air defecation.",
+      "c2": "Fails both the narrow 2026-10-13 rule-type reading and the plain wording of Criterion 2. Under the narrow 2026-10-13 reading, no rule-type legal, regulatory, or administrative mechanism governing access (such as eligibility screening, tenure/documentation rules, tariffs, or enforcement) is empirically measured or analysed; the authors explicitly note in the Discussion that eligibility requirements in the funding system might explain why only 24% benefited from government initiatives, but state that further research is required to study that question. Under the plain wording of Criterion 2, the study's analytical exposures are purely socio-demographic and housing characteristics (family size, age/gender composition, income, religion, and kutcha/semi-pucca/pucca house type) alongside behavioral/cost perceptions, with only univariate descriptive counts of whether households benefited from (24%) or were unaware of (22% of non-toilet homes) a generic government toilet-construction scheme and health education sources.",
+      "c3": "Primary quantitative empirical study conducting semi-structured questionnaire interviews across 329 rural households analysed using descriptive statistics, independent t-tests, and chi-square/Fisher's exact tests.",
+      "c4": "Reports household sanitation access outcomes: household latrine availability (64.1%), open-air defecation practice (52.3%), and underground sewage disposal access (4.7% of toilet-owning households).",
+      "c5": "Population and unit of analysis (329 households in two rural villages, Senjeri and Siruvachur, in Perambalur district), analytical exposures (demographic, income, religion, and house-type variables), outcomes (household latrine availability and open defecation), and study design (community-based cross-sectional analytical study) are clearly reported.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 8",
+        "quote": "This study aimed to estimate the proportion of people with access to latrine facilities and the proportion of people who practice open defecation in the villages of Perambalur, Tamil Nadu."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 8",
+        "quote": "For this study, we selected 329 households using a convenient sampling method from two villages in the Perambalur area."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5 of 8",
+        "quote": "An independent t-test found no statistically significant relationship between the availability of household latrines and the number of girls or boys, age, or family income."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 8",
+        "quote": "However, only 24% of the survey participants who had bathrooms had benefited from government initiatives. The eligibility requirements specified in the funding system may be to blame for this. However, further research is required for this discussion."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Socio-demographic and housing characteristics (household age/gender composition, family size, monthly family income, religion, and house type: kutcha, semi-pucca, pucca); descriptive self-reported reasons for lacking a toilet and receipt/awareness of government toilet-building scheme",
+    "outcome": "Household latrine availability (own or shared toilet vs. no toilet facility), open-air defecation practice, and access to underground sewage disposal",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "329 rural households (one respondent per household, preferably head of family) in two villages (Senjeri and Siruvachur) in Perambalur district, Tamil Nadu",
+    "rationale": "Excluded under E03 (Wrong exposure). Note on metadata: the retrieved PDF matches the record's exact Title, Year (2022), and DOI (10.7759/cureus.32547), confirming it is the target article (the bibliographic record's author field appears to carry an upstream indexing error, whereas the PDF lists Tamilarasan M et al.). Substantively, this cross-sectional survey of 329 rural households in Tamil Nadu examines household latrine availability and open-air defecation (satisfying c1, c3, c4), but its analytical exposures are purely socio-demographic and housing-material variables (age, gender composition, family size, monthly income, religion, and kutcha/semi-pucca/pucca house structure) along with descriptive behavioral/cost barriers and univariate counts of government toilet-scheme uptake. It does not examine any legal, administrative, regulatory, or rule-type governance mechanism governing sanitation access; potential funding eligibility requirements are only mentioned speculatively in one sentence as a topic for future research.",
+    "record_id": "R779759F5F475",
+    "study_design": "Cross-sectional analytical household survey"
+  }
+}

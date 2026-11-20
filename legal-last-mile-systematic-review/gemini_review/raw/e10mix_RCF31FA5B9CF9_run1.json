@@ -1,0 +1,281 @@
+{
+  "record_id": "RCF31FA5B9CF9",
+  "order": 115,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "900773583893d065bc0c77158472a34da79fdb0d54734c39254570ecc09fd3b3",
+  "input_text_sha256": "db34eebc052e86679d89334ce078666655517766f877f8296a27b056686d96d6",
+  "prompt_sha256": "85c556e7d2665ad640d13b77c60b416fda499042dffed66c0418ee91b2bfea52",
+  "started_at": "2026-11-20T16:59:24.993185+00:00",
+  "completed_at": "2026-11-20T17:00:41.241778+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RCF31FA5B9CF9\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RCF31FA5B9CF9\n- Title: Assessment of the performance of a public water utility: A case study of Blantyre Water Board in Malawi\n- Authors: Kalulu K.; Hoko Z.\n- Year: 2010\n- DOI: 10.1016/j.pce.2010.07.017\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: db34eebc052e86679d89334ce078666655517766f877f8296a27b056686d96d6) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=29646, sha256=db34eebc052e86679d89334ce078666655517766f877f8296a27b056686d96d6]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Malawi",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban domestic water supply service access in Blantyre, Malawi, including household bill affordability, service disconnections, reconnection barriers, and differential coverage between low-income areas (49%) and formal medium/high-income areas (96%) alongside utility performance benchmarking.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, the study examines public water utility governance, statutory commercialization mandates (Water Works Act of 1995), tariff policy, and revenue-collection administration. Under the narrow 2026-10-13 reading, although a substantial part of the paper benchmarks general utility efficiency (working ratio, unaccounted-for water, staff per 1000 connections), Sections 3, 4.1.2, and 4.1.3 directly examine rule-type mechanisms governing household water access: rising-block tariff and cost-recovery rules (including government regulatory rejection of the proposed 2009 tariff increase and uniform residential volumetric tariffs), administrative payment-updating delays in bank bill-payment arrangements causing wrongful disconnections, disconnection enforcement for non-payment, and a MK1000 (US$7.09) reconnection fee deterring reconnection.",
+      "c3": "Empirical mixed-methods case study combining review of national legal/policy documents and Blantyre Water Board operational/financial records (2001-2009), interviews with three utility officials, and interviews with a random sample of 100 low-income domestic customers across three areas.",
+      "c4": "Reports access-relevant outcomes at the household level, specifically affordability (house connection bills accounting for 4.4% of household income in low-income areas, deemed high by 70% of interviewed customers; average domestic bill of MK1125 or US$8/month) and exclusion/disconnection (8 of 100 interviewed customers disconnected despite having already paid via bank; increasing numbers of disconnected customers failing to reconnect; 17 of 100 citing the MK1000 reconnection fee as exorbitant), alongside contextual data on service coverage and supply continuity.",
+      "c5": "Identifies both units of analysis clearly: Blantyre Water Board (public parastatal water utility) and 100 randomly selected domestic customer households in three low-income areas of Blantyre (Chilobwe, Misesa, and Nancholi), with identifiable tariff/billing/disconnection exposures, affordability/disconnection outcomes, and empirical case-study design.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 2, Section 3",
+        "quote": "A total of 100 domestic customers were selected at random from the low-income areas of Chilobwe (30 customers), Misesa (40 customers) and Nancholi (30 customers) for interview in order to get an overview of the customer perspective of what was documented."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 4, Section 4.1.3",
+        "quote": "The utility applies the rising block tariff (see Tables 4 and 5) with the aim of the rich subsidizing the service to the poor. Customers were being charged based on the 2008 tariffs because implementation of tariffs proposed for 2009 was rejected by the government on the basis that the utility would be transferring the cost of its inefﬁciency to the customers."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 3, Section 4.1.2",
+        "quote": "From those interviewed, some eight paid up customers indicated that they had at some point been disconnected having already paid through the bank."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 3, Section 4.1.2",
+        "quote": "Based on the tariff structure (see Section 4.1.3) in the low-income areas the bills for house connections account for 4.4% of household income, a ﬁgure deemed to be on the higher side by the utility and some 70% of the customers interviewed."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 3, Section 4.1.2",
+        "quote": "The number of disconnected customers has increased with time resulting in increased bad debtors as often customers do not pay for reconnection. Some 17 customers out of the 100 interviewed cited the reconnection fee of MK1000 (US$7.09) as exorbitant."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Public utility tariff and cost-recovery rules (rising block tariff structure, uniform residential volumetric charges, government rejection of proposed 2009 tariff increase, MK1000 reconnection fee) and billing/payment administration and disconnection enforcement (including delayed bank-payment account reconciliation) under the Water Works Act of 1995 mandate.",
+    "outcome": "Household water bill affordability (4.4% of household income in low-income areas; perceived high burden among 70% of interviewed customers) and service disconnection/non-reconnection (wrongful disconnection of 8/100 paid-up bank payers; rising disconnections and non-reconnection linked to the MK1000 reconnection fee cited as exorbitant by 17/100 customers), alongside utility-level financial/operational performance indicators.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Blantyre Water Board (parastatal urban water utility serving Blantyre City, Malawi; 3 officials interviewed: Internal Audit Manager, 1 Zone Manager, 1 Projects and Planning Engineer) and 100 randomly selected domestic customer households in three low-income areas of Blantyre: Chilobwe (n=30), Misesa (n=40), and Nancholi (n=30).",
+    "rationale": "Although framed primarily around benchmarking public water utility performance (working ratio, bill collection efficiency, unaccounted-for water, and staffing per 1000 connections), this empirical case study also collects primary interview data from 100 randomly sampled low-income domestic customers in Blantyre, Malawi, alongside utility documentation and staff interviews. It directly examines rule-type tariff, administrative billing/reconciliation, and disconnection/reconnection fee mechanisms governing household water affordability (bills consuming 4.4% of household income) and service exclusion/disconnection (wrongful disconnections from delayed bank account updates and persistent non-reconnection due to the MK1000 reconnection fee). It therefore meets all systematic-review inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2 (noting that Criterion 6 quantitative effect-size extractability is a meta-analysis gate rather than a review-inclusion gate).",
+    "record_id": "RCF31FA5B9CF9",
+    "study_design": "Empirical mixed-methods case study (documentary review of legal/policy and utility records, key-informant interviews with 3 utility officials, and random-sample interviews of 100 low-income domestic customers)"
+  }
+}

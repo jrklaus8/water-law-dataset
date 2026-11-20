@@ -1,0 +1,286 @@
+{
+  "record_id": "R1ACA7824ACD5",
+  "order": 156,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0f7ecec65e2a9b55482dbef0e09f5d008cd9347ac116aa3e81d8c52ec5e95fd4",
+  "input_text_sha256": "bc57135ecb007e067d59491d79679a67c878a4f06a4464ee000a1bdefa33d4ee",
+  "prompt_sha256": "81c100d67a267ce99662efa24c0f82a4246b7b3eb12c172df39652f0e1a734d0",
+  "started_at": "2026-11-20T17:13:01.161302+00:00",
+  "completed_at": "2026-11-20T17:13:58.575790+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R1ACA7824ACD5\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R1ACA7824ACD5\n- Title: Water, sanitation and hygiene in selected counties in western Kenya: status and challenges\n- Authors: Owino K.O.; T. Ong'or B.; Kanda E.; Ochanda D.; Kariaga P.; Mukolwe M.; Lusweti E.; Lutta V.\n- Year: 2025\n- DOI: 10.2166/wp.2025.080\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: bc57135ecb007e067d59491d79679a67c878a4f06a4464ee000a1bdefa33d4ee) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=58589, sha256=bc57135ecb007e067d59491d79679a67c878a4f06a4464ee000a1bdefa33d4ee]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household, community, school, and public-market water and sanitation service access (clean water access, piped water connectivity, toilet/sanitation coverage, sewer connectivity, open defecation, and handwashing facilities) in Kakamega, Busia, and Vihiga counties in western Kenya.",
+      "c2": "Passes the plain/broad wording of Criterion 2 because Section 3.4 explicitly examines county sanitation governance and financing (institutional fragmentation across health, water/environment, and lands/housing departments, absence of a dedicated sanitation budget line/vote, and non-localization of national menstrual hygiene policy), alongside brief mentions of utility billing complaints and fees for county-maintained market toilets. However, it FAILS the active 2026-10-13 narrow rule-type reading of Criterion 2: the paper is a broad WASH situational and challenges overview discussing macro-governance background, public budgeting priorities, inter-departmental coordination, physical/environmental constraints, and socio-cultural norms rather than analyzing a specific rule-type legal, regulatory, or administrative mechanism directly governing service access (such as eligibility rules, documentation/tenure requirements, administrative burden, formal tariff/cost-recovery rules, regulatory structure, or enforcement). Plain wording = yes (include); narrow 2026-10-13 rule-type reading = no (exclude as E03).",
+      "c3": "Contains primary empirical qualitative/mixed-methods evidence collected between March and August 2023 via 16 key informant interviews across three counties, two focus group discussions (averaging 20 participants each in Vihiga and Busia), and a review of national and county policy/sector reports.",
+      "c4": "Reports county-level percentages for clean water access, piped water connectivity, general sanitation coverage, sewerage connectivity, and open defecation, as well as qualitative accounts of intermittent piped supply, billing complaints, and affordability barriers at public market toilets.",
+      "c5": "Identifies the study area and participants (three counties in western Kenya: Kakamega, Busia, and Vihiga; 16 county WASH key informants and two FGDs of ~20 community/sector participants each; units of analysis are county WASH systems and community/stakeholder respondents), broad WASH challenges/governance factors, WASH access/coverage outcomes, and a cross-sectional descriptive case-study design, though no specific rule-type regulatory/legal exposure is isolated.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 15 (Abstract)",
+        "quote": "This study aimed at assessing the status and challenges of water, sanitation and hygiene (WASH) in western Kenya, with three counties, namely Busia, Kakamega and Vihiga, taken as a case study."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 15 (Section 2.3)",
+        "quote": "KIIs were carried out on at least ﬁve opinion leaders from each of the three counties, with a total of 16 key informants interviewed across the three counties (Kakamega, Busia and Vihiga)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 15 (Section 3.1)",
+        "quote": "The study indicated that the majority of the population had access to a clean water supply, with 85% accessibility in Kakamega, while Vihiga and Busia shared an accessibility ratio of 60%. However, piped water connectivity was at 61, 47 and 26% in Kakamega, Busia and Vihiga, respectively."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 15 (Section 3.2.2)",
+        "quote": "Additionally, the affordability of sanitary facilities played a key role in limiting access. Speciﬁcally, in Vihiga, high fees charged on the use of market toilets largely contributed to OD, especially from street children."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 15 (Section 3.4)",
+        "quote": "Governance and ﬁnancing for sanitation in all three counties is quite a challenge. Sanitation provision has been spread out in other departments, namely water, environment and health, hindering service provision."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11 of 15 (Section 3.4)",
+        "quote": "Furthermore, there is no speciﬁc budget line for sanitation in the three counties considered. There is no existing vote on sanitation in the budget reports; hence, budgetary allocation was quite low."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Broad WASH sector challenges including county departmental fragmentation, absence of dedicated county sanitation budget lines, lack of localized menstrual hygiene policy, environmental/flooding factors, solid waste disposal, and socio-cultural norms (no specific rule-type access mechanism analyzed)",
+    "outcome": "County-level water access (60-85%), piped water connectivity (26-61%), general sanitation coverage (>70%), sewer connectivity (<1-19%), open defecation prevalence (0.1-25%), and qualitative barriers to water and public toilet use",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Three counties in western Kenya (Kakamega, Busia, and Vihiga); 16 county WASH key informants and 2 focus group discussions averaging 20 participants each in Vihiga and Busia (units of analysis: county WASH systems and stakeholder/community respondents)",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 rule-type scope clarification for Criterion 2. While this cross-sectional descriptive study empirically assesses water, sanitation, and sewerage coverage across three western Kenyan counties using key informant interviews, focus group discussions, and document reviews, its governance analysis focuses on broad sector-level administration and public finance (fragmentation of WASH across county departments, absence of a dedicated county budget vote for sanitation, electoral prioritization of water over sanitation, and non-localization of national menstrual hygiene policy) alongside flooding, solid waste, and socio-cultural barriers. Passing anecdotes about high utility bills without water supply and fees at market toilets do not analyze any tariff rule, cost-recovery structure, eligibility criterion, or regulatory mechanism directly governing service access. Under the literal/plain wording of Criterion 2, the paper would be included because Section 3.4 explicitly examines county sanitation governance and financing.",
+    "record_id": "R1ACA7824ACD5",
+    "study_design": "Cross-sectional descriptive qualitative and document-review case study (16 key informant interviews, 2 focus group discussions, and policy/report review with descriptive statistics)"
+  }
+}

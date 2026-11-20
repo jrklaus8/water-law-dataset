@@ -1,0 +1,281 @@
+{
+  "record_id": "RF04979D5CC95",
+  "order": 3,
+  "run": 2,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "63df35c555ca49ad5fe021b6a690035b18d13593aaca601ff721b5c66ac852f3",
+  "input_text_sha256": "a51785afd28bf48d51191adb3313f9cbfd97cdc5d7666a737a23cc2a7124118a",
+  "prompt_sha256": "685581d6a0bb3287885f4e44a60acbf46e895ace052975be668f5225e748c14b",
+  "started_at": "2026-11-20T17:19:56.780768+00:00",
+  "completed_at": "2026-11-20T17:20:49.145396+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RF04979D5CC95\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RF04979D5CC95\n- Title: The customer forum - Putting customers at the centre of regulating water services\n- Authors: Hendry S.\n- Year: 2016\n- DOI: 10.2166/wp.2016.199\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: a51785afd28bf48d51191adb3313f9cbfd97cdc5d7666a737a23cc2a7124118a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=59987, sha256=a51785afd28bf48d51191adb3313f9cbfd97cdc5d7666a737a23cc2a7124118a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United Kingdom (Scotland, with comparative discussion of England)",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community water or sanitation service access; instead discusses high-level economic regulation and customer representation in negotiating Scottish Water's business plan, explicitly noting that unserved populations were not considered in the Forum's work or the business plan.",
+      "c2": "Plain wording: YES — examines legal, regulatory, and governance arrangements in water utility regulation (Scottish Water's public corporation model, WICS price-setting powers under the Water Industry (Scotland) Act 2002 and Water Services (Scotland) Act 2005, and the Customer Forum). Narrow 2026-10-13 rule-type reading: NO — focuses on participatory stakeholder negotiation of a utility business plan and reducing regulatory burden rather than analysing how a rule-type mechanism (such as tariff rules, eligibility screening, tenure/documentation, or utility ownership/regulatory structure) directly governs household or community service access. Even under the plain wording of Criterion 2, the paper is excluded (plain_criterion2_decision = exclude) because it contains no empirical evidence (c3) and reports no service-access outcome (c4).",
+      "c3": "Non-empirical legal/policy commentary and first-person experiential reflection by a member of the Customer Forum, with no empirical research design, primary data collection, or systematic empirical synthesis. Excluded under E05.",
+      "c4": "Reports no empirical outcome measuring household or community water/sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion; only describes reaching a negotiated agreement on Scottish Water's draft business plan ahead of schedule.",
+      "c5": "Lacks an empirical study design, defined study population/sample, and measurable service-access outcome.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 16",
+        "quote": "This article will explore recent initiatives in customer engagement in water services in Scotland, UK."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 12 of 16",
+        "quote": "including, perhaps, those who are not served by Scottish Water and therefore not really considered in our work or the business plan"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 16",
+        "quote": "Influenced by these developments in England, and the emerging literature, it was agreed to establish a body known as the Customer Forum in Scotland."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 16",
+        "quote": "The paper’s author was a member of the Forum and will therefore be able to combine academic analysis with an experiential understanding of the process."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 16",
+        "quote": "With this support and regulatory commitment, it was possible for the Forum’s engagement committee to reach agreement with Scottish Water on a draft business plan"
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Customer Forum negotiated-settlement mechanism within the Water Industry Commission for Scotland (WICS) 2015 strategic review of charges",
+    "outcome": "Agreement between the Customer Forum and Scottish Water on a draft business plan (no household or community water or sanitation access outcome reported)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Full text matches metadata (Hendry 2016, Water Policy, DOI 10.2166/wp.2016.199). Excluded as E05 (No empirical evidence): the article is a legal/regulatory policy essay and first-person institutional reflection by an academic member of Scotland's Customer Forum describing how the Forum negotiated a draft business plan with Scottish Water under WICS oversight, with comparative discussion of England's Customer Challenge Groups. It has no empirical methodology, sample, or primary data analysis, and it does not examine household or community water/sanitation access outcomes (explicitly noting on p. 12 that unserved populations were not considered in the Forum's work). It would also be excluded under the plain wording of Criterion 2 for lack of empirical evidence and lack of any access outcome.",
+    "record_id": "RF04979D5CC95",
+    "study_design": "Non-empirical legal/policy commentary and first-person institutional reflection"
+  }
+}

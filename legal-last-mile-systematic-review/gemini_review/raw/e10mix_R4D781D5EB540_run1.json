@@ -1,0 +1,286 @@
+{
+  "record_id": "R4D781D5EB540",
+  "order": 141,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "605a8bbf95390b2b01de53f3262c7a3d768d3f00f0ea95cc20a18f9918d1d6e9",
+  "input_text_sha256": "df011d775c5064f80ea6f06b800f2acd9e4f8f5b9dc620832eace16a83718fe0",
+  "prompt_sha256": "b4bb9fb8b84f03e34fa4eef6cf56934766190a5b689296edf5b7ef5af84ad410",
+  "started_at": "2026-11-20T17:11:49.871007+00:00",
+  "completed_at": "2026-11-20T17:13:00.738944+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R4D781D5EB540\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R4D781D5EB540\n- Title: Social movements and the struggle for shelter: A case study of eThekwini (Durban)\n- Authors: Mitlin D.; Mogaladi J.\n- Year: 2013\n- DOI: 10.1016/j.progress.2012.12.001\n- Retrieval status: retrieved_oa_xml\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: df011d775c5064f80ea6f06b800f2acd9e4f8f5b9dc620832eace16a83718fe0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=169032, sha256=df011d775c5064f80ea6f06b800f2acd9e4f8f5b9dc620832eace16a83718fe0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa (eThekwini/Durban case study within a wider South Africa and Peru research project)",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1 (Wrong service, E07). The paper examines low-income housing provision, access to state housing capital subsidies, and land/shelter struggles by two social movement organisations (FedUP and AbM) in eThekwini (Durban). The authors explicitly note that a separate South African case study in their wider project examined basic services in Cape Town, whereas in eThekwini they examined strategies to access state housing finance and tenure security and interviewed only municipal officials responsible for housing. Mentions of water and sanitation are purely incidental (secondary city-wide SAIRR statistics, a two-sentence note on a municipal standpipe/toilet-block interim relief programme, a water-department migration estimate, and a four-sentence interviewee anecdote noting illegal water/electricity connections as one AbM protest tactic).",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, if detached from water/sanitation, the paper does examine legal, regulatory, and governance factors in the housing sector (housing capital subsidy eligibility rules, People's Housing Process construction regulations and inspections, local councillor clientelism, and the KwaZulu-Natal Elimination and Prevention of the Re-emergence of Slums Act 2007), though it still fails overall review inclusion because those factors govern housing/shelter rather than water or sanitation (so plain_criterion2_decision is still exclude). Under both Criterion 2 tied to water/sanitation and the active 2026-10-13 narrow rule-type reading, c2 is no: none of the analysed legal or regulatory mechanisms govern household or community water or sanitation service access, and the brief four-sentence interviewee remark that municipal staff stopped disconnecting illegal water and electricity connections is a passing tactical anecdote rather than an empirical analysis of water enforcement rules.",
+      "c3": "Satisfies Criterion 3. This is an empirical qualitative case study conducted in two phases: Phase 1 mapped social movements via secondary material, workshops, and 45 interviews in South Africa (plus 56 in Peru); Phase 2 in eThekwini (February to November 2009) conducted 25 semi-structured key informant interviews (6 community organisation leaders/members, 4 NGO staff, 7 municipal/provincial housing officials including 2 councillors, and 6 commentators), 3 neighbourhood activist focus groups, and a validation workshop.",
+      "c4": "Fails Criterion 4 for water or sanitation. The empirical outcomes reported are housing-sector outcomes: state housing subsidy allocations, subsidy-financed houses built (2,735 units by FedUP in eThekwini), resistance to evictions/relocations, and a signed 2009 MOU for 14 AbM pilot settlement upgrading projects and 3 housing redevelopments awaiting delivery. No household or community water or sanitation access, connection, continuity, quantity, or affordability outcomes are empirically evaluated.",
+      "c5": "For its housing-sector research question, the study clearly identifies the study design (two-phase qualitative case study), unit of analysis and population (shelter social movement organisations FedUP and AbM and informal settlement residents in eThekwini), institutional/strategic exposures, and housing subsidy/shelter outcomes; however, no water or sanitation exposure-outcome relationship is studied.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PMC PMC4375561 - Introduction",
+        "quote": "This paper examines the challenge of housing provision in South Africa and the perspectives and contribution of social movements to addressing housing need."
+      },
+      {
+        "criterion": "c1",
+        "page": "PMC PMC4375561 - From phase one to phase two",
+        "quote": "Three of the movements selected for detailed study focussed on the needs of those living in low-income urban settlements and two of these were in South Africa (the other South African study looked at basic services in Cape Town). In eThekwini/Durban, as elaborated below, two substantive movement organisations provide a contrasting set of histories, experiences, relationships and strategies used to access to state housing finance and improve tenure security."
+      },
+      {
+        "criterion": "c2",
+        "page": "PMC PMC4375561 - Understanding the housing challenge in eThekwini",
+        "quote": "The lack of similar arguments on the part of municipal officials may reflect the fact that we only interviewed those with responsibility for housing."
+      },
+      {
+        "criterion": "c3",
+        "page": "PMC PMC4375561 - From phase one to phase two",
+        "quote": "In total, 25 key informants were interviewed of which six were members and leaders of community organisations, four were NGO staff members, seven were local authority and provincial officials, and six were commentators with experiences of movement activities."
+      },
+      {
+        "criterion": "c4",
+        "page": "PMC PMC4375561 - Conclusion",
+        "quote": "The primary focus of the social movement organisations considered here is to improve housing through securing access to the subsidy."
+      },
+      {
+        "criterion": "c1",
+        "page": "PMC PMC4375561 - Abahlali baseMjondolo strategies",
+        "quote": "A second tactic has been to improve access to basic services through illegal connections to water and electricity services."
+      }
+    ],
+    "exclusion_code": "E07",
+    "exposure": "Social movement strategies of collaboration and contestation interacting with South Africa's housing capital subsidy programme, People's Housing Process (PHP/ePHP) building regulations and inspections, municipal councillor clientelism, and the KwaZulu-Natal Elimination and Prevention of the Re-emergence of Slums Act 2007.",
+    "outcome": "Access to state housing capital subsidies, low-income housing construction and settlement redevelopment agreements (e.g., 2,735 subsidy-financed houses constructed by FedUP in eThekwini and a 2009 MOU for AbM settlements), eviction resistance, and political recognition (housing/shelter outcomes rather than water or sanitation access outcomes).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Unit of analysis: shelter social movement organisations (Federation of the Urban and Rural Poor [FedUP] and Abahlali baseMjondolo [AbM]) and informal settlement residents in eThekwini (Durban), South Africa; Phase 1 comprised 45 interviews in South Africa (and 56 in Peru), and the Phase 2 eThekwini case study comprised 25 key informant interviews and 3 focus groups with social movement activists.",
+    "rationale": "Excluded as E07 (Wrong service). Although this is an empirical qualitative case study examining low-income urban informal settlements in eThekwini (Durban), its subject is housing provision, state housing capital subsidies, construction/planning regulations, and shelter/eviction struggles rather than household or community water or sanitation service access. The authors explicitly note that basic services were examined in a separate Cape Town case study and that municipal interviews in eThekwini were conducted only with housing officials. Passing references to secondary city-wide water/sanitation statistics, a municipal standpipe/toilet-block relief programme, and a four-sentence interviewee anecdote regarding illegal water and electricity connections do not constitute an empirical analysis of water or sanitation service access or its legal/regulatory governance under either the plain or narrow 2026-10-13 reading of Criterion 2.",
+    "record_id": "R4D781D5EB540",
+    "study_design": "Qualitative case study (two-phase movement mapping and in-depth city case study using semi-structured key informant interviews, focus groups, workshops, and secondary document analysis)"
+  }
+}

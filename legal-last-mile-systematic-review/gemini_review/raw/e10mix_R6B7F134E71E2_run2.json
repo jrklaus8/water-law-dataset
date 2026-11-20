@@ -1,0 +1,286 @@
+{
+  "record_id": "R6B7F134E71E2",
+  "order": 25,
+  "run": 2,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "df723e1d6ef2dbe95ef6b5b40630cc890c4daa3f0ad300f7530eede36f40d212",
+  "input_text_sha256": "b42ad046064ee9854d36edd563df6c0465c41d44d577e869a9b6170e8943e733",
+  "prompt_sha256": "77e79dbfcef84e383588f5997011492e1659c28676e880a4ba2b0c8c2eb90155",
+  "started_at": "2026-11-20T17:19:56.799514+00:00",
+  "completed_at": "2026-11-20T17:20:50.439948+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R6B7F134E71E2\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R6B7F134E71E2\n- Title: Match, don’t mix: implications of institutional and technical service modalities for water governance outcomes in south Indian small towns\n- Authors: Lele S.; Madhyastha K.; Sulagna S.; Dhavamani R.; Srinivasan V.\n- Year: 2019\n- DOI: 10.2166/wp.2018.002\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: b42ad046064ee9854d36edd563df6c0465c41d44d577e869a9b6170e8943e733) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=78989, sha256=b42ad046064ee9854d36edd563df6c0465c41d44d577e869a9b6170e8943e733]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines domestic drinking and household water service delivery (in-house piped connections and public standpipes) across four small towns in Karnataka and Tamil Nadu, India.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Under the plain wording, the study compares public institutional and governance arrangements for urban water supply. Under the narrow 2026-10-13 reading, it directly examines public utility ownership/institutional responsibility structure governing service access (elected municipal Urban Local Body [ULB] distribution vs. state-level engineering para-statal utility [KUWSDB/TWAD Board] bulk supply and/or retail distribution), tariff and cost-recovery rules (free public standpipes vs. fixed monthly unmetered connection tariffs, bulk water pricing, and fee-recovery enforcement), and frontline administrative discretion, accountability, and informal access practices (grievance redressal mechanisms, lineman bribes/tips to release water during scarcity, and staff collusion in illegal connections).",
+      "c3": "Comparative mixed-methods empirical study using household surveys (N=300 in Nelamangala, N=600 in Ramanagara), slum standpipe pot surveys (N=41), household volumetric metering (N=5 and N=8), semi-structured household interviews (>20 per town), key-informant interviews with linemen, ULB staff, para-statal engineers, and town councillors, borewell pump discharge measurements, and municipal/utility financial and operational records.",
+      "c4": "Reports multiple service access outcomes: per-capita water supply adequacy (LPCD), household connection rates (% standpipe-dependent vs. in-house connections and sumps) and household consumption (LPCD), supply continuity/frequency across normal and summer seasons, public standpipe spacing/access burden, perceived water quality, and tariff affordability (Rs/month and Rs/m3).",
+      "c5": "Clearly identifies population and units of analysis (town, ward, and household levels across Nelamangala, Ramanagara, Kannampalayam, and Palladam in southern India), exposure (institutional service modality—ULB vs. para-statal bulk/retail roles, dual-sourcing, and tariff/cost-recovery rules), outcomes, and a comparative mixed-methods case-study design.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 24",
+        "quote": "We used this framework to carry out an inductive analysis by comparing water service delivery and governance in four small towns across two states (Karnataka and Tamil Nadu) in southern India."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 24",
+        "quote": "In terms of the institutional arrangements for water service delivery: the towns in Tamil Nadu (Kannampalayam and Palladam) receive bulk supply of river water from a provincial para-statal agency, Tamil Nadu Water and Drainage Board (TWAD Board), but manage the distribution of this river and of GW on their own."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 24",
+        "quote": "Third, in terms of charging for water supply, the supply at the public standpipes is free of charge, whereas in-house connections are charged at a fixed (unmetered) monthly rate."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 17 of 24",
+        "quote": "At the same time, in Nelamangala, citizens reported having to pay some ‘additional amounts’ (tips or bribes) to the linemen to get water released during times of scarcity – clearly frontline staff taking unfair advantage of the high level of water scarcity in that town."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 8 of 24",
+        "quote": "In addition, semi-structured or open-ended interviews were conducted with linemen (at least 5 in each town), mid-level and senior ULB staff including the chief executive officers"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13 of 24",
+        "quote": "These are presented in Table 4, and show that households dependent on standpipes alone may be at 40 lpcd whereas those with in-house connections and sumps may be at 47–60 lpcd"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Institutional and technical water service modalities: public utility governance/distribution structure (elected municipal Urban Local Body alone vs. state para-statal bulk supply with ULB retail distribution vs. state para-statal managing both bulk supply and retail distribution), water source deployment (groundwater only vs. dual surface/groundwater sourcing), tariff and O&M cost-recovery rules, and frontline administrative accountability/discretion.",
+    "outcome": "Domestic water service adequacy (town-level LPCD), household connection status (% standpipe-dependent vs. in-house connection and sump ownership) and household consumption (LPCD), supply frequency and seasonal continuity, standpipe density, water tariff affordability (Rs/month and Rs/m3), perceived water quality, cost recovery, biophysical sustainability, and administrative responsiveness/grievance redressal.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Four small towns (populations ~15,868 to ~95,167) in Karnataka (Nelamangala, Ramanagara) and Tamil Nadu (Kannampalayam, Palladam), India; analyzed at town, ward, and household levels using household source-mix surveys (N=300 in Nelamangala; N=600 in Ramanagara), standpipe pot survey (N=41), household metering (N=13 total), semi-structured household interviews (>20 per town), and interviews with linemen, ULB officials, para-statal engineers, and elected councillors.",
+    "rationale": "This empirical mixed-methods comparative study evaluates how public utility institutional structures (elected local municipal bodies vs. provincial para-statal water boards managing bulk supply and/or local retail distribution), tariff and cost-recovery rules, dual-sourcing regimes, and frontline administrative practices shape household and town-level domestic water access, consumption (LPCD), connection equity, supply frequency, affordability, and grievance responsiveness across four south Indian small towns. It satisfies all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2.",
+    "record_id": "R6B7F134E71E2",
+    "study_design": "Comparative mixed-methods multiple-case study (combining household surveys, volumetric metering, pump discharge measurements, administrative/financial records, and qualitative interviews)"
+  }
+}

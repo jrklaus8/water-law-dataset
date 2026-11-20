@@ -1,0 +1,281 @@
+{
+  "record_id": "RA3375EB4F7B0",
+  "order": 42,
+  "run": 2,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ea7e3cf61133d63f0ae8b3591cee3fffc5854b55dd10b824f467db083c029b55",
+  "input_text_sha256": "9da893c67bb1f492918c7ae1bbd39607a7e22f104e8ade119a8a6e6469b73057",
+  "prompt_sha256": "89fea99382bc9771660be2513ed227835452b0a8ab07e0c72fa9b9e5dd17f5cc",
+  "started_at": "2026-11-20T17:24:01.829577+00:00",
+  "completed_at": "2026-11-20T17:24:57.663178+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RA3375EB4F7B0\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RA3375EB4F7B0\n- Title: Governing water in the andean community of Cabanaconde, Peru\n- Authors: Paerregaard K.\n- Year: 2013\n- DOI: 10.1659/MRD-JOURNAL-D-12-00107.1\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 9da893c67bb1f492918c7ae1bbd39607a7e22f104e8ade119a8a6e6469b73057) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=36791, sha256=9da893c67bb1f492918c7ae1bbd39607a7e22f104e8ade119a8a6e6469b73057]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Peru",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1 (Wrong service, E07). The paper explicitly defines and examines agricultural irrigation water management and canal distribution to farm plots in Cabanaconde's campiña and terraced fields, rather than household or community drinking/domestic water supply or sanitation service access. Although 'drinking water, domestic use' is listed parenthetically once on PDF Page 3 among general household survey background items, no analysis or results address drinking water or sanitation services.",
+      "c2": "Plain wording vs. narrow 2026-10-13 reading: Under the plain broad wording of Criterion 2, the paper examines governance and institutional factors in water management (transition from a customary dual-moiety irrigation system to a state-aligned water committee model with water rights from the Majes Canal, fees/tariffs, and ticket-based plot allocation), though overall review eligibility still fails on Criterion 1 (plain_criterion2_decision = exclude). Under the narrow 2026-10-13 rule-type reading, Criterion 2 is 'no' because the study does not examine a rule-type mechanism governing water or sanitation service access; instead, it analyzes agricultural irrigation governance and macro-level political confrontation, legitimacy, and cooperation between an Andean peasant community and the Peruvian state over irrigation canal water.",
+      "c3": "Contains primary empirical evidence from 1 month of ethnographic fieldwork in Cabanaconde in 2011, including a survey of 100 households (18% of the 549 peasant community households), formal interviews with community, business, and religious leaders, life histories, and participant observation.",
+      "c4": "Reports agricultural irrigation outcomes only—specifically irrigated landholdings per household (increasing from under 1 ha to an average of 1.75 ha), perceived year-round abundance of irrigation water (97% of respondents), and community perceptions of state legitimacy—with no outcomes on household or community drinking/domestic water or sanitation service access, connection, affordability, or reliability.",
+      "c5": "Population and unit of analysis (households and irrigators in the peasant community of Cabanaconde, Colca Valley, Peru; n = 100 surveyed households out of 549 member households), exposure (state grant of irrigation water rights from 4 valves in the Majes Canal and adoption of a state water-committee irrigation governance model), outcome (irrigated land area, perceived irrigation water sufficiency, and attitudes toward state water governance), and study design (ethnographic case study with cross-sectional household survey) are clearly identifiable, though for agricultural irrigation rather than water/sanitation services.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "By water governance, I mean the bureaucratic management of the water infrastructure and the social control of water distribution within an irrigation system."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3",
+        "quote": "In most parts of the Andes, agriculture and cattle breeding require irrigation; information on landholdings, the number and kind of animals, crops, livelihoods, and water use, therefore, is critical for our understanding of how water is governed."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3",
+        "quote": "It reviews data collected in 2011 when doing a 1-month ethnographic field research in Cabanaconde. With the help of a local assistant, I conducted a survey among 100 households, which represented 18% of the 549 households that are members of Cabanaconde’s peasant community"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "A locally elected water committee now administers the new system, selling tickets to the villagers and thus authorizing those to claim water from the regidores, and whereas the village authorities previously appointed these regidores, the water committee now hires them."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7",
+        "quote": "according to my survey, the households now have an average of 1.75 ha of irrigated land compared with less than 1 ha before the community gained access to the Majes Canal."
+      }
+    ],
+    "exclusion_code": "E07",
+    "exposure": "State investment in the Majes Canal, community confrontation securing rights to tap 4 irrigation valves (1983), and replacement of customary dual-moiety irrigation allocation with a state water-committee governance model using ticket sales and fees",
+    "outcome": "Agricultural irrigation water availability (97% reporting plentiful irrigation water year-round), average household irrigated land area (1.75 ha vs. less than 1 ha previously), and community recognition of state legitimacy in irrigation governance",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Peasant community households and agricultural irrigators in Cabanaconde, Colca Valley, Arequipa region, Peru (survey of 100 households representing 18% of 549 community member households, plus leader interviews and life histories)",
+    "rationale": "Excluded under E07 (Wrong service; see also Exclusion Criterion 7, water-resource/irrigation studies unrelated to household or community water or sanitation service access). Full-text review confirms that the study exclusively examines agricultural irrigation systems, canal allocation to crop fields, irrigated landholdings, and state-community relations over irrigation water from the Majes Canal in Cabanaconde, Peru. It does not examine household or community drinking/domestic water supply or sanitation service access under either the narrow 2026-10-13 reading or the plain reading of Criterion 2.",
+    "record_id": "RA3375EB4F7B0",
+    "study_design": "Ethnographic case study combining a cross-sectional household survey (n = 100 households), semi-structured/formal interviews, life histories, and participant observation"
+  }
+}

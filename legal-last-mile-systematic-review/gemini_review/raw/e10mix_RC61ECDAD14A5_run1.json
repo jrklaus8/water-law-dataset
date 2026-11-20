@@ -1,0 +1,281 @@
+{
+  "record_id": "RC61ECDAD14A5",
+  "order": 52,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "fc4d355cb4acdcfbd749cc46de1cccb765e1764dd2ef265783996d16b9c8a712",
+  "input_text_sha256": "d91e62058d85c9e30d9334b5e8de3b8636782709e87015d68d2e862e853794d2",
+  "prompt_sha256": "a0b228b70eff69ddd79d982efebdeca000bc296c814469e4be0232b3fcc0ae11",
+  "started_at": "2026-11-20T16:25:15.664567+00:00",
+  "completed_at": "2026-11-20T16:27:09.552722+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RC61ECDAD14A5\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RC61ECDAD14A5\n- Title: Depoliticizing land and water \"grabs\" in Colombia: the limits of Bonsucro certification for enhancing sustainable biofuel practices\n- Authors: Selfa, Theresa; Bain, Carmen; Moreno, Renata\n- Year: 2014\n- DOI: 10.1007/s10460-014-9509-3\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: d91e62058d85c9e30d9334b5e8de3b8636782709e87015d68d2e862e853794d2) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=76557, sha256=d91e62058d85c9e30d9334b5e8de3b8636782709e87015d68d2e862e853794d2]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Colombia",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "unclear",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails C1 (Exclusion Criteria 7 and 8): The paper is a political-ecology study of agro-industrial land and raw water resource 'grabs' (surface and groundwater irrigation extraction and pollution) by the sugarcane and ethanol biofuel sector in Valle del Cauca, Colombia, rather than household or community water or sanitation service access. Although it cites secondary watershed concession shares (p. 9) and briefly notes in two anecdotal passages (p. 11) that agro-industrial extraction contributes to dry-season municipal supply shortages and forces some displaced smallholders to buy household water, it does not study a household or community water/sanitation service system.",
+      "c2": "Under the plain wording of Criterion 2 ('Examines a legal, administrative, institutional, regulatory or governance factor'), the paper examines governance and regulatory arrangements—specifically the Bonsucro voluntary multi-stakeholder sustainability certification scheme for sugarcane ethanol, Colombian biofuel mandates, and Cauca Valley Corporation (CVC) bulk irrigation concessions and raw-water potability classifications—so C2 in isolation would be satisfied on a literal broad reading, though the overall study still would be excluded (plain_criterion2_decision = 'exclude') because it studies agricultural/industrial biofuel resource grabs rather than household water/sanitation service access (Exclusion Criteria 7 and 8). Under the active 2026-10-13 narrow rule-type reading, C2 is 'no': private biofuel commodity certification metrics (net irrigation/mill water per kg of cane/sugar/ethanol and plantation land title) and agro-industrial irrigation resource concessions are not rule-type mechanisms directly governing household or community water or sanitation service access (such as eligibility screening, administrative burden, documentation/tenure rules for service, household tariffs, disconnection/enforcement, or utility regulatory structure).",
+      "c3": "Satisfies C3: Empirical qualitative case study drawing on 14 in-depth exploratory interviews conducted between June and August 2012 with sugarcane/ethanol industry stakeholders in Valle del Cauca, additional interviews with rural community residents, and analysis of Bonsucro standard documents and secondary regional reports.",
+      "c4": "Unclear/indirect for review scope: The primary outcomes examined are agro-industrial land concentration, irrigation water resource capture, and industry framing/adaptation of prospective Bonsucro certification standards. Secondary watershed concession shares (64% surface water and 88% groundwater held by the sugar industry vs. 26% and 2% for household use) and brief anecdotal accounts of dry-season municipal shortages and displaced rural residents buying water for household use are mentioned (pp. 9, 11), but no household/community water service-access outcome is systematically evaluated in relation to a service-governance mechanism.",
+      "c5": "Fails C5 for review scope: While the qualitative stakeholder sample (n = 14) and biofuel certification exposure are identifiable for the agro-industrial case study, the paper does not define an identifiable household/community service-user sample, service-governance exposure, and household water/sanitation service-access outcome (and Bonsucro certification was still in pre-audit/training stages rather than empirically linked to household water access).",
+      "c6": "Satisfies C6: Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 14",
+        "quote": "More recently, critics have pointed out that land grabs are also closely associated with ‘‘water grabs,’’ that is efforts to secure existing surface and ground water resources (Mehta et al. 2012)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 14",
+        "quote": "Bonsucro (2013) is the principal MSI that focuses on sustainability standards for sugar and sugarcane ethanol production. Launched in 2005, the brand Bonsucro was not established until 2010 and certiﬁcation began in 2011."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 14",
+        "quote": "The standard does not address the sugar industry’s legacy in the Valle del Cauca of disproportionate water concessions, lower water prices and high rates of contamination, as discussed above, and like the land case, these historical factors are invisible in Bonsucro."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 14",
+        "quote": "The paper draws on in-depth exploratory interviews with 14 stakeholders in the sugarcane and ethanol industry in the Valle del Cauca region in southwest Colombia between June and August 2012."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 14",
+        "quote": "They described the difﬁculties they now face in accessing water for household use, and how they are forced to buy water for household use."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Bonsucro voluntary multi-stakeholder sustainability certification standards for sugar and sugarcane ethanol production, alongside national biofuel mandates/incentives and regional Cauca Valley Corporation (CVC) agricultural water concessions",
+    "outcome": "Prospects for Bonsucro certification adoption and legitimation of agro-industrial land concentration and irrigation water resource capture, with secondary watershed concession shares and brief anecdotal mentions of dry-season municipal supply shortages and displaced rural residents buying water for household use",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "14 stakeholders in the sugarcane and ethanol industry in the Valle del Cauca region (farmers, union activists, local government officials, sugar industry association officials, sugar refineries, and research agronomists), plus an unspecified number of rural community residents interviewed between June and August 2012",
+    "rationale": "Excluded as E01 (Wrong topic; see also Exclusion Criteria 7 and 8 on water-resource and industrial water-access studies). This qualitative political-ecology study examines how voluntary transnational biofuel sustainability certification (Bonsucro) and national biofuel incentives interact with historical land concentration and agro-industrial irrigation 'water grabs' in Colombia's sugarcane ethanol sector. It does not examine household or community water or sanitation service delivery or a rule-type legal/administrative mechanism governing household/community service access (only noting in passing that agro-industrial river/aquifer extraction contributes to dry-season municipal shortages and forces some displaced smallholders to buy household water). Even under the plain wording of Criterion 2, the study remains excluded because its subject is agricultural/industrial biofuel certification and raw natural-resource capture rather than water or sanitation service access.",
+    "record_id": "RC61ECDAD14A5",
+    "study_design": "Qualitative exploratory case study (in-depth stakeholder interviews and document/secondary data analysis)"
+  }
+}
