@@ -1,0 +1,349 @@
+{
+  "study_id": "S1135",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "c7aac728fd269cc78c73e81a5673ffc18066a507813d963406d679eba52a7b26",
+  "input_text_sha256": "261e431cb12bcce04b67b13ba426b58ad41a627574a80c9513f5b3d4798d2714",
+  "prompt_sha256": "958ae18a6849cc4e36c47d4870d70c237185f331c424d7491d0a5c6b09735674",
+  "started_at": "2026-11-20T04:54:16.511977+00:00",
+  "completed_at": "2026-11-20T04:56:46.014086+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1135\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1135\n- Record ID: R13E85C59B4CA\n- Citation string: Wutich A (2009). Water Scarcity and the Sustainability of a Common Pool Resource Institution in the Urban Andes. Human Ecology 37:179-192.\n- DOI: 10.1007/s10745-009-9227-4\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 261e431cb12bcce04b67b13ba426b58ad41a627574a80c9513f5b3d4798d2714) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=72138, sha256=261e431cb12bcce04b67b13ba426b58ad41a627574a80c9513f5b3d4798d2714]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "High concern / Moderate-to-serious risk: 72 of 96 randomly sampled households enrolled at baseline (75% response rate), but repeated-measures ANOVAs and t-tests report error degrees of freedom corresponding to only N=57–58 complete households (F(3,54), t(55), F(4,53), F(4,52)), indicating ~19–21% missing longitudinal panel data not accounted for in statistical analyses; moreover, a qualitative case vignette (PDF p. 10 / p. 188) documents differential attrition in which an impoverished renter family moved away before round 3 due to dry-season water and financial stress.",
+      "confounding": "High concern / Serious risk: Quantitative comparisons across seasonal periods and between community members and non-community members rely exclusively on unadjusted cross-tabulations, bivariate t-tests, and unadjusted repeated-measures/split-plot ANOVAs without controlling for household size, income, length of residence, or physical proximity to an active tapstand; additionally, seasonal Neighborhood Council participation trends were severely confounded by a concurrent corruption scandal and impeachment movement against the Council president (PDF p. 9 / p. 187).",
+      "legal_measurement_quality": "Adequate-to-strong: Informal and customary urban property-tenure and common-pool water governance rules (landownership via loteador subdivision, family proxy occupancy, anticrético collateral-loan tenure, formal exclusion of renters, bimonthly 10-boliviano punch-card rules, 40 L to 20 L rationing, and four-tier monitoring/sanctioning) are richly documented ethnographically and explicitly operationalized in the survey Appendix (PDF pp. 5–7, 13 / pp. 183–185, 191), though municipal land-titling legalization status was not separately coded at the household level.",
+      "measurement_bias": "Moderate concern: Household water insecurity was measured with a grounded 9-point Guttman scale (Hadley and Wutich 2009), but tapstand access, Neighborhood Council attendance, and food-sharing networks relied on 1-week retrospective self-reports subject to recall bias and social-desirability/deference effects (PDF p. 12 / p. 190); rule-breaking and sanctioning were severely underreported on the survey (only 4 admissions across >1,000 questions) and documented unsystematically via observation and second-hand reports (PDF p. 7 / p. 185), and respondent selection in 33% of households was finalized post hoc after wave 5 based on answer breadth/depth (PDF p. 4 / p. 182).",
+      "outcome_measurement_quality": "Moderate / Adequate: Household experiential water insecurity was measured systematically across seasons via a 9-item Guttman scale (Appendix, PDF pp. 12–13 / pp. 190–191) supplemented by separate diary estimates of per-capita water consumption (Table 2), whereas institutional outcomes (tapstand collection and Neighborhood Council attendance) were coarsened to binary past-week Yes/No indicators analyzed only descriptively, with an apparent percentage reporting discrepancy in Table 5 ('Dry season' row sums to 120.0%: 86.7% and 33.3%).",
+      "reporting_bias": "Some concern / No pre-analysis plan: No pre-registered protocol or pre-analysis plan is cited (expected for 2003–2005 anthropological fieldwork); full methodological details are cross-referenced to the author's 2006 PhD dissertation, only Wave 2–5 (four periods) are reported for the water-insecurity ANOVA (Table 3) versus five periods for tapstand, Council, and network analyses (Tables 4–8), and Table 5 contains an unexplained row-percentage anomaly in the Dry Season row.",
+      "selection_bias": "Low-to-moderate concern: Within Villa Israel, households were randomly sampled from a complete community map of 415 residential constructions (96 contacted, 72 enrolled; 75% participation rate) and interviewed in Spanish, Quechua, or Aymara; however, Villa Israel was purposively selected as a single 'typical' south-side squatter settlement case study, and post-hoc selection of the most informative household respondent in 33% of multi-respondent households could introduce subtle within-household selection bias."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The Introduction explicitly states three focused research questions examining (1) how an urban common-pool water resource institution functions in Cochabamba, (2) whether its institutional rules are sustainable during severe water scarcity, and (3) whether underlying collective-choice and operational institutions remain sustainable during severe water scarcity.",
+        "rating": "Yes",
+        "where_found": "PDF Page 1 of 14 (Introduction, p. 179)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Two-stage data collection combining residential participant observation across dry and wet seasons, key-informant interviews, a 5-wave 10-month panel survey of 72 randomly selected households, and 2008 follow-up interviews directly addresses institutional functioning and seasonal sustainability.",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 of 14 (Methods, p. 182); PDF Pages 12–13 of 14 (Appendix, pp. 190–191)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Ethnographic participant observation and open-ended/key-informant interviewing are highly appropriate for uncovering unwritten customary common-pool water governance norms, monitoring, sanctioning, and informal property-tenure rules in an urban squatter settlement.",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 of 14 (Methods, p. 182); PDF Pages 5–8 of 14 (pp. 183–186)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "The author lived in Villa Israel during the 2003 dry season and 2004 wet season observing daily tapstand distribution, communal labor, and monthly meetings, followed by 2 months of key-informant interviews, multilingual open-ended interviews (Spanish, Quechua, Aymara) across five panel waves, and 2008 member-checking visits.",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 of 14 (Methods, p. 182)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "While field notes were reviewed iteratively during fieldwork and checked during 2008 follow-up visits, the article does not describe formal qualitative coding or thematic analysis procedures, and explicitly notes that data on rule violations and sanctioning were unsystematic, gathered via observation and second-hand neighbor reports.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 4 of 14 (Methods, p. 182); PDF Page 7 of 14 (Regularity and Transparency, p. 185)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Interpretations regarding Trawick's six Andean irrigation principles, four-tier monitoring/sanctioning, presidential impeachment, and renter vulnerability are substantiated with concrete institutional mechanics, observed rule-violation typologies (Fig. 1), and specific household case material, even though verbatim interview transcripts are not quoted.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 5–10 of 14 (pp. 183–188, Fig. 1)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "There is clear theoretical and empirical coherence linking Ostrom and Trawick's CPR frameworks, ethnographic observation of Villa Israel's tapstand and Neighborhood Council rules, and conclusions on institutional resilience versus nested social vulnerability.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 1–12 of 14 (pp. 179–190)"
+      },
+      {
+        "domain_id": "3.1",
+        "domain_name": "Quantitative non-randomized 3.1: Are the participants representative of the target population?",
+        "justification": "For the target community of Villa Israel, the researchers drew a random sample of 96 households from a community map of all 415 residential constructions, achieving a 75% participation rate (72 households) and interviewing respondents in Spanish, Quechua, or Aymara to prevent linguistic exclusion.",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 of 14 (Methods, p. 182)"
+      },
+      {
+        "domain_id": "3.2",
+        "domain_name": "Quantitative non-randomized 3.2: Are measurements appropriate regarding both the outcome and intervention (or exposure)?",
+        "justification": "Seasonal water scarcity was captured with a validated 9-point Guttman household water-insecurity scale (Hadley and Wutich 2009) alongside local precipitation records, tenure/membership exposure was clearly classified via housing tenure categories (Appendix), and social networks used Stack-adapted food-sharing prompts; although binary 1-week tapstand and Council items had recall/deference limitations, the core exposure and outcome instruments were ethnographically pretested and appropriate.",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 of 14 (Methods, p. 182); PDF Page 8 of 14 (p. 186); PDF Pages 12–13 of 14 (Limitations & Appendix, pp. 190–191)"
+      },
+      {
+        "domain_id": "3.3",
+        "domain_name": "Quantitative non-randomized 3.3: Are there complete outcome data?",
+        "justification": "Of 72 enrolled households, the repeated-measures ANOVAs and t-test retain only N=57–58 households based on reported degrees of freedom (F(3,54) in Table 3; t(55) in Table 6; F(4,53) in Table 7; F(4,52) in Table 8), reflecting ~19–21% unaddressed longitudinal missingness; Table 3 omits one of the five panel waves without explanation, and a case narrative confirms outcome/scarcity-driven attrition of a renter family by wave 3.",
+        "rating": "No",
+        "where_found": "PDF Page 4 of 14 (p. 182); PDF Page 8 of 14 (Table 3, p. 186); PDF Pages 10–11 of 14 (p. 188, Tables 6–8, pp. 188–189)"
+      },
+      {
+        "domain_id": "3.4",
+        "domain_name": "Quantitative non-randomized 3.4: Are the confounders accounted for in the design and analysis?",
+        "justification": "No statistical adjustment or stratification was performed for household-level confounders (e.g., household size, income, duration of residence, or whether a household lived near an active vs. unbuilt/defunct tapstand), and seasonal changes in Neighborhood Council attendance were heavily confounded by a corruption scandal and impeachment conflict in waves 2–5.",
+        "rating": "No",
+        "where_found": "PDF Page 6 of 14 (p. 184); PDF Pages 8–11 of 14 (Tables 3–8, pp. 186–189)"
+      },
+      {
+        "domain_id": "3.5",
+        "domain_name": "Quantitative non-randomized 3.5: During the study period, is the intervention administered (or exposure occurred) as intended?",
+        "justification": "The natural seasonal wet-dry cycle occurred as expected for semiarid Cochabamba (521 mm annual rainfall per SENAMHI 2006; significant dry-season rise in household water insecurity, p=0.009, and uniform tapstand rationing from 40 L to 20 L), and community membership rules operated continuously across the 10-month study window.",
+        "rating": "Yes",
+        "where_found": "PDF Page 8 of 14 (Sustainability of Institutional Rules, Table 3, p. 186)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "The sequential exploratory and longitudinal mixed-methods design is well justified: participant observation and key-informant interviews were required to identify unwritten CPR rules and construct culturally valid survey items, while the 5-wave random-sample panel tested seasonal variations in water insecurity, free-riding, governance attendance, and social network size.",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 of 14 (Methods, p. 182)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Qualitative fieldwork directly shaped the panel questionnaire (building integration), and ethnographic observations are woven directly together with quantitative longitudinal tables and plots to explain institutional rules, compliance, political turmoil, and household coping across seasons.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4–11 of 14 (Methods and Results, pp. 182–189)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "The integrated synthesis persuasively distinguishes the stability of core tapstand allocation rules (uniformity, regularity, ~85% legitimate beneficiary share) from seasonal and political volatility in nested collective-choice (Neighborhood Council) and operational (food-sharing network) structures.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 8–12 of 14 (pp. 186–190)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "The author explicitly confronts and explains divergences between survey and ethnographic data—showing why >1,000 survey items produced only 4 self-reports of sanctioning/conflict (community stigma) and demonstrating ethnographically that the dry-season drop in Council participation reflected a presidential corruption/impeachment crisis rather than water scarcity.",
+        "rating": "Yes",
+        "where_found": "PDF Page 7 of 14 (p. 185); PDF Page 9 of 14 (Neighborhood Council, p. 187); PDF Page 12 of 14 (p. 190)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "While the ethnographic component and mixed-methods integration are strong, the quantitative non-randomized component suffers from ~20% unaddressed panel attrition (including scarcity-related dropout of renters), lack of confounder adjustment, descriptive-only binary participation analyses, and a percentage anomaly in Table 5, alongside unsystematic qualitative tracking of rule violations.",
+        "rating": "No",
+        "where_found": "PDF Pages 7–12 of 14 (pp. 185–190, Tables 3–8)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "MMAT S2 / 3.1 (Random household panel design)",
+        "page": "PDF Page 4 of 14 (Methods, p. 182)",
+        "quote": "part of the panel study of 72 households in Villa Israel."
+      },
+      {
+        "criterion": "Legal/institutional exposure rule (Tapstand fee and punch-card access)",
+        "page": "PDF Page 6 of 14 (How Villa Israel's Water Institution Functions, p. 184)",
+        "quote": "community members must also pay a fee of 10 bolivianos"
+      },
+      {
+        "criterion": "MMAT 3.3 (Incomplete longitudinal data: N=57 in 4-season ANOVA vs. 72 enrolled)",
+        "page": "PDF Page 8 of 14 (Table 3, p. 186)",
+        "quote": "F(3,54)=4.24, Wilk’s lambda=0.81, p=0.009, eta squared=0.19"
+      },
+      {
+        "criterion": "MMAT 3.4 / 5.4 (Political corruption confounding Neighborhood Council participation)",
+        "page": "PDF Page 9 of 14 (Neighborhood Council, p. 187)",
+        "quote": "Neighborhood Council was accused of a serious act of"
+      },
+      {
+        "criterion": "MMAT 3.3 (Differential attrition of vulnerable renter household during dry season)",
+        "page": "PDF Page 10 of 14 (Social Networks, p. 188)",
+        "quote": "By the third round of interviews, the family was no longer"
+      },
+      {
+        "criterion": "MMAT 3.2 / Measurement bias (Self-report recall and deference limitations)",
+        "page": "PDF Page 12 of 14 (Discussion and Conclusions, p. 190)",
+        "quote": "been inaccurate due to recall bias or deference effects."
+      },
+      {
+        "criterion": "Legal/tenure classification rule (Community member vs. renter coding)",
+        "page": "PDF Page 13 of 14 (Appendix, p. 191)",
+        "quote": "If (Homeowner Q = a, c, or d), then classify respondent"
+      }
+    ],
+    "overall_narrative_summary": "Wutich (2009) is a well-integrated two-stage mixed-methods study combining extended residential ethnography (2003–2004, with 2008 follow-up) and a 5-wave, 10-month longitudinal household panel survey of 72 randomly sampled households (75% response rate from 96 contacted out of 415 mapped residential structures) in Villa Israel, a peri-urban squatter settlement in southern Cochabamba, Bolivia. Methodological strengths include prolonged multilingual fieldwork (Spanish, Quechua, Aymara), random household sampling within the settlement, explicit operationalization of customary and contractual housing-tenure rules (landownership, proxy occupancy, anticrético, and formal exclusion of renters), use of a grounded 9-point Guttman water-insecurity scale, and candid triangulation that uncovers survey underreporting of conflict and separates political corruption shocks from seasonal scarcity effects. Key risks of bias center on the quantitative non-randomized panel component: (1) roughly 19–21% missing longitudinal data in repeated-measures analyses (N=57–58 vs. 72 enrolled) without attrition diagnostics, alongside qualitative proof of scarcity-induced out-migration by vulnerable renters; (2) unadjusted bivariate/ANOVA tests with no statistical control for household size, income, or physical access to a working tapstand, plus political confounding of Neighborhood Council attendance; (3) reliance on 1-week binary retrospective self-reports for tapstand use and Council participation (with an unexplained 120.0% row sum in Table 5's Dry Season row); and (4) post-hoc selection of the household respondent in 33% of households and unsystematic recording of rule violations. Per MMAT 2018 guidance, no composite numeric score is calculated; overall methodological concern is judged moderate, bounded by the limitations of the quantitative panel component.",
+    "overall_rating": "Moderate methodological concern (strong qualitative ethnography, random community sampling, and mixed-methods integration, tempered by ~20% unaddressed longitudinal panel attrition including scarcity-driven renter dropout, unadjusted quantitative analyses with political confounding, and binary self-report participation measures; no numeric composite score per MMAT 2018)",
+    "paper_read": "full text",
+    "study_design_identified": "Sequential and longitudinal mixed-methods primary study combining residential ethnographic participant observation and key-informant interviews with a 5-wave (10-month) observational household panel survey of 72 randomly sampled households (plus 2008 follow-up interviews)",
+    "study_id": "S1135",
+    "where_found_summary": "Research questions on PDF p. 1 (p. 179); study setting on PDF pp. 3–5 (pp. 181–183); two-stage ethnographic and 5-wave panel methods, sampling, respondent selection, and statistical tests on PDF p. 4 (p. 182); qualitative institutional analysis and rule violations on PDF pp. 5–8 (pp. 183–186, Tables 1–2, Fig. 1); longitudinal seasonal quantitative analyses and renter dropout case on PDF pp. 8–11 (pp. 186–189, Tables 3–8, Figs. 2–4); explicit methodological limitations on PDF p. 12 (p. 190); survey items and tenure/beneficiary coding algorithms in Appendix on PDF pp. 12–13 (pp. 190–191).",
+    "why_tool_chosen": "The paper is a genuine primary mixed-methods empirical study that integrates qualitative ethnography (participant observation, key-informant interviews, and open-ended institutional analysis) with a quantitative 5-wave longitudinal household panel survey comparing seasonal exposure periods and community-membership tenure groups via t-tests and repeated-measures/split-plot ANOVAs. Under RISK_OF_BIAS.md §1, MMAT (Mixed Methods Appraisal Tool, evaluating Screening S1–S2, Qualitative 1.1–1.5, Quantitative non-randomized 3.1–3.5, and Mixed-methods integration 5.1–5.5) is the exact matching instrument; purely qualitative (CASP), purely cross-sectional (JBI), and quasi-experimental intervention (ROBINS-I) checklists would each omit or mischaracterize core empirical components of the design."
+  }
+}

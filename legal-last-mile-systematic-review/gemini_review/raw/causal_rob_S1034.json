@@ -1,0 +1,274 @@
+{
+  "study_id": "S1034",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0840cb4d864f8a52b59280d74e38ced149b8ef777fa3e08dc9198f2cb1ec4046",
+  "input_text_sha256": "1640de32ed7c795c7211a9f2e0c951d364b98730bd7b98845c9961f2e24e2b5a",
+  "prompt_sha256": "d9858179af5c1136f5b83033216d2440ea50eb0a5bae1e5767096f96f29f1855",
+  "started_at": "2026-11-20T04:54:16.504440+00:00",
+  "completed_at": "2026-11-20T04:56:40.359176+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1034\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1034\n- Record ID: R3537F9598B47\n- Citation string: Granados C, Sanchez F (2014). Water Reforms, Decentralization and Child Mortality in Colombia, 1990-2005. World Development 53:68-79.\n- DOI: 10.1016/j.worlddev.2013.01.007\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 1640de32ed7c795c7211a9f2e0c951d364b98730bd7b98845c9961f2e24e2b5a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69462, sha256=1640de32ed7c795c7211a9f2e0c951d364b98730bd7b98845c9961f2e24e2b5a]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Serious concern: Out of 623 SSPD-registered municipalities (and >1,000 municipalities nationwide), the analytic sample drops from 550 eligible municipalities to 318 in the reform-adoption logit (Table 3) without explanation, to 515 (429 on common support) for non-external child mortality, to 380 (307 on common support) for infectious-disease mortality after excluding zero-death municipality-years, and to 484 municipalities (932 of 968 possible observations) in the census coverage regressions (Table 5). Underreporting of child deaths in DANE vital registration (Note 14) poses an additional missing-data risk.",
+      "confounding": "Serious concern: Reform adoption under Law 142 was endogenous and strongly associated with larger subscriber base (>2,500 subscribers), higher 1993 coverage, lower rurality, lower electoral turnout, and greater party fragmentation (Section 5, Table 3). Although municipality and year fixed effects, time-varying covariates, and propensity-score common-support trimming (0.07 to 0.95) mitigate time-invariant and baseline imbalances in Table 4, Figures 3 and 4 reveal markedly steeper pre-1994 mortality declines in non-reforming municipalities with no formal parallel-trends test or municipality-specific trends, and the coverage DiD models (Table 5) omit both time-varying controls and propensity-score trimming.",
+      "legal_measurement_quality": "Adequate to moderate quality: The statutory framework (Law 142 of 1994, Law 60 of 1993, Law 286 of 1996, Law 715 of 2001) and legal provider forms (direct municipal provision vs. EICE vs. ESP S.A. with public, mixed, or private capital, plus the 2,500-subscriber SSPD regulatory reporting threshold) are clearly grounded in Colombian legislation and operationalized via SSPD administrative records, though relying on a March 2007 registry snapshot and substituting water-reform timing for sewerage reform in mortality models introduces some exposure classification imprecision.",
+      "measurement_bias": "Moderate concern: Reform exposure is derived from a March 2007 SSPD administrative snapshot and water-service reform is used as a proxy for overall service reform in mortality models (Note 17). Outcomes come from national administrative sources (DANE Vital Statistics ICD-10 List 6/67 and 1993/2005 National Censuses), but the authors acknowledge documented underregistration of infant/child deaths in DANE Vital Statistics (Note 14), and census coverage measures household connection rates without capturing water potability, continuity, or treatment quality (Section 4(a)).",
+      "outcome_measurement_quality": "Moderate quality: Under-five total non-external mortality and infectious/transmissible-disease mortality are constructed from standardized ICD-10 vital registration records and DANE 0-4 population projections (1990-2004), and water/sewerage coverage comes from full 1993 and 2005 national censuses; however, vital statistics underreporting (Note 14), truncation of zero-death municipality-years in infectious-disease models, and absence of water quality or continuity metrics limit outcome precision.",
+      "reporting_bias": "Moderate concern: No pre-registered protocol or pre-analysis plan is reported. Specification choices vary asymmetrically across outcomes (truncating zero-death observations in Columns 3-4 of Table 4 without showing full-sample sensitivity estimates; applying propensity-score common-support trimming and time-varying covariates in Table 4 but omitting them in Table 5; omitting sewerage-reform mortality regressions per Note 17), and published Tables 3-5 omit negative signs on coefficients that the text describes as negative.",
+      "selection_bias": "Serious concern: From 623 municipalities in the March 2007 SSPD registry, municipalities served by authorized rural/community organizations (329 for water) and marginal producers were excluded because they could not incorporate (Section 3(c), Table 1). Crucially, in the primary infectious-disease mortality DiD models (Table 4, Columns 3-4), observations were restricted to nonzero mortality values (dropping from 7,725 to 3,332 observations), directly conditioning sample inclusion on the post-intervention outcome."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "Municipalities endogenously chose whether to transfer service provision to an EICE or ESP under Law 142, and private/specialized providers disproportionately entered larger (>2,500 subscribers), less rural municipalities with higher 1993 coverage and specific electoral dynamics (Section 5, Table 3, pp. 6-7). While Equation (1) includes municipality fixed effects, year fixed effects, time-varying covariates (subsidized health insurance for the poor, tax revenue, land Gini, poverty, log population, rurality), and propensity-score common-support trimming based on 1994 characteristics (pp. 7-8), Figures 3 and 4 (p. 6) display pronounced pre-1994 convergence (much steeper 1990-1994 mortality declines in non-reforming municipalities from higher initial mortality levels) with no event-study or formal parallel-trends verification. In addition, the two-period census coverage DiD regressions (Equation 3, Table 5, pp. 8-10) omit time-varying municipal controls and propensity-score common-support restrictions.",
+        "rating": "Serious",
+        "where_found": "Sections 5-7, Figures 3-4, Tables 3-5 (PDF pp. 6-10)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "First, sample construction relied on a retrospective March 2007 SSPD registry snapshot and excluded all authorized community/rural organizations (329 municipalities in water supply) and marginal producers because they could not incorporate, reducing 623 SSPD municipalities to 550 (Section 3(c), Table 1, p. 4). Second, and most seriously, in the infectious and transmissible disease child mortality regressions (Table 4, Columns 3-4, pp. 8-9), the authors restricted the regression sample strictly to nonzero outcome values (reducing observations from 7,725 in 515 municipalities to 3,332 in 380 municipalities), thereby selecting municipality-year observations directly on the realized post-treatment outcome.",
+        "rating": "Serious",
+        "where_found": "Section 3(c), Table 1 (PDF p. 4); Section 6, Table 4 (PDF pp. 8-9)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "Reform status, provider corporate structure (EICE vs. ESP, public vs. private/mixed capital), 2,500-subscriber size threshold, and reform year were coded from official SSPD administrative records (Section 3(c), p. 4; Table 6, p. 10; Notes 10 and 15, p. 11). However, provider data were collected cross-sectionally in March 2007 (which could misclassify intermediate transitions or failed contracts during 1994-2004), municipalities could host multiple providers (780 companies across 623 municipalities), and the child mortality regressions used only the water-service reform indicator as a proxy for overall water and sewerage reform (Note 17, p. 11).",
+        "rating": "Moderate",
+        "where_found": "Section 3(c) (PDF p. 4); Table 6 (PDF p. 10); Notes 10, 15, 17 (PDF p. 11)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "This observational panel study evaluates the real-world policy effect of adopting specialized corporate utility provision (EICE or ESP) versus maintaining direct municipal provision under Colombia's decentralized legal regime. Under Law 142 Article 6.4 (p. 4; Note 9, p. 11) and Law 60/Law 715 intergovernmental transfer rules (p. 3), both direct municipal and corporate providers operated under the same national regulatory and cross-subsidy framework, and major concurrent social policy expansion (subsidized health insurance for the poor) is explicitly controlled for in the mortality regressions (Table 4, p. 9).",
+        "rating": "Low",
+        "where_found": "Section 3(a)-(b) (PDF pp. 3-4); Section 6, Table 4 (PDF pp. 8-9); Note 9 (PDF p. 11)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "Unexplained and non-random missingness is substantial across analytical stages: from 550 sampled municipalities (545 water, 484 sewerage), the reform-decision xtlogit model drops to 318 municipalities (Table 3, p. 7) without explanation; the mortality panel drops to 515 municipalities and further to 380 municipalities (3,332 of 7,725 observations) when infectious-disease mortality is restricted to nonzero records because municipality-years with no recorded infectious-disease deaths were dropped rather than coded as zero (Section 6, p. 8; Table 4, p. 9); and the coverage panel includes 932 observations across 484 municipalities rather than 968 balanced two-wave observations (Table 5, p. 10). Furthermore, Note 14 (p. 11) acknowledges potential DANE vital registration underreporting of infant/child deaths.",
+        "rating": "Serious",
+        "where_found": "Section 3(c) (PDF p. 4); Tables 3-5 (PDF pp. 7, 9, 10); Section 6 (PDF p. 8); Note 14 (PDF p. 11)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "Outcomes are drawn from standardized, hypothesis-blind national administrative sources: DANE Vital Statistics (184,007 under-five deaths coded via ICD-10 List 6/67) with DANE 0-4 population projections for 1990-2004, and the 1993 and 2005 National Censuses for household water and sewerage connection rates (Section 4, p. 5; Table 6, p. 10). Nevertheless, Note 14 (p. 11) notes documented underreporting of child mortality in DANE Vital Statistics—which could bias DiD estimates if registration completeness improved differentially in reforming versus non-reforming municipalities over 1990-2004—and census connection percentages do not capture water potability or service continuity (Section 4(a), p. 5).",
+        "rating": "Moderate",
+        "where_found": "Section 4(a)-(b) (PDF p. 5); Section 7 (PDF p. 8); Table 6 (PDF p. 10); Notes 11, 14 (PDF p. 11)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-analysis plan or pre-registered protocol exists. In addition, empirical specifications shift across tables without sensitivity reporting: infectious-disease mortality estimates are reported solely for truncated nonzero observations without full-sample estimates including zeros (Table 4, p. 9); propensity-score common-support trimming and time-varying covariates are applied in Table 4 but omitted in the coverage DiD models of Table 5 (p. 10); sewerage-reform mortality regressions are omitted as allegedly identical (Note 17, p. 11); and negative signs on coefficients are missing across published Tables 3-5 compared with the narrative text (pp. 7-10).",
+        "rating": "Moderate",
+        "where_found": "Sections 5-7, Tables 3-5 (PDF pp. 6-10); Note 17 (PDF p. 11)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Primary empirical findings and policy comparator framing",
+        "page": "PDF Page 1, Summary",
+        "quote": "a slower reduction of child mortality rates and lower increases in water coverage than the ones that did not reform."
+      },
+      {
+        "criterion": "D2 Selection of participants — exclusion of non-incorporable rural/community providers",
+        "page": "PDF Page 4, Section 3(c)",
+        "quote": "excluded because they could not be incorporated."
+      },
+      {
+        "criterion": "D1/D5 Propensity score common-support sample exclusion",
+        "page": "PDF Page 8, Section 6",
+        "quote": "not fall in the common support and hence were excluded in"
+      },
+      {
+        "criterion": "D2/D5 Conditioning infectious-disease mortality regressions on nonzero outcomes",
+        "page": "PDF Page 8, Section 6",
+        "quote": "the regression was restricted to nonzero values because in"
+      },
+      {
+        "criterion": "D6 Outcome measurement — census coverage excludes service quality",
+        "page": "PDF Page 5, Section 4(a)",
+        "quote": "to services, but do not account for quality of services."
+      },
+      {
+        "criterion": "D3/D7 Using water-service reform indicator as proxy for both services in mortality models",
+        "page": "PDF Page 11, Note 17",
+        "quote": "in most municipalities, both services of water and sewerage are delivered."
+      }
+    ],
+    "overall_narrative_summary": "Granados and Sanchez (2014) conduct a municipal-level panel difference-in-differences (DiD) evaluation of Colombia's Law 142 of 1994 public utility reforms (1990-2004 for child mortality; 1993-2005 censuses for water and sewerage coverage), augmented by propensity-score common-support trimming in the mortality models. Evaluated with ROBINS-I, the study has an overall Serious risk of bias. Its principal strengths are clear grounding in Colombian statutory provisions (Law 142 of 1994, Law 60 of 1993, Law 286 of 1996, Law 715 of 2001), administrative SSPD coding of provider corporate form and subscriber scale, two-way fixed effects with time-varying controls (including subsidized poor health insurance) in the mortality panel, and Propensity Score trimming based on 1994 municipal characteristics. However, three serious threats to internal validity remain: (1) confounding from pronounced differential pre-1994 child mortality trends visible in Figures 3-4 (untested for parallel pre-trends and unadjusted for municipality-specific trends) plus omitted time-varying covariates in the coverage DiD models (Table 5); (2) selection bias from excluding 329 municipalities with authorized rural/community organizations and, critically, truncating the infectious-disease child mortality regressions strictly to nonzero death records (dropping over half of observations based on the realized outcome); and (3) substantial unexplained panel missingness across Tables 3-5 alongside acknowledged vital registration underreporting in DANE mortality data (Note 14).",
+    "overall_rating": "Serious",
+    "paper_read": "full text",
+    "study_design_identified": "Quasi-experimental longitudinal municipal panel evaluation using difference-in-differences (DiD) fixed-effects regressions and propensity-score common-support trimming",
+    "study_id": "S1034",
+    "where_found_summary": "Section 3(a)-(c) and Tables 1-2 (PDF pp. 3-5) for legal/institutional exposure and sample construction; Section 4 and Figures 2-4 (PDF pp. 4-6) for coverage, mortality data, and pre-reform trends; Section 5 and Table 3 (PDF pp. 6-7) for xtlogit selection-into-reform models; Section 6 and Table 4 (PDF pp. 7-9) for mortality DiD and propensity-score common-support trimming; Section 7 and Tables 5-6 (PDF pp. 8-10) for census coverage DiD and data sources; Endnotes 7-17 (PDF p. 11) for statutory citations, vital registration underreporting, and specification notes.",
+    "why_tool_chosen": "The study evaluates the municipal-level causal effect of a non-randomized legal/institutional intervention (transferring water and sewerage service delivery from direct municipal provision to specialized corporate entities EICE or ESP under Colombia's Law 142 of 1994) against a genuine comparator group (municipalities retaining direct local government service provision) using panel difference-in-differences fixed-effects models and propensity-score common-support trimming (Sections 5-7, PDF pp. 6-10). Under RISK_OF_BIAS.md §1, ROBINS-I is the designated appraisal tool for non-randomized comparative policy/intervention evaluations using DiD and propensity-score methods."
+  }
+}
