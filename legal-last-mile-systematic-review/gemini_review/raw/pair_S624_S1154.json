@@ -1,0 +1,177 @@
+{
+  "pair_key": "S624_S1154",
+  "order": 12,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "16752609a31f5ad14acae6ba45a67a05b5fa7aa9b00d56686c1497a830263ab6",
+  "input_sha256_b": "f39c1c4b9ad75f306d93a75ec2c5b2d02e11c3da73cd6c7a1fd1137bcb38c4f2",
+  "prompt_sha256": "75c0dbe2f71e28ee0156ce0ae8a3bbcb62aadab025e4850635df865357fa068c",
+  "started_at": "2026-11-20T02:52:58.671368+00:00",
+  "completed_at": "2026-11-20T02:53:44.542151+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S624_S1154\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S624 (Record ID: R23C975B9CAD2)\n- Citation: Muchadenyika D, Williams JJ (2018). Politics, Centralisation and Service Delivery in Urban Zimbabwe. Journal of Southern African Studies 44(5):833-853.\n- DOI: 10.1080/03057070.2018.1500748\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1154 (Record ID: RCBBF97B6D984)\n- Citation: Marumahoko S, Afolabi OS, Sadie Y, Nhede NT (2020). Governance and Urban Service Delivery in Zimbabwe. Strategic Review for Southern Africa 42(1):41-63.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 16752609a31f5ad14acae6ba45a67a05b5fa7aa9b00d56686c1497a830263ab6) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=84407, sha256=16752609a31f5ad14acae6ba45a67a05b5fa7aa9b00d56686c1497a830263ab6]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: f39c1c4b9ad75f306d93a75ec2c5b2d02e11c3da73cd6c7a1fd1137bcb38c4f2) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=60542, sha256=f39c1c4b9ad75f306d93a75ec2c5b2d02e11c3da73cd6c7a1fd1137bcb38c4f2]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 2 (p. 834)",
+        "quote": "30 interviews, the article explains how central government and, by extension, ZANU(PF)"
+      },
+      {
+        "page": "PDF Page 4 (p. 835, fn. 16)",
+        "quote": "These are 5 from central government ministries, 6 from local authorities, 5 from urban social movements, 3"
+      },
+      {
+        "page": "PDF Page 8 (p. 839, fn. 36)",
+        "quote": "Interview with political analyst, Harare, 6 June 2013. All interviews for this article were conducted by"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF Page 3 (p. 43)",
+        "quote": "The article assesses the state of urban service delivery in post-Mugabe"
+      },
+      {
+        "page": "PDF Page 17 (p. 57)",
+        "quote": "selected for the research, i.e. Bulawayo City Council, Chitungwiza Municipality,"
+      },
+      {
+        "page": "PDF Page 18 (p. 58)",
+        "quote": "and service consumers. Of the 120 questionnaires, 100 were returned usable. The"
+      }
+    ],
+    "overlap_rationale": "Study A (Muchadenyika & Williams, 2018) and Study B (Marumahoko et al., 2020) are unrelated, empirically distinct studies conducted by completely separate research teams at different institutions, in different time periods, and using different designs and samples. Study A is a qualitative and institutional analysis based on 30 key-informant interviews conducted by Davison Muchadenyika in June–July 2013 ( primarily in Harare, Bulawayo, Masvingo, Mutare and Marondera) supplemented by secondary fiscal and Auditor-General records up to 2016, focusing on the centralisation of water/sanitation (ZINWA) and vehicle licensing (ZINARA). Study B is a post-Mugabe ('Second Republic', circa 2019) mixed-methods survey and fieldwork study across four purposively sampled urban local authorities (Bulawayo City Council, Chitungwiza Municipality, Zvishavane Town Council and Epworth Local Board), analyzing 100 usable closed-ended questionnaires (from 120 distributed), open-ended questionnaires, focus group discussions and in-depth interviews with municipal employees, officials and service consumers. Although both examine urban local governance and service delivery in Zimbabwe, they share no underlying primary empirical dataset or fieldwork sample.",
+    "pair_classification": "unrelated_distinct_studies",
+    "pair_key": "S624_S1154",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "no",
+    "study_a_sample_and_data": "Qualitative key-informant interview study (N = 30 interviews conducted by Davison Muchadenyika in June–July 2013 across Harare, Bulawayo, Masvingo, Mutare and Marondera: 5 central government ministry officials, 6 local authority officials, 5 urban social movement actors, 3 political party representatives, 6 NGO/international agency staff and 5 planners/consultants/researchers), combined with secondary analysis of legislation, parliamentary reports and Auditor-General/fiscal data (2005–2016) on ZINWA water/sanitation centralisation and ZINARA vehicle licensing centralisation in urban Zimbabwe.",
+    "study_b_sample_and_data": "Post-2017 ('Second Republic', circa 2019) mixed-methods primary survey and qualitative study across four purposively selected urban local authorities representing all four tiers of Zimbabwean urban councils (Bulawayo City Council, Chitungwiza Municipality, Zvishavane Town Council and Epworth Local Board). Primary data comprise N = 100 usable closed-ended questionnaires (out of 120 distributed to Ministry of Local Government officials, municipal employees and randomly selected service consumers), open-ended questionnaires, focus group discussions (5–10 participants per group, including UCAZ and Residents' Associations) and in-depth interviews with senior council managers.",
+    "synthesis_double_counting_risk": "none_distinct_samples"
+  }
+}

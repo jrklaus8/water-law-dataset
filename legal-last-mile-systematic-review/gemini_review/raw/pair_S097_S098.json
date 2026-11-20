@@ -1,0 +1,177 @@
+{
+  "pair_key": "S097_S098",
+  "order": 14,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "bb73f645d1920234c58758182286d4674a056b8cbe76fcf223da0fc0dbf74967",
+  "input_sha256_b": "e82bc497597f7d054ff732886e0739e653d5dafea0ac5b8273d159879eb2f01c",
+  "prompt_sha256": "f5209443d672733b793b0d6fe657a1af6d938a0e3f4c41cb763cb068f1a78e3e",
+  "started_at": "2026-11-20T02:52:58.699541+00:00",
+  "completed_at": "2026-11-20T02:53:57.161510+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S097_S098\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S097 (Record ID: R2E4A07A45DF7)\n- Citation: Mwale J, Kanyamuna V, Moose J, Simui F (2025). An Exploration of Stakeholders Perceived Mitigation Measures for Addressing Sanitation Challenges in George Compound in Lusaka Zambia. International Journal of Research and Innovation in Social Science 9(11):5217-5230.\n- DOI: 10.47772/IJRISS.2025.91100414\n- Retrieval status: retrieved_cached_pdf\n\n== STUDY B METADATA ==\n- Study ID: S098 (Record ID: R5C53283B5508)\n- Citation: Mwale J, Kanyamuna V, Moose J, Simui F (2025). A Gendered Mitigation to Exclusion in the On-Site Sanitation in George Compound in Lusaka Zambia: A Hermeneutic Phenomenological Approach. International Journal of Research and Innovation in Social Science 9(11):7472-7485.\n- DOI: 10.47772/IJRISS.2025.91100579\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: bb73f645d1920234c58758182286d4674a056b8cbe76fcf223da0fc0dbf74967) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=121855, sha256=bb73f645d1920234c58758182286d4674a056b8cbe76fcf223da0fc0dbf74967]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: e82bc497597f7d054ff732886e0739e653d5dafea0ac5b8273d159879eb2f01c) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=70883, sha256=e82bc497597f7d054ff732886e0739e653d5dafea0ac5b8273d159879eb2f01c]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 5",
+        "quote": "The study was conducted in George Compound one of the Peri Urban areas located West of Lusaka."
+      },
+      {
+        "page": "PDF Page 6",
+        "quote": "researcher determined sample size after conducting interviews with 29 Participants (10 Males and 15 women)"
+      },
+      {
+        "page": "PDF Page 11",
+        "quote": "\"There is a need to invest in solar-powered energy sources.\" Participant (GC 22)."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF Page 5",
+        "quote": "The study was conducted in George Compound one of the Peri Urban areas located West of Lusaka."
+      },
+      {
+        "page": "PDF Page 6",
+        "quote": "researcher determined sample size after conducting interviews with 29 Participants (10 Males and 15 women)"
+      },
+      {
+        "page": "PDF Page 8",
+        "quote": "\"There is a need to invest in solar-powered energy sources.\""
+      }
+    ],
+    "overlap_rationale": "Both papers are readable full texts published in the same November 2025 issue of International Journal of Research and Innovation in Social Science (Vol. 9, Issue 11; both received 14 November 2025 and accepted 22 November 2025) by the exact same author team (Mwale, Kanyamuna, Moose, and Simui) from James Mwale's PhD thesis at the University of Zambia. They are companion reports ('salami-sliced' articles) analyzing the exact same qualitative fieldwork sample in George Compound, Lusaka, Zambia: N = 29 total participants (10 male and 15 female sanitation programme beneficiaries plus 4 key informants from LCC, ZEMA, NWASCO, LWSC, WDC, and the Water and Sanitation Committee). Both papers share word-for-word identical Background, Methodology, Study Limitations, Suggestions for Future Studies, and Reference sections. Empirically, Study A reports the broader set of institutional, regulatory, infrastructural, and gendered mitigation themes (including KII quotes from ZEMA, LCC, NWASCO, and LWSC alongside beneficiary quotes), whereas Study B extracts and reframes the gendered exclusion/mitigation subset from the exact same interviews—reproducing verbatim the same participant quotes (e.g., GC 6, GC 11, GC 19, and GC 22) and entire Discussion subsections from Study A, while adding one quote on absentee landlords (GC 11). Treating them as independent studies in qualitative or quantitative synthesis would directly double-count the same respondents and verbatim interview excerpts.",
+    "pair_classification": "same_sample_companion_reports",
+    "pair_key": "S097_S098",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "yes",
+    "study_a_sample_and_data": "Qualitative interpretive phenomenological study in George Compound (peri-urban Lusaka, Zambia) using criterion-based purposive sampling and reflexive thematic analysis of 50-60 minute in-depth and key informant interviews with N = 29 participants: 25 community beneficiaries (10 males, 15 women, coded GC) who experienced government/Lusaka Sanitation Program interventions over the past 10 years and 4 key informants (coded KII) across the Ward Development Committee, Water and Sanitation Committee, Lusaka City Council (Public Health Department), ZEMA (Inspectorate), NWASCO, and LWSC (Peri-Urban Department).",
+    "study_b_sample_and_data": "Qualitative phenomenological study in George Compound (peri-urban Lusaka, Zambia) using the exact same criterion-based purposive sample and reflexive thematic analysis of 50-60 minute in-depth and key informant interviews with N = 29 participants (10 males, 15 women beneficiaries coded GC, and 4 key informants from WDC, Water and Sanitation Committee, LCC, ZEMA, NWASCO, and LWSC), reporting the gendered exclusion and mitigation subset of findings.",
+    "synthesis_double_counting_risk": "high_exact_or_same_sample"
+  }
+}

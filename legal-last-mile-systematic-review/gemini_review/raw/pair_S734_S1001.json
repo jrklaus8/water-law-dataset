@@ -1,0 +1,177 @@
+{
+  "pair_key": "S734_S1001",
+  "order": 4,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "b2b7550a1808b5be8428741a8ba98317b6893494940e45d6ad81a67bb0c07ff7",
+  "input_sha256_b": "be7fc7689e7654d3aaf0b40587c7a8ff3729aa73c56064de8c25572c709e6928",
+  "prompt_sha256": "dfcaafdcdab350972251ae22f9f604890998e93d1065168cf50b6603bd1c02ff",
+  "started_at": "2026-11-20T02:50:47.801083+00:00",
+  "completed_at": "2026-11-20T02:51:24.485276+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S734_S1001\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S734 (Record ID: RDF9D6AE68D61)\n- Citation: Kooy M, Bakker K (2008). Technologies of Government: Constituting Subjectivities, Spaces, and Infrastructures in Colonial and Contemporary Jakarta. International Journal of Urban and Regional Research 32(2).\n- DOI: 10.1111/j.1468-2427.2008.00791.x\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1001 (Record ID: RAF43F1049CAC)\n- Citation: Kooy M, Bakker K (2008). Splintered networks: The colonial and contemporary waters of Jakarta. Geoforum.\n- DOI: 10.1016/j.geoforum.2008.07.012\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: b2b7550a1808b5be8428741a8ba98317b6893494940e45d6ad81a67bb0c07ff7) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=71459, sha256=b2b7550a1808b5be8428741a8ba98317b6893494940e45d6ad81a67bb0c07ff7]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: be7fc7689e7654d3aaf0b40587c7a8ff3729aa73c56064de8c25572c709e6928) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=117357, sha256=be7fc7689e7654d3aaf0b40587c7a8ff3729aa73c56064de8c25572c709e6928]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "1",
+        "quote": "colonial archives in Amsterdam and Leiden (the Netherlands) during research in 2003."
+      },
+      {
+        "page": "2",
+        "quote": "international water supply professionals in the private sector, donor and engineering community;"
+      },
+      {
+        "page": "5",
+        "quote": "In 1929, 6,926 kampung households were supplied with 24 litres, while 10,392 European households"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "1",
+        "quote": "Drawing on archival and interview data, the paper demonstrates that Jakarta has, since its"
+      },
+      {
+        "page": "8",
+        "quote": "In 1929, 6926 kampong households were supplied with 24 L/s, while 10,392"
+      },
+      {
+        "page": "14",
+        "quote": "Invaluable assistance was provided by research assistants Endah Shoﬁani and E.J."
+      }
+    ],
+    "overlap_rationale": "Both Study A (IJURR 2008) and Study B (Geoforum 2008, cited as forthcoming in Study A) are companion qualitative-historical case studies by Michelle Kooy and Karen Bakker derived from the exact same SSHRC-funded research project on colonial Batavia and post-colonial/contemporary Jakarta's water supply infrastructure. Both articles draw on the same 2003 Dutch colonial archival research in Amsterdam, Leiden and Den Haag and the same 2004–2006 Jakarta fieldwork (interviews with water supply professionals, participant observation with local and international NGOs, and policy/media document analysis) conducted with the same research assistants (Endah Shofiani and E.J. Martijn). While Study A frames the material around Foucauldian technologies of government, hygiene discourses and urban subjectivities and Study B critiques Graham and Marvin's 'splintering urbanism' thesis across four infrastructure periods, they analyze the same underlying archival corpus, fieldwork interviews, historical statistics (e.g., identical 1929/1930 Eggink kampung vs. European connection figures and contemporary 40,000 illegal connection estimates) and case setting.",
+    "pair_classification": "same_sample_companion_reports",
+    "pair_key": "S734_S1001",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "yes",
+    "study_a_sample_and_data": "Qualitative-historical genealogy of urban water supply in colonial Batavia and post-colonial/contemporary Jakarta, Indonesia (1870s–2006), based on 2003 colonial archival research in the Netherlands (Nationaal Archief in Den Haag, KITLV in Leiden, KIT in Amsterdam) and 2004–2006 Jakarta fieldwork comprising interviews with local and international water supply professionals, participant observation with NGOs in urban poor communities (kampungs), and discourse analysis of media, donor and utility documents (no numeric respondent N reported).",
+    "study_b_sample_and_data": "Qualitative-historical case study of urban water supply fragmentation in colonial Batavia and post-colonial/contemporary Jakarta, Indonesia (1870–2007), drawing on the same Dutch colonial archival records (Amsterdam and Leiden), PAM Jaya/KIP/World Bank/JICA utility and policy reports, and Jakarta fieldwork interviews with water supply professionals and local/international NGO staff assisted by Endah Shofiani and E.J. Martijn (no numeric respondent N reported).",
+    "synthesis_double_counting_risk": "high_exact_or_same_sample"
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "pair_key": "S185_S530",
+  "order": 39,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "6475bd9c9f59a4888e2b4dfaece6aff95dafbb57300421777171842dec8fe928",
+  "input_sha256_b": "9641c9dcc70d1730a7b794244deab5723e117a17036cb4340dc19e0d24f3f147",
+  "prompt_sha256": "16369e4700bd9b6cf2f5607c10196096a519c923e502883e8c770e5164a2b1a4",
+  "started_at": "2026-11-20T03:36:08.329457+00:00",
+  "completed_at": "2026-11-20T03:37:03.311691+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S185_S530\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S185 (Record ID: RA8136B634A80)\n- Citation: Hofstetter M, Bolding A, Boelens R (2023). Conviviality Under Pressure of Market-Modernist Expertocracy: The Case of Water Commons in Rural Switzerland. International Journal of the Commons 17(1):375-389.\n- DOI: 10.5334/ijc.1256\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S530 (Record ID: RFFE87AAC2802)\n- Citation: Hofstetter M., Bolding A., Boelens R. (2023). Rooted Water Collectives in a Modernist and Neoliberal Imaginary: Threats and Perspectives for Rural Water Commons. Water 15(21):3736.\n- DOI: 10.3390/w15213736\n- Retrieval status: retrieved_oa_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 6475bd9c9f59a4888e2b4dfaece6aff95dafbb57300421777171842dec8fe928) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=73008, sha256=6475bd9c9f59a4888e2b4dfaece6aff95dafbb57300421777171842dec8fe928]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 9641c9dcc70d1730a7b794244deab5723e117a17036cb4340dc19e0d24f3f147) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=95926, sha256=9641c9dcc70d1730a7b794244deab5723e117a17036cb4340dc19e0d24f3f147]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 2",
+        "quote": "schemes (Feb. 2021 – June 2022) and then by the private"
+      },
+      {
+        "page": "PDF Page 6",
+        "quote": "1962, serving 14 households and one cheese factory."
+      },
+      {
+        "page": "PDF Page 7",
+        "quote": "Figure 1 Current schemes (left) and inter-connected schemes (right) (source: own elaboration)."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF Page 6",
+        "quote": "department (February 2021 to June 2022) and then as an employee at a local engineering"
+      },
+      {
+        "page": "PDF Page 14",
+        "quote": "shared among 14 households, such a project would only be feasible with public subsidies."
+      },
+      {
+        "page": "PDF Page 15",
+        "quote": "Figure 4. Current schemes (left) and connected schemes (right), scheme S is the one described in"
+      }
+    ],
+    "overlap_rationale": "Both full texts are accessible and share the exact same Swiss empirical case study while differing in overall geographical scope. Study A (International Journal of the Commons, 2023) focuses exclusively on rural water cooperatives in the Canton of Lucerne, Switzerland, detailing a proposed merger/interconnection of three water schemes (S, K, and N) based on participant observation by the lead author at the cantonal department LAWA (February 2021–June 2022) and a private engineering consultancy (from July 2022), alongside 17 semi-structured interviews and archival research. Study B (Water, 2023) explicitly draws on three earlier case studies—citing Study A as Reference [74] alongside two South African studies [75, 76]—to compare three Rooted Water Collectives: two in Limpopo Province, South Africa (Tshakuma and Ga-Moela; fieldwork April 2017–June 2018 plus a 2023 visit) and one in Entlebuch, Canton of Lucerne, Switzerland. The Swiss case in Study B (Section 5.3) is Scheme S from Study A (built in 1962, serving 14 households and a collective cheese factory, undergoing the exact same proposed three-scheme interconnection), relies on the identical February 2021–June 2022 and July 2022+ fieldwork, and reproduces the exact same schematic map (Figure 1 in Study A = Figure 4 in Study B). Thus, the Swiss subsample of Study B directly overlaps with Study A, whereas Study B adds two distinct South African community cases and Study A provides deeper multi-scheme detail on Swiss Cooperatives K and N.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S185_S530",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Qualitative action-research/participant-observation case study in a rural municipality in the foothills of the Alps, Canton of Lucerne, Switzerland, examining cantonal water-subsidy governance and a project to interconnect three cooperative rural water schemes: Scheme S (built 1962, 14 households and 1 cheese factory), Scheme K (built 1967, 11 households), and Scheme N (reservoirs built 1970). Data collected via participant observation by the first author while employed at the cantonal department for agriculture and forestry (LAWA, Feb 2021–June 2022) and the planning engineering firm (from July 2022), 17 semi-structured interviews (6 current/former government officials, 5 scheme officials, 3 engineers, 2 local politicians, 1 contractor), and cantonal historical/newspaper archives.",
+    "study_b_sample_and_data": "Comparative qualitative action-research synthesis across three Rooted Water Collectives (RWCs) in two countries: (1) Tshakuma (Muhovhoya section, 113-household user-built scheme in a village of >4,000 households; IWMI 2017 survey N=250), Vhembe District, Limpopo, South Africa; (2) Ga-Moela (~100-household village, Sections A and B reticulations; IWMI 2017 survey N=65), Sekhukhune District, Limpopo, South Africa; and (3) Entlebuch (Scheme S, built 1962, 14 households and a collective cheese facility), Canton of Lucerne, Switzerland. Draws on earlier fieldwork from April 2017–June 2018 and a 2023 revisit in South Africa, plus the exact same Swiss fieldwork (Feb 2021–June 2022 at the cantonal department and July 2022–present at the engineering consultancy), pooling 128 semi-structured interviews across all three cases (28 department officials, 12 scheme officials, 9 engineering consultants, 12 politicians, 3 academics, 64 water users).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

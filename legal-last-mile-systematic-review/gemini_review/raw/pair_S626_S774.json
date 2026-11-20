@@ -1,0 +1,177 @@
+{
+  "pair_key": "S626_S774",
+  "order": 35,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "59290f18dbcb2fd972f9af0098aada2f7ea64de588f91c299b4e9d1fe1bf7e01",
+  "input_sha256_b": "22d4e842cd7450045f78de078a1b3a7ab2e778f17edad9df7f72fb778facff86",
+  "prompt_sha256": "cbd277c8af1387c1bf8c340d008aba292f46a314ec72bf52ecb8c8e1dce1b62f",
+  "started_at": "2026-11-20T03:36:08.303817+00:00",
+  "completed_at": "2026-11-20T03:37:26.751466+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S626_S774\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S626 (Record ID: R77D2791283C1)\n- Citation: Abubakar IR (2018). Strategies for coping with inadequate domestic water supply in Abuja, Nigeria. Water International 43(5):570-590.\n- DOI: 10.1080/02508060.2018.1490862\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S774 (Record ID: RED1DDE4608AA)\n- Citation: Abubakar IR (2016). Quality dimensions of public water services in Abuja, Nigeria. Utilities Policy.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 59290f18dbcb2fd972f9af0098aada2f7ea64de588f91c299b4e9d1fe1bf7e01) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=70294, sha256=59290f18dbcb2fd972f9af0098aada2f7ea64de588f91c299b4e9d1fe1bf7e01]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 22d4e842cd7450045f78de078a1b3a7ab2e778f17edad9df7f72fb778facff86) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=60270, sha256=22d4e842cd7450045f78de078a1b3a7ab2e778f17edad9df7f72fb778facff86]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "8",
+        "quote": "Through qualitative methods, data were collected from in-depth interviews with 60"
+      },
+      {
+        "page": "9",
+        "quote": "First, 18 key informants, households with at least 10 years of residency in Abuja,"
+      },
+      {
+        "page": "9",
+        "quote": "the author in summer 2015. Most of the interviews took place in the evenings and"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "3",
+        "quote": "Between 2013 and 2015, the author interviewed 85 residents and"
+      },
+      {
+        "page": "4",
+        "quote": "Twenty-six informants originally agreed to participate but 18"
+      },
+      {
+        "page": "4",
+        "quote": "from 3 to 28 years with an average of about 10 years. The sample"
+      }
+    ],
+    "overlap_rationale": "Both papers are readable qualitative fieldwork studies of domestic piped water services in Abuja, Nigeria, conducted by Ismaila Rimi Abubakar, and exhibit clear partial sample overlap. Study B (2016) analyzes interviews conducted between 2013 and 2015 with 85 adult piped-water residents across 14 residential districts (25 Phase I, 32 Phase II, 28 Phase III; 53 male, 32 female) plus 30 city water/engineering officials. Study A (2018) analyzes interviews conducted in summer 2015 with 60 household heads or spouses across 12 residential districts (~23 Phase I, ~20 Phase II, ~17 Phase III; 44 male, 16 female) and no officials. Critically, both papers describe the exact same initial seed of 18 key informants with at least 10 years of residency in Abuja, the exact same three snowball-sampling eligibility criteria (adult/household head or spouse, piped water connection at home, and >=3 years at current residence), the exact same respondent residency span (3 to 28 years), and an overlapping 2015 fieldwork window, with every geographic and gender subgroup count in Study A fitting as a subset within Study B's 85-resident sample while excluding Study B's 25 additional residents and 30 city officials. Although Study A cites Study B as an earlier study and focuses on household coping strategies and regulatory/socioeconomic determinants rather than Study B's seven utility service-quality and governance dimensions, both draw on overlapping Abuja household interview data and report overlapping observations on spatial inequity across city phases, flat-rate billing, water quality/treatment, and vending/fetching.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S626_S774",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Qualitative semi-structured face-to-face interviews and direct observations conducted in summer 2015 with N = 60 piped-water households (44 male household heads, 16 female spouses; residency 3-28 years, mean 9 years) across 12 residential districts in Phases I (38%), II (33%) and III (28%) of Abuja City, Nigeria, recruited from 18 key informants (>=10 years residency) via snowball sampling.",
+    "study_b_sample_and_data": "Qualitative semi-structured interviews and field observations conducted between 2013 and 2015 in Abuja City, Nigeria, with N = 115 interviewees comprising 85 piped-water residents (53 male, 32 female; residency 3-28 years, mean ~10 years) across 14 residential districts in Phases I (n = 25), II (n = 32) and III (n = 28)—recruited from 18 participating key informants (>=10 years residency) via snowball sampling—plus 30 city officials from the Abuja Water Board (18) and FCTA engineering department (12).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

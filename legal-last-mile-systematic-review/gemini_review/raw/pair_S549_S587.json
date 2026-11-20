@@ -1,0 +1,177 @@
+{
+  "pair_key": "S549_S587",
+  "order": 15,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "25f51a5ba3f0db021e90d7903fca7bc7218981d541ae6a9a4a15ea181e2970a2",
+  "input_sha256_b": "61000b378561fc2ff4fddca783323ce0d7aa2d7f6953f5b2d6c9892bc2722069",
+  "prompt_sha256": "362e54ab93520909d5b9d70c2f5aede109e1441a62bd9e6321c4a5fcb203f3d4",
+  "started_at": "2026-11-20T02:52:58.707916+00:00",
+  "completed_at": "2026-11-20T02:54:36.002214+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S549_S587\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S549 (Record ID: RCC0D2A422FD2)\n- Citation: Bartels LE, Bruns A, Alba R (2018). \"The production of uneven access to land and water in peri-urban spaces: de facto privatisation in greater Accra.\" Local Environment, 23(12), 1172-1189.\n- DOI: 10.1080/13549839.2018.1533932\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S587 (Record ID: R684F94E229C3)\n- Citation: Alba R, Bruns A, Bartels LE, Kooy M (2019). Water Brokers: Exploring Urban Water Governance through the Practices of Tanker Water Supply in Accra. Water 11(9):1919.\n- DOI: 10.3390/w11091919\n- Retrieval status: retrieved_oa_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 25f51a5ba3f0db021e90d7903fca7bc7218981d541ae6a9a4a15ea181e2970a2) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=79836, sha256=25f51a5ba3f0db021e90d7903fca7bc7218981d541ae6a9a4a15ea181e2970a2]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 61000b378561fc2ff4fddca783323ce0d7aa2d7f6953f5b2d6c9892bc2722069) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=93727, sha256=61000b378561fc2ff4fddca783323ce0d7aa2d7f6953f5b2d6c9892bc2722069]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "6",
+        "quote": "in the GAMA between August and November 2015. These case study sites are the"
+      },
+      {
+        "page": "7",
+        "quote": "method (n = 62, see also Table 1). The interviews conducted represent the two case study sites"
+      },
+      {
+        "page": "8",
+        "quote": "Private water providers are mainly part of the household interviews, as ordinary households often turn themselves into water"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "4",
+        "quote": "Empirical data were collected between August and November 2015, as well as from August"
+      },
+      {
+        "page": "4",
+        "quote": "We focused on tanker drivers that belonged to four organized associations, as well as a few"
+      },
+      {
+        "page": "5",
+        "quote": "We conducted 15 in-depth interviews with local, city-wide, and national water policy makers and"
+      }
+    ],
+    "overlap_rationale": "Both papers have complete, readable full texts and originate from the same research group (Governance and Sustainability Lab, Trier University) under the BMBF-funded WaterPower project (grant 01 LN 1316 A) in the Greater Accra Metropolitan Area (GAMA), with Study B citing Study A as reference [13]. Despite sharing the broader research programme and an initial August–November 2015 fieldwork window, their primary empirical samples, geographies, respondent groups, and analytical designs are distinct. Study A examines household-level land and domestic water access and customary land/local water control in two specific peri-urban localities (Oduman and Pantang; August–November 2015), drawing on 62 household interviews (which included 25 local/neighbourhood water providers), 17 interviews with traditional authorities, elders, youth-group members, and landowner associations, 4 household photo diaries, transect walks, and background institutional expert interviews. Study B (led by R. Alba, who conducted the field investigation across August–November 2015 and August–September 2017) examines urban water governance and mobile tanker brokerage across urban and peri-urban Accra, drawing on 12 days of ride-along participant observation and interviews with tanker truck drivers, mates, and truck owners across four tanker associations (primarily urban North-West and East Accra/Adenta plus one peri-urban association) alongside 15 in-depth interviews with municipal, GWCL, PURC, MWRWH Water Directorate, and World Bank officials. At most, some background water-sector expert interviews in late 2015 may have been conducted jointly by the project team (used only as institutional context in Study A, where only a Stool Lands official is cited, versus formal governance analysis in Study B), so double-counting risk in synthesis is low.",
+    "pair_classification": "distinct_samples_same_programme_or_author",
+    "pair_key": "S549_S587",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "no",
+    "study_a_sample_and_data": "Qualitative case study in two peri-urban localities of the Greater Accra Metropolitan Area (GAMA), Ghana—Oduman (Ga West Municipality) and Pantang (La Nkwantanang-Madina Municipality)—conducted between August and November 2015 under the BMBF WaterPower project. Data include 62 semi-structured household interviews across original villages (n = 13) and new settlement sites (n = 49) encompassing 25 local private water providers, plus interviews with traditional authorities (3), elders (9), youth organisation members (3), and landowner associations (2), supplemented by transect walks, 1-week photo diaries in 4 households, and background expert interviews on land/water institutional setup.",
+    "study_b_sample_and_data": "Practice-based ethnographic and qualitative governance study of mobile tanker water supply across urban and peri-urban Accra (GAMA), Ghana, conducted between August and November 2015 and August to September 2017 under the BMBF WaterPower project. Data include 12 days of ride-along participant observation, mapping, semi-structured interviews, and informal conversations by the first author (R. Alba) with tanker truck drivers, truck owners, and mates across four organized tanker associations (three urban in North-West and East Accra/Adenta, one peri-urban) plus individual drivers, together with 15 in-depth interviews with municipal officials, GWCL engineers and field staff, PURC members, MWRWH Water Directorate officials, and World Bank staff.",
+    "synthesis_double_counting_risk": "low_distinct_outcomes_or_designs"
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "pair_key": "S600_S799",
+  "order": 9,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "c480e2556a8bbb30c0fd29eec00c11e116c8352999e619771098cba186e89abb",
+  "input_sha256_b": "30edc745899c072169d2cc77f69cd90d0fbd25d7c1fa92e12bb074f8c8d176a2",
+  "prompt_sha256": "05c51c6281aa4f7b866750b7f0fdc66d6d403160db9f3c981531816ca975378f",
+  "started_at": "2026-11-20T02:52:58.621104+00:00",
+  "completed_at": "2026-11-20T02:54:11.767651+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S600_S799\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S600 (Record ID: R68EEE02D1AF5)\n- Citation: Rout S, Kattumuri R (2022). Urban Water Supply and Governance in India. Springer Nature Singapore.\n- DOI: 10.1007/978-981-16-3819-0\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S799 (Record ID: RD601DD13E14F)\n- Citation: Roy D, Akshintala V, Sharma R (2013). Water Governance and Supply in Urban Areas. Social Change.\n- DOI: 10.1177/0049085713493045\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: c480e2556a8bbb30c0fd29eec00c11e116c8352999e619771098cba186e89abb) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=220030, sha256=c480e2556a8bbb30c0fd29eec00c11e116c8352999e619771098cba186e89abb]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 30edc745899c072169d2cc77f69cd90d0fbd25d7c1fa92e12bb074f8c8d176a2) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=21035, sha256=30edc745899c072169d2cc77f69cd90d0fbd25d7c1fa92e12bb074f8c8d176a2]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "24",
+        "quote": "carried out in four cities of India, namely, Ahmedabad, Bengaluru, Hyderabad, and"
+      },
+      {
+        "page": "24",
+        "quote": "households in Kochi and 1000 households each in the other three cities. Thus, 3714"
+      },
+      {
+        "page": "5",
+        "quote": "At the outset, we wish to thank the UGC-UKIERI partnership for the generous"
+      }
+    ],
+    "evidence_quotes_b": [],
+    "overlap_rationale": "Study A (Rout & Kattumuri, 2022; S600) is a 318-page Springer monograph whose text in the prompt is readable from PDF Page 1 through PDF Page 68, where the prompt ends with '<truncated 53508 bytes>'. Because of this truncation inside Study A, '== STUDY B FULL TEXT ==' (Roy, Akshintala & Sharma, 2013; S799) was completely omitted from the prompt and is not accessible. What CAN be verified from Study A's accessible chapters (Preface, Contents, Lists of Figures/Tables, Chapter 1 including Section 1.6 'A Note on Methodology', and Chapter 2) is that Study A analyzes a primary household survey of N = 3,714 urban households across four Indian cities—Ahmedabad (n = 1,000), Bengaluru (n = 1,000), Hyderabad (n = 1,000) and Kochi (n = 714)—funded by a UGC-UKIERI partnership grant (conceived during 2012–2013 at LSE with workshops in June–August 2016), alongside secondary data from the Census of India (2001, 2011), Central Water Commission (2015), ADB (2007) and municipal water utilities (AMC, BWSSB, HMWSSB, KWA). Metadata also show non-overlapping author teams and publication dates nine years apart (Rout & Kattumuri 2022 vs Roy, Akshintala & Sharma 2013). What CANNOT be verified without Study B's full text (and PDF Pages 69–318 of Study A) is whether Study B reports primary fieldwork or secondary urban water statistics (e.g., Census/NSSO/ADB city-level indicators), which Indian cities or utilities Study B examines, its sample size and dates, and whether any empirical tables or secondary series overlap. Per strict audit rules prohibiting guessing from titles/metadata alone when either full text is inaccessible, pair_classification is set to 'cannot_tell_missing_full_text'.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S600_S799",
+    "paper_a_read": "full text",
+    "paper_b_read": "not accessible",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "Primary household survey of N = 3,714 households across four Indian cities—Ahmedabad (Gujarat, n = 1,000), Bengaluru (Karnataka, n = 1,000), Hyderabad (Telangana, n = 1,000) and Kochi (Kerala, n = 714)—funded by a UGC-UKIERI grant (conceived 2012–2013, workshops in 2016), supplemented by secondary data from Census of India (2001, 2011), Central Water Commission (2015), ADB (2007) and city water utilities (PDF Pages 1–68 of 318 accessible; Pages 69–318 truncated).",
+    "study_b_sample_and_data": "Not accessible in prompt: '== STUDY B FULL TEXT ==' (Roy, Akshintala & Sharma, 2013, Social Change) was completely cut off by prompt truncation ('<truncated 53508 bytes>' at PDF Page 68 of Study A), so geography, dates, sample size (N), unit of analysis and dataset cannot be verified.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

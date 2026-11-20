@@ -1,0 +1,177 @@
+{
+  "pair_key": "S681_S682",
+  "order": 17,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "e376aadbf30d4c14e1ab8a527c557d2acb4c4fb8b755b75bf4abcb581c48786a",
+  "input_sha256_b": "ff36b693783508968edfaf66dbd4afce213bf1c4d8814416821ba989ac1ff149",
+  "prompt_sha256": "142489fdedca96cf0cb84966f3a2166dee365a799a132a8b0a2d00b8aaa403a8",
+  "started_at": "2026-11-20T02:54:36.030559+00:00",
+  "completed_at": "2026-11-20T03:33:17.255185+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S681_S682\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S681 (Record ID: R0D499B7D1D12)\n- Citation: Singh N (2006). Women, Society and Water Technologies: Lessons for Bureaucracy. Gender, Technology and Development 10(3):341-360.\n- DOI: 10.1177/097185240601000303\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S682 (Record ID: RDCEF86AF76DC)\n- Citation: Singh N (2006). Women's Participation in Local Water Governance: Understanding Institutional Contradictions. Gender, Technology and Development 10(1):61-76.\n- DOI: 10.1177/097185240501000104\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: e376aadbf30d4c14e1ab8a527c557d2acb4c4fb8b755b75bf4abcb581c48786a) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=57095, sha256=e376aadbf30d4c14e1ab8a527c557d2acb4c4fb8b755b75bf4abcb581c48786a]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: ff36b693783508968edfaf66dbd4afce213bf1c4d8814416821ba989ac1ff149) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=44730, sha256=ff36b693783508968edfaf66dbd4afce213bf1c4d8814416821ba989ac1ff149]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF p. 7 (p. 346)",
+        "quote": "12 villages in two districts of M.P., 15 villages in three districts of W.B.,"
+      },
+      {
+        "page": "PDF p. 7 (p. 346)",
+        "quote": "12 FGDs were held, of which five were organized specifically for women."
+      },
+      {
+        "page": "PDF p. 14 (p. 353)",
+        "quote": "In a sample of 12 village panchayats, only 30 percent of women"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF p. 9 (p. 68)",
+        "quote": "pertains to a sample of 12 villages in two districts of MP and"
+      },
+      {
+        "page": "PDF p. 9 (p. 68)",
+        "quote": "15 villages in three districts of WB. In MP, the objective of the research"
+      },
+      {
+        "page": "PDF p. 10 (p. 69)",
+        "quote": "Twelve focus group discussions were conducted, of which"
+      }
+    ],
+    "overlap_rationale": "Both papers are readable full-text articles published by Nandita Singh in Volume 10 of Gender, Technology and Development (2006) drawing on the same SIDA-funded rural Indian water ethnographic research programme, with Study B's entire 27-village sample nested inside Study A's 32-village sample. Specifically, Study B analyzes 12 villages in two districts of Madhya Pradesh (Datia and Shivpuri) and 15 villages in three districts of West Bengal (2002-2004 fieldwork), including 12 focus group discussions (five women-only). Study A analyzes those exact same 12 villages in two districts of Madhya Pradesh and 15 villages in three districts of West Bengal—plus 3 villages in one district of Bihar and 2 villages in one district of Jharkhand (32 villages total; 162 women and 149 men; the exact same 12 FGDs including five women-only). Furthermore, both papers report identical empirical findings from the overlapping Madhya Pradesh/West Bengal fieldwork, including the exact 30% female attendance rate across 12 village Panchayats, two village PRI handpump siting cases where SC women were excluded by upper-caste siting (named Lamkana and Saprar in Study B), and women's nominal membership in NGO-led arsenic removal plant committees in West Bengal, while Study A additionally reports handpump rejection and 15 TRYSEM-trained women mechanics across MP, Bihar, and Jharkhand.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S681_S682",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Ethnographic fieldwork across 32 rural Indian villages in four states: 12 villages in 2 districts of Madhya Pradesh (including Shivpuri), 15 villages in 3 districts of West Bengal, 3 villages in 1 district of Bihar, and 2 villages in 1 district of Jharkhand (SIDA-funded project). Sample comprises 162 women and 149 men (N = 311 informants) via participant observation, key-informant interviews, 12 focus group discussions (5 women-only), 4 village case studies, 55 handpumps in 17 villages (MP, Bihar, Jharkhand), 15 women trained as handpump mechanics under TRYSEM, and 12 village Panchayats in MP.",
+    "study_b_sample_and_data": "Ethnographic fieldwork conducted between 2002 and 2004 across 27 rural Indian villages in two states: 12 villages in 2 districts of Madhya Pradesh (Datia and Shivpuri; examining PRI Women and Child Welfare and Health Committees and 12 village Panchayats, including villages Lamkana and Saprar) and 15 villages in 3 districts of West Bengal (examining NGO-initiated community arsenic removal plant committees, including village Raipara), using participant observation, interviews, and 12 focus group discussions (5 women-only).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

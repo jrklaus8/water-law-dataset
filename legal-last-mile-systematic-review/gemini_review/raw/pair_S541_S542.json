@@ -1,0 +1,177 @@
+{
+  "pair_key": "S541_S542",
+  "order": 21,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "b773b9f427d4f2106ceda731b316220e4a16c87fe6d846190ce4a3552b7e9948",
+  "input_sha256_b": "fb6e60eb415bef31bcf7aea516778cb4f19252220bee7a31dff43c083241ee62",
+  "prompt_sha256": "3ea30a5081e1e06ca74a587042d898d5101c7eedd58117f8b55d207064dd08b3",
+  "started_at": "2026-11-20T02:54:36.122176+00:00",
+  "completed_at": "2026-11-20T03:34:22.118880+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S541_S542\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S541 (Record ID: R08C74B34D928)\n- Citation: Singh V, Pandey A (2020). \"Urban water resilience in Hindu Kush Himalaya: issues, challenges and way forward.\" Water Policy, 22(S1), 33-45.\n- DOI: 10.2166/wp.2019.329\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S542 (Record ID: RB432D9F6004C)\n- Citation: Singh S, Hassan SMT, Hassan M, Bharti N (2020). \"Urbanisation and water insecurity in the Hindu Kush Himalaya: Insights from Bangladesh, India, Nepal and Pakistan.\" Water Policy, 22(S1), 9-32.\n- DOI: 10.2166/wp.2019.215\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: b773b9f427d4f2106ceda731b316220e4a16c87fe6d846190ce4a3552b7e9948) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=45553, sha256=b773b9f427d4f2106ceda731b316220e4a16c87fe6d846190ce4a3552b7e9948]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: fb6e60eb415bef31bcf7aea516778cb4f19252220bee7a31dff43c083241ee62) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=93461, sha256=fb6e60eb415bef31bcf7aea516778cb4f19252220bee7a31dff43c083241ee62]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 2 (p. 34)",
+        "quote": "urban population is growing between 3% and 5% (Singh et al., 2019)."
+      },
+      {
+        "page": "PDF Page 4 (p. 36)",
+        "quote": "Table 1. Demand and supply and major issues in selected cities of HKH Himalaya."
+      },
+      {
+        "page": "PDF Page 5 (p. 37)",
+        "quote": "Kathmandu valley on the whole faces a shortage of 210 MLD."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF Page 4 (p. 12)",
+        "quote": "urbanisation trends in the four countries of the HKH region, using the latest available census data."
+      },
+      {
+        "page": "PDF Page 15 (p. 23)",
+        "quote": "Table 9. Gap between municipal demand and supply of water (in million litres per day (MLD)) in selected towns and cities"
+      },
+      {
+        "page": "PDF Page 18 (p. 26)",
+        "quote": "This work was carried out by the Himalayan Adaptation, Water and Resilience (HI-AWARE) consortium"
+      }
+    ],
+    "overlap_rationale": "Both full texts are accessible and represent two distinct review/synthesis articles produced under the same Himalayan Adaptation, Water and Resilience (HI-AWARE / CARIAA) research consortium and published in the same special issue of Water Policy, 22(S1) (2020), by completely different author teams (Vishal Singh and Anvita Pandey at CEDAR in Study A vs. Sreoshi Singh, S. M. Tanvir Hassan, Masooma Hassan, and Neha Bharti at ICIMOD/BCAS/PARC/TERI in Study B). Study A explicitly cites the online-first version of Study B (Singh et al., 2019). Neither paper reports a primary household or official survey sample; instead, both synthesize secondary municipal water statistics and published/grey literature across Hindu Kush Himalaya (HKH) cities. However, they exhibit partial overlap in their compiled city-level water demand-and-supply datasets and case-study narratives: 4 of the 8 cities tabulated in Study A Table 1 (Quetta, Shimla, Mussoorie, and Kathmandu) are also among the 13 cities tabulated in Study B Table 9, with identical or rounded-identical secondary MLD figures for Quetta (170 MLD demand, 106 MLD supply) and Mussoorie (14.4 vs. 14.5 MLD demand; 7.67 vs. 7.7 MLD supply), as well as the exact same 210 MLD shortage figure for Kathmandu Valley in the text (plus shared qualitative discussion of Pokhara, Almora, Leh, and Srinagar). At the same time, each paper covers substantial non-overlapping material: Study A extends to Afghanistan (Kabul), China (Xining), Bhutan (Thimphu, Phuentsholing), and Nainital and formulates 12 urban water governance/resilience recommendations (including groundwater bye-law enforcement against informal tanker markets), whereas Study B conducts a census-based demographic and urban-definition analysis (1981-2011) across Bangladesh, India, Nepal, and Pakistan and includes 9 cities not in Study A's table (Rangamati, Baramula, Darjeeling, Kohima, Tansen, Pokhara, Rawalpindi, Mansehra, and Karak). Consequently, there is partial underlying secondary-data overlap and a moderate risk of double-counting city-level MLD deficits and case observations for the shared HKH towns.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S541_S542",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Narrative synthesis and secondary-data policy review of urban water resilience in the Hindu Kush Himalaya (HKH) conducted under the HI-AWARE (CARIAA) consortium. No primary survey or fieldwork sample (N) is reported. Compiles secondary municipal water supply and demand data (in MLD) and major water issues in Table 1 for N = 8 cities across 6 countries: Kabul (Afghanistan), Quetta (Pakistan), Shimla, Mussoorie, and Nainital (India), Kathmandu (Nepal), Xining (China), and Thimphu (Bhutan), alongside narrative discussion of Pokhara, Baglung, Almora, Leh, Srinagar, Manali, Gangtok, Dharamshala, Dehradun, Haldwani, and Phuentsholing using published literature, government reports (e.g., NITI Aayog 2018), and media sources up to 2019.",
+    "study_b_sample_and_data": "Literature and national-census review of urbanisation definitions, migration/tourism drivers, water supply deficits, and household/government coping and adaptation strategies across the HKH regions of 4 countries (Bangladesh, India, Nepal, and Pakistan), conducted under the HI-AWARE (CARIAA) consortium. No primary survey sample (N) is collected. Analyzes secondary national census datasets—Bangladesh Bureau of Statistics (2011), Census of India (2001, 2011), Nepal Central Bureau of Statistics (2001, 2011), and Pakistan Bureau of Statistics (1981, 1998)—and compiles secondary municipal water demand, supply, and deficit data (in MLD) in Table 9 for N = 13 urban centres: Rangamati (Bangladesh); Baramula, Shimla, Mussoorie, Darjeeling, and Kohima (India); Tansen, Kathmandu Valley (KUKL), and Pokhara (Nepal); and Quetta, Rawalpindi, Mansehra, and Karak (Pakistan).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

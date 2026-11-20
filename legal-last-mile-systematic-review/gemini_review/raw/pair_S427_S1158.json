@@ -1,0 +1,177 @@
+{
+  "pair_key": "S427_S1158",
+  "order": 10,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "c2e1890681335d2fe4fdadaa8016a927e214d8c64c20b9ad6c7a389a795914a8",
+  "input_sha256_b": "c256ab54f373e1710cc47f122d185e083e7c21445a74bb27923e3e56201e8f3c",
+  "prompt_sha256": "3ccd463882ec56cace8f97ea01476f94d10edf93f098bfef9ec6aed9fb00a52a",
+  "started_at": "2026-11-20T02:52:58.647717+00:00",
+  "completed_at": "2026-11-20T02:54:00.250542+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S427_S1158\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S427 (Record ID: RA27F3EF7337F)\n- Citation: Cooper B, Behnke NL, Cronk R, Anthonj C, Banner Shackelford B, Tu R, Bartram J (2021). Environmental health conditions in the transitional stage of forcible displacement: A systematic scoping review. Science of the Total Environment.\n- DOI: 10.1016/j.scitotenv.2020.143136\n- Retrieval status: retrieved_cached_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1158 (Record ID: R430C429810BF)\n- Citation: Behnke NL, Cronk R, Shackelford BB, Cooper B, Tu R, Heller L, Bartram J (2020). Environmental health conditions in protracted displacement: A systematic scoping review. Science of the Total Environment 726:138234.\n- DOI: 10.1016/j.scitotenv.2020.138234\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: c2e1890681335d2fe4fdadaa8016a927e214d8c64c20b9ad6c7a389a795914a8) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=81689, sha256=c2e1890681335d2fe4fdadaa8016a927e214d8c64c20b9ad6c7a389a795914a8]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: c256ab54f373e1710cc47f122d185e083e7c21445a74bb27923e3e56201e8f3c) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=100665, sha256=c256ab54f373e1710cc47f122d185e083e7c21445a74bb27923e3e56201e8f3c]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 6",
+        "quote": "conducted on 12 October 2017 and the grey literature search was conducted on 6 January 2018."
+      },
+      {
+        "page": "PDF Page 9",
+        "quote": "and 1,125 full-text articles were assessed. For this review, 88 transitional phase studies were"
+      },
+      {
+        "page": "PDF Page 29",
+        "quote": "Of the 88 transitional phase papers included in this study, only 28 (32%) focused on the"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF Page 9",
+        "quote": "Based on our search criteria, 307 publications were eligible for data extraction."
+      },
+      {
+        "page": "PDF Page 9",
+        "quote": "213 publications fell into the “protracted” stage of displacement and are thus included in this"
+      },
+      {
+        "page": "PDF Page 9",
+        "quote": "*The total exceeds 307 because some publications fell into more than one category."
+      }
+    ],
+    "overlap_rationale": "Both Study A (Cooper et al., 2021) and Study B (Behnke et al., 2020) are companion systematic scoping reviews produced by the same UNC Water Institute team from the exact same master literature search and screening pipeline (10,324 peer-reviewed records searched up to 12 October 2017 + 100 grey literature records searched up to 6 January 2018; 6,949 unique records screened; 1,125 full texts assessed; 307 total eligible publications). From that shared 307-publication pool, the team partitioned publications into emergency (n = 104), transitional (n = 88, analyzed in Study A), and protracted (n = 213, analyzed in Study B) displacement phases, explicitly noting in Study B Table 3 that the phase counts sum to 405 rather than 307 because multi-phase publications were included in more than one review, and noting in Study A that only 28 of its 88 publications (32%) focused exclusively on the transitional phase. Consequently, up to 60 publications overlap across phases, and multiple specific primary studies—including those cited for legal/policy and institutional obstacles (e.g., Mohamed et al., 2014; UNICEF and Hydroconseil, 2017; Schuller and Levey, 2014; Tota-Maharaj, 2016; Toole and Waldman, 1990; Milton et al., 2017; Cronin et al., 2008, 2009)—are extracted and synthesized in both reviews.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S427_S1158",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Systematic scoping review of N = 88 publications (84 peer-reviewed, 4 grey literature; published 1946–2017 across 44 countries and the Occupied Palestinian Territories) addressing environmental health conditions, exposures, outcomes, obstacles, and recommendations in the transitional phase of forcible displacement (6 months to 2 years), drawn from a master pool of 307 eligible publications identified from searches on 12 October 2017 (peer-reviewed) and 6 January 2018 (grey literature). Only 28 of the 88 included publications focused exclusively on the transitional phase.",
+    "study_b_sample_and_data": "Systematic scoping review of N = 213 publications (198 peer-reviewed, 15 grey literature; published 1946–2017 across 54 countries) addressing environmental health conditions, exposures, outcomes, obstacles, and recommendations in protracted forcible displacement (>2 years), drawn from the exact same master pool of 307 eligible publications (10,324 peer-reviewed records searched 23 September–12 October 2017 and 100 grey literature records searched 23 December 2017–6 January 2018; 6,949 screened; 1,125 full-text assessed).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

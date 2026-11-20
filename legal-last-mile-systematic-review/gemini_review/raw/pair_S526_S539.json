@@ -1,0 +1,177 @@
+{
+  "pair_key": "S526_S539",
+  "order": 3,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "49947384503fcd916191ceb081267644386a1f654c24e97238157bf5fd37162b",
+  "input_sha256_b": "3fb8c5789a4aa123cbf6c457faf5d5091e013ff4e3ac3fa026b417a7f387b2ea",
+  "prompt_sha256": "58c74cdcbf3ef430b1e209f284ed32e91ef769d013cbcc3dedbef9652222f07b",
+  "started_at": "2026-11-20T02:50:47.788177+00:00",
+  "completed_at": "2026-11-20T02:52:18.787818+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S526_S539\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S526 (Record ID: R09A594443F58)\n- Citation: Switzer D., Teodoro M.P. (2025). Public enterprise pricing as redistributive policy. Policy Studies Journal 53(2):365-387.\n- DOI: 10.1111/psj.70017\n- Retrieval status: retrieved_cached_pdf\n\n== STUDY B METADATA ==\n- Study ID: S539 (Record ID: RA0FB2C52085F)\n- Citation: Zhang X, Gonzalez Rivas M, Grant M, Warner ME (2022). \"Water pricing and affordability in the US: public vs. private ownership.\" Water Policy, 24(3), 500-516.\n- DOI: 10.2166/wp.2022.283\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 49947384503fcd916191ceb081267644386a1f654c24e97238157bf5fd37162b) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=96994, sha256=49947384503fcd916191ceb081267644386a1f654c24e97238157bf5fd37162b]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 3fb8c5789a4aa123cbf6c457faf5d5091e013ff4e3ac3fa026b417a7f387b2ea) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=66554, sha256=3fb8c5789a4aa123cbf6c457faf5d5091e013ff4e3ac3fa026b417a7f387b2ea]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "10",
+        "quote": "1189 utilities that serve at least 40,000 residents according to SDWIS."
+      },
+      {
+        "page": "10",
+        "quote": "residential water prices between January and April 2019."
+      },
+      {
+        "page": "12",
+        "quote": "2017 American Community Survey (ACS) 5-year estimates for the geographic areas served by each utility."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "5",
+        "quote": "We compiled the water bill information for all the 500 largest community water systems in the US"
+      },
+      {
+        "page": "5",
+        "quote": "January 2015 from utility websites, local government ordinances"
+      },
+      {
+        "page": "6",
+        "quote": "We measure water affordability as the percent of household income spent on water by"
+      }
+    ],
+    "overlap_rationale": "Study A (Switzer & Teodoro 2025) and Study B (Zhang, González Rivas, Grant & Warner 2022) are independent studies by unrelated author teams that collected primary residential water rate schedules four years apart (January–April 2019 in Study A vs. January 2015 in Study B) and analyze distinct outcomes, but share a nested subset of approximately 500 large US community water systems. Specifically, both studies draw deterministic top-size censuses of US community water systems from the US EPA Safe Drinking Water Information System (SDWIS): Study A examines all 1,189 US utilities serving >= 40,000 residents (N = 1,183 in contiguous 48 states, serving 183.3 million people; ln(population) range 10.60 to 15.93), while Study B examines the 500 largest US community water systems across 48 states and DC (serving ~140 million people; ln(service population) range 11.36 [~85,800 residents] to 15.93). Consequently, nearly all 500 utilities in Study B are nested within Study A's 1,183-utility sample (~42% unit overlap and ~76% served-population overlap), sharing slow-moving SDWIS system attributes (private vs. public ownership, groundwater reliance) and partially overlapping 5-year ACS demographic windows (2013–2017 vs. 2011–2015). However, double-counting risk in synthesis is low because the tariff schedules were compiled independently in different cross-sectional years (2019 vs. 2015) and the dependent variables measure distinct constructs: Study A models rate-structure progressivity (the Unit Price Ratio of average unit price at 30,000 vs. 6,000 gallons/month), whereas Study B models annual water bill level ($ at 60,000 gallons/year) and lowest-quintile income share spent on water (%).",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S526_S539",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Cross-sectional census of US community water systems serving >= 40,000 residents from US EPA SDWIS (N = 1,189 total: 1,055 local government and 134 investor-owned, serving 183,314,934 residents; analytical N = 1,183 in the 48 contiguous states). Single-family residential water rate schedules were collected independently in January–April 2019 and linked with 2017 ACS 5-year estimates (2013–2017) and 2009–2018 NOAA PDSI drought data. OLS regressions test the association of mean-to-median income inequality and private ownership with rate progressivity (Unit Price Ratio at 12,000–60,000 vs. 6,000 gallons/month).",
+    "study_b_sample_and_data": "Cross-sectional census of the 500 largest US community water systems by service population from US EPA SDWIS across 48 states and DC (N = 500: 321 government-owned, 121 cooperative, and 58 investor-owned, serving ~140 million residents). Residential water rate schedules were compiled independently in January 2015 and linked with 2011–2015 ACS 5-year estimates (plus 2007–2011 ACS for population growth) and 2015 US Drought Monitor county data. OLS regressions test the association of private ownership, state PUC/pro-private regulation (NJ/PA), infrastructure age, and community socioeconomics (Gini, poverty) with typical annual household water bills (at 60,000 gallons/year) and lowest-quintile household income share spent on water.",
+    "synthesis_double_counting_risk": "low_distinct_outcomes_or_designs"
+  }
+}

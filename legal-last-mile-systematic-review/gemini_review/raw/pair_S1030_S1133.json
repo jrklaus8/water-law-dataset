@@ -1,0 +1,177 @@
+{
+  "pair_key": "S1030_S1133",
+  "order": 24,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "14e8a7c1da2d2f14e06f5da2f3df8e69bcc836b04b3f4f9ab1931118b7694fa6",
+  "input_sha256_b": "0841d03e07f8e7cb0d08dd8bda15050f6300686c6a0dd84bbff6accb4aaf6ba7",
+  "prompt_sha256": "5e19941a172ea65bcfc7a2ce80c74431a481bae26494b3ff026ee13df80f9158",
+  "started_at": "2026-11-20T02:54:36.170214+00:00",
+  "completed_at": "2026-11-20T03:34:26.628139+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S1030_S1133\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S1030 (Record ID: R2B590CAA2B94)\n- Citation: Graham S, Desai R, McFarlane C (2013). Water Wars in Mumbai. Public Culture 25(1):115-141.\n- DOI: 10.1215/08992363-1890486\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1133 (Record ID: R0CC979E7B4D9)\n- Citation: McFarlane C, Desai R (2015). Sites of entitlement: claim, negotiation and struggle in Mumbai. Environment and Urbanization 27(2):441-454.\n- DOI: 10.1177/0956247815583635\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 14e8a7c1da2d2f14e06f5da2f3df8e69bcc836b04b3f4f9ab1931118b7694fa6) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=70168, sha256=14e8a7c1da2d2f14e06f5da2f3df8e69bcc836b04b3f4f9ab1931118b7694fa6]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 0841d03e07f8e7cb0d08dd8bda15050f6300686c6a0dd84bbff6accb4aaf6ba7) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=64135, sha256=0841d03e07f8e7cb0d08dd8bda15050f6300686c6a0dd84bbff6accb4aaf6ba7]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "1",
+        "quote": "conducted in contrasting informal settlements in Mumbai and focuses in particular on Raﬁnagar,"
+      },
+      {
+        "page": "1",
+        "quote": "conducted in the two case studies; four months were spent at each of the two sites. Key methods"
+      },
+      {
+        "page": "1",
+        "quote": "essay is based was funded by the UK’s Economic and Social Research Council (RES- 0360-7277)."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "3",
+        "quote": "The paper is based on a nine-month ethnographic study in two informal"
+      },
+      {
+        "page": "3",
+        "quote": "of approximately 2,000 households, has 24 toilet blocks and a total of 180"
+      },
+      {
+        "page": "8",
+        "quote": "This led the BMC to install two temporary water storage"
+      }
+    ],
+    "overlap_rationale": "Both papers are readable full texts by overlapping author teams (Graham, Desai, and McFarlane 2013; McFarlane and Desai 2015) drawing on the same nine-month ethnographic fieldwork conducted across two contrasting informal settlements in Mumbai (four months per site, plus observation and unstructured/repeated interviews with residents, NGOs, and officials). However, their analytical samples only partially overlap. Study A empirically reports ethnographic fieldwork from only one of the two fieldwork settlements—Rafinagar (a non-notified, predominantly Muslim settlement in northeast Mumbai), specifically examining the late 2009 to March 2010 BMC/police water raids, water rackets, and post-raid water scarcity—alongside citywide media and policy discourse analysis covering Shivaji Nagar, Dahisar/Ganpat Patil Nagar, and Mumbai's bottled-water/leisure sectors. Study B analyzes the full two-settlement comparative fieldwork sample—both Rafinagar (approx. 4,000 households) and Khotwadi (an authorized, predominantly Marathi settlement of approx. 2,000 households in northwest Mumbai)—focusing primarily on moral economies and 'sites of entitlement' around public, private, and CBO-managed toilet blocks, drain cleaning, and water access. Study B explicitly cites Study A (note 22) when recounting the 2009 BMC/police water raids and temporary BMC water tanks in Rafinagar, and also notes a 2011 MHADA toilet block in Rafinagar Part 2 and a different ESRC grant code (RES-062-23-1669 vs RES-0360-7277 in Study A). Because the Rafinagar ethnographic fieldwork (including the pre-1995 slum cut-off rule, 2009 water raids, and temporary tank installation) is shared across both papers while Khotwadi (~half of Study B) and citywide media cases (in Study A) are unshared, this is a classic multi-site partial sample overlap with moderate double-counting risk for Rafinagar water findings.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S1030_S1133",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Ethnographic fieldwork from a nine-month study of two informal settlements in Mumbai (four months per site), focusing empirically on one site—Rafinagar (northeastern Mumbai, adjacent to Shivaji Nagar in M-East ward)—covering the November/December 2009 water raids and January–March 2010 interviews with residents (e.g., Salma/Resident A, Residents B and C, Govind), NGO director Leena Joshi, and clinic doctor Ravindra Rathod, combined with secondary media and policy analysis across Mumbai (including Dahisar/New Link Road). Funded by ESRC (RES-0360-7277).",
+    "study_b_sample_and_data": "Nine-month comparative ethnographic fieldwork in two informal settlements in Mumbai: non-notified Rafinagar in the northeast (~4,000 households, 6 toilet blocks/76 seats; Part 1 and Part 2, noting developments up to 2011) and notified Khotwadi in the northwest (~2,000 households, 24 toilet blocks/180 seats). Data comprise participant observation and repeated interviews with residents (e.g., Salimbhai, Naina, Mumtaz in Rafinagar; Shobha, Lakshmi, Prabha, and garment workers in Khotwadi), municipal staff, NGOs, and CBOs regarding sanitation and water entitlements. Funded by ESRC (RES-062-23-1669).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "pair_key": "S364_S381",
+  "order": 8,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba",
+  "input_sha256_b": "716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba",
+  "prompt_sha256": "48d952c5819ff4c1ba93beee089d486ffd861b4b228bb94aeb9aacee76646c31",
+  "started_at": "2026-11-20T02:50:47.871083+00:00",
+  "completed_at": "2026-11-20T02:51:28.977952+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S364_S381\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S364 (Record ID: R581406026ADC)\n- Citation: Sylvester R, Hutchings P, Mdee A (2023). Defining and acting on water poverty in England and Wales. Water Policy 25(5):492-511.\n- DOI: 10.2166/wp.2023.253\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S381 (Record ID: RC520790212D3)\n- Citation: Bradshaw J, Huby M (2013). Water poverty in England and Wales. Journal of Poverty and Social Justice 21(2):137-148.\n- DOI: 10.1332/175982713X669835\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=64730, sha256=716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=64730, sha256=716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "1",
+        "quote": "Water Policy Vol 25 No 5, 492 doi: 10.2166/wp.2023.253"
+      },
+      {
+        "page": "4",
+        "quote": "This study was designed to compile the breadth of published literature on water poverty in E&W between 1985"
+      },
+      {
+        "page": "10",
+        "quote": "This methodology is attributed to Bradshaw & Huby (2013). Meeting"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "1",
+        "quote": "Water Policy Vol 25 No 5, 492 doi: 10.2166/wp.2023.253"
+      }
+    ],
+    "overlap_rationale": "The PDF supplied for Study B (cited as Bradshaw & Huby 2013, Journal of Poverty and Social Justice 21(2):137-148, DOI 10.1332/175982713X669835) is a mismatched duplicate file identical byte-for-byte (SHA-256: 716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba) to Study A (Sylvester, Hutchings & Mdee 2023, Water Policy 25(5):492-511, DOI 10.2166/wp.2023.253). Because Study B's actual full text is missing/mismatched, mandatory audit rules require setting pair_classification to cannot_tell_missing_full_text, same_underlying_data to cannot_tell, and synthesis_double_counting_risk to cannot_tell. What can be verified from Study A's text alone is that Study A is a 2023 systematic-style literature review of 354 academic and grey documents (1985-2022) on water poverty in England and Wales that explicitly cites and summarises Bradshaw & Huby (2013) (reporting 2009/10 Family Resources Survey water poverty prevalence of 23.6% at the 3% threshold and 11.5% at the 5% threshold, and mean water poverty gaps of £3.46 and £3.62). However, without the authentic full text of Bradshaw & Huby (2013), Study B's exact sample size, analytical specifications, and primary empirical tables cannot be directly verified, and the retrieval error in the corpus would cause Study A's text to be read twice if uncorrected.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S364_S381",
+    "paper_a_read": "full text",
+    "paper_b_read": "not accessible",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "Systematic-style narrative literature review of N = 354 grey and academic documents published between 1985 and 2022 (searched across 4 academic and 35 grey databases using the SPIDER framework and coded in NVivo) examining household water poverty, affordability (3% and 5% disposable income thresholds), customer vulnerability, and utility bad debt in England and Wales. Secondary summary tables compile historical estimates from prior studies, including Bradshaw & Huby (2013).",
+    "study_b_sample_and_data": "True full text not accessible due to a PDF retrieval mismatch: the file provided under Study B (SHA-256: 716a147031228c06b4ea094ff44085333f1df3889d94dbe4f4b47b61632ddcba) is another copy of Sylvester, Hutchings & Mdee (2023), DOI 10.2166/wp.2023.253, rather than Bradshaw & Huby (2013), DOI 10.1332/175982713X669835. Second-hand citations within Study A indicate Bradshaw & Huby (2013) analysed 2009/10 Department for Work and Pensions Family Resources Survey data for England and Wales, but Study B's primary sample size, methods, and results cannot be verified directly.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

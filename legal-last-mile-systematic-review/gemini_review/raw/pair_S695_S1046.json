@@ -1,0 +1,177 @@
+{
+  "pair_key": "S695_S1046",
+  "order": 28,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "06d682d093ee3f21ee495d063e1bab2e8769b7f1d8c80065fb703f476c5e329d",
+  "input_sha256_b": "c097c7b6299bd8015b02bc47a10facbcb97f9f2f4014854bd4d7dae0714f5d86",
+  "prompt_sha256": "535de475f33b859f8f44c32185fec32965158690586d49539ed484749a974931",
+  "started_at": "2026-11-20T03:34:26.662383+00:00",
+  "completed_at": "2026-11-20T03:36:08.270208+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S695_S1046\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S695 (Record ID: R2BEFD559FD67)\n- Citation: Pihljak LH, Rusca M, Alda-Vidal C, Schwartz K (2021). Everyday practices in the production of uneven water pricing regimes in Lilongwe, Malawi. EPC: Politics and Space.\n- DOI: 10.1177/2399654419856021\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1046 (Record ID: R41CA30F1CDC0)\n- Citation: Alda-Vidal C, Kooy M, Rusca M (2018). Mapping operation and maintenance: an everyday urbanism analysis of inequalities within piped water supply in Lilongwe, Malawi. Urban Geography.\n- DOI: 10.1080/02723638.2017.1292664\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 06d682d093ee3f21ee495d063e1bab2e8769b7f1d8c80065fb703f476c5e329d) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=63829, sha256=06d682d093ee3f21ee495d063e1bab2e8769b7f1d8c80065fb703f476c5e329d]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: c097c7b6299bd8015b02bc47a10facbcb97f9f2f4014854bd4d7dae0714f5d86) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=58496, sha256=c097c7b6299bd8015b02bc47a10facbcb97f9f2f4014854bd4d7dae0714f5d86]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "4",
+        "quote": "in this paper we examine the everyday practices of negotiating water pricing regimes."
+      },
+      {
+        "page": "4",
+        "quote": "comparative analysis of two pricing regimes implemented by the formal water utility."
+      },
+      {
+        "page": "5",
+        "quote": "Government of Malawi (GoM), LWB, seven WUAs, NGOs and residents of two LIAs."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "4",
+        "quote": "The research for this paper was conducted over a period of four months in 2014."
+      },
+      {
+        "page": "4",
+        "quote": "interviews, participatory mapping, and a focus group discussion."
+      },
+      {
+        "page": "15",
+        "quote": "This research has been undertaken in the framework of the collaboration between two projects."
+      }
+    ],
+    "overlap_rationale": "Both studies are readable full texts produced under the same two research programmes—UNHIDE and Horizon 2020 Marie Sklodowska-Curie INHAbIT Cities (Grant No. 656738)—by overlapping author teams (Cecilia Alda-Vidal and Maria Rusca) studying the same municipal utility, the Lilongwe Water Board (LWB) in Lilongwe, Malawi (and citing the same city-level baseline figures: 78% network coverage split between 44% in-house connections and 56% water kiosks). However, their empirical fieldwork datasets, respondent samples, legal/operational exposures, and outcomes are distinct. Study A (Pihljak et al., 2019/2021) examines the multi-level governance and negotiation of water tariffs across three fieldwork waves (2008-2009 on WUA establishment; Nov 2013-Jan 2014 comparative tariff interviews corresponding to Pihljak's 2014 MSc thesis; and Oct 2017-June 2018 follow-up interviews and 2018 documentary screenings conducted after Study B's February 2017 online publication), interviewing GoM officials, LWB/Kiosk Management Unit staff, seven WUAs, NGOs, and residents of two LIAs alongside 2006-2018 tariff and WUA financial records. Study B (Alda-Vidal et al., 2017/2018) is an ethnographic and participatory mapping study conducted over four months in 2014 comprising 38 semi-structured interviews with LWB technical operators, engineers, and managers, a focus group discussion, and participant observation of physical operation and maintenance (backup line diversions, pressurized take-offs, unrecorded valve operations, and repair prioritization) shaping spatial inequalities in supply continuity and pressure. Study A also cites Study B (Alda-Vidal et al., 2018) and Pihljak's 2014 thesis is cited separately in Study B. Double-counting risk is low because the designs, respondent groups, and outcomes (water pricing vs physical O&M continuity) are distinct, though systematic reviewers aggregating at the city or utility level should note both examine the same single utility (LWB).",
+    "pair_classification": "distinct_samples_same_programme_or_author",
+    "pair_key": "S695_S1046",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "no",
+    "study_a_sample_and_data": "Lilongwe, Malawi (Lilongwe Water Board [LWB] in-house connection regime and LWB-Water Users Association [WUA] kiosk regime). Qualitative multi-phase fieldwork conducted in 2008-2009, 2013-2014 (Nov 2013-Jan 2014), and 2017-2018 (Oct 2017-June 2018), comprising semi-structured interviews with representatives of the Government of Malawi (GoM), LWB (including Kiosk Management Unit), seven WUAs, local NGOs, and residents of two low-income areas (LIAs), supplemented by 2018 documentary screenings and 2006-2018 tariff, revenue, and WUA financial surplus records (exact total interview N not reported).",
+    "study_b_sample_and_data": "Lilongwe, Malawi (Lilongwe Water Board [LWB] centralized piped water network across northern, central, and southern zones). Qualitative fieldwork conducted over four months in 2014 comprising N = 38 semi-structured interviews with LWB employees from operators and engineers to managers (plus a Ministry representative and international expert), participatory hotspot mapping of service continuity, a focus group discussion, and participant observation following LWB technical staff in daily operation and maintenance activities.",
+    "synthesis_double_counting_risk": "low_distinct_outcomes_or_designs"
+  }
+}
