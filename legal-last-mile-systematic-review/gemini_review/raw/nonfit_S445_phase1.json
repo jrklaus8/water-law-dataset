@@ -1,0 +1,143 @@
+{
+  "study_id": "S445",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "f86560a3e2a3123d468bd7ccb8e08a4bdd78890cb370cb9623aba73a2bac7e2a",
+  "input_text_sha256": "f73d20ea2e9e8e1ee2b669243ffa54887f60e5dd26f051ecc982ef7ffdc70fa0",
+  "prompt_sha256": "a658d354fd7522bede71aa03e69ac4a7a96287cd435436a86cf646e0a34c707c",
+  "started_at": "2026-11-19T19:18:12.672446+00:00",
+  "completed_at": "2026-11-19T19:20:29.398114+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S445\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S445\n- Record ID: R4B40A3139B39\n- Citation: Medeiros et al. Agua, saneamento e higiene (WASH): um estudo das escolas publicas rurais de Ensino Fundamental brasileiras / Water, sanitation, and hygiene (WASH): a study of Brazilian rural public elementary schools. Cadernos de Saude Publica.\n- DOI: 10.1590/0102-311XPT128025\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: f73d20ea2e9e8e1ee2b669243ffa54887f60e5dd26f051ecc982ef7ffdc70fa0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=44363, sha256=f73d20ea2e9e8e1ee2b669243ffa54887f60e5dd26f051ecc982ef7ffdc70fa0]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "1. SWiM Family Non-Fit (`none_nonfit`): Corrêa, Medeiros et al. (2026) conduct a descriptive and cross-sectional multivariable binomial logistic regression analysis of determinants of WASH *absence* in Brazilian rural public elementary schools in 2011 and 2023. Most modeled predictors are geographic, demographic, socioeconomic, or educational-performance correlates (macroregion, municipal population size, % rural population, IDHM-income, school enrollment size, approval/failure/dropout rates) that do not belong to SWiM Family A, B, or C. Two potential institutional touchpoints exist in the paper, but neither fits Families A–C cleanly: (a) `Localização diferenciada` includes `Terra indígena` (Indigenous land), `Área de assentamento` (agrarian settlement), and `comunidade remanescente de quilombos` (Quilombola territory) (Quadro 1, p. 5; p. 10), which are legal/constitutional territorial categories, yet the regression only estimates cross-sectional disparities between schools inside Indigenous territories versus regular rural areas (`OR = 5.48` for sanitation absence and `OR = 4.55` for toilet absence in 2023) rather than testing legal tenure recognition/regularization versus informality—pooling `Terra indígena` in Family A as \"formal tenure/recognition\" would invert the substantive construct by treating structural/geographic marginalization of Indigenous territories as a negative effect of tenure recognition; and (b) small school size (`<= 10` students vs `> 50`) is discussed post hoc on p. 11 in light of the PDDE per-student funding formula, which could superficially recall Family B (financial transfers) or Family C (administrative allocation rules), but PDDE transfers/rules are never measured or tested in the dataset. Excluding this study from Families A, B, and C as a reasoned non-fit is therefore substantively justified.\n\n2. Narrow Criterion 2 Scope Assessment (`borderline_governance_or_proxy` / potential `E03` flag): If the extracted exposure is macroregion, municipal size, % rural population, IDHM-income, enrollment size, or dropout/approval rate, it fails narrow Criterion 2 (`E03`: socio-spatial/demographic/educational correlates without testing a legal or administrative rule). Even if the extracted exposure is `Terra indígena` (`Localização diferenciada`), it is at best a static territorial/legal land-status proxy capturing structural exclusion of Indigenous school infrastructure rather than an evaluation of a legal, regulatory, tariff, or tenure-governance rule governing water/sanitation delivery.\n\n3. Criterion 4 Scope Assessment (`borderline_institutional_or_compliance_outcome`): All three outcomes (`ausência de abastecimento de água`, `ausência de saneamento`, `ausência de banheiro`) measure facility-level infrastructure presence/absence at rural public elementary schools (SDG 4.a.1 institutional school WASH, self-reported by school principals in INEP's Censo Escolar) rather than household or residential community water/sanitation access (which the authors explicitly contrast as `WASH domiciliar` / `saneamento domiciliar` on p. 10). Additionally, all outcomes are coded for *absence* of service, so raw `OR > 1` represents worse WASH access (sanitary exclusion).\n\n4. Statistical Reporting Caveats: No regression table, standard errors, or 95% confidence intervals are printed anywhere in the article—only selected ORs and p-values in prose (pp. 9–10) alongside descriptive cross-tabulations (Tables 1–2, pp. 8–9)—and the exact post-filtering school cohort N (active and linked to the same municipality in both 2011 and 2023) appears only inside Figure 1 (p. 4, graphic without extracted text).",
+    "candidate_swim_family_blind": "none_nonfit",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "borderline_institutional_or_compliance_outcome",
+    "evidence_quotes": [
+      {
+        "criterion": "study_design_and_sample",
+        "page": "PDF p. 3",
+        "quote": "selecionando aquelas que permaneceram ativas e vinculadas ao mesmo município entre 2011 e 2023,"
+      },
+      {
+        "criterion": "criterion4_household_access_outcome",
+        "page": "PDF p. 6",
+        "quote": "indica que a escola não possui nenhuma fonte de água, ou seja, está totalmente desprovida de acesso"
+      },
+      {
+        "criterion": "headline_estimate_summary",
+        "page": "PDF p. 9",
+        "quote": "Norte evidenciou OR elevadas de ausência de saneamento (OR = 3,32; p < 0,001 em 2011; OR = 5,48;"
+      },
+      {
+        "criterion": "narrow_criterion2_rule_present",
+        "page": "PDF p. 10",
+        "quote": "5,48; p < 0,001 em 2023) e de banheiro (OR = 8,82; p < 0,001 em 2011; OR = 4,55; p < 0,001 em 2023),"
+      }
+    ],
+    "headline_estimate_summary": "Multivariable binomial logistic regression models estimated separately for 2011 and 2023 (reported in prose only on PDF pp. 9–10; no regression table, SEs, or 95% CIs printed). Outcomes are school-level ABSENCE of water supply, ABSENCE of sanitation (sewerage/sanitary system), and ABSENCE of toilets (so raw OR > 1 = higher odds of WASH absence / worse access). Covariates included all school and municipal variables from Quadro 1 (PDF p. 5, p. 8: differentiated location, enrollment size, approval/failure/dropout rates, macroregion, municipal population size, % rural population, and IDHM-income). Key reported estimates: (1) Differentiated location — Indigenous land (`Terra indígena`) vs non-differentiated rural area (PDF p. 10): absence of sanitation OR = 5.58 (p < 0.001) in 2011 and OR = 5.48 (p < 0.001) in 2023 (descriptive Table 1, PDF p. 8: 54.6% vs 9.9% in 2011; 53.1% vs 8.2% in 2023); absence of toilet OR = 8.82 (p < 0.001) in 2011 and OR = 4.55 (p < 0.001) in 2023 (descriptive: 41.7% vs 5.1% in 2011; 42.8% vs 4.3% in 2023). (2) Macroregion vs Center-West reference (PDF p. 9): North absence of water OR = 2.58 (p < 0.001) in 2011 and OR = 6.40 (p < 0.001) in 2023; North absence of sanitation OR = 3.32 (p < 0.001) in 2011 and OR = 5.48 (p < 0.001) in 2023; North absence of toilet OR = 1.36 (p = 0.143) in 2011 and OR = 5.17 (p < 0.001) in 2023; Northeast absence of water OR = 4.84 (p < 0.001) in 2011 and OR = 3.60 (p < 0.001) in 2023. (3) School enrollment <= 10 students vs > 50 students reference (PDF p. 10): absence of sanitation OR = 4.97 (p < 0.001) in 2011 and OR = 2.73 (p < 0.001) in 2023; absence of toilet OR = 8.02 (p < 0.001) in 2011 and OR = 3.41 (p < 0.001) in 2023; absence of water OR = 2.28 (p < 0.001) in 2023. (4) Medium-sized municipalities (100,000–500,000 inhabitants) vs > 500,000 inhabitants (PDF p. 10): absence of water OR = 4.48 (p = 0.004) in 2011. (5) School performance (PDF p. 10): dropout rate >= 80% vs 40%–79% on absence of toilet OR = 7.75 (p = 0.045) in 2023; approval rate <= 39% on absence of sanitation OR = 1.79 (p = 0.017) in 2011 and OR = 2.57 (p = 0.053) in 2023.",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Comparative repeated cross-sectional study (2011 and 2023) in Brazil using microdata from INEP's Censo Escolar da Educação Básica merged with municipal data from IBGE Demographic Censuses (2010 and 2022) and AtlasBR (2010 IDHM-income). Unit of analysis: Brazilian rural public elementary schools (escolas públicas rurais de Ensino Fundamental, excluding EJA) that remained active and linked to the same municipality in both 2011 and 2023 (with municipal-level spatial aggregation across N = 3,424 municipalities, PDF p. 6). National rural public elementary school counts before longitudinal active-school filtering were N = 56,544 schools (3,008,675 enrollments) in 2011 and N = 34,406 schools (2,192,038 enrollments) in 2023 (PDF p. 3); the exact post-filtering active-cohort school sample size N is shown only inside Figure 1 (PDF p. 4, embedded graphic without extracted text) and is not printed in prose or tables.",
+    "study_id": "S445"
+  }
+}

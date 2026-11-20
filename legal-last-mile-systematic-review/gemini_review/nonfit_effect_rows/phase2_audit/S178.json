@@ -1,0 +1,37 @@
+{
+  "study_id": "S178",
+  "record_id": "R8C5602D36BCD",
+  "order": 2,
+  "adversarial_critique": "Adversarial audit of S178 (Sikder et al. 2018, Conflict and Health) uncovers two substantive defects in Claude's stored `effect_sizes.csv` row alongside a review-level eligibility failure under the narrow Criterion 2 / conflict-scope standard.\n\n1. Mischaracterization of regression sample, wave structure, and comparator: Claude records `sample_size = \"1281 (2016) + 1360 (2017) household surveys\"`, `exposure_definition = \"...compared across repeated cross-sectional survey waves (2016 vs. 2017)\"`, and `comparator_definition = \"Survey wave/area without WSP programming in place (pre-WSP baseline, 2016)\"`. In the paper, although descriptive prevalence shifts (FCR > 0.1 mg/L rising from 4.1% to 27.9%; piped network declining from 22.0% to 15.3%; childhood diarrhea declining from 32.8% to 20.4%) compare the 2016 (N = 1,281) and 2017 (N = 1,360) analytic samples of households with children <5, 2016 was NOT a pre-WSP baseline—35.4% (453/1,281) of 2016 households were already in WSP communities (Table 1, PDF p. 4)—and 2016 FCR regressions were omitted altogether due to low FCR concentrations (PDF p. 8). The headline mixed-effect odds ratio (`mOR = 24.16`, `95% CI: 5.93–98.48` in Table 6; rounded to `5.93–98.5` in Abstract/text) was estimated exclusively within the 2017 cross-section (`N = 1,360` households with children <5; `n = 1,344` with measured FCR in Table 2), comparing `WSP = 1` (41.3%, 562 households) against `WSP = 0` communities in 2017.\n\n2. Mischaracterization of WSP as a legal/regulatory enforcement mechanism (Criterion 2 `E03` and conflict scope `E05`): Claude labels WSP `\"water-quality regulatory programming (an enforcement/regulatory mechanism)\"` and `\"water-quality regulatory compliance\"`. Full-text inspection shows that vendors operated in `\"unregulated environments\"` (PDF p. 11) in opposition-controlled southern Syria during active armed conflict; regulation and targeted subsidies appear only as normative policy recommendations in the Abstract, Discussion, and Conclusions. Empirically, `WSP` was a UNICEF/NGO Whole-of-Syria WASH Cluster emergency operational package comprising risk assessments, chlorination training, distribution of chlorine and pooltesters, well chlorination stations, volunteer household water-safety awareness campaigns, and physical repair of water lines and pumps (PDF pp. 2, 11). Under the `CK` narrow Criterion 2 standard applied in `A24/A26/A28` (excluding non-legal engineering/operational WASH interventions), S178 fails narrow Criterion 2 (`E03`) and sits in an active armed-conflict humanitarian relief setting (`E05`), rendering SWiM family placement moot (though even if retained, keeping it out of Families A–C as a non-fit would be fully justified).",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "Headline mOR and rounded upper CI in Abstract",
+      "page": "PDF p. 1",
+      "quote": "strongly associated with FCR (mOR: 24.16; 95% CI: 5.93–98.5)."
+    },
+    {
+      "criterion": "Criterion 2 — operational humanitarian content of WSP programming",
+      "page": "PDF p. 2",
+      "quote": "water safety awareness campaigns, and fixing water lines and pumps of the supply network."
+    },
+    {
+      "criterion": "Sample/model discrepancy — FCR regression estimated on 2017 dataset only",
+      "page": "PDF p. 10",
+      "quote": "Table 6 Univariate, multivariate, and mixed effect regressions of 2017 dataset using free chlorine residual as dependent variable"
+    },
+    {
+      "criterion": "Criterion 2 — unregulated wartime water-vending environment",
+      "page": "PDF p. 11",
+      "quote": "quality of water delivered by unregulated vendors remains"
+    }
+  ],
+  "nonfit_classification_verdict": "moot_study_appears_ineligible",
+  "number_verification_detail": "Point estimates and descriptive wave percentages in `effect_estimate` match the Abstract (PDF p. 1) and Tables 1, 2, and 6 (PDF pp. 4, 8, 10): FCR > 0.1 mg/L rose from 4.1% (52/1,281 in 2016; n = 1,207 tested) to 27.9% (380/1,360 in 2017; n = 1,344 tested, p < 0.001); piped network as main source declined from 22.0% (282/1,281) to 15.3% (208/1,360, p < 0.001); childhood (<5y) two-week diarrhea declined from 32.8% (420/1,281) to 20.4% (278/1,360, p < 0.001); and WSP mixed-effect `mOR = 24.16` with `lower_CI = 5.93` and `upper_CI = 98.5` matches the Abstract/text p. 10 (`5.93–98.5`), which rounds Table 6's `24.16 (5.93–98.48)*` (`p < 0.05`; SE not reported). However, there is a sample-size and comparator discrepancy on the headline regression: `sample_size` lists `\"1281 (2016) + 1360 (2017) household surveys\"` and `comparator_definition` states `\"pre-WSP baseline, 2016\"`, whereas 2016 FCR regressions were not estimated (PDF p. 8), 35.4% (453/1,281) of 2016 households already had WSP programming (Table 1), and `mOR = 24.16` in Table 6 was estimated solely on the 2017 cross-section (`N = 1,360` households with children <5, out of 1,921 total 2017 surveys; `n = 1,344` with measured FCR; complete-case regression N not separately printed), adjusting for `MixedWater`, `MainSource`, `Handwashing`, `SeparateWater`, `AdequateWater`, `Shelter`, `WasteDisposal`, and sub-district random effects.",
+  "numbers_match_paper": "no_discrepancy_found",
+  "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:07:34.920736+00:00",
+  "file_sha256": "2f25a5ca9efd698eefc95da712092c08a484786fda602975c613e7f15aea42b6",
+  "input_sha256": "32ee1c0531522842d567c30fd5111180a3bfd25a6119623c8f6da67898d31283"
+}

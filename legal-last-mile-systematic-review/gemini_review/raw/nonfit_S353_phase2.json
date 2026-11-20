@@ -1,0 +1,127 @@
+{
+  "study_id": "S353",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "6e0ec6580b30338c8a003f04566db36c31b88079f66177ddeedc77f309b37608",
+  "input_text_sha256": "41abaef62eee1bd88981482d01ee425215ff26b8c69db830913714b5dfe2f080",
+  "prompt_sha256": "389fabe71bf493424e423bab7854dacdc226b0f185c45a173d06ca18804e981c",
+  "started_at": "2026-11-20T01:06:32.716662+00:00",
+  "completed_at": "2026-11-20T01:08:03.387824+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S353\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S353\",\n  \"record_id\": \"R928138B31379\",\n  \"order\": 3,\n  \"blind_rationale\": \"Marcillo, Krometis, and Krometis (2021) analyze Safe Drinking Water Act (SDWA) regulatory violations from 2006–2016 across N = 662 geocoded community water systems (CWSs) in Virginia (out of 1,133 state CWSs) by approximating service areas from 886 zip codes and linking 2000 US Census demographics, USDA RUCA rurality codes, and EPA SDWIS system attributes via LASSO-selected negative binomial regressions (Table 1, PDF p. 6). Evaluated blindly on its own primary research question and headline finding, the study is best classified as 'none_nonfit': (1) its primary tested exposures are sociodemographic environmental-justice predictors—specifically service-area %Black (Health-Based [HB] violations OR = 1.031, 95% CI: 1.018, 1.045; dropped by LASSO for Monitoring & Reporting [MR] violations), rurality (all RUCA categories null), and zip-code %Homeownership, which the authors explicitly operationalize as a Census socioeconomic status (SES)/wealth proxy because income and education were unavailable at the 2000 zip-code scale (main effects null: MR OR = 1.007, 95% CI: 0.990, 1.024; HB OR = 0.996, 95% CI: 0.966, 1.026; interaction with %Native Hawaii/Pacific Islander MR OR = 1.214, 95% CI: 1.013, 1.455, noted as a potential artifact since that group is 0.04% of Virginia's population)—rather than a legal tenure or eligibility rule governing household service connection (unconnected private-well households and deliberate historical service-boundary exclusions are omitted by proximity-based delineation, PDF p. 8); and (2) both outcomes are utility-level SDWIS regulatory compliance violation rates (MR administrative testing/reporting failures and HB MCL/MRDL/treatment-technique violations) rather than direct household water connection, continuity, or affordability. CRITICAL CONSISTENCY CHECK FOR PHASE 2: Table 1 also includes two institutional/system covariates—binary utility ownership ('Operation: Private [Reference: Public]', MR OR = 1.899, 95% CI: 1.455, 2.478, p < 0.05 [worse administrative compliance]; HB OR = 1.425, 95% CI: 0.837, 2.428 [null, directionally worse compliance]) and utility scale ('Size: Medium vs. Very Small', MR OR = 0.314, 95% CI: 0.148, 0.665, p < 0.05; dropped by LASSO for HB). If the extracted row in effect_sizes.csv is Private vs. Public CWS ownership (or CWS size), that exposure belongs conceptually to SWiM Family C (ownership, regulation, institutional capacity, administrative structure): excluding an MR-violation row as non-fit is substantively justified because failure to report/monitor is purely administrative utility compliance rather than household service access, whereas if the extracted row is Private vs. Public ownership on HB water-quality violations (OR = 1.425), exclusion would only be consistent if Family C also excludes other utility-level regulatory water-quality violation rows. Conversely, if the extracted row is %Black (fails narrow Criterion 2, E03) or area-level SES-proxy %Homeownership (proxy wealth indicator rather than a Family A tenure rule), non-fit / PI scope review is warranted.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"borderline_institutional_or_compliance_outcome\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Criterion 4 (SDWA compliance outcomes)\",\n      \"page\": \"3\",\n      \"quote\": \"two separate categories: MR and HB. HB violations include all maximum contaminant\"\n    },\n    {\n      \"criterion\": \"Criterion 2 (Homeownership as SES proxy)\",\n      \"page\": \"4\",\n      \"quote\": \"and homeownership, which is an established socioeconomic status\"\n    },\n    {\n      \"criterion\": \"System ownership estimate (MR violations)\",\n      \"page\": \"5\",\n      \"quote\": \"95% CI = 1.455, 2.478), corresponding to an elevated likelihood of incurring a MR violation\"\n    },\n    {\n      \"criterion\": \"Headline demographic estimate (HB violations)\",\n      \"page\": \"6\",\n      \"quote\": \"binomial and LASSO regression model: OR = 1.031, 95% CI = 1.018, 1.045; Table 1). With all\"\n    }\n  ],\n  \"headline_estimate_summary\": \"LASSO-selected multivariable negative binomial regressions of annual/active-year-normalized EPA SDWIS violations (2006–2016) across N = 662 geocoded Virginia CWSs (Table 1, PDF p. 6; exponentiated coefficients reported as ORs with 95% CIs; SEs and exact p-values not printed, significance threshold p < 0.05; overall fit AIC = 8294, log-likelihood = -8237.99): (1) Primary demographic headline (%Black, per 1 percentage-point increase): Health-Based (HB) violations OR = 1.031 (95% CI: 1.018, 1.045; p < 0.05; raw OR > 1 indicates MORE HB violations = worse water-quality compliance), adjusted for %AIAN, %Asian, %NHPI, %Homeownership, %Age >= 65, %Homeownership x %NHPI, RUCA rurality, source water type, private operation, and year (excluded by LASSO from Monitoring & Reporting [MR] model). (2) Utility ownership (Operation: Private vs. Public reference): MR violations OR = 1.899 (95% CI: 1.455, 2.478; p < 0.05; ~90% higher likelihood of MR violation = worse administrative compliance), adjusted for %AIAN, %NHPI, %Homeownership, %Age >= 65, %Homeownership x %NHPI, RUCA, CWS size, and year; HB violations OR = 1.425 (95% CI: 0.837, 2.428; non-significant, directionally more HB violations). (3) Zip-code %Homeownership (SES proxy): MR violations OR = 1.007 (95% CI: 0.990, 1.024; null); HB violations OR = 0.996 (95% CI: 0.966, 1.026; null); interaction %Homeownership x %Native Hawaii/Pacific Islander MR OR = 1.214 (95% CI: 1.013, 1.455; p < 0.05) and HB OR = 1.198 (95% CI: 0.939, 1.528; null). (4) Institutional scale (CWS Size vs. Very Small [<500 served] reference): Medium (3,301–10,000 served) MR violations OR = 0.314 (95% CI: 0.148, 0.665; p < 0.05; 69% lower MR violation likelihood); Small OR = 1.048 (0.786, 1.397), Large OR = 0.488 (0.174, 1.365), Very Large OR = 0.132 (0.010, 1.703); Size excluded by LASSO from HB model. Year trend: MR OR = 0.928 (95% CI: 0.895, 0.963; p < 0.05); HB OR = 0.972 (95% CI: 0.910, 1.039).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Observational ecological panel/cross-sectional negative binomial regression analysis (with LASSO variable selection) in Virginia, United States. Unit of analysis: geocoded community water systems (CWSs) with ArcGIS proximity-delineated zip-code-scale service areas, observed over 2006–2016 (including a linear Year covariate) and linked to area-weighted 2000 US Decennial Census zip-code demographics and 2004 USDA RUCA rurality codes. Primary analytic sample: N = 662 geocoded Virginia CWSs (delineated from 671 previously geocoded CWSs out of 1,133 total Virginia CWSs, spanning 886 zip codes and 134 counties/independent cities, serving >5.3 million residents or ~75% of Virginians on community water supplies).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:17:21.752943+00:00\",\n  \"file_sha256\": \"6e0ec6580b30338c8a003f04566db36c31b88079f66177ddeedc77f309b37608\",\n  \"input_sha256\": \"41abaef62eee1bd88981482d01ee425215ff26b8c69db830913714b5dfe2f080\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S353\",\n  \"outcome_family\": \"effective_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Community water system (CWS) ownership type: privately owned vs. publicly owned, in Virginia's Safe Drinking Water Act (SDWA) regulatory-compliance regime (2006-2016).\",\n  \"comparator_definition\": \"Publicly owned CWSs.\",\n  \"effect_measure\": \"negative binomial regression, adjusted odds ratio (OR) with 95% confidence interval\",\n  \"effect_estimate\": \"Privately owned CWSs had 90% higher odds of a Monitoring & Reporting (MR) violation than publicly owned CWSs (OR=1.899, 95% CI 1.455-2.478). (The study also reports a separate, real effect for %Black population on Health-Based violations, OR=1.031 [1.018-1.045] per 1-percentage-point increase, and for system size on MR violations -- ownership type is recorded here as the clearest single legal/institutional exposure-comparator per CODEBOOK.md S12's one-prespecified-effect-per-study default; the race-based finding was not used as the primary effect for the same reason S135 was excluded from this file entirely -- population demographic composition is not itself a legal/institutional exposure.)\",\n  \"lower_CI\": \"1.455\",\n  \"upper_CI\": \"2.478\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"662 CWSs (886 zip codes), 2006-2016\",\n  \"direction\": \"positive (private ownership associated with higher odds of a monitoring/reporting violation)\",\n  \"adjusted\": \"adjusted (negative binomial regression, LASSO-selected covariates: race/ethnicity, %homeownership, %65+, rurality, system size, source, year)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S353; source Marcillo, Krometis & Krometis 2021, IJERPH 18(24):13254, Table 1. Ownership type (private/public) is a real institutional/regulatory-model variable, but does not cleanly match Family A (household-level legal recognition/tenure), Family B (bureaucratic assistance to applicants), or Family C (a specific documented administrative barrier such as a fee or eligibility rule) as defined in PROJECT_SPEC.md S8 -- it is a provider-level ownership-structure characteristic predicting regulatory-compliance outcomes, not a household-facing legal/administrative barrier. Recorded without a family assignment rather than forced into one.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md S2 -- exposure (utility ownership type) does not match any existing synthesis family's definition; no other study in the corpus tests the same private-vs-public-ownership contrast on a comparable regulatory-violation outcome, so pooling is not possible even in principle yet.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 41abaef62eee1bd88981482d01ee425215ff26b8c69db830913714b5dfe2f080) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=42199, sha256=41abaef62eee1bd88981482d01ee425215ff26b8c69db830913714b5dfe2f080]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. SCOPE & ELIGIBILITY AUDIT (E03 / E05 UNDER A24/A26/A28 STANDARD): Marcillo, Krometis, and Krometis (2021) is an ecological environmental-justice geospatial study asking whether SDWA violation counts across N = 662 geocoded Virginia community water systems (CWSs) vary by zip-code racial/ethnic composition, rurality, and Census homeownership (explicitly used solely as an area-level wealth/SES proxy because 2000 zip-code Census files lacked income and education, p. 4). As Claude's own `effect_estimate` note concedes in referencing excluded study S135, the paper's primary headline exposure (%Black on Health-Based [HB] violations, OR = 1.031) fails narrow Criterion 2 because population demographic composition is not a legal or administrative exposure (E03). To salvage an institutional row under the one-effect-per-study rule, `effect_sizes.csv` extracted a system-level control covariate—binary utility ownership (`Operation: Private` vs. `Public`)—predicting Monitoring & Reporting (`MR`) violations (OR = 1.899). Under the strict 2026-10-13/14 CK standard (`A24/A26/A28`, which excluded non-legal exposures and non-household administrative outcomes like building permits in S1121), this row still fails both narrow Criterion 2 (`E03`) and Criterion 4 (`E05`): (a) on Criterion 2, binary private vs. public utility ownership is a macro provider-ownership attribute, not a last-mile legal/administrative rule governing household service access (the authors themselves caution on p. 7 that the binary public/private indicator does not capture institutional governance differences); and (b) on Criterion 4, `MR` violations measure a utility's administrative failure to test water or file monitoring reports with the state/EPA primacy agency (p. 3)—a regulator-facing utility paperwork/testing compliance count, not household water connection, continuity, affordability, or tap water quality. Moreover, unconnected private-well households and historical boundary/redlining exclusions from CWS service are omitted by design (pp. 3, 8).\n\n2. OUTCOME-CHOICE & DIRECTION AUDIT IF RETAINED: Coding `MR` paperwork/reporting violations under `outcome_family = effective_access` conflates administrative reporting non-compliance with safe drinking-water delivery; the paper's actual water-quality compliance outcome is `HB` violations (MCL/MRDL/treatment-technique breaches), for which `Private vs. Public` ownership was statistically null (OR = 1.425, 95% CI: 0.837, 2.428; Table 1, p. 6). Furthermore, `direction = positive` in `effect_sizes.csv` reflects the raw regression sign (`OR > 1`, more violations) rather than improved household access (higher MR violation odds = worse utility regulatory compliance).\n\n3. NON-FIT VERDICT CONDITIONAL ON RETENTION: Because the study appears likely ineligible (`E03`/`E05`), family assignment is moot (`moot_study_appears_ineligible`). However, if the PI elects to retain S353 as a borderline regulatory-regime study, leaving `synthesis_family` blank (`reasoned non-fit`) is fully justified: provider ownership structure (`Private` vs. `Public` CWS) predicting SDWA regulator reporting violations does not fit Family A (household property/tenure recognition), Family B (bureaucratic assistance/facilitation), or Family C (household-facing administrative/documentation/fee barriers).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 4 (MR outcome is utility testing/reporting compliance to regulator, not household access)",
+        "page": "3",
+        "quote": "designate a CWS failure to monitor treatment, test water quality, and/or report"
+      },
+      {
+        "criterion": "Criterion 2 (Homeownership used solely as Census wealth/SES proxy)",
+        "page": "4",
+        "quote": "and homeownership, which is an established socioeconomic status"
+      },
+      {
+        "criterion": "Exact numerical match for stored effect (Private vs. Public MR violations OR and 95% CI)",
+        "page": "5",
+        "quote": "95% CI = 1.455, 2.478), corresponding to an elevated likelihood of incurring a MR violation"
+      },
+      {
+        "criterion": "Criterion 2 (Binary public/private CWS indicator does not capture governance rules)",
+        "page": "7",
+        "quote": "distinction examined in this study and previous work does not examine the impacts of"
+      }
+    ],
+    "nonfit_classification_verdict": "moot_study_appears_ineligible",
+    "number_verification_detail": "All numerical statistics in `effect_sizes.csv` match the source PDF exactly: Private vs. Public CWS ownership on Monitoring & Reporting (MR) violations OR = 1.899, 95% CI [1.455, 2.478], corresponding to '90%' higher likelihood (Section 3.1, p. 5; Table 1, p. 6); %Black on Health-Based (HB) violations OR = 1.031, 95% CI [1.018, 1.045] per 1-percentage-point increase (Section 3.2 & Table 1, p. 6); analytic sample N = 662 geocoded CWSs across n = 886 zip codes over 2006–2016 (Section 2.1–2.2, pp. 2–4, Figure 1); SE and exact p-values are not printed in the paper (significance threshold p < 0.05) and SE is appropriately left blank. Two minor descriptive inaccuracies appear in `effect_sizes.csv` metadata: (1) `adjusted` lists `source` and `race/ethnicity` among the covariates in the MR model, whereas LASSO dropped `Source`, `%Hispanic or Latino` (the sole ethnicity variable), `%Black`, and `%Asian` from the final MR specification while retaining `%American Indian or Alaska Native`, `%Native Hawaii or Pacific Islander`, and the `%Homeownership x %Native Hawaii or Pacific Islander` interaction (Section 2.4, p. 5; Table 1, p. 6); and (2) `effect_measure` repeats the authors' own terminology ('adjusted odds ratio (OR)') for exponentiated negative-binomial regression coefficients on active-year-normalized violation counts, which are technically incidence/rate ratios. Raw `OR = 1.899 > 1` indicates MORE MR violations (worse administrative compliance) under private ownership.",
+    "numbers_match_paper": "yes",
+    "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+    "study_id": "S353"
+  }
+}

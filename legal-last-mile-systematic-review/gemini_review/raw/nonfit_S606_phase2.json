@@ -1,0 +1,127 @@
+{
+  "study_id": "S606",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "12918094f0a101dec3977912cec3b29559aba1f7524f1ff73bcee8361fa93b8f",
+  "input_text_sha256": "d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957",
+  "prompt_sha256": "ab7c4b858adffb611bb0b40cf9d7bd230149dbc01cd8313c602cb49b6ecdcb40",
+  "started_at": "2026-11-20T01:10:33.123549+00:00",
+  "completed_at": "2026-11-20T01:13:58.805389+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S606\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S606\",\n  \"record_id\": \"RF8C06439B2CA\",\n  \"order\": 13,\n  \"blind_rationale\": \"Blind reading of Zhou & Liang (2021) indicates that this study belongs in `none_nonfit` (with a clear conceptual link to Family A on legal residency recognition that fails on construct and unit/outcome alignment, warranting scope flags on both narrow Criterion 2 and Criterion 4):\\n\\n1. Exposure / Narrow Criterion 2 (`borderline_governance_or_proxy`): Conceptually, the study frames inequality through China's household registration (`hukou`) legal institution, under which residents lacking local permanent `hukou` are excluded from municipal public-service obligations and urban planning accountability. Empirically, however, the study deliberately restricts its panel to 2008–2014 to avoid the 2014 national `hukou` policy reform and does not measure city-level variation in `hukou` rules, eligibility thresholds, or legal entitlements. Instead, the tested independent variable is the ecological demographic share of temporary residents (`Temporary residents (%)` registered with public security authorities as living >1 year away from their permanent address). As the authors acknowledge in their limitations (p. 790), the design tests city-level migrant demographic composition rather than a direct legal/administrative rule intervention.\\n\\n2. Outcome / Criterion 4 (`borderline_institutional_or_compliance_outcome`): Among the five dependent variables in Table 3, three are non-WASH (`Public green space`, `Solid waste treatment capacity`, `Quantity of solid waste treated`) and two relate to municipal sewage/wastewater infrastructure (`Wastewater treatment capacity` in 10,000 m3/day per 10,000 persons and `Quantity of wastewater treated` in 10,000 m3/year per 10,000 persons). Neither wastewater metric measures household sanitation access, sewer connection, toilet coverage, water supply access, continuity, quality-as-access, or affordability. The authors explicitly note (p. 785) that limited information precludes ascertaining whether the local population directly benefits from pollutant treatment plant construction. Moreover, because total urban population (permanent + temporary) enters the denominator of both the predictor and the per-capita plant-capacity outcome, inflows of temporary migrants mechanically dilute per-capita municipal plant capacity unless plant expansion immediately keeps pace.\\n\\n3. SWiM Family placement (`none_nonfit`): Although `hukou` non-recognition is thematically adjacent to Family A (legal status, tenure, recognition), pooling an ecological city-wide migrant-share regression on bulk municipal wastewater treatment plant capacity/throughput with household or settlement legal-recognition/tenure effects on household WASH service access would be construct-invalid. Note on sign/direction: the raw coefficients on `Temporary residents (%)` are negative (-0.00164 and -0.326), meaning a higher share of legally unrecognized temporary migrants is associated with lower per-capita municipal wastewater treatment capacity/volume (substantively, legal `hukou` exclusion harms infrastructure provision, or permanent legal recognition aligns positively with infrastructure supply).\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"borderline_institutional_or_compliance_outcome\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Study design and sample\",\n      \"page\": \"PDF p. 10 (p. 789)\",\n      \"quote\": \"Using a panel dataset on 290 prefectural cities from 2008 to 2014, this analysis largely\"\n    },\n    {\n      \"criterion\": \"Criterion 2 (Exposure / legal residency proxy)\",\n      \"page\": \"PDF p. 6 (p. 785)\",\n      \"quote\": \"The percent of temporary resident population in a given city is used as the proxy to represent\"\n    },\n    {\n      \"criterion\": \"Criterion 4 (Outcome definition: municipal wastewater treatment plant capacity/volume)\",\n      \"page\": \"PDF p. 6 (p. 785)\",\n      \"quote\": \"wastewater treatment plants (10,000 m3/day) per 10,000 persons and the total quantity of wastewater treated\"\n    },\n    {\n      \"criterion\": \"Headline estimate (Wastewater treatment capacity, Table 3 Model 2)\",\n      \"page\": \"PDF p. 9 (p. 788)\",\n      \"quote\": \"residential registration in a given city is associated with a reduction of 16.4 m3/day/10,000 persons\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Two-way fixed-effects panel regressions (Table 3, PDF p. 9 / journal p. 788) testing the continuous exposure `Temporary residents (%)` (share of urban district population without permanent `hukou` registration; 1-percentage-point increase): (1) Model 2 — `Wastewater treatment capacity` (10,000 m3/day per 10,000 persons): beta = -0.00164, clustered SE = 0.000529, p < 0.01 (t = -3.10, approx. 95% CI [-0.00268, -0.00060]), equivalent to -16.4 m3/day per 10,000 persons per 1-percentage-point increase in temporary residents (N = 1,730 city-years, 283 cities, R2 = 0.065); (2) Model 3 — `Quantity of wastewater treated` (10,000 m3/year per 10,000 persons): beta = -0.326, clustered SE = 0.169, p < 0.10 (t = -1.93, approx. 95% CI [-0.657, +0.005]), equivalent to -3,260 m3/year per 10,000 persons (N = 1,737 city-years, 282 cities, R2 = 0.181). Non-WASH outcomes in Table 3: Public green space beta = 0.00594 (SE = 0.0212, NS, N = 1,769); Solid waste treatment capacity beta = -0.0897 (SE = 0.0268, p < 0.01, N = 1,577); Quantity of solid waste treated beta = -0.00136 (SE = 0.000732, p < 0.10, N = 1,589). All models adjust for logged population density, logged GRP per capita, high school/college enrollment (%), registered unemployment rate (%), logged municipal government spending per capita, city fixed effects, and year fixed effects, with city-clustered SEs. Raw negative sign means greater share without permanent `hukou` reduces per-capita wastewater infrastructure (substantively pro-recognition / harmful effect of legal exclusion).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Longitudinal two-way fixed-effects (city and year FE) panel regression study in urban China using prefecture-level city-year panel data from 2008 to 2014 (dataset covering 290 prefectural cities; analytic samples in Table 3: N = 1,730 city-years across 283 cities for wastewater treatment capacity; N = 1,737 city-years across 282 cities for quantity of wastewater treated; N = 1,769 across 283 cities for public green space; N = 1,577 and N = 1,589 across 276 cities for solid waste models).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:23:46.803988+00:00\",\n  \"file_sha256\": \"12918094f0a101dec3977912cec3b29559aba1f7524f1ff73bcee8361fa93b8f\",\n  \"input_sha256\": \"d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S606\",\n  \"outcome_family\": \"service_coverage\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Share of a Chinese prefectural city's population who are temporary residents without official permanent household registration (hukou) -- a legal/administrative status ascribed at birth that determines eligibility for place-specific public services -- measured across 290 cities, 2008-2014.\",\n  \"comparator_definition\": \"Within-city variation over time and across-city variation in the share of hukou-registered (permanent) vs. unregistered (temporary) resident population, analyzed via city and year fixed effects (panel comparison, not a discrete treatment/control group).\",\n  \"effect_measure\": \"Panel fixed-effects regression coefficient (city and year fixed effects, clustered standard errors)\",\n  \"effect_estimate\": \"A one-percentage-point increase in the share of hukou-unregistered temporary residents is associated with a reduction of 0.00164 (10,000 m3/day) per 10,000 persons in wastewater treatment capacity (p<0.01) and 0.0897 tons/day per 10,000 persons in solid waste treatment capacity (p<0.01); also significant negative associations with quantity of wastewater treated (p<0.1) and quantity of solid waste treated (p<0.1). No significant association with public green space provision. For an average city of ~1.5 million residents, results imply a need for an additional 2,460 m3/day wastewater treatment capacity and 13.455 tons/day solid waste treatment capacity per 1-percentage-point increase in temporary-resident share merely to maintain constant per-capita service levels.\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"0.000529 (wastewater treatment capacity); 0.0268 (solid waste treatment capacity)\",\n  \"sample_size\": \"290 cities; 1,577-1,769 city-year observations across 5 outcome models (2008-2014)\",\n  \"direction\": \"negative (higher hukou-unregistered temporary-resident share associated with lower per-capita pollution-treatment infrastructure provision)\",\n  \"adjusted\": \"adjusted (population density, GRP per capita, education enrollment, unemployment rate, government spending per capita; city and year fixed effects)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S606; source Zhou & Liang 2021, J. Environmental Policy & Planning 23(6):781-795, Table 3. A clean legal/administrative-status exposure (hukou household registration) tested via panel fixed-effects regression against a directly measured, population-relevant infrastructure-provision outcome across 290 cities and 7 years, with consistent significant results and multiple robustness checks (lagged and cross-sectional change models in the appendix). A26 ruling 2026-10-14 by CK: moved from Family C to the reasoned non-fits; the outcome is wastewater (and solid-waste) treatment capacity per capita, back-end plant capacity rather than household connection or access.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md section 2 decision tree and PROJECT_SPEC.md section 8: reasoned non-fit, no family assigned (A26 ruling 2026-10-14 by CK, formerly Family C): the outcome is wastewater (and solid-waste) treatment capacity per capita, back-end plant capacity rather than household connection or access, so it does not match Family A, B or C. It is a single study with this exposure (the share of hukou-unregistered residents) and this outcome, so pooling is not possible.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=68420, sha256=d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Non-fit classification (`justified_nonfit`): CK's A26 ruling (2026-10-14) moving S606 out of Family C to reasoned non-fits is completely justified. Conceptually, China's `hukou` registration institution relates to legal residency status (adjacent to Family A, not Family C), not utility governance or decentralized service delivery. Empirically, however, neither the ecological city-level predictor (`Temporary residents (%)`) nor the outcome (bulk municipal wastewater treatment plant capacity/throughput per 10,000 persons) is construct-compatible with Family A household or settlement legal-recognition/tenure effects on household WASH access. Note on directionality: the raw sign is negative (beta = -0.00164), meaning a higher share of legally unrecognized temporary migrants is associated with lower per-capita wastewater plant capacity (substantively, legal exclusion harms infrastructure supply).\n\n2. Review eligibility & hidden scope vulnerabilities (`borderline_flag_for_pi` for E03/E04): Unlike excluded studies with wholly non-WASH outcomes (e.g., building permits S1121) or wholly non-legal exposures (e.g., social trust S1144, watershed engineering S1020), S606 retains a borderline link to municipal sanitation infrastructure (wastewater treatment) and an official public-security registration category (`hukou` vs. temporary resident registration), explaining why CK kept it as a reasoned non-fit in A26. However, full-text audit reveals that Claude's stored row materially overstated scope fit on both criteria:\n   - Narrow Criterion 2 (`E03` risk): Claude's provenance note calls this \"A clean legal/administrative-status exposure (hukou household registration)\", omitting that the authors deliberately restricted the panel to 2008-2014 to avoid China's 2014 national `hukou` policy reform (p. 784) and measured zero city-level variation in `hukou` eligibility rules or quotas. Instead, the predictor is aggregate city demographic composition (`Temporary residents (%)`), which the authors acknowledge in their limitations (p. 790) cannot isolate planning/governance mechanisms.\n   - Criterion 4 (`E04` risk & mislabeled `outcome_family`): Claude coded `outcome_family = \"service_coverage\"` and mingled non-WASH municipal solid-waste capacity (tons/day) and public green space into `effect_estimate` and `standard_error`. In the paper, the two WASH-related metrics measure back-end municipal sewage treatment plant capacity and treated volume per 10,000 population, and the authors explicitly concede (p. 785) that limited information precludes ascertaining whether the local population directly benefits from pollutant treatment plant construction. Furthermore, because total urban population (permanent + temporary) enters the denominator of per-capita plant capacity, inflows of temporary migrants mechanically dilute per-capita capacity unless capital-intensive plant construction immediately keeps pace. If retained, the PI should reclassify `outcome_family` away from household `service_coverage` and strip non-WASH solid-waste figures from the primary effect fields; under a strict household-access and rule-variation reading, S606 is a strong candidate for E03/E04 exclusion.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 scope risk: 2008-2014 window deliberately excludes the 2014 hukou policy reform",
+        "page": "PDF p. 5 (p. 784)",
+        "quote": "to 2014. Centering on this particular period of time helps minimize the intervening eﬀect attributable to a"
+      },
+      {
+        "criterion": "Criterion 2 exposure proxy: city-level share of temporary residents rather than hukou rule variation",
+        "page": "PDF p. 6 (p. 785)",
+        "quote": "The percent of temporary resident population in a given city is used as the proxy to represent"
+      },
+      {
+        "criterion": "Criterion 4 scope risk: inability to verify direct population benefit from pollution treatment plants",
+        "page": "PDF p. 6 (p. 785)",
+        "quote": "beneﬁts from the construction of pollutant treatment facilities, we conclude that this is a plausible case."
+      },
+      {
+        "criterion": "Headline estimate verification (Table 3 Models 2 and 4 substantive translation)",
+        "page": "PDF p. 9 (p. 788)",
+        "quote": "residential registration in a given city is associated with a reduction of 16.4 m3/day/10,000 persons and"
+      }
+    ],
+    "nonfit_classification_verdict": "justified_nonfit",
+    "number_verification_detail": "All numeric values reported in `effect_sizes.csv` match Table 3 and journal p. 788 (PDF p. 9) of Zhou & Liang (2021) exactly:\n- Wastewater treatment capacity (Table 3, Model 2; units: 10,000 m3/day per 10,000 persons): beta = -0.00164, clustered SE = 0.000529, p < 0.01 (t = -3.10), translated on p. 788 as -16.4 m3/day/10,000 persons and 2,460 m3/day needed for an average city of ~1.5 million residents.\n- Solid waste treatment capacity (Table 3, Model 4; non-WASH outcome; units: tons/day per 10,000 persons): beta = -0.0897, clustered SE = 0.0268, p < 0.01, translated on p. 788 as 13.455 tons/day for an average city of ~1.5 million.\n- Other Table 3 outcomes: Quantity of wastewater treated (Model 3) beta = -0.326, SE = 0.169, p < 0.10 (-3,260 m3/year/10,000 persons); Quantity of solid waste treated (Model 5) beta = -0.00136, SE = 0.000732, p < 0.10 (-13.6 tons/year/10,000 persons); Public green space (Model 1) beta = 0.00594, SE = 0.0212, non-significant. Claude reports Models 3 and 5 qualitatively as significant negative associations (p<0.1) without printing their point estimates/SEs, which matches Table 3.\n- CIs: Left blank in `effect_sizes.csv`, matching the paper (which reports clustered SEs and p-value stars rather than CIs).\n- Sample size: Stored as \"290 cities; 1,577-1,769 city-year observations across 5 outcome models (2008-2014)\". The overall panel dataset covers 290 prefectural cities (pp. 784, 789) and total observations across Models 1-5 span exactly 1,577 (Model 4) to 1,769 (Model 1). Minor nuance: due to missingness, Table 3 analytic city counts are 283 cities (N = 1,730) for wastewater treatment capacity, 282 cities (N = 1,737) for quantity of wastewater treated, 283 cities (N = 1,769) for green space, and 276 cities (N = 1,577 and 1,589) for solid waste.\n- Covariates & specification: Stored adjustment list matches Table 3 (logged population density, logged GRP per capita, high school/college enrollment %, unemployment rate %, logged municipal government spending per capita, city FE, year FE, city-clustered SEs). Minor wording note in `comparator_definition`: two-way city and year FE models identify off within-city variation over time (absorbing time-invariant across-city variation), though Table A5 in the appendix separately estimates 2008-2014 cross-city changes.",
+    "numbers_match_paper": "yes",
+    "review_eligibility_flag": "borderline_flag_for_pi",
+    "study_id": "S606"
+  }
+}

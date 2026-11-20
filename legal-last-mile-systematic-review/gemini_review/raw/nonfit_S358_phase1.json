@@ -1,0 +1,143 @@
+{
+  "study_id": "S358",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ff9377d55ada61b0c2ab6d99a083315c153881c539011109e1d90e16f453ee67",
+  "input_text_sha256": "b4541bd9699e62db4465b869579a5ca5b9e5341eefa935b91c5f52b1e151f903",
+  "prompt_sha256": "29456350d1ae3d98dc43f175d1c11c3d0d993275155e1678346fd4679058c7c3",
+  "started_at": "2026-11-19T19:14:39.016202+00:00",
+  "completed_at": "2026-11-19T19:17:23.702197+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S358\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S358\n- Record ID: R17B1B3A7B266\n- Citation: Williams SA, Zuniga-Teran AA, Megdal SB, Quanrud DM, Christopherson G (2025). Assessing the Relationship Between Groundwater Availability, Access, and Contamination Risk in Arizona's Drinking Water Sources. Water 17(7):1097.\n- DOI: 10.3390/w17071097\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: b4541bd9699e62db4465b869579a5ca5b9e5341eefa935b91c5f52b1e151f903) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=109828, sha256=b4541bd9699e62db4465b869579a5ca5b9e5341eefa935b91c5f52b1e151f903]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "Blind reading of the full text confirms that S358 (Williams et al., 2025) does not belong in SWiM Families A, B or C (`none_nonfit`) and warrants a Criterion 4 scope flag (`E04` hydrological/environmental resource state). First, although the authors use the label \"access\" in their conceptual \"trivalent framework\" to describe predictor variables (GMA Active Management Area vs Non-Designated Area status, Tribal vs State SDWA primacy, CWS vs exempt private Domestic Well Area status, and Census demographics), the actual dependent variable in the Abstract and all four regression tables (Tables 2, 3, A1 and A2) is physical subbasin aquifer water-level decline/change (`ft/year` from ADWR index wells over 2001–2020 and 2011–2020). Aquifer water-table depletion is an environmental water-resource quantity outcome (`E04`), not household or community drinking-water access, connection, coverage, service continuity or affordability. Second, groundwater level stability cannot even serve as a monotonic proxy for safe drinking-water access in this study because rising/stabilizing groundwater levels mobilize contaminants and significantly increase both arsenic and nitrate detection and MCL exceedances (`OR = 1.01` and `OR = 1.05`, `p < 0.001`, p. 15). Third, while Section 3.5 (p. 15) briefly mentions un-tabulated models predicting regulatory `MCLExceeded` from Non-Designated Area (`NDA`) status, no standard errors or CIs are reported, the dataset pools EPA CWS compliance samples with USGS/ADEQ private/ambient groundwater observations, and the effects run in opposite directions across contaminants (`OR = 1.11, p = 0.004` for arsenic vs `OR = 0.48, p < 0.001` for nitrate). Fourth, the paper exhibits severe internal statistical reporting anomalies: Table 2 mislabels exponentiated odds ratios `exp(est.)` as \"Log Odds\"; Table 3 models a continuous water-level response yet still exponentiates linear coefficients into astronomical \"Log Odds\" values (e.g. `6.27E+39` for arsenic and `3305.44` for Tribal primacy) with reversed signs relative to Table 2; and Tables A1–A2 copy the continuous-model coefficients from Table 3 while mislabeling the response footnote as a binary decline variable (`1 = decline`), with tiny standard errors indicating regressions were estimated at the water-sample level (`27,334` arsenic / `47,783` nitrate records) rather than across the `1,881` service areas without clustering adjustments documented. If an exposure-only classification were forced, GMA/SDWA regulatory oversight and CWS regulation would map closest to Family C (or Tribal sovereignty to Family A), but `none_nonfit` (and PI review under `E04`) is clearly required because no household/service access outcome is estimated.",
+    "candidate_swim_family_blind": "none_nonfit",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "no_fails_c4_e04_or_e07",
+    "evidence_quotes": [
+      {
+        "criterion": "Headline regulatory estimate in Abstract (PDF p. 1)",
+        "page": "PDF p. 1",
+        "quote": "reduces groundwater decline risk (OR = 0.62, p < 0.001), whereas state–primacy areas show"
+      },
+      {
+        "criterion": "Unit of analysis and supply-type breakdown (PDF p. 8)",
+        "page": "PDF p. 8",
+        "quote": "service areas, 55.3% were designated as CWS and 44.7% were designated as DWAs."
+      },
+      {
+        "criterion": "Criterion 4 primary outcome definition in Table 2 (PDF p. 16)",
+        "page": "PDF p. 16",
+        "quote": "Response Variable: mean annual rate of water level decline over 20 yrs and 10 yrs −binary variable, 1 = decline."
+      },
+      {
+        "criterion": "Secondary un-tabulated MCL exceedance association in Section 3.5 (PDF p. 15)",
+        "page": "PDF p. 15",
+        "quote": "differing associations: positive for arsenic (Estimate = 0.101, p = 0.004, OR = 1.11) and"
+      }
+    ],
+    "headline_estimate_summary": "Primary tabulated models (Table 2, PDF p. 16) estimate multivariate logistic regressions of binary subbasin groundwater level (GWL) decline (1 = decline over 20 years [2001–2020] and 10 years [2011–2020]) on regulatory/policy and binary water-quality predictors (note: Table 2 mislabels the Odds Ratio column exp(est.) as 'Log Odds'): (1) SDWA Primacy (Tribal vs State): in the Arsenic model, 20-yr GWL decline est. = -0.484, SE = 0.008, Statistic = -57.086, p < 0.001, OR = 0.62 (Abstract headline); 10-yr est. = -0.367, SE = 0.009, Statistic = -40.059, p < 0.001, OR = 0.69; in the Nitrate model, 20-yr est. = -0.173, SE = 0.017, Statistic = -10.289, p < 0.001, OR = 0.84; 10-yr est. = -0.112, SE = 0.02, Statistic = -5.725, p < 0.001, OR = 0.89. (2) GMA Designation (Non-Designated Area [NDA] vs designated AMA/INA): in the Arsenic model, 20-yr GWL decline est. = 0.431, SE = 0.008, Statistic = 51.122, p < 0.001, OR = 1.54; 10-yr est. = 0.418, SE = 0.009, Statistic = 45.877, p < 0.001, OR = 1.52; in the Nitrate model, 20-yr est. = 0.300, SE = 0.007, Statistic = 43.109, p < 0.001, OR = 1.35; 10-yr est. = 0.178, SE = 0.008, Statistic = 22.100, p < 0.001, OR = 1.20. (3) Supply Type (unregulated Domestic Well Area [DWA] vs SDWA-regulated Community Water System [CWS]): Nitrate model 20-yr est. = 0.033, SE = 0.006, Statistic = 5.758, p < 0.001, OR = 1.03 (10-yr est. = 0.014, SE = 0.007, p = 0.029, OR = 1.01); Arsenic model 20-yr est. = 0.014, SE = 0.007, p = 0.058, OR = 1.01 (10-yr est. = -0.024, SE = 0.008, p = 0.003, OR = 0.98). Continuous GWL models (Table 3, PDF p. 17; Tables A1–A2, PDF pp. 25–26, controlling for aquifer type, contaminant concentration, demographics, housing and interactions) show reversed signs and improperly exponentiated linear coefficients (e.g. 20-yr NDA est. = -5.989 [SE = 0.286] and -10.46 [SE = 0.330], p < 0.001; Tribal Primacy est. = 6.621 [SE = 0.684] and 8.103 [SE = 0.330], p < 0.001; % Black est. = 0.698, SE = 0.03, p < 0.001, OR = 2.01). Secondary text-only estimates (Section 3.5, PDF p. 15, no SEs reported) regress MCL exceedance on NDA status: arsenic MCL exceedance Estimate = 0.101, p = 0.004, OR = 1.11; nitrate MCL exceedance Estimate = -0.733, p < 0.001, OR = 0.48.",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Observational spatiotemporal ecological study in Arizona, USA, across N = 1,881 mapped groundwater-supplied drinking water service areas (55.3% SDWA-regulated Community Water Systems [CWS] and 44.7% unregulated private Domestic Well Areas [DWAs]), linked to ADWR subbasin index-well groundwater level change rates over 20-year (2001–2020) and 10-year (2011–2020) periods and 27,334 arsenic and 47,783 nitrate monitoring observations (1998–2019; 97.8% of arsenic and 54.5% of nitrate observations imputed below MDL). Standard errors in Tables 2, 3, A1 and A2 (e.g. SE = 0.006–0.009) indicate regressions were fit at the contaminant-observation level rather than N = 1,881 service areas.",
+    "study_id": "S358"
+  }
+}

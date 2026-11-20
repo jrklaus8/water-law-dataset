@@ -1,0 +1,37 @@
+{
+  "study_id": "S331",
+  "record_id": "RFFE690159838",
+  "order": 21,
+  "adversarial_critique": "1. Statistical & Factual Audit of Stored Row: Every numerical value in `effect_sizes.csv` (`OR = 4.27`, `95% CI: 3.07–5.93`, blank `standard_error`, regression `n = 938`, descriptive `N = 1,021` with `487` POS and `534` non-POS, and unadjusted `OR = 7.225, 95% CI: 5.389–9.686` in `provenance_note`) matches Sarfo (2025) exactly. However, `exposure_definition` contains a substantive factual overstatement: it characterizes Portage County's POS inspection as `\"a county point-of-sale inspection requirement\"`, whereas Chapter 2 (PDF p. 41 / diss. p. 24) explicitly states that PCHD `\"has not adopted a mandatory POS real estate transfer OWTS inspection program but offers homeowners a voluntary option service\"` and `\"does not stop a sale when failure is detected during POS inspection\"` (notwithstanding an internally contradictory sentence by the dissertation author later on PDF p. 101 / diss. p. 84 claiming local regulations mandate pre-transfer POS inspection and repair). In Portage County, the binding legal rule that differs by context is narrower: under OAC Chapter 3701-29, PCHD allows incremental repairs for owner-occupied non-POS failures while disallowing incremental repairs for POS failures (PDF p. 95 / diss. p. 78), alongside equal 60+60-day BOH NOV enforcement across all failed systems.\n\n2. Critique of `reasoned non-fit` Classification: Leaving `synthesis_family` blank (`justified_nonfit`) is methodologically sound even under the broadened A21 Family C definition (regulation, enforcement & oversight). All 938 analytic units are existing household septic systems that failed inspection and received the identical 60+60-day BOH NOV enforcement citation; the predictor contrasts real-estate transfer context (voluntary POS) against routine/complaint/stormwater inspection triggers, and the dependent variable is strictly administrative abatement speed (`<=120` days vs. `>120` days). Crucially, connecting a home with a failed septic tank to a public sanitary sewer—a superior household sanitation upgrade—strongly *reduces* 120-day NOV compliance (`adjusted OR = 0.33`, `95% CI: 0.14–0.81`, `p = 0.02`; text `OR = 0.332`, `p = 0.0153`) because municipal sewer permitting and construction exceed 120 days. Pooling 120-day NOV deadline compliance into Family C as a positive sanitation-access/service-quality effect would invert substantive WASH upgrades and conflate transactional urgency with service access. Grouping S331 with S178 (Water Safety Plan compliance) and S353 (SDWA violations) as non-pooled `administrative_outcome` rows is internally consistent.\n\n3. Scope Audit (Narrow Criterion 2 & Criterion 4 under A24/A26/A28 Standards): Although S331 was retained under open item A13, it sits squarely on the review's eligibility boundary (`borderline_flag_for_pi`). First, under narrow Criterion 2, because Portage County's POS program is voluntary and does not legally block title transfer (unlike mandatory transfer-blocking laws in Summit/Stark counties or Iowa/Massachusetts), the POS vs. non-POS contrast primarily captures private real-estate market, lender, and escrow leverage interacting with a routine inspection service (PDF p. 97 / diss. p. 80), with only a secondary administrative rule difference (no incremental repairs at POS). Second, under Criterion 4, the study measures homeowner timeliness in abating an environmental/public-health effluent violation (`<=120` days) among homes that already possess sanitation infrastructure, rather than household water/sanitation connection, coverage, affordability, or service access—placing it very close to `E04` (environmental pollution-control / regulatory-deadline compliance) and non-household administrative outcomes excluded in A24/A26/A28 (e.g., `S1121`). If retained in the review, `exposure_definition` should be corrected to state that Portage County's POS inspection is a voluntary county service rather than a mandatory transfer requirement.",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "Criterion 2 / exposure wording discrepancy (Portage County POS is voluntary, not mandatory)",
+      "page": "PDF p. 41 (p. 24)",
+      "quote": "In Portage County, PCHD has not adopted a mandatory POS real estate transfer OWTS"
+    },
+    {
+      "criterion": "Criterion 2 (POS failure does not legally block property transfer in Portage County)",
+      "page": "PDF p. 41 (p. 24)",
+      "quote": "does not stop a sale when failure is detected during POS inspection, an approach which may"
+    },
+    {
+      "criterion": "Criterion 4 (binary 120-day BOH NOV regulatory deadline compliance outcome)",
+      "page": "PDF p. 81 (p. 64)",
+      "quote": "indicates compliance within 120 days and 0 indicates non-compliance within 120 days."
+    },
+    {
+      "criterion": "Exact verification of adjusted multivariable logistic regression estimate (Table 4 / p. 65)",
+      "page": "PDF p. 82 (p. 65)",
+      "quote": "which remained significant in the adjusted model (OR = 4.269, 95% CI: 3.073–5.931, p"
+    }
+  ],
+  "nonfit_classification_verdict": "justified_nonfit",
+  "number_verification_detail": "All stored numerical values match the source dissertation exactly. Table 4 (PDF p. 81 / diss. p. 64, n = 938) prints the 2-decimal adjusted multivariable logistic regression estimate for OWTS inspection (1 = POS vs. 0 = NON-POS) as OR = 4.27, 95% CI (3.07 - 5.93), p < 0.0001, while the accompanying text (PDF p. 82 / diss. p. 65) prints the 3-decimal SAS values OR = 4.269, 95% CI: 3.073–5.931, p < 0.0001 (accurately documented in provenance_note). Standard error is not reported in the paper and is properly left blank. Sample sizes match Figure 4 / text (PDF pp. 59–61 / diss. pp. 42–44) and Table 2 (PDF p. 72 / diss. p. 55): N = 1,021 failed OWTS analyzed descriptively (487 POS [311/487 = 63.86% <=120-day compliant], 534 non-POS [106/534 = 19.85% <=120-day compliant]) and n = 938 complete-case failed OWTS in the logistic regressions, covering January 2, 2015 to June 30, 2023 in Portage County, Ohio. Covariates in `adjusted` match Table 4 exactly (new OWTS type [alternative vs. traditional; sewer connection vs. traditional], repair vs. replacement, correction cost per $1,000, and system age in 10-year increments). The unadjusted OR cited in `provenance_note` (7.225, 95% CI 5.389–9.686, p < 0.0001) matches Table 3 (PDF p. 76 / diss. p. 59). Note: while all numbers match, `exposure_definition` misdescribes Portage County's POS program as 'a county point-of-sale inspection requirement' whereas PDF p. 41 (p. 24) states PCHD has not adopted a mandatory POS program and offers it as a voluntary service that does not stop property sales.",
+  "numbers_match_paper": "yes",
+  "review_eligibility_flag": "borderline_flag_for_pi",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:17:40.559374+00:00",
+  "file_sha256": "c3a2be9d0f0d59ecf3c5aee7bb94f8f5b8102829088b1d3c5df2a279fec8f2a5",
+  "input_sha256": "896695022f3016c6364055fbef690e5ea5bd271655c109752393cde4bcc32cb2"
+}

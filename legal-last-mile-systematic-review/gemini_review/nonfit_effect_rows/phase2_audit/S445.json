@@ -1,0 +1,37 @@
+{
+  "study_id": "S445",
+  "record_id": "R4B40A3139B39",
+  "order": 7,
+  "adversarial_critique": "1. Statistical & Provenance Audit (`no_discrepancy_found` due to sample-size N mismatch): All four stored point estimates and p-values for North vs. Center-West schools match PDF p. 9 verbatim (water-supply absence: OR = 2.58, p < 0.001 in 2011 and OR = 6.40, p < 0.001 in 2023; sanitation absence: OR = 3.32, p < 0.001 in 2011 and OR = 5.48, p < 0.001 in 2023), CIs/SEs are properly left blank because the article reports prose ORs without regression tables, SEs, or 95% CIs, and the substantive access direction is accurately interpreted (outcomes code WASH absence on PDF p. 6, so OR > 1 = worse access). However, the stored `sample_size` (\"56,544 rural public elementary schools (2011); 34,406 rural public elementary schools (2023)\") extracts the pre-filtering national universe counts from \"Área de estudo\" (PDF p. 3) rather than the analytic cohort actually modeled in the regressions—namely, only schools that remained active and linked to the same municipality in BOTH 2011 and 2023 (\"Banco de dados\", PDF p. 3; spanning 3,424 municipalities on PDF p. 6, with exact post-filter N shown only inside the embedded Figure 1 graphic on PDF p. 4, necessarily <= 34,406 and identical across both years). Three minor metadata/provenance inaccuracies also appear: (a) `adjusted` omits school failure rate (`Reprovação`) and municipal population size (`Porte populacional`), even though PDF p. 8 states all Quadro 1 non-sanitary variables were included in the logistic regression; (b) `provenance_note` cites second author \"Medeiros et al.\" rather than first author Lívia Pita Corrêa (\"Corrêa LP et al.\", PDF pp. 1–2); and (c) `provenance_note` claims North water-absence was \"the largest-magnitude\" OR across both years, whereas in 2011 Northeast water-absence (OR = 4.84, PDF p. 9), Indigenous-land toilet/sanitation absence (OR = 8.82 and 5.58, PDF p. 10), and <=10-student toilet/sanitation absence (OR = 8.02 and 4.97, PDF p. 10) were larger.\n\n2. Narrow Criterion 2 & Criterion 4 Scope Audit (`likely_ineligible_flag_e03_e04_e05_e07`): Under the 2026-10-13 / 2026-10-14 CK scope standard applied in A24/A26/A28, S445 should be flagged as likely ineligible on two independent grounds:\n   - Narrow Criterion 2 (`E03` — non-legal exposure): Claude's `exposure_definition` frames a school's geographic location in Brazil's North macroregion as \"a proxy for weaker municipal fiscal/institutional capacity... under the PDDE's enrolment-based, not needs-based, funding formula.\" In the paper, however, PDDE funding is never measured, coded, or tested anywhere in Quadro 1 (PDF p. 5); it is cited only post hoc in the Discussion (PDF p. 11) to contextualize small-enrollment schools (`até 10 alunos`), not the North macroregion dummy. A geographic macroregion indicator (like enrollment size, pass/dropout rates, % rural population, or municipal HDI-income) is a socio-spatial/demographic correlate, not an evaluated legal, regulatory, tariff, or tenure rule. Even if the row were re-extracted using `Terra indígena` (`Localização diferenciada`, PDF pp. 5, 10), that variable is a static census territorial category capturing structural infrastructure neglect of Indigenous schools rather than testing a legal/tenure rule or reform.\n   - Criterion 4 (`E05` / non-household institutional facility outcome): Every outcome (`ausência de abastecimento de água`, `ausência de saneamento`, `ausência de banheiro`) measures institutional public elementary school infrastructure (SDG 4.a.1 school WASH self-reported by principals in INEP's Censo Escolar), which the authors explicitly contrast with residential access (`saneamento domiciliar` / `WASH domiciliar`, PDF p. 10) and which Claude's own exclusion note acknowledges is school-level rather than household-level.\n\n3. SWiM Non-Fit Verdict (`moot_study_appears_ineligible`): Because S445 lacks an evaluated legal/administrative rule exposure (`E03`) and measures institutional school buildings rather than household WASH access, its SWiM family assignment is moot. Conditional on any PI decision to retain the study, leaving `synthesis_family` blank as a reasoned non-fit is completely sound: neither geographic macroregion nor school size belongs in Family B/C (since fiscal transfers/allocation rules are unmeasured), and placing `Terra indígena` in Family A would invert the substantive tenure construct by treating structural underprovision in Indigenous territories as an adverse effect of formal land status.",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "analytic_sample_selection_vs_stored_N",
+      "page": "PDF p. 3",
+      "quote": "selecionando aquelas que permaneceram ativas e vinculadas ao mesmo município entre 2011 e 2023,"
+    },
+    {
+      "criterion": "criterion4_school_facility_outcome_coding",
+      "page": "PDF p. 6",
+      "quote": "indica que a escola não possui nenhuma fonte de água, ou seja, está totalmente desprovida de acesso"
+    },
+    {
+      "criterion": "headline_north_region_odds_ratios",
+      "page": "PDF p. 9",
+      "quote": "(OR = 2,58; p < 0,001) e ainda mais elevadas em 2023 (OR = 6,40; p < 0,001). Além disso, a Região"
+    },
+    {
+      "criterion": "unmeasured_pdde_posthoc_discussion",
+      "page": "PDF p. 11",
+      "quote": "menores condições de investimento em infraestrutura sanitária. Essa relação é coerente com a lógica"
+    }
+  ],
+  "nonfit_classification_verdict": "moot_study_appears_ineligible",
+  "number_verification_detail": "Point estimates and p-values match PDF p. 9 exactly: North vs. Center-West absence of water supply OR = 2.58 (p < 0.001) in 2011 and OR = 6.40 (p < 0.001) in 2023; absence of sanitation OR = 3.32 (p < 0.001) in 2011 and OR = 5.48 (p < 0.001) in 2023. `lower_CI`, `upper_CI`, and `standard_error` are appropriately blank because the paper prints no regression tables, SEs, or 95% CIs. However, `sample_size` (\"56,544 rural public elementary schools (2011); 34,406 rural public elementary schools (2023)\") reports the pre-filtering national universe counts from \"Área de estudo\" (PDF p. 3) instead of the actual analytic sample of schools that remained active and linked to the same municipality in BOTH 2011 and 2023 (\"Banco de dados\", PDF p. 3; spanning 3,424 municipalities on PDF p. 6, with exact post-filtering N shown only inside the unextracted Figure 1 image on PDF p. 4, necessarily <= 34,406). Additionally, `adjusted` omits two covariates included per Quadro 1 (PDF p. 5) and PDF p. 8 (failure rate `Reprovação` and municipal population size `Porte populacional`), and `provenance_note` misstates first author Corrêa as \"Medeiros et al.\" and claims North water-absence was the largest OR across both years (in 2011, Northeast water-absence was OR = 4.84 on p. 9, and Indigenous-land / <=10-student toilet-absence ORs were 8.82 and 8.02 on p. 10).",
+  "numbers_match_paper": "no_discrepancy_found",
+  "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:10:28.949447+00:00",
+  "file_sha256": "f86560a3e2a3123d468bd7ccb8e08a4bdd78890cb370cb9623aba73a2bac7e2a",
+  "input_sha256": "f73d20ea2e9e8e1ee2b669243ffa54887f60e5dd26f051ecc982ef7ffdc70fa0"
+}

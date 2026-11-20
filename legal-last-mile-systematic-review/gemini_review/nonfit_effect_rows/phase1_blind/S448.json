@@ -1,0 +1,39 @@
+{
+  "study_id": "S448",
+  "record_id": "RBDA703859BEA",
+  "order": 8,
+  "blind_rationale": "1. SWiM Family Classification (Family C vs Family A / none_nonfit): On a blind reading, the paper's core water/sanitation access estimates (Tables 4 and 5) belong in SWiM Family C (ownership, regulation, institutional capacity, administrative structure)—or secondarily Family A if cooperative local-government arrangements are grouped under governance arrangements. Specifically, the paper evaluates municipal participation in horizontal intermunicipal cooperation (IMC, implemented in Brazil via formal public consortia) and the duration of cooperation (IMCd, theorized as organizational learning and institutional maturation) among municipalities that directly provide water and wastewater services (WWS). Excluding this study as `none_nonfit` would be inconsistent with keeping other utility administrative-structure, decentralization, corporatization, or institutional-capacity rows in Family C, UNLESS (a) Family C is strictly restricted to ownership delegation/privatization and formal regulatory agency oversight (since the sample explicitly excludes municipalities that delegated provision to state or private utilities), (b) the extracted row is `IMCd` (years of cooperation conditional on `IMC` in the same regression, which captures a temporal maturation slope rather than presence vs absence of an administrative rule/structure), or (c) the extracted row is `FIN` (revenue-to-expense ratio) or `QUA` (inverse water-loss ratio) rather than `WC` or `WWC`.\n\n2. Narrow Criterion 2 Assessment (`borderline_governance_or_proxy`): While public consortia in Brazil rest on formal inter-municipal administrative agreements, the tested exposures (`IMC` binary participation and `IMCd` years of participation from the IBGE MUNIC survey) do not test a specific legal, regulatory, tenure, tariff, disconnection, or enforcement rule governing household last-mile access. All 344 sampled municipalities retain direct municipal WWS provision (having not delegated provision to state-owned or private utilities), and the authors explicitly note in the Limitations (PDF p. 8) that secondary MUNIC/SNIS indicators do not capture specific governance designs, contractual features, or regulatory environments. Moreover, in the baseline two-way fixed-effects model, `IMC` is identified off only 17 switching municipalities (and is statistically null for both `WC` and `WWC`), while `IMCd` is entered simultaneously with `IMC` and captures linear within-consortium time/maturation trends. Flagging as `borderline_governance_or_proxy` for PI scope check is warranted.\n\n3. Criterion 4 Assessment (`yes_household_or_service_access`): Two of the four outcomes—water coverage (`WC`, served population / total municipal population, %) and wastewater coverage (`WWC`, served population / total municipal population, %)—directly measure municipal-level population access/coverage for water and sanitation services (`yes_household_or_service_access`). By contrast, `FIN` (operational revenue / total service expense, %) is a purely institutional/financial balance metric (fails C4), and `QUA` (inverse of volumetric distribution water losses, %) is a utility technical/operational efficiency indicator rather than household drinking-water quality or access. Substantively, binary `IMC` participation shows null baseline FE associations with both water coverage (−0.094 pp, SE 0.920) and wastewater coverage (−2.311 pp, SE 2.189), whereas each additional year of IMC duration (`IMCd`) is positively associated with water coverage (+0.570 pp/year, p < 0.05) and wastewater coverage (+0.880 pp/year, p < 0.10), alongside deteriorating water-loss performance (`QUA` −0.940 pp/year, p < 0.10).",
+  "candidate_swim_family_blind": "Family C",
+  "confidence": "high",
+  "criterion4_household_access_outcome": "yes_household_or_service_access",
+  "evidence_quotes": [
+    {
+      "criterion": "Headline finding (IMC participation vs duration)",
+      "page": "PDF p. 1",
+      "quote": "participation in IMC per se is not associated with improvements in financial outcomes or service coverage"
+    },
+    {
+      "criterion": "Study design and within-municipality identification sample",
+      "page": "PDF p. 5",
+      "quote": "participated in IMC during the study period, and only 17 changed their"
+    },
+    {
+      "criterion": "Criterion 4 (Water coverage baseline FE result)",
+      "page": "PDF p. 6",
+      "quote": "positively associated with WC and statistically significant at the 5%"
+    },
+    {
+      "criterion": "Criterion 2 (Broad IMC indicator without contractual or regulatory rules)",
+      "page": "PDF p. 8",
+      "quote": "examine how specific governance designs, contractual features,"
+    }
+  ],
+  "headline_estimate_summary": "In a balanced 5-year panel (2015–2019; N = 1,720 municipality-year observations across 344 Brazilian municipalities directly providing WWS) adjusting simultaneously for IMC participation (binary: 1 vs 0), IMC duration (IMCd, years), log population (lnPOP), municipality fixed effects, and year fixed effects with municipality-clustered robust SEs (no 95% CIs or exact p-values printed): (1) Water coverage (WC, % served population, Table 4, PDF p. 6, baseline OLS FE preferred by Mundlak test = 27.850, p < 0.01): IMC binary participation β = −0.094 (SE = 0.920, p >= 0.10, unfavorable raw sign, null); IMCd duration β = +0.570** (SE = 0.283, p < 0.05, favorable access direction: +0.570 percentage points per additional year of cooperation; FGLS RE β = +0.325*, SE = 0.196, p < 0.10). (2) Wastewater coverage (WWC, % served population, Table 5, PDF p. 6, baseline OLS FE preferred by Mundlak test = 18.460, p < 0.01): IMC binary participation β = −2.311 (SE = 2.189, p >= 0.10, null); IMCd duration β = +0.880* (SE = 0.485, p < 0.10, favorable access direction: +0.880 percentage points per year; FGLS RE β = +0.569, SE = 0.375, ns). (3) Non-access / operational outcomes: Service quality / inverse water-loss index (QUA, %, higher = lower water losses, Table 6, PDF p. 7): baseline FE IMC β = +4.929 (SE = 3.219, ns) and IMCd β = −0.940* (SE = 0.528, p < 0.10, unfavorable deterioration over time); admissible FGLS RE (Mundlak = 3.180, ns) IMC β = +4.560** (SE = 2.281, p < 0.05) and IMCd β = −0.577** (SE = 0.268, p < 0.05). Financial outcome (FIN, operational revenue/expense %, Table 3, PDF p. 6): baseline FE IMC β = −7.253* (SE = 3.721, p < 0.10) and IMCd β = +1.685 (SE = 1.081, ns); FGLS RE IMC β = −3.286 (SE = 3.761, ns) and IMCd β = +0.995* (SE = 0.550, p < 0.10).",
+  "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+  "paper_read": "full text",
+  "study_design_and_sample": "Balanced 5-year panel data regression study (2015–2019) in Brazil using municipality- and year-fixed-effects OLS (within) models as the baseline specification, with FGLS random-effects and Mundlak correlated random-effects models as robustness checks and municipality-clustered robust standard errors. Unit of analysis: municipality (restricted to municipalities that directly provide water and wastewater services without delegating to state-owned or private utilities). Sample size: N = 1,720 municipality-year observations across 344 municipalities (308 observations with IMC participation across 71 municipalities, of which 17 switched into IMC during 2015–2019; 1,412 observations without IMC).",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-19T19:20:57.714855+00:00",
+  "file_sha256": "5c94f2d97ee7356b3ec765add7a1502824d9809cf20cf84fac71365ff39c5962",
+  "input_sha256": "f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0"
+}

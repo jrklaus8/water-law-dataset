@@ -1,0 +1,127 @@
+{
+  "study_id": "S491",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0f723b53c8d97f7a3b39ea88700c1617e74f1d48419ddba6b2101ff5ce11aae2",
+  "input_text_sha256": "a6f08a4b8d44e5590c9991cbe6303192b821edf0f7b821abae0aa675f1a8eccb",
+  "prompt_sha256": "4f6a7c2d16837362b9f98a9ab36ecf2a1fd533038924bd2ec33f89970c27ad08",
+  "started_at": "2026-11-20T01:10:33.112077+00:00",
+  "completed_at": "2026-11-20T01:11:54.362919+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S491\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S491\",\n  \"record_id\": \"R2EE333D81F87\",\n  \"order\": 11,\n  \"blind_rationale\": \"Blind reading of S491 (Sempewo et al., 2021) shows that this study is both a clear SWiM non-fit (`none_nonfit`) and a strong candidate for scope-exclusion review under both narrow Criterion 2 (`E03`) and Criterion 4 (`E04`). First, on Criterion 2 (`no_fails_narrow_c2_e03`), no legal, regulatory, administrative, tariff, tenure, disconnection-enforcement, or ownership rule is empirically tested as an exposure. Although the authors mention as background context that a March 2020 Ugandan presidential directive barred water utilities from disconnecting non-paying customers during the COVID-19 total lockdown, that nationwide directive has zero measured variation in the dataset and is not entered or evaluated in any statistical comparison. Instead, the multivariable binary logistic regression (Table 5, PDF p. 6) tests purely socio-demographic, behavioural, and water-use household correlates (sex, age, marital status, education, occupation, household size, income, region, water source type, whether the household currently buys/pays for water, water-quantity change, and handwashing frequency). Second, on Criterion 4 (`no_fails_c4_e04_or_e07`), the sole dependent variable is binary stated/retrospective willingness to pay (WTP) for water during the March–June 2020 lockdown (\\\"Willing to pay\\\" vs \\\"Not willing to pay\\\", modeled with Y = 1 as \\\"Not willing to pay\\\" relative to base category \\\"Willing to pay\\\"), which captures payment attitude/valuation rather than actual household water service access, connection, continuity, quality, or realized affordability burden (note also an internal text discrepancy where Table 4, Section 3.3, and Table 5 show piped-outside households had lower odds of unwillingness to pay [OR = 0.444] than piped-inside households, whereas the Discussion on p. 6 states the reverse). Consequently, no estimate from S491 belongs in SWiM Families A, B, or C.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"no_fails_c4_e04_or_e07\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Study design, country, and analytic sample size (N = 1,639)\",\n      \"page\": \"PDF p. 3\",\n      \"quote\": \"The data used in this paper were obtained from a cross-sectional household survey in 40 small towns with piped water supply systems in four regions of Uganda\"\n    },\n    {\n      \"criterion\": \"Criterion 2 — Tested independent variables are household socio-demographic and water-use correlates rather than a legal or regulatory rule\",\n      \"page\": \"PDF p. 1\",\n      \"quote\": \"Sex of the household head, region of residence, water source, number of times hands are washed and whether a household buys or pays for water were significant explanatory household determinants for WTP for water.\"\n    },\n    {\n      \"criterion\": \"Criterion 4 — Tested outcome is binary self-reported willingness to pay for water during lockdown rather than service access\",\n      \"page\": \"PDF p. 3\",\n      \"quote\": \"Household heads were asked to state whether their households were willing to pay for water during the period of total lockdown (March- June 2020).\"\n    },\n    {\n      \"criterion\": \"Headline multivariable logistic regression estimates (modeling odds of not willing to pay vs base category willing to pay)\",\n      \"page\": \"PDF p. 5\",\n      \"quote\": \"The likelihood of not willing to pay for water is lower among female headed households (OR = 0.672; CI = 0.486-0.928) than among male headed households.\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Descriptive prevalence (Tables 3–4, PDF p. 5; N = 1,639): 66.9% (\\\"67%\\\") of surveyed households reported being not willing to pay for water during Uganda's March–June 2020 COVID-19 lockdown (33.1% willing to pay). Multivariable binary logistic regression (Table 5, PDF p. 6; text PDF p. 5; N = 1,639; adjusting simultaneously for head's age, sex, region, marital status, household size, occupation, education, main water source, COVID-19 water-quantity change, whether household buys/pays for water, handwashing frequency, and monthly income; no SEs or exact p-values printed) models odds of being \\\"Not willing to pay\\\" relative to base category \\\"Willing to pay\\\": (1) Female vs Male head (RC): OR = 0.672 (95% CI: 0.486–0.928, p < 0.05) [i.e., lower odds of unwillingness / higher WTP]; (2) Region vs Western (RC): Northern OR = 2.468 (95% CI: 1.708–3.566, p < 0.001), Eastern OR = 1.923 (95% CI: 1.348–2.743, p < 0.001), Central OR = 0.940 (95% CI: 0.691–1.280, ns); (3) Main water source vs Piped water in household (RC): Piped outside OR = 0.444 (95% CI: 0.335–0.589, p < 0.001) and Harvested OR = 0.517 (95% CI: 0.274–0.976, p < 0.05) [lower odds of unwillingness than piped-in-household in Table 5/Section 3.3, though misstated in the opposite direction in Discussion p. 6], Borehole OR = 0.814 (95% CI: 0.574–1.153, ns), Wells/Springs/Stream/River OR = 1.001 (95% CI: 0.684–1.465, ns); (4) Household does not buy/pay for water (No vs RC = Yes): OR = 2.125 (95% CI: 1.581–2.857, p < 0.001); (5) Handwashing 7–15 vs 2–6 times/day (RC): OR = 0.686 (95% CI: 0.542–0.869, p < 0.01). The March 2020 presidential disconnection moratorium is discussed purely as nationwide background context and is never quantitatively estimated.\",\n  \"narrow_criterion2_rule_present\": \"no_fails_narrow_c2_e03\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Cross-sectional multi-stage stratified/cluster household survey conducted 1–31 August 2020 across 40 randomly selected small towns with piped water supply systems (managed by six regional Umbrella Authorities) in four regions of Uganda (Central, Western, Northern, Eastern); unit of analysis = household (interviewing household heads regarding March–June 2020 lockdown); primary analytic sample size N = 1,639 households.\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:23:22.832827+00:00\",\n  \"file_sha256\": \"0f723b53c8d97f7a3b39ea88700c1617e74f1d48419ddba6b2101ff5ce11aae2\",\n  \"input_sha256\": \"a6f08a4b8d44e5590c9991cbe6303192b821edf0f7b821abae0aa675f1a8eccb\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S491\",\n  \"outcome_family\": \"economic_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Ugandan households (40 small towns, 4 regions) that do NOT normally buy/pay for their water supply, surveyed during the March-June 2020 COVID-19 lockdown under a presidential directive suspending all water disconnections for non-payment.\",\n  \"comparator_definition\": \"Households that do normally buy/pay for their water supply (reference category).\",\n  \"effect_measure\": \"Odds ratio (multivariate binary logistic regression, 95% CI), dependent variable = NOT willing to pay for water during the COVID-19 lockdown\",\n  \"effect_estimate\": \"OR=2.125 (95% CI 1.581-2.857, p<0.001) -- households that do not normally buy/pay for water have roughly double the odds of being unwilling to pay for water during the lockdown-era disconnection moratorium, relative to households with an existing formal payment relationship.\",\n  \"lower_CI\": \"1.581\",\n  \"upper_CI\": \"2.857\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"1,639 households (40 small towns, 4 regions of Uganda)\",\n  \"direction\": \"positive (lack of an existing formal payment relationship with the water utility is associated with higher odds of unwillingness to pay during the disconnection-moratorium period)\",\n  \"adjusted\": \"TRUE (multivariate binary logistic regression adjusting for region, gender of household head, water source type/location, and handwashing frequency)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S491; source Sempewo, Kisaakye, Mushomi, Tumutungire & Ekyalimpa 2021, Social Sciences & Humanities Open 4:100230, Table 5. This is the clearest formal-payment-relationship variable tied to the paper's central enforcement-suspension theme (Uganda's March 2020 presidential directive banning water disconnections for non-payment). Other significant Table 5 variables (region, water source location, handwashing frequency, female-headed household) are not the review's focal legal/administrative-mechanism variable and are not recorded here per CODEBOOK.md S12's one-prespecified-effect-per-study default.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md §2 -- re-examined 2026-09-28 (see S434's note for the batch context). The study setting is a genuine legal/administrative mechanism (a presidential directive suspending water disconnections for non-payment during COVID-19), but the exposure actually tested is a household-level payment-history characteristic (normally pays vs. does not normally pay for water) -- the moratorium itself applies equally to both groups and is not the exposure-comparator being estimated. As operationalized, this is a household behavioral/payment-relationship variable, not a legal-recognition, bureaucratic-assistance, or administrative-barrier exposure difference across the sample. synthesis_family is left blank as a reasoned non-fit; single study for this exposure-comparator regardless. A future researcher re-mining this source for a directly moratorium-vs-no-moratorium comparison (e.g. against a pre-2020 baseline) might find a genuine Family-C-eligible estimate here that this extraction did not capture.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: a6f08a4b8d44e5590c9991cbe6303192b821edf0f7b821abae0aa675f1a8eccb) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=55777, sha256=a6f08a4b8d44e5590c9991cbe6303192b821edf0f7b821abae0aa675f1a8eccb]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Adversarial audit of S491 (Sempewo et al., 2021) confirms that while Claude's extracted numerical statistics match Table 5 and Section 3.3 of the PDF verbatim, the study is a clear scope-exclusion candidate (`likely_ineligible_flag_e03_e04_e05_e07`) under the 2026-10-13 / 2026-10-14 CK screening standard (A24/A26/A28), rendering its SWiM classification moot (`moot_study_appears_ineligible`). First, on narrow Criterion 2 (`E03`), Claude's own `exclusion_from_pooling_reason` rightly concedes that Uganda's March 2020 presidential directive suspending water disconnections for non-payment was uniform nationwide background context and was never empirically estimated; the extracted predictor (`Whether household buys/pays for water used: No vs Yes`, 24.2% vs 75.8%, Table 2) is simply a household water-acquisition habit variable (heavily capturing households drawing free water from wells, springs, streams, rivers, boreholes, or rainwater harvesting) rather than a legal, regulatory, tenure, tariff, or administrative rule exposure. Second, on Criterion 4 (`E04`), despite Claude tagging `outcome_family = \"economic_access\"`, the sole dependent variable is retrospective stated binary willingness to pay (`Willing to pay` vs `Not willing to pay`) during the March-June 2020 lockdown—an attitudinal valuation metric framed around utility revenue loss rather than realized household water access, connection, supply continuity, water quality, or actual expenditure/affordability burden (and `OR = 2.125` largely reflects the near-tautology that households who do not buy water report unwillingness to pay for water). Even if S491 were retained in the review, leaving `synthesis_family` blank as a reasoned non-fit would be fully justified because neither a household payment-habit correlate nor stated unwillingness to pay belongs in SWiM Families A, B, or C. Two minor metadata/annotation flaws also appear in Claude's stored row: (1) `adjusted` lists only the four other statistically significant covariates in Table 5 (region, head sex, water source, and handwashing frequency) while omitting seven additional covariates adjusted simultaneously in the same multivariable logistic regression (head age, marital status, household size, occupation, education, COVID-19 water-quantity change, and monthly household income); and (2) `exclusion_from_pooling_reason` speculates that future re-mining of S491 against a pre-2020 baseline might yield a Family C moratorium-effect estimate, which is impossible because S491 is a single August 2020 cross-sectional survey with no pre-2020 WTP measure (note also an internal author error in S491 where Discussion p. 6 reverses the direction of the piped-inside vs piped-outside odds ratio `OR = 0.444` printed in Tables 4-5 and Section 3.3).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 — Tested exposure is whether household normally buys/pays for water rather than a legal or administrative rule",
+        "page": "PDF p. 4",
+        "quote": "Households were asked whether they pay for water to use in the household (Yes or No)."
+      },
+      {
+        "criterion": "Exact numerical verification of stored multivariable logistic regression estimate (OR = 2.125, 95% CI 1.581-2.857)",
+        "page": "PDF p. 5",
+        "quote": "Households who do not buy water were about two times (OR = 2.125; CI = 1.581-2.857) more likely than households who buy water not to pay for water."
+      },
+      {
+        "criterion": "Criterion 4 — Sole dependent variable is binary stated willingness to pay rather than service access or realized affordability",
+        "page": "PDF p. 3",
+        "quote": "Household heads were asked to state whether their households were willing to pay for water during the period of total lockdown (March- June 2020)."
+      },
+      {
+        "criterion": "Presidential disconnection moratorium is uniform nationwide background context rather than an empirically tested exposure",
+        "page": "PDF p. 6",
+        "quote": "While this is likely to be the case, disconnections from water access during COVID-19 total lockdown were barred from happening as a result of the presidential directive."
+      }
+    ],
+    "nonfit_classification_verdict": "moot_study_appears_ineligible",
+    "number_verification_detail": "Exact match on all printed numerical values: in Table 5 (PDF p. 6) and Section 3.3 (PDF p. 5), for 'Whether household buys/pays for water used (RC = Yes)' -> 'No' (n = 396 [24.2%] vs Yes n = 1,243 [75.8%], Table 2, PDF p. 4), the multivariable binary logistic regression modeling 'Not willing to pay' relative to base category 'Willing to pay' reports OR = 2.125, 95% CI = 1.581-2.857, and '****' corresponding to p < 0.001 in the Table 5 footnote; standard errors and exact p-values are not reported in the paper (matching `standard_error = \"\"`), and the analytic sample size is N = 1,639 households across 40 small towns in 4 regions of Uganda (Section 2.1, PDF p. 3; Tables 1-2, PDF p. 4). Minor non-numeric annotation discrepancy in `adjusted`: Claude lists only 4 covariates (region, gender of household head, water source type/location, and handwashing frequency—i.e., only the other statistically significant predictors), whereas Table 5 simultaneously adjusts for 11 other covariates (adding head age, marital status, household size, main occupation, highest education level, COVID-19 water-quantity change since March 2020, and monthly household income). Additionally, contrary to Claude's `exclusion_from_pooling_reason` note suggesting potential re-mining against a pre-2020 baseline, S491 contains only a single August 2020 cross-section with no pre-lockdown WTP data.",
+    "numbers_match_paper": "yes",
+    "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+    "study_id": "S491"
+  }
+}

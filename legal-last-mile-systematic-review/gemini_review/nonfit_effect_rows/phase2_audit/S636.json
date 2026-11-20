@@ -1,0 +1,37 @@
+{
+  "study_id": "S636",
+  "record_id": "R2DA99A1B268E",
+  "order": 14,
+  "adversarial_critique": "1. Numerical & Packaging Audit: Every printed number in Claude's `effect_sizes.csv` row matches Lewis (2014) verbatim across pp. 417, 420, 425, 427 (Table 7), 429, and 430 (Table 10). However, the `effect_estimate` cell packages a multi-stage composite rather than a single clean treatment effect: it combines (a) a two-part hurdle-model marginal effect on an institutional/fiscal intermediate input (`739.1` constant-2000 Rp/capita PDAM equity investment, `z = 3.20`, Table 7), (b) per-Rupiah capital-spending semi-elasticities on household connections (`0.0003, t = 6.16` exogenous; `0.0004, t = 1.71` endogenous, Table 10), and (c) derived marginal unit costs (`Rp 2.5-2.9M` vs `Rp 6.9-8.2M`). Three reporting nuances warrant note: (i) the Table 10 outcome is the *log* of new household connections per 1,000 persons (Claude's prose omits `log`, likely echoing p. 429 prose and Table 10's own misprinted footnote that erroneously labels the DV as equity investment); (ii) the preferred endogenous slope `0.0004 (t = 1.71)` is only marginally significant at `* p < 0.10`, not `p < 0.05`; and (iii) Claude's `provenance_note` praises the endogenous-transfer instrumentation as \"well-identified\", whereas the excluded instruments (an on/off-Java location dummy and a year dummy, p. 424) very plausibly violate the exclusion restriction with respect to municipal utility connection growth.\n\n2. Justification of SWiM Non-Fit (`justified_nonfit`): Leaving `synthesis_family` blank is strongly justified even under broadened A21 family labels. First, Lewis never estimates the total (reduced-form) effect of Water Hibah program participation on household water connections: every connection regression (Tables 8-10) conditions on PDAM equity investment per capita—the exact causal mediator through which WH operates—rendering the binary WH dummy a mediator-blocked direct residual (`0.3816, t = 1.58` in Table 8 endogenous; `0.2892, t = 1.04` in Table 10 endogenous). Second, the statistically significant Table 10 predictors are continuous fiscal-expenditure slopes per constant-2000 Rupiah per capita rather than legal/institutional rule effects. Third, substantively, an intergovernmental performance grant reimbursing municipal utility capital outlays does not cleanly fit Family A (legal recognition/tenure/eligibility), Family B (household-facing bureaucratic/procedural facilitation), or Family C (legal/administrative barriers).\n\n3. Review Scope / Eligibility (`borderline_flag_for_pi`): While Criterion 4 is clearly met in Tables 8-10 (`log of number of new household connections per 1,000 people`; note P2D2 in Tables 3-4 and WH Tables 5-7 do not measure household access), S636 is a textbook borderline Criterion 2 case warranting PI review against `E03` (financial/capital subsidy without a legal/administrative access rule). Water Hibah reimburses ~45% of connection capital costs (`Rp 2-3 million` per connection, p. 417, p. 431) without altering household tenure, customer eligibility law, documentation hurdles, or disconnection rules, and Footnote 6 (p. 418) notes data cannot verify whether connections reached poor households. Conversely, because WH codifies formal Ministry of Finance intergovernmental conditional-transfer, mandatory municipal matching-equity, and independent operational-verification rules, it sits right on the boundary between an `E03` capital grant and an administrative service-delivery governance rule.",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "Criterion 2 (Water Hibah municipal equity-investment mechanism)",
+      "page": "PDF p. 4 (journal p. 417)",
+      "quote": "the PDAM then uses the invested funds to create household water connections."
+    },
+    {
+      "criterion": "Criterion 2 (Operational verification and Ministry of Finance disbursement rule)",
+      "page": "PDF p. 4 (journal p. 417)",
+      "quote": "the water connections have been verified as operational, the Ministry of Finance"
+    },
+    {
+      "criterion": "Criterion 4 (Household piped water connections outcome definition)",
+      "page": "PDF p. 15 (journal p. 428, Table 8)",
+      "quote": "Note: The dependent variable is the log of number of new household connections per 1,000 people."
+    },
+    {
+      "criterion": "Econometric mediation / over-control of binary program effect by PDAM investment",
+      "page": "PDF p. 16 (journal p. 429)",
+      "quote": "for the creation of connections is local government equity investment in PDAMs,"
+    }
+  ],
+  "nonfit_classification_verdict": "justified_nonfit",
+  "number_verification_detail": "Every printed statistic in `effect_sizes.csv` matches Lewis (2014) exactly: (1) Grant schedule: Rp 2 million/connection for first 1,000 and Rp 3 million thereafter (p. 417); (2) Sample & PSM: 35 treatment matched to 35 controls from 65 local governments slated for 2013 entry, 1 treatment unit dropped off common support leaving 34 matched pairs (p. 420), and N = 105 pooled local-government-year observations across 2010-11 in Table 1 (p. 419), Table 5 (p. 426), and Tables 8-10 (pp. 428, 430) [note: conditional hurdle stage 2 in Table 6 has N = 73 non-zero investment observations, unmentioned in `effect_sizes.csv`]; (3) Equity investment hurdle total effect (Table 7, p. 427 & p. 425 text): endogenous WH dummy = 739.1 constant-2000 Rp/capita (rounded to Rp 739 in prose, equivalent to Rp 2,141 in 2010-11 prices), z = 3.20, p < 0.05; (4) Household connections model (Table 10, p. 430): Hibah-financed investments per capita = 0.0003 (t = 6.16, ** p < 0.05) exogenous and 0.0004 (t = 1.71, * p < 0.10) endogenous; non-significant treatment dummy (numeric values omitted by Claude) = 0.3034 (t = 1.62) exogenous and 0.2892 (t = 1.04) endogenous [and in Table 8, p. 428: WH dummy = 0.4915, t = 2.77 exogenous; 0.3816, t = 1.58 endogenous]; (5) Implied marginal unit costs (p. 429): Rp 2.5M (endogenous) to Rp 2.9M (exogenous) for WH-financed connections vs Rp 6.9M (endogenous) to Rp 8.2M (exogenous) for other revenue-financed connections, difference statistically significant; (6) SEs and CIs are blank in `effect_sizes.csv` because Lewis prints only coefficients and robust/bootstrapped t- or z-statistics. Minor nuances: Claude's prose describes the Table 10 DV without specifying the natural log transformation (`log of number of new household connections per 1,000 people`, Tables 8-9; note Table 10's printed footnote erroneously repeats Table 6's equity-investment DV label); `t = 1.71` is significant at p < 0.10 (`*`) rather than p < 0.05; and the `adjusted` field pools covariates across Tables 5-6 (`log of other revenues per capita`) and Tables 8-10 (where `log of other revenues per capita` is omitted or replaced by `other revenue-financed investments per capita`).",
+  "numbers_match_paper": "yes",
+  "review_eligibility_flag": "borderline_flag_for_pi",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:12:15.209682+00:00",
+  "file_sha256": "d95cdf9885a3f3bd4487424dc0f6a431da110be4fb8efd2d99939628fe525bf3",
+  "input_sha256": "bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01"
+}

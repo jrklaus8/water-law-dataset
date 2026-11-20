@@ -1,0 +1,127 @@
+{
+  "study_id": "S483",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a56c2ac603d63fb4f3f524796e8ea6dc7b5240a0e8793fad8f7b941d50349175",
+  "input_text_sha256": "f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d",
+  "prompt_sha256": "2d60f1666b7e78340b0af2cc79582a226d585c0ffab3d309a28a273e950453d6",
+  "started_at": "2026-11-20T01:08:49.824616+00:00",
+  "completed_at": "2026-11-20T01:10:27.967820+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S483\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S483\",\n  \"record_id\": \"R8FA145CC6D69\",\n  \"order\": 9,\n  \"blind_rationale\": \"Blind reading of Mutono et al. (2022) confirms that excluding S483 from SWiM Families A, B, and C (`none_nonfit`) is fully justified, and further flags the study as borderline `E03` for PI scope review under narrow Criterion 2. Specifically: (1) Criterion 4 is clearly satisfied (`yes_household_or_service_access`), as the primary outcome is monthly domestic piped water consumption per capita (and water sufficiency >= 1500 L/capita/month) across 2,380 residential utility billing itineraries in Nairobi from 2008 to 2018, supplemented by weekly supply hours under rationing (Table 3). (2) However, under narrow Criterion 2 (`borderline_governance_or_proxy`), the primary multivariable negative binomial mixed-effects model (Table 4, PDF p. 10) tests NCWSC's four-tier residential classification (High-income R1, Middle-income R2, Middle/low-income R3 vs. Low-income R4), built-settlement age (GHS-Built land-cover conversion era), their interaction, and itinerary population count. Although R1–R4 originated in municipal land-use master plans (1973/1979/2014) and NCWSC's 1985 water distribution plan—with R4 encompassing low-income housing and unauthorised shanty dwellings, and NCWSC organizing weekly water rationing schedules by R1–R4 (Table 3)—the authors explicitly operationalize and validate R1–R4 via KSCBS household cross-tabulations (Table 1A, n = 1,137) as a proxy for neighbourhood socio-economic status because census small-area SES statistics were unavailable. Neither land tenure security (Table 1A: 85% in R1 vs. 48% in R4), water rationing hours (Table 3: descriptively higher in R4 at 78 h/week vs. 59 h/week in R1, opposite to the consumption gradient), nor kiosk tariff non-enforcement (Section 2.1.3) is statistically tested as an independent rule exposure predicting water consumption or sufficiency. (3) Consequently, pooling Table 4's residential income-tier Rate Ratios (RR = 5.78 for high-income vs. low-income areas) into Family A (tenure/recognition) or Family C (utility regulation/administrative capacity) would conflate socio-economic wealth, housing density, in-house plumbing, and private tank storage with a legal or regulatory rule effect. Two internal reporting discrepancies in the source paper are also noted: first, Table 4 models continuous/count monthly per capita water consumption (Rate Ratios = 5.78, 3.80, 1.65), whereas the Abstract and Section 3.3.1 text misdescribe those exact Rate Ratios and CIs as the relative likelihood of achieving the binary >= 1500 L/capita/month sufficiency threshold; second, in Table 4, 'Built up before 1975' prints RR = 0.54 with a narrow CI of 0.53–0.56 alongside an inconsistent p-value of 0.425.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"yes_household_or_service_access\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Study design, unit of analysis, and Criterion 4 water consumption/sufficiency outcome\",\n      \"page\": \"2\",\n      \"quote\": \"domestic water consumption per capita for 2380 itineraries (areas with an average population of 700) in relation\"\n    },\n    {\n      \"criterion\": \"Criterion 2 residential land-use classification definition including informal dwellings\",\n      \"page\": \"4\",\n      \"quote\": \"income housing and unauthorised shanty dwellings\"\n    },\n    {\n      \"criterion\": \"Criterion 2 operationalization of utility residential classes as a socio-economic status proxy\",\n      \"page\": \"5\",\n      \"quote\": \"a proxy for the socio-economic status of different neighbourhoods\"\n    },\n    {\n      \"criterion\": \"Headline quantitative finding on residential inequality in water sufficiency\",\n      \"page\": \"2\",\n      \"quote\": \"were six and four times more likely to receive the recommended 1500 L per capita per month respectively.\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Multivariable negative binomial linear mixed-effects model (year as random effect; adjusting for residential category, built-settlement age, residential category x built-settlement age interaction, and annual itinerary population count; no SEs reported) of monthly per capita domestic piped water consumption across N = 2,380 residential itineraries in Nairobi (2008–2018; Table 4, PDF p. 10 / journal p. 9): vs. Low-income areas (R4, n = 252, reference), Rate Ratio (RR) = 5.78 (95% CI: 5.34–6.25, p < 0.001) in High-income areas (R1, n = 534), RR = 3.80 (95% CI: 3.52–4.10, p < 0.001) in Middle-income areas (R2, n = 772), and RR = 1.65 (95% CI: 1.53–1.79, p < 0.001) in Middle/low-income areas (R3, n = 822) [note: Abstract and p. 9 text round these RRs to 6x, 4x, and 2x and misstate them as likelihood of >= 1500 L/capita/month water sufficiency]. Built-settlement age (vs. built up after 2014, n = 218): before 1975 RR = 0.54 (CI: 0.53–0.56, printed p = 0.425), 1975–1990 RR = 0.62 (CI: 0.60–0.65, p < 0.001), 1990–2000 RR = 0.87 (CI: 0.85–0.89, p < 0.001), 2000–2014 RR = 0.96 (CI: 0.94–0.99, p < 0.001); Population count RR = 0.85 (CI: 0.71–0.93, p < 0.001); plus age-by-residential-category interaction RRs in Table 4. Descriptive statistics (PDF pp. 8–10, Tables 3 & 1A): mean monthly consumption = 13,087 L (R1, 7% <1500 L/cap/mo), 6,240 L (R2, 12% insufficient), 1,697 L (R3, 36% insufficient), and 827 L (R4, 60% insufficient); average weekly supply under rationing (Oct 2016–Dec 2018) = 59 h (R1), 50 h (R2), 65 h (R3), and 78 h (R4); non-revenue water (Nov 2016–May 2018) = 29% (3.5 billion L/month).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Spatio-temporal ecological panel analysis (2008–2018 monthly utility billing records, plus 1985 vs. 2018 land-use/network comparison, Oct 2016–Dec 2018 rationing schedules, and Nov 2016–May 2018 reservoir metering) in Nairobi, Kenya. Unit of analysis: Nairobi City Water and Sewerage Company (NCWSC) geographical billing 'itineraries' (average population ~700 people). Analytic sample: N = 2,380 residential itineraries (out of 2,538 georeferenced itineraries after excluding 554 unlocated itineraries and 158 non-residential itineraries from ~3,000 total itineraries). Supplemental cross-sectional validation sample: N = 1,137 households across 7 Nairobi sublocations from the 2012–2013 Kenya State of the Cities Baseline Survey (KSCBS; Table 1A: R1 n = 60, R2 n = 170, R3 n = 161, R4 n = 746).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:21:48.633876+00:00\",\n  \"file_sha256\": \"a56c2ac603d63fb4f3f524796e8ea6dc7b5240a0e8793fad8f7b941d50349175\",\n  \"input_sha256\": \"f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S483\",\n  \"outcome_family\": \"effective_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Residence in a high-income residential area of Nairobi, Kenya (Residential Area 1), among 2,380 water-distribution itineraries citywide, 2008-2018.\",\n  \"comparator_definition\": \"Residence in a low-income residential area of Nairobi (Residential Area 4, reference category), same citywide sample and period.\",\n  \"effect_measure\": \"Rate ratio (negative binomial linear mixed-effects regression, year as random effect, adjusted for neighbourhood age and population), dependent variable = likelihood of receiving sufficient water (>1500 L per capita per month)\",\n  \"effect_estimate\": \"High-income areas: RR=5.78 (p<0.001). Middle-income areas: RR=3.80 (p<0.001). Middle/low-income areas: RR=1.65 (p<0.001). All relative to the low-income reference category.\",\n  \"lower_CI\": \"5.34 (high-income); 3.52 (middle-income); 1.53 (middle/low-income)\",\n  \"upper_CI\": \"6.25 (high-income); 4.10 (middle-income); 1.79 (middle/low-income)\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"2,380 residential water-distribution itineraries (Nairobi County, 2008-2018)\",\n  \"direction\": \"positive (higher-income residential classification associated with higher likelihood of sufficient water access)\",\n  \"adjusted\": \"TRUE (mixed-effects model adjusted for neighbourhood age, interaction of neighbourhood age and residential category, and population, with year as a random effect)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S483; source Mutono, Wright, Mutembei & Thumbi 2022, Habitat International 119:102476, Table 4 (Residential category rows). The discussion ties this disparity to differential connection type (inhouse piped for high/middle-income vs. shared taps/water kiosks for low-income) and to a documented tenure-security gap (85% high-income vs. 58% low-income, KSCBS sub-sample), though the regression itself is not adjusted for tenure directly.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md §2 -- re-examined 2026-09-28 (see S434's note for the batch context). This study's exposure is residence in a high- vs. low-income residential area of Nairobi -- an income-based geographic classification, not itself a legal recognition, bureaucratic-assistance, or administrative-barrier mechanism as PROJECT_SPEC.md §8 defines those terms. The paper's discussion ties the disparity to differential connection type and a documented tenure-security gap (a Family-A-adjacent concept), but the regression itself is not adjusted for tenure and does not test tenure status as the exposure -- only income-based residential classification is directly estimated here. synthesis_family is left blank as a reasoned non-fit, the same kind of institutional-variable-adjacent-but-not-quite call already made for S353 (ownership type: 'a real institutional/regulatory-model variable, but does not cleanly match Family A... B... or C'); single study for this exposure-comparator regardless.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69875, sha256=f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Quantitative & Specification Audit: Every regression statistic stored in Claude's `effect_sizes.csv` row (R1 RR = 5.78, 95% CI 5.34–6.25, p < 0.001; R2 RR = 3.80, 95% CI 3.52–4.10, p < 0.001; R3 RR = 1.65, 95% CI 1.53–1.79, p < 0.001 vs. R4 low-income reference; blank SE; N = 2,380 residential itineraries, 2008–2018) matches Table 4 (PDF p. 10) verbatim. However, three specification/provenance nuances merit audit documentation: (a) Claude's `provenance_note` cites a 'documented tenure-security gap (85% high-income vs. 58% low-income, KSCBS sub-sample)', misreading the Middle/low-income column (`94 [58%]`) in Table 1A (PDF p. 10) for Low-income areas, which actually had `357 (48%)` tenure security (explicitly reported as `48%` on PDF p. 9); (b) Claude's `effect_measure` repeats Section 3.3.1's prose misdescription of the dependent variable as 'likelihood of receiving sufficient water (>1500 L per capita per month)', whereas Methods Section 2.3 (PDF p. 5) and Table 4's title (PDF p. 10) specify a negative binomial linear mixed-effects model of continuous/count monthly per capita water consumption; and (c) because Table 4 includes interaction blocks between residential category and four built-settlement eras (before 1975, 1975–1990, 1990–2000, 2000–2014, leaving after 2014 as reference), the main-effect Rate Ratios (5.78, 3.80, 1.65) are technically conditional on the reference settlement-age category (`Built up after 2014`) rather than unconditional citywide marginal effects.\n\n2. Non-Fit Classification Audit (`justified_nonfit`): Leaving `synthesis_family` blank is fully justified even under the broadened A21 SWiM family titles. Although NCWSC's R1–R4 residential categories originated in municipal land-use master plans (1973/1979/2014) and the 1985 water distribution plan—and correlate descriptively with tenure security (85% in R1 vs. 48% in R4) and connection mode (in-house piped vs. shared yard taps/kiosks)—forcing RR = 5.78 into Family A (tenure/formal recognition) or Family C (administrative/utility governance) would severely confound household socio-economic wealth, housing density, and private >100 L storage tank ownership (77% in R1 vs. 36% in R4) with a legal or regulatory effect. Notably, NCWSC's actual administrative rationing schedule (Table 3, PDF p. 8) supplied *more* weekly hours to low-income R4 (78 h/week) than high-income R1 (59 h/week), opposite to the consumption gradient, confirming that the Table 4 R1–R4 gradient reflects socio-economic and physical-connection disparities rather than discriminatory administrative rationing.\n\n3. Review Eligibility Scope Flag (`borderline_flag_for_pi`): Applying the strict 2026-10-13/14 `CK` narrow Criterion 2 standard (`A24/A26/A28`), S483 sits right on the `E03` eligibility boundary and should be flagged for PI scope confirmation. Criterion 4 is indisputably met (domestic piped water consumption and >=1,500 L/capita/month sufficiency). However, none of the paper's candidate legal/administrative mechanisms—land tenure security (cross-tabulated descriptively in Table 1A, N = 1,137), NCWSC's administrative water rationing hours (summarized descriptively in Table 3), or un-enforceable kiosk retail tariffs (Section 2.1.3)—is tested as an independent exposure in the multivariable regression. Instead, the authors explicitly operationalize and validate NCWSC's R1–R4 classification (updated in Table 2 by monthly household income brackets from <$360 to >$1,800) as 'a proxy for the socio-economic status of different neighbourhoods' in the absence of small-area census SES data (PDF pp. 5, 11). Unlike pure engineering (`S1020`) or social-trust (`S1144`) exclusions, R1–R4 is an official municipal land-use and utility operational planning classification encompassing 'unauthorised shanty dwellings' in R4, making it a genuine borderline call rather than an unambiguous error, but PI review is warranted to confirm whether utility income-zone classifications without direct rule estimation satisfy narrow Criterion 2.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 operationalization of utility residential classes as a neighbourhood socio-economic status proxy",
+        "page": "5",
+        "quote": "a proxy for the socio-economic status of different neighbourhoods"
+      },
+      {
+        "criterion": "Administrative rationing schedule runs opposite to the consumption gradient across residential tiers",
+        "page": "8",
+        "quote": "income areas to low-income areas received water continuously for 59 h"
+      },
+      {
+        "criterion": "Section 3.3.1 text reporting of confidence intervals and sufficiency framing",
+        "page": "9",
+        "quote": "5.34–6.25) higher in high income areas, four times (CI: 3.52–4.10) in"
+      },
+      {
+        "criterion": "Table 4 negative binomial outcome specification for 2,380 itineraries",
+        "page": "10",
+        "quote": "Analysis of the monthly per capita water consumption by residential categories,"
+      }
+    ],
+    "nonfit_classification_verdict": "justified_nonfit",
+    "number_verification_detail": "All primary quantitative fields in `effect_sizes.csv` match Table 4 (PDF p. 10 / journal p. 9) exactly: High-income areas (R1, n = 534 [22%]) RR = 5.78 (95% CI: 5.34–6.25, p < 0.001); Middle-income areas (R2, n = 772 [32%]) RR = 3.80 (95% CI: 3.52–4.10, p < 0.001); Middle/low-income areas (R3, n = 822 [35%]) RR = 1.65 (95% CI: 1.53–1.79, p < 0.001), all vs. Low-income areas (R4, n = 252 [11%], reference); SE is not reported in the paper (left blank); analytic sample N = 2,380 residential water-distribution itineraries (2008–2018; PDF pp. 2, 5, 10). Three secondary discrepancies/nuances are noted: (1) in `provenance_note`, Claude states '85% high-income vs. 58% low-income' for KSCBS tenure security, whereas Table 1A (PDF p. 10) and Section 3.3.1 (PDF p. 9) report 85% (51/60) for high-income, 74% (126/170) for middle-income, 58% (94/161) for middle/low-income, and 48% (357/746) for low-income areas; (2) Claude's `effect_measure` follows Section 3.3.1 (PDF p. 9) in describing the dependent variable as likelihood of receiving >1,500 L/capita/month, whereas Section 2.3 (PDF p. 5) and Table 4's title specify continuous/count monthly per capita water consumption in a negative binomial linear mixed-effects model (and Table 4's main-effect RRs are conditional on the omitted post-2014 built-settlement interaction reference category); and (3) Table 4 itself contains an internal source-paper typo for 'Built up before 1975' (RR = 0.54, CI: 0.53–0.56, printed p = 0.425).",
+    "numbers_match_paper": "yes",
+    "review_eligibility_flag": "borderline_flag_for_pi",
+    "study_id": "S483"
+  }
+}
