@@ -1,0 +1,125 @@
+{
+  "study_id": "S473",
+  "order": 39,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "3cae170239ab61d00670b845fa976254b24c380585f0605bf9d058299ce84efd",
+  "input_text_sha256": "ffbe9975f756d3b1dc2dbad3d093fefc293299f24e399659e1589746b42fd5de",
+  "prompt_sha256": "46d80d60acf4434c118e82a8d2a4463f5928e34909af1130b8027575bb1bf60f",
+  "started_at": "2026-11-20T04:39:07.853736+00:00",
+  "completed_at": "2026-11-20T04:40:00.466894+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S473\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S473 (Record ID: R262744119C0D)\n- Citation: Mugisho Nyambwe D.; Kulimushi Matabaro S.; Mulengezi Mushegerha J.B.; Kashinzwe Kibekenge J.; Bukenya P.; Nzukizi Mudumbi J.B. — Urban Sprawl and Drinking Water Services in an African City: The Case of Bukavu in DR Congo\n- DOI: 10.3390/urbansci9120525\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: ffbe9975f756d3b1dc2dbad3d093fefc293299f24e399659e1589746b42fd5de) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=95797, sha256=ffbe9975f756d3b1dc2dbad3d093fefc293299f24e399659e1589746b42fd5de]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "11",
+        "quote": "city center and drinking water service coverage (r = −0.42, p < 0.05)."
+      },
+      {
+        "page": "15",
+        "quote": "in areas where most households lack formal land titles. These households represent 68%"
+      },
+      {
+        "page": "15",
+        "quote": "distance traveled and average time to access water (r = 0.963), reflecting a simultaneous"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Distance from city center vs. drinking water service coverage: r = −0.42, p < 0.05 (PDF p. 11, Section 3.2; overall household survey N = 655 across 67 blocks, PDF p. 6). Bivariate correlation matrix without printed p-values/SE/CI (Table 3 & Figure 6, PDF pp. 14–15): distance vs. average collection time r = 0.963; distance vs. price r = 0.066; time vs. price r = 0.124; time vs. diseases r = 0.411; distance vs. diseases r = 0.582; price vs. diseases r = −0.431. (Logistic regression at alpha = 0.06 is mentioned in Methods Section 2.3, PDF p. 7, but no regression coefficients, ORs, SEs, or p-values are reported in Results.)",
+    "publication_year_note": "Published 10 December 2025 in Urban Science Volume 9, Issue 12, Article 525 (Received 5 November 2025; Revised 30 November 2025; Accepted 4 December 2025; both publication date and volume/issue year are 2025).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The full text (N = 655 households surveyed across 67 blocks in Bukavu, plus GIS/spatial analysis) reports one inferential test with a p-value—a negative correlation between physical distance from the city center and drinking water service coverage (r = −0.42, p < 0.05, PDF p. 11)—along with a bivariate correlation matrix among physical distance, collection time, informal market water price, and waterborne diseases (r = 0.963, 0.066, 0.124, 0.411, 0.582, −0.431 without p-values/SEs, Table 3, PDF pp. 14–15). None of these inferential estimates test a rule-type legal, tenure, administrative, tariff-structure, or regulatory exposure on a water service access outcome (distance from the city center is a spatial/physical predictor failing narrow Criterion 2, and disease correlations target health rather than service access under Criterion 4). Although the paper discusses land tenure insecurity, parallel titles, formal vs. informal neighborhoods, tenant bill-payment disconnections, and institutional fragmentation, every statistic on those legal/governance dimensions is purely descriptive (e.g., 29.74% lacking land titles, 68% on periphery and 74% in informal neighborhoods lacking formal titles, municipality access rates of 45%–75% in Table 2 without inferential contrasts), and the logistic regression mentioned in Section 2.3 (PDF p. 7) is never reported in the Results.",
+    "study_id": "S473",
+    "verified_publication_year": "2025"
+  }
+}

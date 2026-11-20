@@ -1,0 +1,125 @@
+{
+  "study_id": "S469",
+  "order": 49,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ffc5dc3a962482484e41a7accf4f4c7972c4b609b21506dc9558440c9ddb68d7",
+  "input_text_sha256": "e3e372139d3269cc4e6928902b284f8dd22cfd965a645b0d5a7c06541a7cc03b",
+  "prompt_sha256": "9c96b9d3430e2db6e6260a8e9554f6add55f7a6df6b7a3e1b8201811a5c28fd5",
+  "started_at": "2026-11-20T04:40:03.452426+00:00",
+  "completed_at": "2026-11-20T04:41:56.441054+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S469\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S469 (Record ID: R9353D62C2B76)\n- Citation: Alam M.-U.; Rahat M.A.; Neeher N.; Tabassum K.F.; Nawaz S.; Evans B.; Hutchings P. — Barriers to sewer connection in urban Dhaka: Individual and organisational challenges\n- DOI: 10.2166/washdev.2025.281\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: e3e372139d3269cc4e6928902b284f8dd22cfd965a645b0d5a7c06541a7cc03b) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=64649, sha256=e3e372139d3269cc4e6928902b284f8dd22cfd965a645b0d5a7c06541a7cc03b]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 6 (p. 292)",
+        "quote": "A total of 384 respondents (192 connected to sewer and 192 not connected to sewer) were enrolled in the survey across 10"
+      },
+      {
+        "page": "PDF Page 8 (p. 294)",
+        "quote": "We assessed the difference in RANAS factors between households connected to the sewer and those not connected to the"
+      },
+      {
+        "page": "PDF Page 12 (p. 298)",
+        "quote": "During IDIs, participants stated they had applied to DWASA with the required documentation and"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Settlement duration: Connected median 30 yrs (IQR 17, 40; N=189) vs Not-connected 23 yrs (IQR 12, 35; N=188), Mann-Whitney stat = -2.66, p = 0.008 (Table 2, PDF p. 7) and ANOVA mean diff = 4.41 yrs, p = 0.007, Cohen's d = 0.28 (Table 4, PDF p. 12); Landlord monthly water/sewer bill: median 27 USD (IQR 13, 45) vs 22 USD (IQR 13, 41), stat = 3.73, p = 0.0002, N=384 (Table 2, PDF p. 8); RANAS psychological/perception items (N=384, Tables 3-4, PDF pp. 9-12), e.g., health risk knowledge mean diff = 0.24, p = 0.003, d = 0.31; how-to knowledge mean diff = 0.33, p = 0.0310, d = 0.22; perceived 'Legal issues' barrier: 14 (7.3%) vs 17 (8.9%), p = 0.57 (mean diff = 0.02, p = 0.574, d = 0.06).",
+    "publication_year_note": "Published in Journal of Water, Sanitation and Hygiene for Development Vol 15 No 4, pp. 287-304 (© 2025 The Authors; doi: 10.2166/washdev.2025.281). First received 19 September 2024; accepted in revised form 4 March 2025; Available online 14 March 2025.",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "This mixed-methods cross-sectional study in urban Dhaka combines a quantitative matched survey of N = 384 landlord households (192 connected to DWASA foul-water sewers and 192 connected to storm/open drains on the same lanes) with qualitative KIIs (n = 5 DWASA officials), IDIs (n = 10 landlords), and secondary fee schedules. Although the paper reports inferential bivariate statistics (chi-square, t-tests, Mann-Whitney U, and ANOVA with p-values and Cohen's d in Tables 2-4), none of the tested quantitative pairs link a narrow Criterion 2 rule-type legal, tenure, administrative, tariff, or regulatory exposure to a Criterion 4 WASH access outcome. Specifically: (1) 100% of both groups are resident formal house owners/landlords on sewered streets (zero tenure or service-zone variation); (2) quantitative differences test only socio-demographic/housing-age characteristics (e.g., settlement/building duration since construction, p = 0.008), ex-post monthly water/sewer bills resulting from connection ($27 vs $22, p = 0.0002), hypothetical payment motivators, and individual RANAS psychological/attitudinal constructs (perceived health risk, social status, self-efficacy, injunctive norms, and general subjective beliefs about whether cost, awareness, or 'legal issues' obstruct connection [7.3% vs 8.9%, p = 0.574]); and (3) all evidence on narrow Criterion 2 institutional/administrative mechanisms—lengthy DWASA connection approvals (>2 years), DWASA permit/connection fees ($84-$342 USD) versus city corporation drain fees ($41 USD), police fines for unpermitted road-cutting, historical 1990-2000 fee-free connection waves, and DWASA-city corporation coordination failures—is strictly qualitative/descriptive (pp. 10, 12-16).",
+    "study_id": "S469",
+    "verified_publication_year": "2025"
+  }
+}

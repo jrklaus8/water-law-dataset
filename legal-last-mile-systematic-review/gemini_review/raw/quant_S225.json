@@ -1,0 +1,125 @@
+{
+  "study_id": "S225",
+  "order": 3,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "8753bc2aa88025b02fcf41c2685bacde0aefbc3574b1ebdb1f4401cf5b633133",
+  "input_text_sha256": "820065f335e5c26e5b9e1178a0302475258e36709c62785bd798e41ea2ca1fb2",
+  "prompt_sha256": "7d81c78d52bb772af91f2c686ca7f021c8763d146052dee43dab69448f591353",
+  "started_at": "2026-11-20T04:34:19.540925+00:00",
+  "completed_at": "2026-11-20T04:35:06.256234+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S225\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S225 (Record ID: RF7F3331F5944)\n- Citation: Chimombo, MJ — Bridging the divide: analysing disparities in drinking water services between urban and rural areas in Lilongwe, Malawi-implications for water justice and infrastructure equity\n- DOI: 10.3389/frwa.2025.1615202\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 820065f335e5c26e5b9e1178a0302475258e36709c62785bd798e41ea2ca1fb2) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=103895, sha256=820065f335e5c26e5b9e1178a0302475258e36709c62785bd798e41ea2ca1fb2]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "8",
+        "quote": "Based on literature review, an ordered logit model was estimated to investigate whether household location (rural versus urban), sex of household head, main occupation of household head, literacy of household head, marital status and household income predict the level of a household on the drinking water ladder"
+      },
+      {
+        "page": "8",
+        "quote": "That is, the odds of an urban household being on top level of basic services versus the combined levels of no access, unimproved, and limited are 5 times higher than that for a rural household."
+      },
+      {
+        "page": "15",
+        "quote": "The 1995 Act is very clear in limiting the jurisdiction of the five major water utility companies to only urban areas (Malawi Government, 1995)."
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Ordinal logit on JMP drinking water ladder (N = 535, Table 4, p. 9): Lilongwe urban vs. rural OR = 5.00, 95% CI (2.90, 8.62), p = 0.000 (Pseudo R2 = 0.1041); Binary logit on 24-h water availability (N = 535, Table 8, p. 10): Lilongwe urban OR = 1.487624, SE = 0.339038, p = 0.081; Independent-means t-test on round-trip collection time (Table 5, p. 10): urban 8.74 min (SD = 9.66) vs. rural 19.65 min (SD = 19.49), t = -8.2547, df = 533, p = 0.000; Chi-square tests on main water source chi2(5) = 411.6280, p < 0.001 (Table 2, p. 7) and JMP ladder chi2(3) = 90.8539, p < 0.001 (Table 3, p. 9) — all testing coarse urban-vs.-rural geography and socio-demographics rather than a Criterion 2 legal/institutional exposure.",
+    "publication_year_note": "Published 27 June 2025 in Frontiers in Water, Vol. 7, Article 1615202 (received 20 April 2025, accepted 11 June 2025; © 2025 Chimombo).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "Full text (18 pages) read completely. The study surveys N = 535 households in Lilongwe, Malawi (262 in three high-density urban neighborhoods and 273 in villages around two rural trading centers) and reports genuine inferential statistics (chi-square tests in Tables 2-3, multivariate ordinal logistic regression on JMP drinking water ladder in Table 4, independent-samples t-test on collection time in Table 5, and binary logistic regression on 24-hour availability in Table 8). However, every inferential model tests only a coarse geographic indicator (Lilongwe urban vs. Lilongwe rural) alongside household socio-demographic predictors (sex of household head, farming vs. non-farm occupation, literacy, marital status, and monthly income). Affordability (Table 6: 12.36% urban vs. 1.75% rural monthly income spent on water) and perceived livelihood burdens (Table 9) are reported descriptively only (means and SDs). The rule-type legal and institutional mechanisms relevant to Criterion 2—specifically the Waterworks Act of 1995 restricting Water Boards' statutory jurisdiction to urban areas, Lilongwe Water Board's 2020-2025 full-cost recovery tariff policy, and the 62.2% vacancy rate in rural water institutions—are not measured or tested quantitatively and appear solely in an ex-post narrative discussion in Section 4.4 (p. 15) drawing on secondary documents. Because a generic urban-versus-rural geographic dummy confounds urbanization, population density, and physical infrastructure proximity with statutory utility jurisdiction, the tested quantitative exposure fails narrow Criterion 2 and does not yield a SWiM-eligible effect.",
+    "study_id": "S225",
+    "verified_publication_year": "2025"
+  }
+}

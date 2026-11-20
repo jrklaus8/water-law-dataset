@@ -1,0 +1,125 @@
+{
+  "study_id": "S378",
+  "order": 20,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "7a0576279570cb33d76cdb3d38fec5796333656c6b9b76df061647e4d529adae",
+  "input_text_sha256": "2761e8126351b7eede58fa88713dcc4faf89bfd5ba44d06b8b8d764213edd251",
+  "prompt_sha256": "8db4fea55892b1429777a2dafe83ac9339cf7bbfacf86b7ebeb7a160cfede9b6",
+  "started_at": "2026-11-20T04:35:24.734834+00:00",
+  "completed_at": "2026-11-20T04:36:02.212041+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S378\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S378 (Record ID: R798F6D592650)\n- Citation: Shekhar S.; Dwivedi A. — Role of innovation in sustainable sanitation system: A case study of India; [Rola innowacji w zrównoważonym systemie sanitarnym: Studium przypadku Indii]\n- DOI: 10.35784/pe.2021.2.23\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 2761e8126351b7eede58fa88713dcc4faf89bfd5ba44d06b8b8d764213edd251) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=44288, sha256=2761e8126351b7eede58fa88713dcc4faf89bfd5ba44d06b8b8d764213edd251]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 1 (p. 217)",
+        "quote": "inequality in the access to improved toilet facilities based on wealth index and locality of households"
+      },
+      {
+        "page": "PDF p. 3 (p. 219)",
+        "quote": "Table 2. Binary Logistic Regression, source: NFHS 4"
+      },
+      {
+        "page": "PDF p. 3 (p. 219)",
+        "quote": "It is evident that the wealth of a family"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Binary logistic regression predicting Improved Toilet (NFHS-4 2014-15, N not reported; Table 2, PDF p. 3 / p. 219): Poorest B = -5.383, Sig. = 0.000, Exp(B) = 0.005; Poorer B = -3.783, Sig. = 0.000, Exp(B) = 0.023; Middle B = -2.715, Sig. = 0.000, Exp(B) = 0.066; Richer B = -1.151, Sig. = 0.000, Exp(B) = 0.221; Urban B = -0.156, Sig. = 0.000, Exp(B) = 0.855; Intercept B = 1.954, Sig. = 0.000 (tested predictors are demographic/socioeconomic wealth quintiles and urban locality only; no legal/institutional exposure tested).",
+    "publication_year_note": "Printed as 2021 in Problemy Ekorozwoju – Problems of Sustainable Development, Vol. 16, No. 2, pp. 217-225 (DOI: 10.35784/pe.2021.2.23); no separate online-first date printed.",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The paper reports one inferential quantitative analysis—a binary logistic regression using NFHS-4 (2014-15) data predicting household access to an improved toilet facility (Table 2, p. 219)—alongside descriptive NFHS-4 percentages (Figure 1, Table 1) and Scopus publication counts (Figure 2). However, the tested independent variables in the logistic regression are strictly socioeconomic and demographic (household Wealth Index quintiles: Poorest, Poorer, Middle, Richer; and Urban vs. rural locality). All discussion of legal, administrative, financial, and governance mechanisms (e.g., government manual verification rules for subsidies, Output Based Aid, SHGs, PPPs, the Prohibition of Defecation in Open Places Bill 2019, and Gram Panchayat rules) is purely qualitative and narrative. Thus, the tested quantitative exposure-outcome pair fails narrow Criterion 2 and has no SWiM-eligible effect.",
+    "study_id": "S378",
+    "verified_publication_year": "2021"
+  }
+}

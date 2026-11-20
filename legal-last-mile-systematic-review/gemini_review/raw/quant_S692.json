@@ -1,0 +1,125 @@
+{
+  "study_id": "S692",
+  "order": 74,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "761b1985d50564226a72dedfca1e1d3663e5c439389ff04b01704b515be2d57a",
+  "input_text_sha256": "058c3e2077988d4e853daa8bb00e0c7b9cdb637f2449f6090cd776d004278261",
+  "prompt_sha256": "7922d1fa83fb3f2ac0cdb4e9c8cf6c1217d32b27d13c2cb3e063f06832a95cf5",
+  "started_at": "2026-11-20T04:48:03.508621+00:00",
+  "completed_at": "2026-11-20T04:49:41.840567+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S692\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S692 (Record ID: R1F58000B5617)\n- Citation: Kumara H.S. — Revisit the debate on issues of metropolitan governance and service delivery: A trajectory of efficient service delivery model for water supply in Bangalore, India\n- DOI: 10.1177/0975425313477766\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 058c3e2077988d4e853daa8bb00e0c7b9cdb637f2449f6090cd776d004278261) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=50936, sha256=058c3e2077988d4e853daa8bb00e0c7b9cdb637f2449f6090cd776d004278261]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "2",
+        "quote": "Environment and Urbanization Asia, 4, 1 (2013): 203–220"
+      },
+      {
+        "page": "11",
+        "quote": "The overall service delivery index is an average of the five indicators."
+      },
+      {
+        "page": "13",
+        "quote": "Table 6. Correlation Matrix: Inter-correlations among Eight Indicators"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "Printed as Environment and Urbanization Asia, Vol. 4, Issue 1 (2013), pp. 203-220, copyright 2013 National Institute of Urban Affairs (NIUA); no separate online-first date is printed on the PDF.",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "Full text (18 pages) read in full. No inferential hypothesis tests, regression estimates with uncertainty, standard errors, confidence intervals, t/chi-square statistics, or p-values are reported anywhere in the paper. First, the core institutional/governance comparison between centralized metropolitan water provision by the parastatal Bangalore Water Supply and Sewerage Board (BWSSB, N = 1) in Bangalore Metropolitan Center and fragmented municipal provision by 10 Urban Local Bodies (ULBs, N = 10) with KUWS&DB bulk supply in the Bangalore Metropolitan Region (Tables 3-5, PDF pp. 10-13) consists purely of descriptive secondary benchmarking indicators and unweighted arithmetic composite scores (Service Delivery Index: BWSSB = 59.12 vs. 10 ULBs = 21.31 to 52.36; Performance Index: BWSSB = 56.2 vs. 10 ULBs = 13.8 to 47.2), with no statistical test or uncertainty measure. Second, Table 6 (PDF p. 13; discussed p. 14) presents only descriptive 1-decimal-place sample Pearson correlation coefficients (r) across the 11 utilities among the eight MoUD utility service and operational/financial ratios (COV1, COV2, CON, AVI1, AVI2, UNW, OR, RC-Eff.) without any p-values, t-statistics, SEs, or CIs, and none of the eight correlated variables represents a rule-type legal, tenure, governance-structure, ownership, or tariff exposure (UNW, OR, and RC-Eff. are utility water-loss and financial cost-recovery/collection performance ratios). Third, Figure 1 (PDF p. 6) only displays an Excel linear trendline (y = 4.7355x + 1.0387, R2 = 0.4423) on decadal census population growth rates (1881-2011). Flagging quantitative_synthesis_eligible = TRUE is therefore overstated.",
+    "study_id": "S692",
+    "verified_publication_year": "2013"
+  }
+}

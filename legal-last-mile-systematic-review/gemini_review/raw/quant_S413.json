@@ -1,0 +1,125 @@
+{
+  "study_id": "S413",
+  "order": 48,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "16c1d6068eaf8a2a911b7d0479dc754d5b6070bb20d90828d990c525fb909c44",
+  "input_text_sha256": "d7cd5e3559397129da8ba935cc166a08075998d4fe844faed8bb3719c1aee63f",
+  "prompt_sha256": "0cde4e0f89ccb944e850d271a6b9d8c80e06bf87e1bad982c6eadaee62485534",
+  "started_at": "2026-11-20T04:40:03.450427+00:00",
+  "completed_at": "2026-11-20T04:41:04.115472+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S413\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S413 (Record ID: R8D249B22771D)\n- Citation: OLIVEIRA, THIAGO GUEDES DE; DE, SONALY CRISTINA REZENDE BORGES — THE PRIVATIZATION OF STATE WATER SUPPLY AND SANITATION COMPANIES: AN ANALYSIS BASED ON THE EXPERIENCE OF THE STATE OF MINAS GERAIS / PRIVATIZAÇÃO DAS COMPANHIAS ESTADUAIS DE SANEAMENTO: UMA ANÁLISE A PARTIR DA EXPERIÊNCIA DE MINAS GERAIS\n- DOI: 10.1590/1809-4422ASOC1234V1832015\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: d7cd5e3559397129da8ba935cc166a08075998d4fe844faed8bb3719c1aee63f) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=44016, sha256=d7cd5e3559397129da8ba935cc166a08075998d4fe844faed8bb3719c1aee63f]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "C",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "5",
+        "quote": "test (1947) was applied to the independent samples in order to assess whether changes"
+      },
+      {
+        "page": "9",
+        "quote": "Figure 3 shows the increase in households with water supplied by the general network."
+      },
+      {
+        "page": "10",
+        "quote": "in the municipalities served by COPASA was significantly lower than in municipalities"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Mann-Whitney U tests on 2000-2010 municipal-level changes (N = 320 municipalities in Minas Gerais: n = 64 served exclusively by IPO-listed state utility COPASA vs. n = 256 served exclusively by municipal organizations; 95% reliability / alpha = 0.05, PDF pp. 4-5, 9-10): (1) increase in % of households with water supplied by the general network significantly poorer under COPASA than municipal organizations (p < 0.05, Fig. 3, p. 9); (2) change in % of households connected to the general sewage or rainwater network (Fig. 5, p. 10) and % with bathrooms/WCs (Fig. 4, p. 10) non-significant at 95% reliability (p >= 0.05); (3) reduction in % of households with no bathroom/WC significantly lower under COPASA (p < 0.05, Fig. 6, p. 10). Note: Table 7 and box-plot Figs. 3-6 are raster images in the PDF, so exact numeric cells/U-statistics/p-values inside the figures/tables are not in the extracted text layer.",
+    "publication_year_note": "Published in Ambiente & Sociedade, São Paulo, v. XVIII, n. 3, p. 249-268, jul.-set. 2015 (submitted 17/08/2014; accepted 17/11/2014; DOI suffix V1832015). No conflicting online-first year printed.",
+    "quant_verdict": "inferential_with_swim_eligible_effect",
+    "rationale": "The full text empirically evaluates a narrow Criterion 2 Family C utility ownership/corporatization mechanism—management by Minas Gerais's state water and sanitation company COPASA (partially privatized via a 2006 stock-exchange IPO) versus local municipal/autonomous public service organizations—on Criterion 4 household water and sanitation access outcomes across municipalities in Minas Gerais using IBGE 2000 and 2010 Census data. Specifically, the authors compute 2000-2010 municipal first-differences for municipalities exclusively served throughout the decade by COPASA (n = 64) versus municipal organizations (n = 256, total N = 320) and apply independent-samples Mann-Whitney U tests at 95% reliability (alpha = 0.05). COPASA municipalities exhibited a significantly smaller increase in the percentage of households connected to the general water network (Fig. 3, p < 0.05) and a significantly smaller reduction in households lacking a bathroom/WC (Fig. 6, p < 0.05), while differences in 2000-2010 changes for general sewage/rainwater network connection (Fig. 5) and bathroom/WC presence (Fig. 4) were not statistically significant at the 95% level. Although Tables 2-12 and Figures 1-8 are embedded as raster images in the PDF (requiring visual inspection of the PDF pages to transcribe exact numeric medians/means or exact p-values if printed inside the plots), the prose itself provides directionally interpretable inferential two-group change contrasts, group sample sizes (64 vs. 256), and 95%-confidence significance results directly eligible for Family C SWiM synthesis.",
+    "study_id": "S413",
+    "verified_publication_year": "2015"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "study_id": "S908",
+  "order": 73,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "327c5460b4ab32376f9d63aaf23e068eb0153f5791d6bb32689ef78174b048cc",
+  "input_text_sha256": "53bea9816d158272fbdbe84a2b78aabd7abf875e1cdc66510a6af1b5969e25a7",
+  "prompt_sha256": "0ada3dbe10b58dfa5c8e783008b559cc7188fb9996cbd6d872b1c4d0555a89ce",
+  "started_at": "2026-11-20T04:48:03.504512+00:00",
+  "completed_at": "2026-11-20T04:50:17.505844+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S908\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S908 (Record ID: RA2C6963F84B8)\n- Citation: Alzahrani, Fahad — Three Essays on Water Economics\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 53bea9816d158272fbdbe84a2b78aabd7abf875e1cdc66510a6af1b5969e25a7) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=340868, sha256=53bea9816d158272fbdbe84a2b78aabd7abf875e1cdc66510a6af1b5969e25a7]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "medium",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 42 (p. 33)",
+        "quote": "exposed to violations is associated with reductions in direct and indirect effects equal to 0.005%"
+      },
+      {
+        "page": "PDF p. 103 (p. 94)",
+        "quote": "can depreciate housing prices at the margin from 0.57% to 18%. Furthermore, by using a"
+      },
+      {
+        "page": "PDF p. 4",
+        "quote": "charges per 4,500 gallons for PSDs that utilize different raw water sources including the surface"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Essay 1 (Table 2.4, PDF p. 68, Spatial Durbin Model with RE & year FE, N = 576 state-years, DV = log real per capita health care expenditures): SDWA health-based violation exposure direct elasticity = 0.005 (p = 0.008), indirect = 0.035 (p = 0.003), total = 0.040 (p = 0.003). Essay 2 (Sec. 3.6, PDF pp. 97-102, hedonic OLS/SLM/spatial quantile regressions, N = 1,985 home sales in Marion County, WV, DV = ln(property sale price)): OLS BWN coefficients -0.0065 to -0.1904; SLM direct effects = -7% per BWN episode, -2.7% per day of mean BWN duration, -18% for any BWN, MWTP = $1,160 per 1-day BWN reduction (Tables 3.8-3.12 truncated after PDF p. 105). Essay 3 (Abstract, PDF p. 4, OLS, N = 110 WV PSDs, DV = residential water charge per 4,500 gallons): multiple raw water sources associated with ~29% higher charges vs single source; NRCS flood-control impoundments NS (Chapter 4 / Table 4.5 truncated after PDF p. 105).",
+    "publication_year_note": "2019 PhD dissertation submitted to West Virginia University (Graduate Theses, Dissertations, and Problem Reports, ETD 7424; '2019' and 'Copyright 2019 Fahad Alzahrani' printed on PDF pp. 1-2).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "This 2019 West Virginia University PhD dissertation conducts inferential econometric analyses across three essays, none of which estimates a SWiM-eligible legal/institutional rule-type effect on a Criterion 4 household or community water/sanitation service access outcome: (1) Essay 1 (PDF pp. 17-68, complete with Tables 2.3-2.4) estimates panel and Spatial Durbin models (N = 576, 48 states, 2000-2011) of the share of population served by public water systems incurring SDWA health-based violations on state per capita Personal Health Care expenditures, failing Criterion 4 because the outcome is aggregate medical spending rather than water/sanitation service access. (2) Essay 2 (PDF pp. 70-105) estimates hedonic OLS, spatial lag, and spatial quantile regressions (N = 1,985 single-family sales in Marion County, WV, 2012-2017) of prior-year Boil Water Notices (80% caused by pipe breaks/leaks) on log house sale prices ln(P) and derived marginal willingness to pay (MWTP), failing Criterion 2 (operational unreliability rather than a rule-type legal/tariff/governance intervention) and Criterion 4 (property prices / WTP only). (3) Essay 3 is truncated in the provided prompt text after PDF p. 105 (PDF pp. 106-180 omitted), but the Dissertation Abstract (PDF p. 4), Section 1.1.3 (PDF pp. 12-13), Table of Contents (PDF p. 7), and List of Tables (PDF p. 9) establish that it runs a cross-sectional OLS regression across 110 West Virginia Public Service Districts (Table 4.5) of residential water charges per 4,500 gallons on physical raw water supply source types (surface water, purchased water, multiple sources, NRCS flood-control impoundments) plus utility cost/scope controls (joint water-sewer service, debt, network length) to value raw water; WV Senate Bill 373 is discussed only as statewide policy context rather than a tested exposure. Confidence is set to medium solely because Essay 3's regression table (Table 4.5, p. 165 / PDF p. 174) lies in the truncated tail of the 180-page PDF.",
+    "study_id": "S908",
+    "verified_publication_year": "2019"
+  }
+}

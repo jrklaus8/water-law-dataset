@@ -1,0 +1,125 @@
+{
+  "study_id": "S361",
+  "order": 70,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "2c7066521d08688e1ee4fb8afcb54dae643e671e6645f907fb8a7fb3f143bf61",
+  "input_text_sha256": "d15dfde0cc1afec37f4091dc3305a803851a0a0a84f184246bb2c02323cf8d47",
+  "prompt_sha256": "7249efe48551f760115a8c04e7eda7f3bb1537d9c534dfc2a52545f70873f04e",
+  "started_at": "2026-11-20T04:45:30.193173+00:00",
+  "completed_at": "2026-11-20T04:46:29.494380+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S361\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S361 (Record ID: R16023D0A5829)\n- Citation: Atigaku A.K.; Tchakala I.; Agbovi K.K.; Ebri K.M.; Nikabou K.C.; Tsipoaka K.; Komi A.A.; Mahe J.P.; Sondou T. — Community governance and access to drinking water in semi-urban Togo: Dynamics and impacts in Kovié and Noèpé\n- DOI: 10.36922/AJWEP025380294\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: d15dfde0cc1afec37f4091dc3305a803851a0a0a84f184246bb2c02323cf8d47) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69090, sha256=d15dfde0cc1afec37f4091dc3305a803851a0a0a84f184246bb2c02323cf8d47]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "Using a mixed-methods approach, the study combines household surveys (n = 712)"
+      },
+      {
+        "page": "10",
+        "quote": "and the distance to the source (χ² = 155.23; p<0.001)."
+      },
+      {
+        "page": "11",
+        "quote": "source and satisfaction (χ² = 27.653, p<0.001), but"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Out-of-scope omnibus chi-square tests only (N = 712 households: 353 Noèpé, 359 Kovié; p. 4): (1) water source type vs. distance (<500 m vs. >500 m): Kovié χ² = 155.23, p < 0.001, Cramer's V = 0.658; Noèpé χ² = 207.46, p < 0.001, V = 0.767 (p. 10, Table 3 text); (2) water source type vs. access time: Kovié χ² = 196.382, p < 0.001, V = 0.427; Noèpé χ² = 154.159, p < 0.001, V = 0.382 (p. 10, Fig. 4 text); (3) water source type vs. satisfaction with committee management: Kovié χ² = 27.653, p < 0.001, V = 0.278; Noèpé χ² = 18.819, p = 0.001, V = 0.231; Total χ² = 43.685, p = 0.000, V = 0.248 (pp. 11–12, Table 4); (4) water point type vs. dissatisfaction factors: Kovié χ² = 900,442, p = 0.000, V = 0.792; Noèpé χ² = 1,067,470, p = 0.000, V = 0.869 (p. 12, Table 5). No inferential test links a legal/governance/tariff rule exposure to a water access outcome.",
+    "publication_year_note": "Primary journal volume/issue year printed on header and citation line is 2026 (Asian Journal of Water, Environment and Pollution. 2026;23(2):025380294; Volume 23 Issue 2 (2026)); article history on p. 1 also prints 'Published online: December 1, 2025'.",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The full text (16 pages) reports a mixed-methods study of community water governance (CUE/CE and AUSEPA) in semi-urban Kovié and Noèpé, Togo (N = 712 surveyed households; 32 interviews; 6 focus groups). Although the study computes inferential statistics (Pearson chi-square tests of independence and Cramer's V), every inferential test cross-tabulates physical water source/infrastructure type (standpipes, private connections, cisterns, boreholes, Zego rice canal, Akatsè Dam) against physical distance to source (p. 10), collection travel time (p. 10), user satisfaction with management (pp. 11–12, Table 4), or type of reported complaint/problem (p. 12, Table 5). None of these multi-category infrastructure cross-tabulations tests a narrow Criterion 2 legal, administrative, governance-regime, tenure, or tariff rule exposure on household water service access, nor yields a directionally interpretable governance-to-access contrast. All discussions of legal/institutional rules, non-delegation by AUSEPA, nonpayment disconnections (88/238 private connections), unsubsidized connection fees (55,000–100,000 FCFA vs. 75,000 FCFA urban TdE fee), and standpipe tariffs (1,000 vs. 500 FCFA/m³) are purely descriptive or qualitative without inferential testing.",
+    "study_id": "S361",
+    "verified_publication_year": "2026"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "study_id": "S070",
+  "order": 21,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "56215cab1ffb31c962cae7936dff0a23f1738cb2fca10af99074bef5578304ba",
+  "input_text_sha256": "0924b00a6c7425efea8eba602cb280a82b4bc33da51a6e08cfb0041a0aca63cf",
+  "prompt_sha256": "af561f218aaf90b89d87d3c411843511b284fb0c432d9afe7d26ee9327c57211",
+  "started_at": "2026-11-20T04:36:33.383696+00:00",
+  "completed_at": "2026-11-20T04:38:03.560232+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S070\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S070 (Record ID: RC41D17900D05)\n- Citation: Thapa D.; Farid M.N.; Prevost C. — Governance drivers of rural water sustainability: Collaboration in frontline service delivery\n- DOI: 10.24294/jipd.v6i1.1380\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 0924b00a6c7425efea8eba602cb280a82b4bc33da51a6e08cfb0041a0aca63cf) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=81522, sha256=0924b00a6c7425efea8eba602cb280a82b4bc33da51a6e08cfb0041a0aca63cf]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "B",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "Journal of Infrastructure, Policy and Development (2022) Volume 6 Issue 1."
+      },
+      {
+        "page": "6",
+        "quote": "used to assess the likelihood of sustainability (see Appendix A for the detailed regression model)."
+      },
+      {
+        "page": "7",
+        "quote": "Table 1. Crude and adjusted proportion ratio of sustainable villages using Poisson regression"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Poisson Model 3 (fully adjusted, N = 4,218 villages; Table 1 p. 7, Table A1 p. 21, Appendix B p. 23, Appendix C p. 28): (1) Number of Community Action Planning (CAP) participants (log scale): beta = 0.19, PR = 1.21 (95% CI: 1.05-1.38, p = 0.007; crude Model 1 PR = 1.42, 95% CI: 1.24-1.63, p = 0.000; Logit OR = 1.82, 95% CI: 1.42-2.34, p = 0.000); (2) Tariffs > O&M costs (vs <= O&M ref): beta = 0.61, PR = 1.84 (95% CI: 1.70-2.01, p = 0.000; Logit OR = 6.90, 95% CI: 5.82-8.18, p = 0.000); (3) Village local revenue (PAD) per capita > Rp 30,000 (vs < Rp 5,000 ref): beta = 0.26, PR = 1.29 (95% CI: 1.16-1.44, p = 0.000).",
+    "publication_year_note": "Printed on PDF p. 1 as Volume 6 Issue 1 (2022), citation year 2022, and Available online: June 14, 2022 (Received: October 10, 2021; Accepted: November 29, 2021).",
+    "quant_verdict": "inferential_with_swim_eligible_effect",
+    "rationale": "This mixed-methods study includes a full inferential quantitative panel analysis (Poisson and Logit regressions across N = 4,218 PAMSIMAS Phase I villages in Indonesia; Table 1 p. 7, Table A1 p. 21, Appendix B p. 23, Appendix C pp. 26-28) predicting village-level water system sustainability/functionality (defined as consistently producing sufficient water for >80% of village beneficiaries across 5 consecutive years, 2014-2018, without rehabilitation—a Criterion 4 community water availability/reliability outcome). Both the focal participatory governance exposure—formal Community Action Planning (CAP) participation at project inception (Family B: PR = 1.21, 95% CI 1.05-1.38, p = 0.007)—and the co-estimated tariff cost-recovery rule—scheme tariffs exceeding O&M costs vs <= O&M costs (Family C: PR = 1.84, 95% CI 1.70-2.01, p = 0.000) and local fiscal revenue (PAD per capita > Rp 30,000: PR = 1.29, 95% CI 1.16-1.44, p = 0.000)—yield statistically significant inferential estimates with 95% CIs and p-values. Family B is assigned for the focal participatory planning exposure, with Family C tariff/fiscal effects also eligible and documented.",
+    "study_id": "S070",
+    "verified_publication_year": "2022"
+  }
+}

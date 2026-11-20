@@ -1,0 +1,125 @@
+{
+  "study_id": "S437",
+  "order": 76,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "2e21f75f0c50a4fd74a803fde10d8740642da1eaf0d301a18fe107e6ae7a410d",
+  "input_text_sha256": "85e6ad8fd55d0f8667c2196506f2e1b13b6b9e164a3a4c897708e8212097389b",
+  "prompt_sha256": "b0c57a55137e852b191e85c9fe2b04c81fc1852b66f8139306719a7e4bb57cdc",
+  "started_at": "2026-11-20T04:48:03.518863+00:00",
+  "completed_at": "2026-11-20T04:48:35.681745+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S437\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S437 (Record ID: R866A36BFF56D)\n- Citation: Oliveira Lobão G.S.; Brito H.C.; Ribeiro M.D.D.A.V.; Alves P.B.R.; Rufino I.A.A. — Water security evaluation in small-sized cities in Paraíba, Brazil\n- DOI: 10.2166/ws.2025.067\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 85e6ad8fd55d0f8667c2196506f2e1b13b6b9e164a3a4c897708e8212097389b) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69017, sha256=85e6ad8fd55d0f8667c2196506f2e1b13b6b9e164a3a4c897708e8212097389b]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "5",
+        "quote": "In total, 154 questionnaires were administered in 2021 and 259 in 2024"
+      },
+      {
+        "page": "6",
+        "quote": "The increase in harvested area, the number of cattle, and the GVA were analyzed by comparing each year’s production with"
+      },
+      {
+        "page": "13",
+        "quote": "The results indicated that, in 2024, 69.08% of respondents still experience weekly water shortages."
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "Published in Water Supply Vol 25 No 7, pp. 1125-1141 (© 2025 The Authors; accepted in revised form 5 June 2025; available online 25 June 2025).",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "Full text (17 pages) audited. The study applies a descriptive multi-method DPSIR framework combining household questionnaires (154 in 2021 and 259 in 2024; total n = 413), GIS land-use/land-cover percentage changes from MapBiomas, a simple binary cumulative year-over-year growth count (0-7 in Excel) for municipal agricultural, livestock, and industrial indicators, and descriptive comparisons with the ANA Water Security Index (ISH). All reported findings—such as 69.08% of surveyed households experiencing weekly water shortages in 2024, municipal percentages purchasing tanker/barrel water, and proportions of municipalities with consecutive years of cattle or industrial growth—are purely descriptive percentages and counts with zero inferential hypothesis tests, regressions, correlations, standard errors, confidence intervals, or p-values.",
+    "study_id": "S437",
+    "verified_publication_year": "2025"
+  }
+}

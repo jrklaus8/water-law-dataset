@@ -1,0 +1,125 @@
+{
+  "study_id": "S464",
+  "order": 50,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a64e1087a0bd319b18a23103573204f91726a7ce623a089f8ac3fa90d676ec2a",
+  "input_text_sha256": "b0ca56d987f1479c1292139fbe63758b7e40c697ea26f434082ccf424db12952",
+  "prompt_sha256": "df538705bc0e78991cbd12c54f84b1436cfd8b024c06a676c93ef98024ebc097",
+  "started_at": "2026-11-20T04:40:03.454425+00:00",
+  "completed_at": "2026-11-20T04:40:41.481578+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S464\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S464 (Record ID: RA18CACA8BA7C)\n- Citation: Terzi S.; Delves J.L.; Clark V.R.; Belle J.; Otomo P.V.; Schneiderbauer S. — Historical legacies and contemporary mismanagement aggravated the 2015-2020 drought impacts in Qwaqwa, South Africa\n- DOI: 10.1016/j.ijdrr.2026.106311\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: b0ca56d987f1479c1292139fbe63758b7e40c697ea26f434082ccf424db12952) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=84536, sha256=b0ca56d987f1479c1292139fbe63758b7e40c697ea26f434082ccf424db12952]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "5",
+        "quote": "developed a qualitative Causal Loop Diagram (CLD) as an interpretative synthesis of the main interactions and feedback loops that"
+      },
+      {
+        "page": "10",
+        "quote": "water leakages of 47% of the total available water. The uncertainty band accounts for values of water leakages ranging from 30 to 60%."
+      },
+      {
+        "page": "14",
+        "quote": "addition, the developed CLD does not quantify the relative strengths of causal links and simplifies temporal dynamics, such as delays"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "Published in International Journal of Disaster Risk Reduction, Vol. 144 (2026), article 106311 (Received 23 February 2026; Revised 9 July 2026; Accepted 10 July 2026; Available online 14 July 2026).",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "Full text (17 pages) examined. Although described as a mixed-methods forensic disaster study, its quantitative component is strictly descriptive and deterministic rather than inferential. Specifically, the authors report: (1) Standardized Precipitation Index (SPI3, SPI6, SPI12) anomalies from ERA5 rainfall data (1991-2021); (2) descriptive monthly national load-shedding GWh and daily reservoir storage percentages; (3) municipal tanker/borehole counts and audit figures from secondary reports; and (4) a deterministic arithmetic indicator of per-capita water supply (dam storage multiplied by a 47% leakage estimate with a deterministic 30%-60% scenario band, divided by census population, falling from 106 to 15 L/capita/day). Governance, corruption, dual traditional/municipal authority, and emergency tanker failures are analysed qualitatively through 31 semi-structured interviews mapped onto a Pressure-and-Release (PAR) diagram and a qualitative Causal Loop Diagram (CLD). No inferential tests, regressions, correlations, standard errors, confidence intervals, or p-values appear anywhere in the paper.",
+    "study_id": "S464",
+    "verified_publication_year": "2026"
+  }
+}

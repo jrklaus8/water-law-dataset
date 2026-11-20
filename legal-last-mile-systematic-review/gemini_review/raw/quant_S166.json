@@ -1,0 +1,125 @@
+{
+  "study_id": "S166",
+  "order": 22,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "f940c749445d13b75e31eea296c9719dea564893e8a3e155813c27c836840e26",
+  "input_text_sha256": "625f345bc44f7ecc9058372a975ec9944739f3c12c453d4d02e621ce7cc9e7f4",
+  "prompt_sha256": "07ad221048e284db49c34c903c6c0b0266be366e5723acf3a855730c4d81a941",
+  "started_at": "2026-11-20T04:36:33.389628+00:00",
+  "completed_at": "2026-11-20T04:37:29.236292+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S166\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S166 (Record ID: RE78A907945F0)\n- Citation: Fagundes T.S.; Marques R.C.; Malheiros T.F. — A Comprehensive Framework for Water Affordability Analysis\n- DOI: 10.1007/s11269-024-04076-4\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 625f345bc44f7ecc9058372a975ec9944739f3c12c453d4d02e621ce7cc9e7f4) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=63353, sha256=625f345bc44f7ecc9058372a975ec9944739f3c12c453d4d02e621ce7cc9e7f4]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "4",
+        "quote": "conventional affordability ratio, poverty condition of the community, affordability ratio for"
+      },
+      {
+        "page": "14",
+        "quote": "the WSS tariff with and without discount applied by each utility for social tariff."
+      },
+      {
+        "page": "20",
+        "quote": "50, and 100% of their monthly income on WSS connection fees, payable to utilities."
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "The cached 30-page PDF is an author manuscript (Page 1 extracted no text; Pages 2-30 contain the full manuscript, references, and appendices) with no journal header, online-first date, or volume/issue publication year printed anywhere in the text; latest internal data are from October 2023 and latest cited references are from 2023 (the prompt bibliographic header lists DOI 10.1007/s11269-024-04076-4).",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "Study S166 proposes a six-dimension water and sanitation affordability assessment framework and applies deterministic arithmetic accounting formulas (Equations 1-10) to secondary SNIS utility, IBGE Census/PNADC income, CADUnico poverty registry, and October 2023 utility tariff/connection-fee schedules across 4,052 Brazilian municipalities served by state-owned providers (plus state capitals). Although it compares descriptive affordability ratios for low-income households with versus without social-tariff discounts (AR2 vs. AR3), social-tariff uptake rates, and connection-fee burdens relative to income thresholds, every output is a purely descriptive percentage or deterministic tariff-ratio calculation with zero inferential statistical tests, regressions, correlations, standard errors, confidence intervals, or p-values anywhere in the paper.",
+    "study_id": "S166",
+    "verified_publication_year": "cannot_tell"
+  }
+}

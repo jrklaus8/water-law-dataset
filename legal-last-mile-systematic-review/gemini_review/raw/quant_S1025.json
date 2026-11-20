@@ -1,0 +1,125 @@
+{
+  "study_id": "S1025",
+  "order": 54,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "5161977f6e01c0f67551f814706f721308cc7d2c06e51e7d0b070309a83de76e",
+  "input_text_sha256": "69093e2dc7e821bdb9452132a338bb53b517f1a6826627a0867b21279eb73668",
+  "prompt_sha256": "4178a4089c81551055609555454103697107d799f29c7f0550b8fa5f131f8237",
+  "started_at": "2026-11-20T04:41:56.506602+00:00",
+  "completed_at": "2026-11-20T04:43:35.106236+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S1025\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S1025 (Record ID: RC1D14599F0AE)\n- Citation: Tardanico, Richard — Post-Civil War San Salvador: Social Inequalities of Household and Basic Infrastructure in a Central American City\n- DOI: 10.1080/00220380701722340\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 69093e2dc7e821bdb9452132a338bb53b517f1a6826627a0867b21279eb73668) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=81487, sha256=69093e2dc7e821bdb9452132a338bb53b517f1a6826627a0867b21279eb73668]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "A",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 15 (p. 139, Table 4)",
+        "quote": "Table 4. Reported deﬁcits of household municipal-service coverage: signiﬁcant odds ratios of"
+      },
+      {
+        "page": "PDF p. 14 (p. 138)",
+        "quote": "two-way connection with no deﬁcit (p ¼ 0.00). How can this be?"
+      },
+      {
+        "page": "PDF p. 25 (p. 149, Appendix B)",
+        "quote": "Reported no. missing municipal services: 0–4 (based on water, electricity, sewage"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Table 4, Model 3 (PDF p. 15 / p. 139, N = 1235, survey-design-adjusted heterogeneous choice ordinal logit with robust SEs): Formal ownership (formal-title dwelling ownership) OR = 1.84, p < 0.001 predicting higher reported household municipal-service coverage deficits (0 = no deficit, 1 = 1-2 service deficits, 2 = 3-4 service deficits across municipal water, sewage, electricity, and solid waste); bivariate association of formal ownership with no deficit is positive (p = 0.00, PDF p. 14 / p. 138), and supplementary Model 3 interaction formal home ownership X log head's years in neighbourhood OR = 1.93, p = 0.00 (Table 4 note a, PDF p. 15; 95% CI for predicted probability of no deficit: 0.01-0.99 vs. 0.14-0.98, Appendix A note b, PDF p. 24). Also in Table 4 Model 3 (N = 1235): Reported household community participation OR = 0.89, p < 0.01; Reported no. community organisations OR = 1.31, p < 0.01. In Table 3 Model 3 (PDF p. 11-12 / p. 135-136, N = 1235): Community or government action established municipal water service predicts formal-title ownership vs. non-ownership with OR = 2.15, p < 0.001 (predicted probability 95% CIs: 0.37-0.40 vs. 0.53-0.61, Appendix A, PDF p. 23).",
+    "publication_year_note": "Print issue date is January 2008 (The Journal of Development Studies, Vol. 44, No. 1, pp. 127-152, copyright 2008; PDF p. 1, 3); online publication date is 05 Jun 2008 (PDF p. 1); final version received October 2007 (PDF p. 3).",
+    "quant_verdict": "inferential_with_swim_eligible_effect",
+    "rationale": "Using a stratified probability survey of lower- to middle-income districts in San Salvador (sub-sample N = 1243; regression N = 1235), Tardanico (2008) estimates survey-design-adjusted heterogeneous choice ordinal logit regressions with robust standard errors (Table 4, PDF p. 15 / p. 139) testing a canonical Family A legal/tenure mechanism—formal-title dwelling ownership ('Household owns dwelling with formal title: 1 = yes, 0 = no')—on household municipal-service coverage deficits (0 = no deficit, 1 = 1-2 missing services, 2 = 3-4 missing services across municipal water [9% deficit], sewage [15% deficit], electricity [2% deficit], and solid waste [21% deficit]). Bivariately and with respondent controls only, formal ownership significantly predicts having no municipal service deficit (p = 0.00, PDF p. 14 / p. 138), but in the full model controlling for macro-structural assets (including an index containing indoor toilet) and log head's years in neighbourhood, formal ownership reverses sign to predict higher odds of service deficit (OR = 1.84, p < 0.001), explained by an interaction with log head's years in neighbourhood (OR = 1.93, p = 0.00; formal ownership reduces deficits only among newer neighbourhood residents/newer housing stock). Table 4 Model 3 also reports inferential estimates for household community participation (OR = 0.89, p < 0.01; Family B) and number of community organisations (OR = 1.31, p < 0.01), while social security coverage is positively associated with no deficit bivariately (p = 0.00) and univariately before becoming attenuated by macro controls (p. 138). Note for synthesisers: the municipal-service deficit outcome is a 4-utility composite combining municipal water and sewage with electricity and solid waste rather than a standalone water-only or sanitation-only indicator, and Model 3 adjusts for dwelling physical features (including inside toilet), which reverses the positive bivariate association between formal title and full service coverage.",
+    "study_id": "S1025",
+    "verified_publication_year": "2008"
+  }
+}

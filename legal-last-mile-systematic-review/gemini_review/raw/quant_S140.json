@@ -1,0 +1,125 @@
+{
+  "study_id": "S140",
+  "order": 46,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d294750724d4e7ec7f855aa310f4789ee1993010ac7e1a9323c0e1548f4354ba",
+  "input_text_sha256": "ef196a5ac8a83e00bde88bc3b44698c426775c3cc44bce12abf2f491c31d360c",
+  "prompt_sha256": "a8021f0c0ac0d1d81bbcc0bc1b188b45e8f7c16d9c7974b3398bfc17af988ca3",
+  "started_at": "2026-11-20T04:40:03.447874+00:00",
+  "completed_at": "2026-11-20T04:40:37.537574+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S140\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S140 (Record ID: R1FE793483944)\n- Citation: Jacob J.H.; Kotzebue J.R. — Sustainable development goal 11.1 in the Caribbean: assessing informal settlement upgrading in Trinidad and Tobago\n- DOI: 10.3389/frsc.2026.1731817\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: ef196a5ac8a83e00bde88bc3b44698c426775c3cc44bce12abf2f491c31d360c) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=56257, sha256=ef196a5ac8a83e00bde88bc3b44698c426775c3cc44bce12abf2f491c31d360c]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "Front. Sustain. Cities 8:1731817."
+      },
+      {
+        "page": "5",
+        "quote": "households (n = 30) secured the service through the upgrading."
+      },
+      {
+        "page": "8",
+        "quote": "inferences about the general state of informal settlement upgrading"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "Published 26 February 2026 in Frontiers in Sustainable Cities Vol. 8, Article 1731817 (received 24 October 2025; revised 24 December 2025; accepted 28 January 2026).",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "Single-community post-upgrading case study of Bamboo Settlement #3 in Trinidad and Tobago (n = 31 households) with no comparison group and no baseline data. Although the Methodology section mentions a one-sample Student's t-test confidence interval method, the Results section and Tables 1-4 report only univariate descriptive counts, percentages, means, medians, modes, and standard deviations (e.g., 31/31 with improved water, 30/31 with improved sanitation, quarterly water cost share of county-average income, room occupancy, and thematic tenure counts), with zero t-statistics, confidence intervals, p-values, or bivariate/regression tests printed anywhere in the article.",
+    "study_id": "S140",
+    "verified_publication_year": "2026"
+  }
+}

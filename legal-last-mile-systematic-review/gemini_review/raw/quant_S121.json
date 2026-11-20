@@ -1,0 +1,125 @@
+{
+  "study_id": "S121",
+  "order": 61,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "800deeafef2e704abd66d0df783606ba87c322ca4ef7e167b28881db2d2fd225",
+  "input_text_sha256": "de1643bd2067606a2b627d22bf21c409819bde2e264a8f358bf80b5b61e3b9b5",
+  "prompt_sha256": "df6c2ca32fa88405168ce273139bffac2fd63148934130354d4d6f73c264f3a9",
+  "started_at": "2026-11-20T04:45:30.176263+00:00",
+  "completed_at": "2026-11-20T04:48:03.474619+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S121\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S121 (Record ID: RCA79A474E34C)\n- Citation: Feler, Leo; J Vernon Henderson — Exclusionary Policies in Urban Development, How under-servicing of migrant households affects the growth and composition of Brazilian cities\n- DOI: 10.3386/w14136\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: de1643bd2067606a2b627d22bf21c409819bde2e264a8f358bf80b5b61e3b9b5) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=103846, sha256=de1643bd2067606a2b627d22bf21c409819bde2e264a8f358bf80b5b61e3b9b5]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "2",
+        "quote": "in an urban area reduce provision of water and sewerage connections to the smaller houses in which"
+      },
+      {
+        "page": "24",
+        "quote": "houses serviced in other localities of an urban area leads the own locality to service about"
+      },
+      {
+        "page": "32",
+        "quote": "in column 3 is stable at 0.77 when estimated with the shorter instrument list in column 6."
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Section 4 (1991 small-house central water share outcome, N = 351 MCAs in 55 urban areas; Tables 4a-5 prose, PDF pp. 8, 23-27): OLS strategic-interaction slope beta = -0.43 on opponent localities' 1980 water servicing W'b (spatial MLE beta = -0.53) and negative ln(income) x ln(urban households) interaction (-0.0261 in Table 4a fn. 13, PDF p. 25; -0.0982 in Table 5 col 3, PDF p. 27; formatted table pages 39-46 blank in PDF text layer). Section 5 (1991-2000 locality urban household growth outcome d ln L, N = 351 MCAs; Table 7 prose, PDF pp. 32-33): 2SLS beta = 0.74 on 1991 small-house water servicing (0.77 with shorter instrument list, p < 0.10, p > 0.05, first-stage F ~ 13; untitled-house water share robustness LIML beta = 1.82, SE = 2.22). Appendix A (1980 hedonic log-rent outcome; Table A1 prose, PDF p. 10): central water rent premium = 12% (Sao Paulo) and 23% (Rio de Janeiro).",
+    "publication_year_note": "NBER Working Paper No. 14136, printed date June 2008 and copyright 2008 (working paper; no journal volume/issue year appears on the PDF).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The full 50-page NBER working paper text (June 2008) is readable in prose (though the appended formatted table/figure pages at PDF pp. 39-46, 48, and 50 are blank in the PDF text layer, every specification and variable is fully detailed in Sections 2-5 and Appendix A). Although the paper conducts multiple inferential econometric analyses (OLS, spatial MLE, 2SLS, LIML), none tests a narrow Criterion 2 rule-type legal/tenure/tariff/ownership/regulatory exposure on a Criterion 4 water/sanitation service access outcome: (1) Section 4 (Tables 4a-6) models the 1991 share of small (1-3 room) houses with a central water connection (Criterion 4), but the explanatory variables are neighboring localities' water coverage rates (W'b reaction-function slope), log median household income, log number of urban households, their wealth-by-size interaction, population density, and 1982 anti-military legislative vote share—socioeconomic, demographic, partisan-voting, and spatial-lag predictors rather than a rule-type legal, tenure, zoning, tariff, or ownership variable (pre-1988 national illegality of servicing informal settlements is nationwide background context and not a regression variable); (2) Section 5 (Tables 7-8) reverses the exposure-outcome relationship by using 1991 water servicing of small (or untitled) houses as the predictor of 1991-2000 locality urban household growth (failing Criterion 4); (3) Appendix A (Table A1) estimates hedonic log-rent regressions measuring consumer willingness-to-pay for water/sewer connections (explicitly failing Criterion 4); (4) Appendix B (Table B2) first-stage regressions predict water servicing from porous geology, solar insolation, distance to Sao Paulo, and 1970 census demographics (failing Criterion 2); and (5) Tables 1-3 are purely descriptive cross-tabulations (Table 3 examines municipal minimum lot-size laws >125 m2 only against descriptive migrant and untitled-homeowner ratios, with no water/sanitation outcome).",
+    "study_id": "S121",
+    "verified_publication_year": "2008"
+  }
+}
