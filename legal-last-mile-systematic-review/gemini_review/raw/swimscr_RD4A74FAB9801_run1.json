@@ -1,0 +1,277 @@
+{
+  "record_id": "RD4A74FAB9801",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "5f48a077fca66a9b9c8fd983d2b35820cc47a9389a10ff32d905fb06fea93b40",
+  "prompt_sha256": "b75230d7b6c064b441a038b91094b24434afdfa95fbe897885bab76a06f8254a",
+  "started_at": "2026-11-20T16:23:30.322350+00:00",
+  "completed_at": "2026-11-20T16:27:32.669742+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community water or sanitation service access. While universal access is mentioned as policy background, the authors explicitly state in Section 4.1 that 'this paper uses not the concept of accessibility but the concept of tariff levels', modeling corporate-level average billing revenue per cubic meter across all customer classes (domestic, commercial, industrial, and public).",
+      "c2": "Plain wording: Yes — examines institutional, regulatory, and governance factors including public versus private corporate management, state/micro-regional versus municipal regulatory agency oversight, rate-of-return versus price-cap/revenue-cap regulation, and increasing block versus uniform tariff structures. Narrow 2026-10-13 rule-type reading: Yes on mechanism type (utility ownership, regulatory oversight structure, cost-recovery regimes, and block tariff rules are formal rule-type mechanisms rather than generic project delivery or behavioural promotion), though in this paper they are analyzed only as determinants of corporate average revenue per m3 billed rather than rules directly governing household service access (social tariff reductions are explicitly outside the study's scope). Because the study fails Criteria 1 and 4 on outcome/access grounds, both the narrow and plain Criterion 2 decisions are exclude.",
+      "c3": "Contains primary quantitative empirical analysis of unbalanced panel data from SNIS, corporate financial statements, and regulatory surveys covering 51 Brazilian water and sanitation business corporations from 2005 to 2012 (N = 351/349 corporation-year observations) estimated via Generalized Estimating Equations (GEE).",
+      "c4": "Fails Criterion 4 (E04 Wrong outcome). The sole dependent variables (Lwt, Lst, Ljt) measure corporate-level average billing yield (total annual bills divided by total annual billed volume in m3 across all customer classes), alongside descriptive profitability margins. The study reports no outcome measuring service access, coverage, connection, availability, reliability, continuity, household water quantity, exclusion/disconnection, or household affordability (explicitly contrasting its corporate tariff-yield metric against Oliveira 2008's expenditure-to-GDP affordability/accessibility ratio and excluding social tariff reductions from scope). Notably, corporate average revenue per m3 rises mechanically when wealthier or non-residential users pay upper-block rates under cross-subsidizing increasing block tariffs, so it cannot serve as a household affordability measure.",
+      "c5": "Unit of analysis (utility/business corporation-year), sample (51 of 52 Brazilian water and sanitation business corporations, 2005–2012), exposures (ownership, regulatory agency type, regulatory regime, tariff block structure), outcomes (Lwt, Lst, Ljt in R$/m3), and study design (longitudinal panel GEE regression) are all clearly specified.",
+      "c6": "Published in English, an eligible language without translation."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 4 of 12, Section 4.1",
+        "quote": "In contrast, this paper uses not the concept of accessibility but the concept of tariff levels measured through the ratio of total bills in the year over the volume of water bill in the year (m3) for both water supply (Lwt) and water sanitation (Lst)."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 1 of 12, Abstract",
+        "quote": "It aims to contribute to the traditional debate of public versus private management, and to determine the effect of regulatory structure on tariff levels."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 5 of 12, Section 4.1",
+        "quote": "There are three regulatory methods of economic regulation employed by Brazilian regulatory agencies: rate of return, price cap and revenue cap."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 6 of 12, Section 4.2",
+        "quote": "We use the Generalized Estimating Equations (GEE), developed by Liang and Zeger (1986) to overcome a limitation of Generalized Linear Models (GLM) when data are longitudinal and correlated."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 11 of 12, Section 6",
+        "quote": "There is a range of issues that do not fall within the scope of this study, such as reﬂections on the length of the concession contracts, outsourcing, the percentages of the reductions applied to the composition of the social tariff, the impact of efﬁciency in the use of inputs and complete contracts, on the tariff levels applied in Brazil."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Private versus public corporate management (Priv), state/micro-regional (RRegA) or municipal/district (LRegA) regulatory agency oversight versus unregulated/municipally negotiated utilities, rate-of-return (Rrat) versus price-cap/revenue-cap (Rcap) economic regulation, two-part and single-part increasing block tariffs (TwoIBT, SinIBT) versus uniform volumetric tariffs, and government capital subsidies (Psub)",
+    "outcome": "Utility-level average water supply tariff level (Lwt), sanitation tariff level (Lst), and joint tariff level (Ljt) in R$/m3, defined as total annual corporate billing divided by total annual billed volume (m3) across all customer classes",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Unbalanced utility-level panel of 51 Brazilian water and sanitation business corporations (from 52 total: 22 private and 30 public/mixed-capital companies; 1 omitted for missing data) over 2005–2012, providing N = 351 corporation-year observations for water and joint models and N = 349 for sanitation models",
+    "rationale": "Exclude under E04 (Wrong outcome). Although Barbosa and Brusca (2015) empirically examine rule-type governance, regulatory, and tariff-setting structures across 51 Brazilian water and sanitation corporations (2005–2012), the study does not examine household or community service access (Criterion 1) and reports no outcome measuring access, connection, availability, reliability, continuity, quantity, household affordability, or exclusion (Criterion 4). Its sole dependent variables (Lwt, Lst, Ljt) are corporate-level average billing yields (total annual bills divided by total billed m3 across all domestic, commercial, industrial, and public accounts), and the authors explicitly state in Section 4.1 that 'this paper uses not the concept of accessibility but the concept of tariff levels' (contrasting their metric with Oliveira 2008's affordability ratio) and note in Section 6 that social tariff reductions fall outside the scope of the study. Both the active narrow Criterion 2 reading and the plain Criterion 2 reading yield exclude due to failing Criteria 1 and 4.",
+    "record_id": "RD4A74FAB9801",
+    "study_design": "Longitudinal unbalanced panel econometric study using Generalized Estimating Equations (GEE), 2005–2012"
+  }
+}

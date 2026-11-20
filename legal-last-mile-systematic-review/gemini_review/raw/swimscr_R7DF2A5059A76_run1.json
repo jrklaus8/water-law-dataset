@@ -1,0 +1,277 @@
+{
+  "record_id": "R7DF2A5059A76",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "122e93018d26f424399478eeb655a907b8bbec824621eb06166d3b2fe0990c23",
+  "prompt_sha256": "51101b0b4758579811e62f5a703ce1672c3d182385a92114da2c4a1baa32e1ea",
+  "started_at": "2026-11-20T16:23:30.307741+00:00",
+  "completed_at": "2026-11-20T16:25:39.959288+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines municipal-level household access/coverage for piped/running water and sewerage (alongside electricity and literacy) in Oaxaca, Mexico.",
+      "c2": "Passes the plain wording of Criterion 2 ('include') because it empirically evaluates a constitutionally recognized local governance/institutional regime (1995 Oaxaca reform recognizing traditional indigenous participatory governance, usos y costumbres, versus political-party electoral governance). However, it FAILS the narrow 2026-10-13 rule-type mechanism reading of Criterion 2 ('exclude', E03): formal municipal authority over water and sewerage and fiscal transfer formulas remain identical across all municipalities, and the exposure studied is general municipal political regime type (non-partisan community assembly leader selection and participatory public-works budget deliberation versus partisan elections), not a rule-type legal/administrative mechanism directly governing service access (such as eligibility screening, administrative burden, tenure/documentation rules, tariff/cost-recovery rules, service-level discretion/enforcement, or utility ownership/regulatory structure). A brief ethnographic background mention that historical community sanctions for refusing unpaid community service included water supply disruption is not empirically analyzed as an access mechanism.",
+      "c3": "Quantitative observational study using propensity score matching (probit propensity model and kernel density matching) combined with first-differences on Mexican census/population count panel data (1990-2010), supplemented by a 2009 survey and qualitative fieldwork.",
+      "c4": "Reports first differences (change in levels) and rates of change in the percentage of municipal households with water and with sewerage across 1990-2000, 2000-2010, 1995-2005, and 1990-2010 (Table 4). Null statistical significance for water and positive effects for sewerage do not affect eligibility.",
+      "c5": "Population/unit of analysis (570 Oaxaca municipalities; 564 on common support: 418 usos treated, 146 party controls), exposure (usos y costumbres vs. political-party municipal governance), outcomes (changes and rates of change in household water and sewerage coverage), and study design (propensity score matching with first-differences) are all clearly identified.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 9 of 14",
+        "quote": "The variables reported are changes in the percentage of the municipal households who have water, sewerage, electricity, and that are illiterate."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 14",
+        "quote": "Despite these similarities, there is variation within Oaxaca in the way formal authority is selected and exercised: parties and electoral competition in some municipalities, and assembly-based, participatory rules in others."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 14",
+        "quote": "the legal provisions of municipal authority (e.g. being responsible for water, sewerage, and other public services),"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 8 of 14",
+        "quote": "The p-scores were obtained using all 570 municipalities in Oaxaca for which there are available data on every variable, and that fell within the range of common support, which is [.027, .997] in this case."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 14",
+        "quote": "The ATT are small and statistically non-signiﬁcant for the provision of water, both for the change in levels and for the rate of change."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Municipal political governance regime following Oaxaca's 1995 constitutional reform: traditional indigenous participatory governance (usos y costumbres, with assembly-based leader selection and budget deliberation) versus political-party electoral governance.",
+    "outcome": "First differences (changes in levels) and rates of change in the percentage of municipal households with water and sewerage (alongside electricity and illiteracy) across 1990-2000, 1995-2005, 2000-2010, and 1990-2010.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Municipalities in the state of Oaxaca, Mexico (570 municipalities in propensity score estimation; 564 municipalities on common support: 418 usos y costumbres municipalities and 146 party-governed control municipalities), plus a 2009 survey in Oaxaca (n = 362 to 568 across items).",
+    "rationale": "Full-text empirical study matching the metadata. While it measures changes in municipal household water and sewerage coverage (c1, c3, c4, c5, c6 met) and passes the plain broad wording of Criterion 2 because it studies local institutional/governance regime type (usos y costumbres vs. partisan municipal elections), it fails the active 2026-10-13 narrow rule-type reading of Criterion 2. Formal municipal service rules, powers, and federal infrastructure transfer formulas are held constant across municipalities, and the exposure is general municipal electoral/participatory political regime and public-works budget accountability rather than a rule-type legal, regulatory, or administrative mechanism directly governing household water or sanitation access. Excluded under E03 (Wrong exposure).",
+    "record_id": "R7DF2A5059A76",
+    "study_design": "Observational quasi-experimental study using propensity score matching (kernel density matching) combined with first-differences panel analysis of census data (1990-2010), supplemented by cross-sectional survey tabulations and ethnographic fieldwork."
+  }
+}

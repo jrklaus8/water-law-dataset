@@ -1,0 +1,277 @@
+{
+  "record_id": "R76BD2052C008",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb",
+  "prompt_sha256": "8c8cf35eac3cab5bfea4847f16ed866205606f24b0f1856776e70f7eeb4e423a",
+  "started_at": "2026-11-20T16:17:05.764132+00:00",
+  "completed_at": "2026-11-20T16:18:30.467045+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking water service in two World Bank-assisted rural water supply and environmental sanitation projects across 45 villages in Karnataka and Uttar Pradesh, India.",
+      "c2": "Passes the plain wording of Criterion 2 (plain_criterion2_decision = include) because it examines local participatory governance in community-driven rural water projects (household participation in village planning meetings/Gram Sabhas and household contributions toward project capital costs in villages with mandated Village Water and Sanitation Committees). Fails the narrow 2026-10-13 rule-type mechanism reading (c2_legal_admin_factor = no): the empirical exposure is self-selected household participation in generic community-based project delivery (voluntary attendance at planning meetings and donations of cash, labour, or materials, analysed through a social-movement/volunteerism lens), rather than a legal, administrative, or regulatory rule-type mechanism directly governing service access (such as eligibility screening, documentation/tenure requirements, administrative burden, connection tariffs or cost-recovery rules gating access, enforcement, or utility ownership/regulatory structure). Project-wide rules (the 10% village capital cost-sharing mandate and VWSC structure) serve only as contextual background rather than a tested rule-level exposure, and non-contributing households were not barred by rule from accessing public water sources.",
+      "c3": "Contains primary quantitative empirical evidence from a 1999-2000 survey of 1,523 households in 45 randomly sampled villages, analysed with bivariate probit models and propensity score matching.",
+      "c4": "Reports a household-level principal components water improvements index incorporating change in distance to nearest water source, change in collection time, change in reliability, perceived change in quality, pressure, water adequacy, and perceived access to the source, as well as binary household satisfaction (Tables 4 and 5). Pre-project private connection, standpost use, distance, and unreliability are also measured as baseline predictors of participation (Table 3).",
+      "c5": "Clearly identifies the population and unit of analysis (1,523 households in 45 villages in Karnataka and Uttar Pradesh, India), exposures (planning meeting attendance and cash/labour/material capital cost contribution), outcomes (water improvements PCA index and overall satisfaction), and study design (cross-sectional survey with bivariate probit and propensity score matching).",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2, Section I. Introduction",
+        "quote": "This article explores the determinants of participation and beneﬁts of participation in two rural water supply projects in India."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5, Section III. Context",
+        "quote": "Both projects mandated the creation of Village Water and Sanitation Committees in every village. Both states required capital cost contribution to the scheme, villages had to come up with approximately ten per cent of the overall water and sanitation costs."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10, Section VI. Modelling Participation",
+        "quote": "During the planning or implementation stage of a project, each village was supposed to come up with a certain amount of contribution, whether in cash, labour or materials and this is the focus of the second equation."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6, Section IV. Data Collection",
+        "quote": "For this research, a total of 1523 households were surveyed from 45 villages across the two projects; data collection took place in 1999 and 2000."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 16, Section VII. Modelling Outcomes",
+        "quote": "The water improvements index is based upon seven variables measured at the household level: the change in the distance to the nearest water source; the change in the amount of time spent collecting water; the change in the reliability in the water source; the perceived change in quality"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Household-level participation in community-based rural water projects: (1) attending at least one project planning meeting, and (2) contributing cash, labour, or materials toward capital costs",
+    "outcome": "Household-level water improvements index (principal components index of changes in distance to nearest water source, time spent collecting water, source reliability, perceived water quality, system pressure, adequacy of water, and perceived access to the source) and binary satisfaction with the new water system",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "1,523 households surveyed in 1999-2000 across 45 randomly selected villages in two World Bank-assisted rural water supply and environmental sanitation projects in Karnataka and Uttar Pradesh, India (unit of analysis: household; full-sample regression N = 1,158)",
+    "rationale": "Prokopy (2009) empirically evaluates household participation in rural drinking water projects across 45 Indian villages, satisfying c1 (drinking water access), c3 (primary survey of 1,523 households using bivariate probit and propensity score matching), c4 (household water improvements index covering distance, collection time, reliability, adequacy, and perceived access), c5, and c6. Under the plain wording of Criterion 2, it would be included as an examination of participatory community governance. Under the active 2026-10-13 narrow rule-type scope of Criterion 2, however, it is excluded under E03 (Wrong exposure): the evaluated exposure is voluntary/self-selected household participation in generic community-based project delivery (attending planning meetings and contributing cash, labour, or materials) rather than a legal, administrative, or regulatory rule-type mechanism (such as eligibility rules, documentation/tenure requirements, administrative burden, or tariff/cost-recovery rules gating service access).",
+    "record_id": "R76BD2052C008",
+    "study_design": "Cross-sectional observational household survey analysed with bivariate probit models and propensity score matching"
+  }
+}

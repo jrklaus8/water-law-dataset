@@ -1,0 +1,278 @@
+{
+  "study_id": "S471",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "74b8e4eb653f441dc1b22c7e1ab67bf2a956c3b4802a81cd78df246354b63af6",
+  "prompt_sha256": "12d5deb649fc7f26c2c63e4511377606c567d9d2088160d1ff4ebcda55cac57a",
+  "started_at": "2026-11-20T17:03:01.474456+00:00",
+  "completed_at": "2026-11-20T17:05:34.838309+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low concern (not applicable to longitudinal follow-up; 98.1% cross-sectional completeness with 2,119 of 2,161 rate-collected municipalities retained in primary models and 2,003 [92.7%] in the presidential vote-share sensitivity model)",
+      "confounding": "Some concern (multivariable OLS with state fixed effects controls for observed fiscal, socioeconomic, ideological, organizational, environmental, and state-level institutional factors, but the observational cross-sectional design lacks causal identification and omits unmeasured confounders noted by the authors, including infrastructure age, treatment technologies, and source water quality)",
+      "legal_measurement_quality": "Adequate (municipal ownership/service boundaries, mayor vs. manager form of government, wholesale water purchasing, and 5-year SDWA health-based violations are drawn from authoritative administrative registries [MDWD, ICMA/Census of Governments, EPA SDWIS] and municipal water tariffs from city websites/municipal codes, while state regulatory regimes are absorbed via state fixed effects rather than coded as explicit statutory variables)",
+      "measurement_bias": "Some concern (explanatory variables rely on validated administrative and survey archives, and basic water cost is standardized to 6,000 gal/month; however, coder training and inter-rater reliability are unreported for manual tariff extraction across 2,161 utilities by nine team members, exact reference years of MDWD covariates [2000-2018 archive] lag the Nov 2021-May 2022 rate collection, seasonal tariffs default to peak rates, and Appendix footnotes inconsistently refer to 2017 water costs)",
+      "outcome_measurement_quality": "Moderate / Some concern (household monthly bill for 6,000 gal/month combining fixed and volumetric charges from municipal websites, municipal codes, or direct utility inquiry is a policy-relevant, standardized metric grounded in EPA sanitary benchmarks, but lacks reported double-coding verification across nine raters, overstates off-peak bills where seasonal rates vary, and has a conflicting 2017 outcome-year note in Appendix Tables A1-A2)",
+      "reporting_bias": "Some concern (no pre-registration or pre-analysis plan is reported; while separate domain models, a combined model, and two sensitivity analyses are transparently reported, the published paper contains internal editing/reporting discrepancies, including a repeated Purchased Water term omitting Surface Water in the p. 6 environmental equation, mismatched significance stars vs. standard errors in Table 3 for Monthly moisture and Median income, 2016 vs. 2020 election-year discrepancies, and unflipped row labeling for Democratic vote share in Table A1)",
+      "selection_bias": "Some concern (near-census coverage of the defined target frame of contiguous US municipalities >= 10,000 population owning and operating a single drinking water system [n = 2,119], but systematically excludes utilities serving < 10,000 residents, private systems, special districts, Alaska/Hawaii, and municipalities with fragmented multi-provider service areas)"
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Inclusion criteria are explicitly defined via the Municipal Drinking Water Database (MDWD): municipalities in the contiguous United States (excluding Alaska and Hawaii) with a population of 10,000 or more that own and operate a single drinking water system, excluding municipalities with fragmented service areas and multiple service providers. Rate data were collected for 2,161 systems, with n = 2,119 in the complete-case regression sample.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-6, Section 3.1 (Data Collection) and Table 2"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The municipal water utility setting across the contiguous United States is mapped in Figure 1, data sources for all 14 predictors are itemized in Table 1, and full descriptive statistics (mean, minimum, maximum) for the outcome and all covariates across n = 2,119 municipalities are reported in Table 2.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-7, Section 3.1, Table 1, Figure 1, Table 2, and Section 4"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Fiscal, demographic, ideological, organizational, and environmental predictors are drawn from established, authoritative secondary datasets (Government Finance Database, US Census/American Community Survey, ICMA/Census of Governments, EPA SDWIS, Willmott and Feddema Moisture Index, and VEST MRP survey ideology estimates cross-checked against presidential vote share). Caveat: exact reference years for several MDWD covariates (2000-2018 archive; 2017 moisture index) are not individually specified in the text and precede the 2021-2022 rate collection.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4-6, Table 1, Sections 3.1-3.5, and Table 2"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "Municipal ownership/operation and single-system service boundary alignment were established in the MDWD using objective EPA SDWIS and US Census records verified through both automated matching criteria and manual review.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-5, Section 3.1 (Data Collection)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "The authors explicitly identify competing fiscal, socioeconomic, racial/ethnic, political, organizational, environmental, and state-level institutional drivers of water costs in Sections 2.1-2.4, and further identify unmeasured confounders (infrastructure age and configuration, treatment technologies/pumps, and source water quality) in Section 6.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 2-3 (Sections 2.1-2.4), Page 6 (Section 3.5), and Page 10 (Section 6)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "The study estimates a combined multivariable OLS model simultaneously controlling for fiscal, community, organizational, and environmental covariates alongside state-level fixed effects (to absorb state regulatory and fiscal policy differences), supplemented by sensitivity analyses using EPA regional fixed effects and presidential vote share. Residual unmeasured confounding from infrastructure age and source water quality remains a limitation inherent to the cross-sectional data.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 5-6 (Sections 3.3 and 3.5), Page 8 (Table 3, Column 5), and Pages 12-13 (Appendix Tables A1-A2)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "While basic drinking water cost is operationalized using a well-established benchmark (monthly household charge for 6,000 gal/month including fixed and volumetric charges from city websites, municipal codes, or direct utility contact), nine team members (six students and three PIs) manually extracted and calculated bills across 2,161 utilities with no reported coder training, double-coding, or inter-rater reliability check; seasonal schedules defaulted to the highest-cost season; and Appendix Tables A1-A2 footnotes state that the dependent variable reflects the '2017 cost of water in dollars per unit', contradicting Section 3.1's Nov 2021-May 2022 collection window.",
+        "rating": "Unclear",
+        "where_found": "PDF Page 5 (Section 3.1) and PDF Pages 12-13 (Appendix Tables A1-A2 notes)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Multivariable OLS regression with state fixed effects and robust standard errors clustered by state (plus EPA-region and alternative ideology sensitivity checks) is an appropriate estimation approach for cross-sectional municipal data. Minor caveats include modeling a right-skewed dollar outcome ($5.00 to $163.40) without a logged-outcome robustness check and several typographical/significance-star inconsistencies in Table 3 and Appendix Table A1.",
+        "rating": "Yes",
+        "where_found": "PDF Page 6 (Section 3.5), Page 8 (Table 3), and Pages 12-13 (Appendix Tables A1-A2)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Cross-sectional study design and national dataset scope",
+        "page": "PDF Page 1, Abstract",
+        "quote": "This paper uses a new, national dataset to examine the social, political, environmental, and institutional"
+      },
+      {
+        "criterion": "Manual internet collection of municipal drinking water rate schedules by research team",
+        "page": "PDF Page 5, Section 3.1 Data Collection",
+        "quote": "PIs then used internet searches to collect drinking water rates"
+      },
+      {
+        "criterion": "Direct utility follow-up when rate schedules were not publicly posted",
+        "page": "PDF Page 5, Section 3.1 Data Collection",
+        "quote": "we contacted the utility directly by email or telephone."
+      },
+      {
+        "criterion": "Confounding control via state-level fixed effects in OLS regression",
+        "page": "PDF Page 6, Section 3.5 Environmental Conditions or Risks Facing the Municipality or Water Utility",
+        "quote": "States represents state-level fixed effects, which account for the"
+      },
+      {
+        "criterion": "Acknowledged unmeasured confounders (infrastructure age and treatment configuration)",
+        "page": "PDF Page 10, Section 6 Conclusion",
+        "quote": "For example, information about infrastructure age and configuration"
+      },
+      {
+        "criterion": "Reporting discrepancy on outcome measurement year in Appendix sensitivity tables",
+        "page": "PDF Page 12, Appendix Table A1 Note",
+        "quote": "Each column represents the results from a separate OLS regression. The dependent variable reflects the 2017 cost of water in dollars per unit."
+      }
+    ],
+    "overall_narrative_summary": "This cross-sectional observational study analyzes fiscal, demographic, political, organizational, and environmental correlates of monthly household basic drinking water costs (6,000 gal/month) across 2,119 contiguous US municipalities with populations >= 10,000 that own and operate their own drinking water utility. Methodological strengths include comprehensive coverage of medium-to-large US municipal water systems via the validated Municipal Drinking Water Database, integration of authoritative federal and academic administrative datasets, and multivariable OLS estimation incorporating state fixed effects, state-clustered robust standard errors, and regional/electoral sensitivity analyses. Overall methodological concern is judged as 'Some concern' under the JBI Analytical Cross-Sectional Studies checklist due to four limitations: (1) unreported coder training or inter-rater reliability verification for manual extraction and calculation of 2,161 utility rate schedules by nine coders, alongside an unresolved discrepancy between the Methods text (rates collected Nov 2021-May 2022) and Appendix Tables A1-A2 footnotes ('2017 cost of water'); (2) asynchronous measurement timing between MDWD/climate covariates (2000-2018 archive; 2017 moisture index) and 2021-2022 water tariffs; (3) omitted variable bias from unmeasured infrastructure age, treatment technology, and source water quality, plus non-generalizability to small (< 10,000 population), private, or fragmented water systems; and (4) minor internal equation and table reporting errors (e.g., significance-star mismatches in Table 3 and unflipped variable labels in Table A1).",
+    "overall_rating": "Some concern",
+    "paper_read": "full text",
+    "study_design_identified": "Quantitative cross-sectional observational study (multivariable OLS regression with state fixed effects across n = 2,119 US municipal drinking water systems)",
+    "study_id": "S471",
+    "where_found_summary": "PDF Pages 1-13: Abstract (Page 1); Section 2 Theoretical Expectations (Pages 2-3); Section 3 Methods, Table 1, Figure 1, and Table 2 (Pages 3-7); Section 4 Results, Figure 2, Table 3, and Figure 3 (Pages 7-9); Section 5 Discussion and Section 6 Conclusion (Pages 7-10); Appendix Tables A1-A2 (Pages 12-13).",
+    "why_tool_chosen": "The study analyzes a single cross-section of 2,119 US municipalities to examine associations between municipal fiscal, demographic, organizational, and environmental characteristics and the household cost of 6,000 gallons/month of drinking water using OLS regression with state fixed effects. Because there is no longitudinal cohort follow-up and no quasi-experimental policy/intervention comparator over time, the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the exact matching instrument."
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "record_id": "RE992755C7ABF",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "a759070bb874e666000e9ee2f558a67644d458c684292682292b6198f99b7b56",
+  "prompt_sha256": "4d357ff645e1e833b07662d10d44ff2231a843f3f3fe413aeac03fe5b11d90c8",
+  "started_at": "2026-11-20T16:17:05.747209+00:00",
+  "completed_at": "2026-11-20T16:19:40.849148+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "China",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines government provision of rural community and school drinking water infrastructure under China's National Rural Drinking Water Safety Project across counties in Guizhou Province.",
+      "c2": "Passes the plain wording of Criterion 2 (plain_criterion2_decision = include) but fails the narrow 2026-10-13 rule-type mechanism reading (c2_legal_admin_factor = no -> exclude as E03). Under the plain broad wording, the paper examines institutional, administrative, and governance factors: the constitutional/administrative designation of minority autonomous counties and prefectures (Autonomous County, Autonomous Prefecture), co-ethnic county political leadership (Share Han Leaders), and decentralized local policy implementation under cadre performance evaluation timelines. Under the narrow 2026-10-13 scope clarification, however, the paper is a distributive-politics analysis of intergovernmental capital project delivery (where county ethnic demographics, general territorial autonomous status as a political/symbolic signal, and leader ethnicity predict MWR infrastructure project allocation across counties, explained via officials' preference for fast-to-complete, visible construction projects and lower informal transaction costs). It does not examine any rule-type mechanism directly governing household or community water service access—such as eligibility screening rules, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, frontline rule-application discretion or accommodation, enforcement, or utility ownership/regulatory structure.",
+      "c3": "Contains original quantitative and qualitative empirical evidence: OLS and multilevel regression analyses of internal Guizhou Provincial Ministry of Water Resources administrative records covering 13,376 drinking water projects across 82 counties (2010–2013; regression N = 61 counties with complete controls) and biographical data on 360 county governors and CCP secretaries, corroborated by field visits to over 50 villages and interviews with officials, villagers, and academics.",
+      "c4": "Reports cumulative county-level project beneficiaries (number of villagers and students covered by completed MWR safe drinking water infrastructure projects, 2010–2013) and MWR project funding (RMB), which capture drinking water infrastructure availability/provision and differential under-provision across minority areas (while explicitly noting per scope discipline that MWR administrative records measure first-stage infrastructure allocation rather than verified post-construction household water access).",
+      "c5": "Population and unit of analysis (82 counties in Guizhou Province, China; N = 61 counties in multivariate regressions, aggregating 13,376 MWR projects from 2010–2013), exposures (county percentage minority, ethnic diversity, county/prefecture ethnic autonomous status, and share of Han county leaders), outcomes (cumulative project beneficiaries and project funding), and study design (cross-sectional observational county-level econometric analysis supplemented by qualitative field interviews) are all clearly specified.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1, c3",
+        "page": "PDF Page 1 of 27 (Abstract, p. 607)",
+        "quote": "Drawing on a new data set of more than 10,000 drinking water projects, I explore how ethnicity and autonomy influence public goods provision in rural Guizhou Province."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 27 (Implementation Matters, p. 610)",
+        "quote": "prioritize the construction of infrastructure projects that are both observable by their evaluating superiors and relatively easy to complete."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 27 (Minority Autonomy and Co-ethnic Leaders, p. 612)",
+        "quote": "Ethnic autonomy provides a clear signal of the relevance of the region for ethnic politics, stability, and governance. Instead of focusing pro-minority policy based on the size of the minority population, the government may prioritize counties marked as key for minority policy, that is autonomous areas, regardless of ethnic makeup."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 27 (Variables and Measurement, p. 616)",
+        "quote": "The average project is designed to provide safe drinking water for 827 people, but the number ranges from zero to 29,963."
+      },
+      {
+        "criterion": "c2, c4",
+        "page": "PDF Page 20 of 27 (Conclusion, p. 626)",
+        "quote": "the allocation of resources and infrastructure, but the outcomes also depend on effective construction and maintenance of that infrastructure, as well as resource management."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "County ethnic minority share (percentage minority) and ethnic diversity, county and prefecture minority autonomous status (territorial autonomy designation), and ethnicity of county governors and Party secretaries (share Han leaders / co-ethnic leadership) in decentralized infrastructure project implementation",
+    "outcome": "Cumulative county-level number of beneficiaries (villagers and students) of completed Ministry of Water Resources National Rural Drinking Water Safety Project infrastructure projects and cumulative MWR project funding (RMB) over 2010–2013 (drinking water infrastructure provision/availability)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Rural counties in Guizhou Province, China (82 counties total; N = 61 counties in main regression models), aggregating 13,376 Ministry of Water Resources safe drinking water infrastructure projects (2010–2013), CVs/records of 360 county Party secretaries and governors, and field visits to over 50 villages",
+    "rationale": "Excluded under E03 (Wrong exposure) applying the 2026-10-13 rule-type mechanism clarification of Criterion 2. Although the paper empirically examines government provision of rural drinking water infrastructure in Guizhou Province (c1, c3, c4, c5, c6 satisfied) and passes the literal/plain broad wording of Criterion 2 (plain_criterion2_decision = include) because it analyzes regional ethnic autonomy institutions, co-ethnic county leadership, and decentralized cadre implementation incentives, its exposures are distributive-politics determinants of capital public-works project delivery (county ethnic composition, macro-territorial autonomous status as a general political signal, leader ethnicity, and career pressure to complete visible construction projects quickly) rather than a legal, administrative, or regulatory rule-type mechanism directly governing household or community water service access (such as eligibility screening, documentation/tenure rules, administrative burden, tariffs/cost-recovery rules, frontline rule-application discretion/accommodation, enforcement, or utility regulatory structure).",
+    "record_id": "RE992755C7ABF",
+    "study_design": "Observational cross-sectional county-level quantitative analysis (OLS and multilevel regressions on cumulative 2010–2013 administrative project records) supplemented by qualitative field observations and interviews"
+  }
+}

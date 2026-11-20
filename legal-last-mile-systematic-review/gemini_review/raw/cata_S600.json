@@ -1,0 +1,121 @@
+{
+  "study_id": "S600",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "aaca23931c807b9cfbdd7d19a6bcfbd42d3f95afb1a2e1ade40c5312dc937024",
+  "prompt_sha256": "97564fd5fb88ca3ace81ad3a367352ea55b89f93eaedf5b27e211d71b73ac3b1",
+  "started_at": "2026-11-20T17:17:19.145218+00:00",
+  "completed_at": "2026-11-20T17:17:55.294599+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 4",
+        "quote": "© Springer Nature Singapore Pte Ltd. 2022"
+      },
+      {
+        "page": "PDF p. 42 (p. 24)",
+        "quote": "Further details of the methodology are described in chapter four of"
+      },
+      {
+        "page": "PDF p. 18 (p. xxi)",
+        "quote": "One-way ANOVA of overall levels of effectiveness"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (truncated at PDF p. 68 of 318 before Chapters 4-8 methods and results)",
+    "publication_year_note": "Copyright page (PDF p. 4) and chapter headers (PDF pp. 19, 47) print © Springer Nature Singapore Pte Ltd. 2022; no separate online-first year is printed.",
+    "quant_verdict": "cannot_tell",
+    "rationale": "This is a 318-page Springer book monograph published in 2022 based on a survey of 3,714 households across four Indian cities (Ahmedabad, Bengaluru, Hyderabad, and Kochi). However, the provided full-text extract is truncated at PDF Page 68 of 318 (book p. 50, mid-Chapter 2), before Chapter 4 (Methodology and Research Sites, p. 85) and all primary empirical chapters (Chapters 6-8, pp. 159-286). Notably, the List of Tables (PDF pp. 17-18) shows inferential statistical tables in the truncated portion—specifically correlations in Tables 6.28 and 7.14 and one-way ANOVA comparisons across three institutional types of urban water utilities (public municipal department, autonomous water board, etc.) on water supply efficiency, effectiveness, satisfaction, and overall performance in Tables 8.5-8.19 (pp. 269-283). Because the text is truncated before methods and results, it cannot be verified from the accessible pages whether Chapter 8's institutional ANOVA contrasts test a SWiM-eligible household service access outcome (Family A/C) or composite perception/utility scores, nor can any printed estimates, F-statistics, or p-values be extracted. Per audit instructions for texts truncated before methods/results, quant_verdict is set to cannot_tell.",
+    "study_id": "S600",
+    "verified_publication_year": "2022"
+  }
+}

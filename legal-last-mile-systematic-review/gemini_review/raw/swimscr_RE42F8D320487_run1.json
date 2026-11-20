@@ -1,0 +1,282 @@
+{
+  "record_id": "RE42F8D320487",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "ea79628734621a84e2d205902dea68288779caefa598320fb877b97303b87e62",
+  "prompt_sha256": "ecd6187010316c516e267cbe3d038623264b86024393cfd6cc03482d76f13cea",
+  "started_at": "2026-11-20T16:23:30.334314+00:00",
+  "completed_at": "2026-11-20T16:25:43.727671+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines residential household water supply and sanitation (WSS) service affordability and access to utility-account social tariff subsidies across municipalities served by Copasa-MG in Minas Gerais, Brazil.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, it examines sub-national water/sanitation tariff regulation, regulatory agency inspections, and municipal governance. Under the narrow 2026-10-13 reading, it directly analyzes rule-type legal and administrative mechanisms governing service affordability and subsidy access: (1) tariff and cost-recovery rules (social tariff category pricing and consumption caps under Regulation Arsae-MG No. 150/2021), (2) eligibility screening and documentation/administrative-burden rules (income thresholds, automatic enrollment without customer request under State Law No. 23,670/2020, and mandatory two-year CadUnico social registry updates), and (3) regulatory enforcement via periodic economic inspections of utility billing compliance.",
+      "c3": "Contains primary quantitative empirical evidence using municipal panel data from Arsae-MG inspection reports and national administrative databases (2020-2021 main panel of 572 municipalities, N=1,144; 2018-2021 robustness panel of 570 municipalities, N=2,280), analyzed via paired Wilcoxon signed-rank tests and GLS random-effects econometric models.",
+      "c4": "Reports an outcome directly relevant to WSS affordability and subsidy inclusion/exclusion: the municipal-level Degree of Implementation of the Social Tariff (DIST Index), measuring the percentage of eligible low-income water-networked households in CadUnico that are actually registered as social-tariff beneficiaries in the utility's billing database.",
+      "c5": "Clearly identifies the unit of analysis and population (572 municipalities in Minas Gerais served by Copasa-MG, encompassing >600,000 social-tariff households), exposure (regulatory norm Regulation No. 150/2021 and regulatory enforcement inspections captured by REGU, plus CadUnico update rate CUUR and Municipal Sanitation Fund governance MSF), outcome (DIST Index), and study design (before-and-after longitudinal municipal panel econometric study).",
+      "c6": "Published in English, an eligible language without translation."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 22 (Abstract)",
+        "quote": "A state regulatory agency of the Brazilian water and sanitation sector drafted a new regulation and conducted inspections to promote the implementation of this policy. This article analyzes the effect of the regulation and enforcement on the degree of implementation of the social tariff."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 22 (Section 2.1)",
+        "quote": "Eligibility for the social tariff is contingent on updated data from CadÚnico. Municipal governments (through their social service departments) must enroll households in this registry and keep the data updated (Arsae-MG 2020). Arsae-MG is responsible for selecting the eligible households in the CadÚnico and sending a list of them to the regulated company."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 22 (Section 2.2)",
+        "quote": "In Regulation Arsae-MG No. 150 (2021), the agency gathered and consolidated standards for the policy, which were previously in other regulatory norms about tariffs. This new regulatory norm emphasizes that the granting of the social tariff and the billing of social customers are subject to inspection by the regulator."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 9 of 22 (Section 4.1)",
+        "quote": "In the analysis, we used unprecedented data, corresponding to a sample of 572 municipalities of the Minas Gerais state, totaling more than 600,000 households registered in the social tariff."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 22 (Section 3)",
+        "quote": "social customers registered in the billing databases in relation to the potential number of households eligible for the social tariff in the municipality (Arsae-MG 2020, 2021)."
+      },
+      {
+        "criterion": "c5",
+        "page": "PDF Page 15 of 22 (Section 5.3)",
+        "quote": "The average effect of the regulation and regulatory enforcement (new regulatory norm and inspection) on the implementation of the policy is about a 19% increase."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Regulatory norm and regulatory enforcement governing the water and sanitation social tariff (Arsae-MG Regulation No. 150/2021, State Law No. 23,670/2020 automatic granting mandate, and periodic regulatory inspections by Arsae-MG, captured by REGU), alongside administrative registry updating (CadUnico two-year update rate, CUUR) and Municipal Sanitation Fund governance (MSF)",
+    "outcome": "Degree of Implementation of the Social Tariff (DIST Index), defined at the municipal level as the percentage of social-tariff customers registered in utility billing databases relative to the number of eligible low-income networked households in CadUnico (affordability subsidy access / enrollment)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "572 municipalities in Minas Gerais state, Brazil served by Copasa-MG (and subsidiary Copanor in 30 localities), balanced panel in 2020 and 2021 (N = 1,144 municipal-year observations; >600,000 households registered in the social tariff), with a robustness panel of 570 municipalities for 2018-2021 (N = 2,280 observations)",
+    "rationale": "Full text matches record metadata (Amorim et al., 2025, DOI 10.2166/wp.2025.193) and satisfies all inclusion criteria (c1-c6). It empirically evaluates rule-type legal, regulatory, and administrative mechanisms governing household WSS affordability access—specifically social tariff rules, CadUnico eligibility/documentation update requirements, automatic enrollment mandates, and regulatory enforcement inspections by Arsae-MG—on municipal-level social tariff enrollment among eligible low-income networked households across 572 Brazilian municipalities using Wilcoxon signed-rank tests and GLS random-effects panel regressions. Both plain and narrow (2026-10-13) Criterion 2 readings clearly support inclusion.",
+    "record_id": "RE42F8D320487",
+    "study_design": "Observational longitudinal municipal panel econometric study (before-and-after paired Wilcoxon signed-rank tests and GLS random-effects panel data regressions)"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "record_id": "R3BFAF175DBF1",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b5056efb58e0d5bf46f76a6dc26e07bae0ef8f20b21b9afd76b77572c705542d",
+  "prompt_sha256": "7238765685772b4b898ac5cdf53932345f6013fa94be48f2a8080f2f03a27dc4",
+  "started_at": "2026-11-20T16:27:48.390323+00:00",
+  "completed_at": "2026-11-20T16:29:28.771097+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Democratic Republic of Congo",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking-water and sanitation service access in rural villages in the Democratic Republic of Congo.",
+      "c2": "Passes the plain/literal wording of Criterion 2 (plain_criterion2_decision = include) because the bundled VEA intervention includes an institutional/governance component ('strengthening of village-level WASH institutions', electing a village WASH committee, signing an agreement with the Health Zone, and certifying 'Healthy Villages') and also measures a village-level water governance index as a secondary outcome. However, it FAILS the active 2026-10-13 narrow rule-type reading of Criterion 2 (c2 = no): the exposure is a bundled WASH project-delivery, infrastructure-financing (US$2000 water + US$2000 sanitation grants per village), community-mobilisation, and behaviour-change intervention whose individual components cannot be disaggregated, rather than a legal, administrative, or regulatory rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion/accommodation, enforcement, or utility ownership/regulatory structure).",
+      "c3": "Empirical primary study: a preregistered cluster-randomised controlled trial collecting primary survey data from 1,312 households and village leaders across 328 villages in 121 clusters.",
+      "c4": "Reports direct household-level service access outcomes including whether the household's primary water source is improved, whether its primary sanitation facility is improved, time spent collecting water, water quantity collected, and financial cost of water, plus village-level functional water points.",
+      "c5": "Clearly identifies the population and units of analysis (households, children, and villages randomised at the multi-village cluster level), the VEA intervention exposure, primary and secondary outcomes, and the cluster-RCT study design.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 11",
+        "quote": "A cluster-level randomised controlled trial of VEA was implemented throughout 2019 across 332 rural villages, grouped into 50 treatment and 71 control clusters."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 11",
+        "quote": "The VEA programme was a comprehensive attempt to address multiple WASH gaps in rural DRC, combining construction and rehabilitation of water infrastructure and sanitation facilities, community mobilisation for behaviour change and support to community WASH institutions."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 11",
+        "quote": "There is far less ability to disaggregate any distinct mechanism of action in the VEA trial than in the aforementioned studies, which separately tested water, sanitation and nutrition interventions."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 11",
+        "quote": "We preregistered four primary outcomes: time spent collecting water in the day prior to the survey; water quantity collected in the day prior to the survey; whether or not the household’s primary water source is improved; and whether or not the household’s primary sanitation facility is improved."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 11",
+        "quote": "From 11 October 2019 to 23 December 2019, we interviewed 1312 households in 328 villages in 121 clusters in four provinces"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Healthy Villages and Schools (Villages et Ecoles Assainis, VEA) national community-driven WASH programme: a bundled village-level intervention combining financing for water and sanitation infrastructure construction/rehabilitation, community mobilisation and hygiene behaviour-change promotion, volunteer training and village WASH committee formation, and Healthy Village certification",
+    "outcome": "Primary outcomes (household level): improved primary water source, improved primary sanitation facility, time spent collecting water, and quantity of water collected; Secondary outcomes: village water governance index, village functional improved water points, financial cost of water, water satisfaction, handwashing practices, sanitation practices, water storage practices, school attendance, and child health",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "1,312 households (head woman interviewed) and village/WASH leaders across 328 rural villages grouped into 121 clusters (50 treatment clusters, 71 control clusters) in four provinces of the Democratic Republic of Congo (Kongo Central, Kasai, Kasai Central, and South Kivu)",
+    "rationale": "Excluded under E03 (Wrong exposure). This cluster-RCT evaluates the Democratic Republic of Congo's national 'Healthy Villages and Schools' (VEA) WASH programme across 328 rural villages and clearly satisfies c1 (water and sanitation access), c3 (empirical RCT), c4 (improved water/sanitation access, collection time, quantity, and cost outcomes), c5, and c6. Under the plain broad wording of Criterion 2 it would be included because the bundled intervention incorporates village WASH committee formation/strengthening and measures a village water governance index. Under the active 2026-10-13 rule-type mechanism scope of Criterion 2, however, it is excluded because the exposure is a bundled donor/government project-delivery, infrastructure-grant, community-mobilisation, and behaviour-change package (whose mechanisms cannot be disaggregated) rather than a legal, administrative, tariff, tenure, eligibility, or regulatory rule-type mechanism governing service access.",
+    "record_id": "R3BFAF175DBF1",
+    "study_design": "Cluster-randomised controlled trial"
+  }
+}

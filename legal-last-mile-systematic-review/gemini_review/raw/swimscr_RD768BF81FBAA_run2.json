@@ -1,0 +1,277 @@
+{
+  "record_id": "RD768BF81FBAA",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "081576020b2686429131ebdd0a06206ce732fcd3457fcaef11eb125eedbb02af",
+  "prompt_sha256": "a2355e629eab8d741efd653b9f3184522e1e4d9ce47ddb6b53fc64e5b6c093c1",
+  "started_at": "2026-11-20T16:54:23.366981+00:00",
+  "completed_at": "2026-11-20T16:55:39.022865+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "34 African countries (Afrobarometer Round 7)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking-water service access and water source location across 34 African countries using Round 7 of the Afrobarometer survey.",
+      "c2": "Passes the plain wording of Criterion 2 (plain_criterion2_decision = include) because corruption and bribery in public utility service delivery are governance/institutional factors. However, fails the narrow 2026-10-13 rule-type mechanism reading (c2_legal_admin_factor = no -> E03 Wrong exposure): the exposure variables are the regional share of survey respondents reporting having paid a bribe/gift/favor to a government official to obtain water, sanitation, or electricity services (regcorr_j) and individual bribery experience across those utilities (bribe_i). The study does not examine any formal or rule-type legal, regulatory, or administrative mechanism governing water/sanitation access (such as eligibility screening, documentation or tenure rules, administrative procedural burden, tariff/cost-recovery rules, regulatory/frontline accommodation rules, enforcement rules, or utility ownership/regulatory structure), and instead studies illegal rent-seeking/corruption incidence across utilities generally.",
+      "c3": "Quantitative cross-sectional econometric study analyzing representative household survey data from Afrobarometer Round 7 (N = 44,778 in main models; also compares Rounds 5 and 6) using probit, ordered probit, and mixed-effects models.",
+      "c4": "Reports two household water access outcomes: (1) whether and how often over the past year the respondent or family went without enough clean water for home use (binary Access and 5-level ordered frequency), and (2) Homesource, measuring whether the household's main source of water is located inside the house, inside the compound, or outside the compound.",
+      "c5": "Population/unit of analysis (individual/household survey respondents across 34 African countries, N = 44,778 for Access and N = 44,546 for Homesource, clustered by region), exposure (regional incidence of utilities bribery and household utilities bribery experience), outcomes, and study design (cross-sectional survey econometric analysis with country fixed effects) are all clearly specified.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 2 of 17",
+        "quote": "In this article, we test the conjecture that corruption in the regional utilities sector lowers water service quality using household data from the Afrobarometer a series of public attitude surveys. Our focus is on the seventh round, conducted in 34 African countries in 2016–2018."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 7 of 17",
+        "quote": "Our main outcome of interest is household access to water. To measure this, we utilize the following question from the Afrobarometer survey: “Over the past year, how often, if ever, have you or anyone in your family gone without enough clean water for home use?”"
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 8 of 17",
+        "quote": "Specifically, respondents are asked: “how often, if ever, did you have to pay a bribe, give a gift, or do a favor for a government official in order to get the services you needed?” From this, we create a dummy variable that takes a value of one if the respondent reports having had to pay a bribe in this context and zero if they had no experience of seeking these services or did but did not have to pay a bribe while doing so. Averaging this variable over the respondent's region, as defined in the survey, gives us a measure of the regional incidence of corruption in the utilities sector."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 8 of 17",
+        "quote": "It is important to note, however, that our utilities corruption variable does not just ask about water services."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 12 of 17",
+        "quote": "In Column 1, we estimate a probit model in which the dependent variable, Homesource, takes a value of one if the respondent's main source of water is in the house or the compound and zero if the source is outside the compound."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Regional incidence of corruption/bribery in the utilities sector (water, sanitation, or electric services) and household experience of paying a bribe, gift, or favor to a government official to obtain utility services",
+    "outcome": "Household access to enough clean water for home use over the past year (binary and 5-category frequency) and location of main water source (inside house, inside compound, or outside compound)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Representative household survey respondents in 34 African countries from Afrobarometer Round 7 (2016–2018), N = 44,778 observations in main access models and N = 44,546 in water source location models (unit of analysis: respondent/household)",
+    "rationale": "Full text retrieved and matches metadata (Breen & Gillanders, 2024, Governance). The study empirically examines household access to clean water and household water source location across 34 African countries (c1, c3, c4, c5, c6 satisfied). Under the plain broad wording of Criterion 2, utilities-sector corruption/bribery is a governance factor (plain_criterion2_decision = include). Under the active 2026-10-13 narrow rule-type reading of Criterion 2, however, the exposure—regional and individual incidence of paying bribes to officials across water, sanitation, or electric services—measures illegal corruption/rent-seeking rather than a rule-type legal, regulatory, or administrative mechanism governing water/sanitation service access (such as eligibility rules, tenure/documentation requirements, administrative burden of formal procedures, tariff/cost-recovery rules, enforcement, or utility ownership/regulatory structure). Excluded under E03 (Wrong exposure).",
+    "record_id": "RD768BF81FBAA",
+    "study_design": "Cross-sectional multi-country household survey econometric study (probit, ordered probit, and mixed-effects regressions with country fixed effects)"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "record_id": "R7A9FA4B1B749",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "613ac8236ca8d5c7e7f5d3268cd675d4c1cf3e3c5e1a08f67b9f25a811014953",
+  "prompt_sha256": "2c66f6225f99899ad5f8fe6459dd3fb4788b7b6e80dfaf1dbbb7773b3c8c50f5",
+  "started_at": "2026-11-20T16:17:05.762108+00:00",
+  "completed_at": "2026-11-20T16:20:54.555105+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Korea (South Korea)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines local municipal drinking-water supply services (지방상수도 서비스) across 152 local governments in South Korea, including municipal water supply coverage rate (상수도 보급률) and water unit tariff (평균단가).",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the plain broad wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), this paper would be included (plain_criterion2_decision = 'include') because it tests municipal political governance (mayor re-election), administrative-tier status (city si vs. county gun), and municipal fiscal capacity (degree of financial independence and per-capita local tax burden), and controls for operational consignment (민간 위탁) and local public enterprise status (지방공기업). Under the active 2026-10-13 narrow rule-type clarification, however, it fails Criterion 2 (exclude, E03): the four focal independent variables (H1-H4) are macro electoral, urban-rural administrative-unit, and general municipal fiscal background characteristics rather than rule-type mechanisms directly governing service access. The two operational control variables—contracted O&M consignment (defined in Footnote 10 as K-water operational efficiency/modernization contracts targeting physical revenue-water/leakage ratios) and local public enterprise status (defined on p. 397 as operating an independent special enterprise accounting ledger vs. general municipal accounting)—are technical/accounting operational controls rather than utility ownership or regulatory rules directly governing household or community service access (noting that statistical non-significance plays zero role in this judgment). Likewise, average unit price and cost-recovery rate are modeled solely as dependent variables via Coulter inequity indices, not as tariff or cost-recovery rules governing access.",
+      "c3": "Quantitative empirical study analyzing official secondary statistics (Ministry of Environment Water Supply Statistics, National Statistical Office, National Election Commission, and MOIS) for 152 municipalities in 2010, 2016, and 2021 using Coulter's coefficient of inequity, Tobit regression, and OLS multiple regression.",
+      "c4": "Reports descriptive statistics and municipality-level Coulter distributional-inequity coefficients (relative to municipal population share) for six indicators including water supply coverage rate (Water supply rate %, defined as Water supply population / Total population x 100) and average water tariff unit price (won/m3), as well as cost-recovery rate, revenue water ratio, employee count, and customer complaints.",
+      "c5": "Clearly identifies the population and unit of analysis (152 basic local governments, si and gun, in Korea across 2010, 2016, and 2021), independent and control variables, Coulter inequity dependent variables, and repeated cross-sectional Tobit/OLS regression design.",
+      "c6": "Body text is in Korean accompanied by an English title, abstract, tables/figures, and references; direct translation and methodological assessment from the provided Korean full text are feasible per Inclusion Criterion 10."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1,c3,c4",
+        "page": "PDF Page 1 of 15 (Abstract)",
+        "quote": "Using the Coulter model for 152 local governments across the country, equity was measured for six variables, including average unit price, rates of recovering costs from water price, revenue water ratio, water supply rate, number of employees, and customer satisfaction."
+      },
+      {
+        "criterion": "c2,c3",
+        "page": "PDF Page 1 of 15 (Abstract)",
+        "quote": "In addition, through Tobit analysis, factors influencing equity such as financial independence, local tax burden, and administrative district level were confirmed."
+      },
+      {
+        "criterion": "c2,c3",
+        "page": "PDF Page 1 of 15 (요지)",
+        "quote": "또한 토빗회귀분석을 통해 형평성 영향요인을 비형평성 계수에 미치는 영향을 기준으로 확인한 결과, 재정자립도는 모든 변수에서 정(+)의 영향을, 1인당 지방세 부담액은 부(-)의 영향을, 시/군 여부는 고객만족도를 제외한 5가지 계수에 부(-)의 영향을 끼치는 것으로 나타났다."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 15 (p. 397, Section 3.3)",
+        "quote": "따라서 유수율에 영향을 줄 수 있는 민간 위탁 여부를 통제변수로 선정하였다(Jeong and Bae, 2018)."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Mayor re-election status (re-elected vs. first-term), administrative district type (city si vs. county gun), municipal degree of financial independence (%), and per-capita local tax burden (with operational controls for O&M consignment and local public enterprise special-account status)",
+    "outcome": "Municipality-level Coulter's coefficient of distributional inequity (relative to population share) for six local water supply indicators: average unit price (won/m3), rate of recovering costs from water price (%), revenue water ratio (%), water supply coverage rate (%), number of employees, and customer satisfaction (number of complaints)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "152 basic local governments (cities [si] and counties [gun]) operating local water supply services in South Korea (excluding metropolitan cities and special self-governing provinces), observed in 2010, 2016, and 2021 (N = 152 municipalities per year)",
+    "rationale": "Full 15-page Korean article (with English abstract and tables) matches the record metadata (Ko 2024, DOI 10.3741/JKWRA.2024.57.6.393). The study empirically measures inter-municipal distributional inequity across 152 Korean local governments (2010, 2016, 2021) using Coulter's inequity index on six local water supply variables (including water supply coverage rate and average unit price) and runs Tobit and OLS regressions to identify influencing factors. Under the plain broad wording of Criterion 2, it would be included because it examines political, administrative-tier, fiscal, and operational governance variables. Under the active 2026-10-13 narrow rule-type reading of Criterion 2, however, it is excluded as E03 (Wrong exposure): its focal exposures (mayor re-election, urban si vs. rural gun classification, municipal fiscal self-reliance, and per-capita local tax burden) are macro political, regional, and general fiscal background factors, and its operational controls (technical O&M consignment for leakage reduction and special enterprise fund accounting) do not analyze a rule-type legal, regulatory, administrative, tariff, or ownership mechanism directly governing service access.",
+    "record_id": "R7A9FA4B1B749",
+    "study_design": "Repeated cross-sectional quantitative analysis of municipal administrative data using Coulter's coefficient of inequity, Tobit regression, and OLS multiple regression (2010, 2016, 2021)"
+  }
+}

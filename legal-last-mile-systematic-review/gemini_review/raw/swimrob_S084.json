@@ -1,0 +1,278 @@
+{
+  "study_id": "S084",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "db8abf938639533a0ef848eb87a4aa3353a474bb5a84577973ff4f1a317e4935",
+  "prompt_sha256": "d08db9763679892d5e27b207929cec7b981952f7aa2847cd227dd9b8138336ab",
+  "started_at": "2026-11-20T17:03:01.353043+00:00",
+  "completed_at": "2026-11-20T17:05:15.788501+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low concern: In this cross-sectional household survey (visited across two consecutive weeks for water consumption quantification and full survey administration), 593 of 600 randomly sampled households (98.8%) provided complete data on key water-related variables and only 7 households (1.2%) were excluded (PDF p. 8, Section II.d).",
+      "confounding": "Some concern: Multivariable linear and logistic regressions adjusted for household size, monthly per capita income and religion while appropriately separating post-exposure water service mediators into a path analysis (PDF pp. 8-9, 15). However, because all notified observations come from one neighbourhood (Matangrushi Nagar, closer to a major road and settled earlier) and all non-notified observations come from one adjacent neighbourhood (Indira Nagar, farther from the road near a river and landfill and settled later), neighbourhood-level spatial, topographical and historical factors are collinear with legal status; moreover, 12% of respondents were unsure of household income (PDF pp. 4, 10, 17-18).",
+      "legal_measurement_quality": "Some concern (moderate quality): The paper provides a clear doctrinal account of slum notification under the Maharashtra Slum Areas Act of 1971 (pre-2000 residence cut-off on city or state land) and the 2014 Bombay High Court ruling in Pani Haq Samiti (PDF pp. 4-5, 17). Empirically, however, household legal status was operationalized at the neighbourhood level using barefoot researchers' local ground knowledge of Matangrushi Nagar versus Indira Nagar rather than verifying individual household pre-2000 eligibility documents or official municipal notification gazettes, despite acknowledging that statutory notification applies at the household level and that some households in non-notified areas hold notification eligibility and metered electricity (PDF pp. 4, 7, 10, 17).",
+      "measurement_bias": "Some concern: Primary water consumption (LPCD) was quantified across two consecutive weeks using a standardized container-enumeration protocol with prior construct validity (PDF pp. 7-8), and tap functionality was mapped via GIS using explicit four-tier criteria (PDF p. 7). Nevertheless, weekly container refill counts, water expenditure, collection time and missed work or school relied on respondent self-report and recall, interviewers were community residents aware of neighbourhood status, survey items did not distinguish piped municipal community taps from brackish borewell taps (PDF p. 14, Table 2 note b) and microbiological water quality was not assessed (PDF p. 18).",
+      "outcome_measurement_quality": "Moderate-to-strong quality: Household water quantity (LPCD) was measured over two consecutive weeks during peak summer scarcity (March-May 2016) by physically counting storage drums and jerry cans of standard volume and recording weekly refills, supplemented by WHO's standard <=20 LPCD health-risk threshold and GIS mapping of community taps (PDF pp. 7-8, 11). Limitations include reliance on 7-day recall of refill frequency, conflation of piped taps and brackish borewell taps in the household questionnaire (PDF p. 14, Table 2 note b) and absence of microbiological water quality testing (PDF p. 18).",
+      "reporting_bias": "Unclear / Cannot tell (some concern): No pre-registration or pre-analysis plan is reported. Results are reported transparently across multiple water access, reliability, cost and quantity metrics in both continuous linear and binary logistic specifications (PDF pp. 10-15), though the GSEM path analysis is explicitly framed as exploratory with alternative mediator specifications mentioned in text without full post-estimation fit statistics (PDF pp. 9, 12, 18).",
+      "selection_bias": "Low-to-moderate concern: Within the two selected neighbourhoods, barefoot researchers conducted a complete household census enumeration (1,285 households in Matangrushi Nagar and 918 in Indira Nagar) and used a random number generator to sample 600 households, achieving 98.8% analytical completeness (N = 593; PDF pp. 5, 7-8). However, purposive selection of only two of Mandala's neighbourhoods (representing roughly one quarter of the slum) and an approximately equal split of sampled households across two differently sized neighbourhoods without reported sampling weights introduce modest representativeness concerns (PDF pp. 5, 7, 9)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Inclusion criteria were clearly specified: households located within two fully enumerated Mandala neighbourhoods (Matangrushi Nagar and Indira Nagar) selected via random number generation from the PUKAR household census, with interviews conducted among consenting adults aged >18 years who engaged in household water collection, and exclusion of 7 households lacking key water variables (N = 593 analysed).",
+        "rating": "Yes",
+        "where_found": "Section II.a (PDF p. 5); Section II.c (PDF p. 7); Section II.d (PDF p. 8)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The study provides detailed contextual, legal, infrastructural and demographic descriptions of Mandala in Mumbai's M-East ward, the two study neighbourhoods, modes of formal and informal water delivery, timing of data collection (March-May 2016 summer season) and household characteristics including housing structure, income, household size, religion, region of origin, sanitation and electricity access.",
+        "rating": "Yes",
+        "where_found": "Section I.c (PDF pp. 4-5); Section II.a-c (PDF pp. 5-8); Section III.a and Table 1 (PDF pp. 9-10)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Although notification under the Maharashtra Slum Areas Act of 1971 is legally conferred at the household level based on pre-2000 proof of residence, the study operationalized legal status solely by neighbourhood boundary (Matangrushi Nagar as notified vs Indira Nagar as non-notified) defined through barefoot researchers' local ground knowledge rather than verifying official municipal notification rolls or household pre-2000 documentation. The authors explicitly note discordance between household-level statutory eligibility and resident-perceived neighbourhood status (and 55.2% of non-notified households had electricity meters), leaving potential exposure misclassification at the household level and complete collinearity with neighbourhood location.",
+        "rating": "Unclear",
+        "where_found": "Section I.c (PDF pp. 4-5); Section II.a & II.c (PDF pp. 5, 7); Table 1 (PDF p. 10); Section IV (PDF p. 17)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "Standardized protocols were used to enumerate slum households (PUKAR's published slum enumeration and GIS re-identification system), classify community tap functionality across four explicit operational tiers and define severe water quantity deprivation using the standard World Health Organization threshold of <=20 LPCD.",
+        "rating": "Yes",
+        "where_found": "Section II.c (PDF p. 7); Section II.d (PDF p. 8)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "The authors explicitly identified key household-level confounders from prior empirical and ethnographic literature—socioeconomic status (monthly per capita income), religion (Muslim vs Hindu/Buddhist) and household size—and distinguished confounders from downstream infrastructural and economic mediators. Neighbourhood-level historical settlement timing and distance from the main road were also recognized conceptually in the text.",
+        "rating": "Yes",
+        "where_found": "Section I.c (PDF pp. 4-5); Section II.d (PDF pp. 8-9); Section IV (PDF pp. 16-18)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "The authors stated and implemented multivariable linear and logistic regression models adjusting for household size, monthly per capita income and religion, while excluding intermediate water access/cost variables from the main regression and evaluating them separately via path analysis. Residual confounding remains possible because 12% of respondents reported 'Unsure' income and single-pair neighbourhood comparison prevents adjustment for neighbourhood-level spatial factors.",
+        "rating": "Yes",
+        "where_found": "Section II.d (PDF pp. 8-9); Table 3 (PDF p. 15); Section IV (PDF p. 18)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "The primary outcome (household water use in LPCD) was measured across two consecutive weeks using a standardized physical container-enumeration method previously shown to have strong construct validity in Mumbai slums. Secondary limitations were transparently noted: weekly refill counts and secondary impacts relied on respondent recall, survey questions did not differentiate piped government taps from brackish borewell taps and microbiological water quality was not tested.",
+        "rating": "Yes",
+        "where_found": "Section II.c (PDF pp. 7-8); Table 2 note b (PDF p. 14); Section IV (PDF p. 18)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Non-parametric Wilcoxon tests and chi-squared tests were appropriately used for bivariate comparisons, skewed LPCD data were log-transformed for multivariable linear regression, robustness was checked via multivariable logistic regression (<=20 LPCD) and mediators were examined separately via GSEM path analysis. However, despite applying a sample-size design effect of 1.5 for anticipated clustering, the regression models do not report cluster-robust standard errors or sampling weights across the two neighbourhoods, and GSEM precluded post-estimation model fit tests.",
+        "rating": "Yes",
+        "where_found": "Section II.c-d (PDF pp. 7-9); Section III.a-c and Tables 1-3 (PDF pp. 9-15); Section IV (PDF p. 18)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Purposive selection of one notified and one non-notified neighbourhood",
+        "page": "PDF Page 5 (Section II.a)",
+        "quote": "For this study, we focus on two Mandala neighbourhoods: Matangrushi Nagar, the largest notified neighbourhood, which contained 1,285 households (based on enumeration in 2015), and Indira Nagar, an adjacent non-notified neighbourhood, which contained 918 households."
+      },
+      {
+        "criterion": "Operationalization of neighbourhood boundaries via local ground knowledge",
+        "page": "PDF Page 7 (Section II.c)",
+        "quote": "Given that the barefoot researchers lived in Mandala, we used their ground knowledge to define neighbourhood boundaries and facilitate geographic information system (GIS) mapping of public community taps using mobile phone-based collection of latitude and longitude data."
+      },
+      {
+        "criterion": "Random household sampling from census enumeration",
+        "page": "PDF Page 7 (Section II.c)",
+        "quote": "To facilitate representative sampling of households across both neighbourhoods, a random number generator was used to select 600 household codes from the census."
+      },
+      {
+        "criterion": "Validated physical container enumeration method for outcome measurement",
+        "page": "PDF Page 7 (Section II.c)",
+        "quote": "In each household, barefoot researchers counted the number of containers used to store water, estimated each container’s volume (standard across drums and jerry cans), and asked respondents how many times each container had been filled in the prior week."
+      },
+      {
+        "criterion": "Low missingness / analytical sample completeness",
+        "page": "PDF Page 8 (Section II.d)",
+        "quote": "Of 600 households surveyed, seven did not provide information for key water-related variables and were excluded from analyses."
+      },
+      {
+        "criterion": "Non-differentiation of piped taps versus brackish borewells and cross-sectional causal limitation",
+        "page": "PDF Page 14 (Table 2 footnote b)",
+        "quote": "Taps in the notified neighbourhood generally represented government connections to piped water, whereas taps in the non-notified neighbourhood were often borewells into brackish, poor-quality water. Survey questions did not differentiate between these types of taps."
+      }
+    ],
+    "overall_narrative_summary": "This quantitative analytical cross-sectional household survey (N = 593 analysed of 600 randomly sampled households) and GIS infrastructure mapping study in Mandala, Mumbai, exhibits strong field execution and low missingness (1.2%), using complete census enumeration, two-week repeated measurement of household water consumption via a validated container-enumeration protocol and explicit separation of confounders (income, religion, household size) from infrastructural mediators. Overall methodological concern is rated as 'Some concern' under the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies (7 'Yes', 1 'Unclear'). The principal risk of bias arises in exposure measurement and cluster-level confounding (Q3 = Unclear): although statutory slum notification under Maharashtra law applies at the household level based on pre-2000 proof of residence, legal status was operationalized as a binary neighbourhood-level classification comparing a single notified neighbourhood (Matangrushi Nagar, near a major road and settled earlier) against a single non-notified neighbourhood (Indira Nagar, farther from the road near a river and landfill and settled later) based on community researchers' local boundary knowledge rather than verified household legal documentation. Consequently, household-level legal status may be misclassified for a subset of residents, and unobserved neighbourhood-level geographic or historical determinants cannot be statistically separated from legal status. Secondary concerns include respondent recall for weekly container fills and water expenditures, 12% 'unsure' responses on household income, non-differentiation between piped municipal taps and brackish borewell taps in survey questions, absence of microbiological water quality testing and lack of cluster-adjusted standard errors or GSEM goodness-of-fit diagnostics.",
+    "overall_rating": "Some concern",
+    "paper_read": "full text",
+    "study_design_identified": "Quantitative analytical cross-sectional household survey (N = 593 households randomly sampled from a complete census of one notified and one non-notified neighbourhood) supplemented by GIS mapping of public community water taps, analysed with multivariable linear/logistic regression and exploratory GSEM path analysis.",
+    "study_id": "S084",
+    "where_found_summary": "Abstract (PDF p. 1); Section I.c Legal backdrop (PDF pp. 4-5); Section II.a-d Methods: Study site, Water access, Data collection and Data analysis (PDF pp. 5-9); Section III.a-c Results, Tables 1-3 and Figures 2-3 (PDF pp. 9-16); Section IV Discussion and study limitations (PDF pp. 16-18).",
+    "why_tool_chosen": "The empirical analysis is a quantitative cross-sectional household survey comparing water access indicators and log-transformed water consumption (LPCD) across notified and non-notified slum households at a single time window (March-May 2016) prior to implementation of the Bombay High Court order (PDF pp. 5, 7-9, 18). There is no longitudinal policy/intervention comparator design (ruling out ROBINS-I and JBI Cohort), no randomization (ruling out RoB 2) and no formal qualitative empirical component (ruling out CASP and MMAT), making the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies the exact matching instrument."
+  }
+}

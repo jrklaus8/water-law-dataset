@@ -1,0 +1,277 @@
+{
+  "record_id": "R1CA3290F50A5",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "dbc3c7a3db84c55977aae8071fec5d4354b6c5c4837422510a6f01bba4952079",
+  "prompt_sha256": "bdf706b6404a5c1ca3b0a9a1cd995480b5080772cabdfc50bda0ef7bfdd8085e",
+  "started_at": "2026-11-20T16:27:48.414222+00:00",
+  "completed_at": "2026-11-20T16:29:26.573166+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household access to protected water and protected sanitation at the district level in Indonesia (alongside secondary school net enrollment).",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the plain wording of Criterion 2, local government proliferation (pemekaran, the administrative splitting of subnational districts into smaller local government jurisdictions under decentralization) along with exploratory indicators of local parliamentary political fragmentation and municipal financial audit opinions clearly constitutes an administrative, institutional, and governance factor (so plain_criterion2_decision is include). Under the active 2026-10-13 clarification, however, Criterion 2 requires a rule-type mechanism directly governing household or community service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) rather than macro-governance background or generic subnational administrative reorganization and public-works procurement corruption. Because district territorial splitting and general municipal political/audit governance do not examine a rule-type access mechanism or water/sanitation utility regulatory structure, c2 is no (exclude as E03, wrong exposure).",
+      "c3": "Quantitative longitudinal empirical analysis of a 2001-2010 district panel using static fixed-effects generalized difference-in-differences and dynamic two-step difference-GMM models.",
+      "c4": "Reports an infrastructure service access outcome defined as the district-level average of the percentage of households with access to protected water and the percentage of households with access to protected sanitation (from BPS/SUSENAS).",
+      "c5": "Population/unit of analysis (Indonesian districts/kabupaten-kota collapsed to 2001 boundaries, 336 original districts and up to 2,714 district-year observations over 2001-2010), exposure (new local government operational creation via district splitting), outcome (average district household percentage with protected water and protected sanitation access), and quasi-experimental panel study design are clearly identified.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 8 of 20",
+        "quote": "Infrastructure access is the percentage of households in the district with access to protected water and protected sanitation, where, again, the average is used to define the relevant variable."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 15 of 20",
+        "quote": "Protected water as defined by BPS includes piped water, communal tap water, rainwater, spring water, and covered wells. Protected sanitation facilities include flush toilet, piped sewer system, flush/pour flush pit latrine, and ventilated pit latrine."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 20",
+        "quote": "This study exploits the exogenous timing of district splitting to identify causal effects of new local government creation on education and infrastructure services."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 20",
+        "quote": "The examination in this section of the article uses two indirect and partial indicators of governance: political fragmentation in district DPRDs and financial audit opinions of local governments."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 9 of 20",
+        "quote": "Two empirical models are used to examine the impact of local government splitting on education and infrastructure access. The first specification is a (static) generalized difference-in-differences model."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Local government proliferation (pemekaran): operational creation of new subnational districts (kabupaten/kota) via administrative jurisdiction splitting, with exploratory analysis of district parliamentary political fragmentation and local government financial audit opinions.",
+    "outcome": "Infrastructure service access, defined as the average of the percentage of households in the district with access to protected water and the percentage with access to protected sanitation (alongside junior and senior secondary school net enrollment rates).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Indonesian local government districts (kabupaten/kota, excluding Jakarta) collapsed into 2001 boundaries over 2001-2010: 336 original districts (238 never-split and 98 split districts that formed 253 parent/child districts), comprising up to 2,714 district-year observations, with household access rates drawn from the annual SUSENAS household survey.",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 Criterion 2 scope clarification. Although this empirical panel study measures household access to protected water and sanitation across Indonesian districts (satisfying c1, c3, c4, c5, and c6) and would be included under the broad plain wording of Criterion 2 because subnational jurisdiction splitting (pemekaran) is an administrative/institutional governance factor, its exposure is macro-level territorial-administrative fragmentation and general municipal governance/public-works procurement corruption rather than a rule-type legal, regulatory, or administrative mechanism directly governing household water or sanitation service access.",
+    "record_id": "R1CA3290F50A5",
+    "study_design": "Quasi-experimental longitudinal district panel study (2001-2010) using static fixed-effects generalized difference-in-differences and dynamic two-step difference-GMM estimation exploiting plausibly exogenous timing of district splits."
+  }
+}
