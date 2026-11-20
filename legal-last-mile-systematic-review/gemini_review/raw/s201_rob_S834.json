@@ -1,0 +1,295 @@
+{
+  "study_id": "S834",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d7ddf56813f9497799bdcca2a9c8c418d0b472ba29f31a66e1efc20b01455b18",
+  "input_text_sha256": "225df158ee12dd01fc052e3f3d44dfca1c5628b851984303cab4a7db5ce6e99b",
+  "prompt_sha256": "b39643f8f2d5b860c4b010b47fba0569ea753f4de803ff058967cf822b8ae37a",
+  "started_at": "2026-11-20T02:12:30.928723+00:00",
+  "completed_at": "2026-11-20T02:15:42.442856+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S834\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S834\n- Record ID: R84FCE5A47D09\n- Citation string: Anand N (2015). Leaky States: Water Audits, Ignorance, and the Politics of Infrastructure. Public Culture.\n- DOI: 10.1215/08992363-2841880\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 225df158ee12dd01fc052e3f3d44dfca1c5628b851984303cab4a7db5ce6e99b) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=74022, sha256=225df158ee12dd01fc052e3f3d44dfca1c5628b851984303cab4a7db5ce6e99b]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / largely not applicable to ethnographic design, though one explicit instance of incomplete field follow-up is noted (the author could not follow up with a party worker to verify whether a court-disconnected tenement water line was reconnected; PDF Page 19, p. 323).",
+      "confounding": "Not applicable as statistical confounding (qualitative ethnographic case study making processual and constitutive sociotechnical arguments rather than estimating a quantitative causal treatment effect).",
+      "legal_measurement_quality": "Moderate (contextual qualitative description): clearly describes municipal eligibility rules (the 1995 residency cut-off excluding unrecognized settlers and unequal daily quotas; PDF Page 2, p. 306), a court-ordered water disconnection (PDF Page 18, p. 322), and the IWA Standard Water Balance / World Bank WDIP audit protocol (PDF Pages 10-12, pp. 314-316), but relies on secondary literature and field accounts without citing primary municipal statutes, circulars, or court docket records.",
+      "measurement_bias": "Moderate concern / Can't tell: triangulates two years of field observations, interviews across opposing institutional actors (BMC engineers and World Bank/Castalia consultants), and audit documents, but omits interview protocols, recording/transcription procedures, language/translation details, and analysis of observer reactivity during sensitive encounters; substantively documents severe physical and accounting measurement error in the water-audit numbers themselves.",
+      "outcome_measurement_quality": "Qualitative / critical-ethnographic only: the author explicitly disclaims measuring actual physical water leakage (PDF Page 3, p. 307), instead analyzing competing institutional leakage/NRW figures (BMC's 25% and 13.6% vs. Castalia's 40%, 14%, 21%, and 37%) as contested artifacts alongside direct observation of pipe repairs and informal reconnection negotiations (without verifying final reconnection in the tenement vignette; PDF Page 19, p. 323).",
+      "reporting_bias": "Moderate concern / Can't tell: lacks a formal methods or data-coding section explaining how illustrative vignettes and quotations were selected from nearly two years of field notes or whether disconfirming cases were systematically examined, though rival institutional estimates from both the BMC and Castalia are presented.",
+      "selection_bias": "Moderate-to-high concern / Can't tell: no recruitment strategy, informant selection criteria, sample counts, or site-access procedures are reported for the engineers, consultants, or ward encounters highlighted across nearly two years of fieldwork."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Was there a clear statement of the aims of the research?",
+        "justification": "The author clearly states the study's empirical and theoretical aims: exploring the political and technical controversies of measuring water leakages in Mumbai's World Bank-funded K-East ward water audit to examine how material infrastructures, everyday repair practices, and strategic ignorance shape hydraulic state authority and challenge neoliberal audit cultures.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-6 (pp. 307-310, Introduction and \"The State of Ignorance\")"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Is a qualitative methodology appropriate?",
+        "justification": "Ethnographic fieldwork, qualitative interviews, and documentary critique are well suited to investigating informal bureaucratic discretion, practical repair knowledge (metis), contested audit assumptions, and tacit negotiations around unauthorized water access that standardized quantitative audits fail to capture.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 1-4, 7, 16-19 (pp. 305-308, 311, 320-323)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the research design appropriate to address the aims of the research?",
+        "justification": "Combining nearly two years of fieldwork in Mumbai—shadowing municipal maintenance engineers on street-level repairs and in ward offices, interviewing both municipal engineers and World Bank/Castalia consultants, and analyzing technical audit reports and stakeholder slides—directly matches the aim of contrasting top-down audit protocols with everyday infrastructural governance, despite the absence of a standalone methods section.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-4, 6-8, 16-20 (pp. 307-308, 310-312, 320-324)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Was the recruitment strategy appropriate to the aims of the research?",
+        "justification": "Following humanistic anthropology journal conventions, the article provides no explanation of how key informants (such as Haresh, Patankar, senior BMC engineers, or World Bank consultants) were identified, approached, or selected, how institutional access to ward offices and field crews was negotiated, or how many participants were interviewed overall.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 1, 6-8, 16 (pp. 305, 310-312, 320; unreported across full text)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Was the data collected in a way that addressed the research issue?",
+        "justification": "Data collection triangulated nearly two years of fieldwork, field notes, ride-along observations of pipe-burst repairs, ward office observations, interviews with rival experts (BMC engineers and Castalia consultants), and documentary review of Castalia's 2003/2005/2007 reports, June 2007 stakeholder PowerPoint slide (Figure 1), and local press reports, directly addressing the research problem even though granular interview guides, audio-recording/note-taking procedures, and translation details are not specified.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 1, 3 fn 3, 6-13, 16-20 (pp. 305, 307 fn 3, 310-317, 320-324)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Has the relationship between researcher and participants been adequately considered?",
+        "justification": "Aside from briefly noting surprise at his own prior assumption that water was easily calculable (p. 305) and a passing footnote reference to \"the odd anthropologist\" (p. 307 fn 3), the author does not critically examine his positionality, how he gained access to municipal insiders, or how his physical presence during sensitive encounters—such as accompanying Patankar past illegal taps (p. 320) or observing a ward-office negotiation over circumventing a court-ordered disconnection (pp. 322-323)—may have shaped informants' statements and behavior.",
+        "rating": "No",
+        "where_found": "PDF Pages 1-3, 16-19 (pp. 305-307, 320-323)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Have ethical issues been taken into consideration?",
+        "justification": "Although footnote 1 (p. 306) reflects on using non-stigmatizing terminology (\"settlers\" rather than \"slum dwellers\"), the article makes no mention of institutional ethics/IRB review, informed consent, or whether informant names (\"Haresh\", \"Patankar\") are pseudonyms—a notable omission given potentially identifying biographical details for Patankar (p. 320) alongside descriptions of unreported leaks and tacit facilitation of reconnecting court-cut water lines (pp. 320, 322-323).",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 1, 2 fn 1, 16, 18-19 (pp. 305, 306 fn 1, 320, 322-323; ethics/consent unreported)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was the data analysis sufficiently rigorous?",
+        "justification": "The interpretive synthesis linking ethnographic vignettes and technical water-balance categories is conceptually coherent, and rival leakage figures from both BMC and Castalia are interrogated; however, there is no description of how two years of field notes and interviews were coded or analyzed, how specific vignettes were chosen, or how potentially contradictory cases were handled.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 7-22 (pp. 311-326; analytic/coding procedures unreported)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Is there a clear statement of findings?",
+        "justification": "Findings are explicitly articulated, situated against rival institutional claims and international comparisons (including New York City), qualified with clear caveats (not romanticizing informal leakage for marginalized settlers and not treating leakage as unique to the Global South), and tied directly to the research questions on audit failure and infrastructural governance.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-4, 11-14, 19-22 (pp. 307-308, 315-318, 323-326, including \"Conclusion: The Difficulties of Leakage\")"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research?",
+        "justification": "The study offers high conceptual and policy value for urban water governance and socio-legal infrastructure scholarship by showing why standardized IWA nonrevenue water (NRW) audits and 24-7 privatization/reform templates fail when superimposed onto intermittent supply hydraulics, malfunctioning meters, exclusionary legal residency cut-offs, and negotiated street-level maintenance, though lack of formal sampling and coding transparency limits direct methodological replicability.",
+        "rating": "High conceptual and policy value (narrative assessment; methodological transferability limited by sparse procedural reporting)",
+        "where_found": "PDF Pages 2-6, 10-14, 20-22 (pp. 306-310, 314-318, 324-326)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "CASP Q1 (Clear statement of research aims)",
+        "page": "PDF Page 3 of 27 (p. 307, Introduction)",
+        "quote": "In this article I explore the political and technical controversies of measuring"
+      },
+      {
+        "criterion": "CASP Q3 & Q5 (Two-year ethnographic fieldwork duration)",
+        "page": "PDF Page 7 of 27 (p. 311, The Controversies of Measurement)",
+        "quote": "Through fieldwork conducted over nearly two years, I never learned how"
+      },
+      {
+        "criterion": "CASP Q4 & Q5 (Qualitative interviews and document review)",
+        "page": "PDF Page 6 of 27 (p. 310, The Controversies of Measurement)",
+        "quote": "the senior water engineers I have interviewed, it is apparent that there is already"
+      },
+      {
+        "criterion": "CASP Q3 & Q5 (Participant observation / shadowing field engineer)",
+        "page": "PDF Page 16 of 27 (p. 320, Fixing Leaks)",
+        "quote": "To understand the everyday work of engineers, I would sometimes accompany"
+      },
+      {
+        "criterion": "CASP Q6 & Q7 (Sensitive observation of court-order circumvention; reflexivity and ethics)",
+        "page": "PDF Page 19 of 27 (p. 323, Fixing Leaks)",
+        "quote": "I said I have to cut the connection. After I cut it, you can do what you want."
+      },
+      {
+        "criterion": "Cross-tool attrition / outcome verification (Incomplete follow-up on reconnection)",
+        "page": "PDF Page 19 of 27 (p. 323, Fixing Leaks)",
+        "quote": "I was unable to follow up with this party worker to learn whether he ever made"
+      }
+    ],
+    "overall_narrative_summary": "Anand (2015) is a primary qualitative ethnographic study drawing on nearly two years of fieldwork in Mumbai—combining interviews with municipal water engineers and World Bank/Castalia consultants, participant observation shadowing a ward engineer during leak repairs and office negotiations, and documentary critique of the K-East ward Water Distribution Improvement Project (WDIP) audit. Assessed with the CASP Qualitative Checklist, the study exhibits clear research aims (Q1: Yes), an appropriate qualitative ethnographic methodology and triangulated design (Q2: Yes; Q3: Yes), multi-source data collection addressing the research problem (Q5: Yes), and well-substantiated, nuanced findings of substantial policy and theoretical value (Q9: Yes; Q10). However, consistent with humanistic essay conventions in Public Culture, it lacks a formal methods section, leaving informant recruitment and sampling (Q4: Can't tell), ethical safeguards including consent and pseudonym disclosure despite documenting sensitive/illicit bureaucratic discretion (Q7: Can't tell), and qualitative coding/vignette selection rigor (Q8: Can't tell) unreported, while researcher reflexivity regarding observer effects during sensitive encounters is not adequately addressed (Q6: No). Overall methodological concern is Moderate (3 Can't tell and 1 No item across Q1-Q9).",
+    "overall_rating": "Moderate concern (4 Can't tell / No items: Q4, Q7, Q8 Can't tell; Q6 No)",
+    "paper_read": "full text",
+    "study_design_identified": "Primary qualitative ethnographic case study (nearly two years of ethnographic fieldwork combining participant observation/shadowing of municipal water engineers, qualitative interviews with municipal engineers and World Bank/Castalia consultants, and qualitative documentary analysis of water-audit reports and presentations in Mumbai)",
+    "study_id": "S834",
+    "where_found_summary": "Full text examined across PDF Pages 1-27 (Public Culture 27:2, pp. 305-330): research aims and caveats on PDF Pages 3-6 (pp. 307-310); fieldwork duration, interviews, and documentary audit critique on PDF Pages 6-14 (pp. 310-318, including Figure 1 on p. 313 and Table 1 on p. 315); participant observation and ward-office vignettes on PDF Pages 16-20 (pp. 320-324); synthesis of findings on PDF Pages 20-22 (pp. 324-326). No standalone Methods or Ethics section is present.",
+    "why_tool_chosen": "The study is a primary qualitative ethnographic investigation based on interviews, participant observation (\"fieldwork conducted over nearly two years\"), and qualitative critique of institutional audit documents. Although it discusses secondary leakage percentages produced by the Mumbai Municipal Corporation and Castalia Strategic Advisors, the author explicitly states that he does not conduct primary quantitative measurement of water leakage (PDF Page 3, p. 307), ruling out MMAT, JBI analytical cross-sectional, and ROBINS-I instruments. Per RISK_OF_BIAS.md §1, the CASP Qualitative Checklist is the exact matching tool for primary ethnographic and interview-based qualitative studies."
+  }
+}

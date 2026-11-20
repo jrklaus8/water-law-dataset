@@ -1,0 +1,267 @@
+{
+  "study_id": "S366",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "7b760ca094592ee1b3a0da70067b763e40d45615b149cad9b2336975cf6f93e4",
+  "input_text_sha256": "b5056efb58e0d5bf46f76a6dc26e07bae0ef8f20b21b9afd76b77572c705542d",
+  "prompt_sha256": "a33e2adb7018a9c118a862de7c0668502a65b19efd7b0d9533735ba32a4003bc",
+  "started_at": "2026-11-20T02:01:01.857180+00:00",
+  "completed_at": "2026-11-20T02:02:55.832920+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S366\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S366\n- Record ID: R3BFAF175DBF1\n- Citation string: Quattrochi JP, Coville A, Mvukiyehe E, Dohou CJ, Esu F, Cohen B, Bokasola YL, Croke K (2021). Effects of a community-driven water, sanitation and hygiene intervention on water and sanitation infrastructure, access, behaviour, and governance: a cluster-randomised controlled trial in rural Democratic Republic of Congo. BMJ Global Health 6:e005030.\n- DOI: 10.1136/bmjgh-2021-005030\n- Retrieval status: retrieved_cached_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: b5056efb58e0d5bf46f76a6dc26e07bae0ef8f20b21b9afd76b77572c705542d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=59743, sha256=b5056efb58e0d5bf46f76a6dc26e07bae0ef8f20b21b9afd76b77572c705542d]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "RoB 2 (cluster-randomized trials variant)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low risk — All 121 randomized clusters (50 treatment clusters containing 145 villages and 71 control clusters containing 183 villages) were retained at endline, with complete primary outcome data reported for all 1,312 sampled households (4 per village), although household refusal or replacement rates during the endline random walk are not reported.",
+      "confounding": "Low risk — Computer-generated cluster randomization stratified by province and number of villages per cluster achieved strong balance across observable time-invariant household and respondent characteristics (Table 1, all p >= 0.153), and intention-to-treat regressions controlled for randomization strata.",
+      "legal_measurement_quality": "Adequate — Assignment to the DRC government's national Villages et Ecoles Assainis (VEA) administrative programme is cleanly defined at the cluster level, and the paper clearly documents the 7 official 'Healthy Village' certification norms and 9-step Health Zone/community institutional protocol (signed Health Zone agreement, elected WASH committee, Chief Medical Officer certification), though local water governance outcomes are measured via village-leader self-report rather than administrative audits.",
+      "measurement_bias": "High risk — All primary and secondary outcomes were self-reported by unblinded household respondents and village leaders following a participatory behaviour-change and 'Healthy Village' certification intervention; additionally, one questionnaire module covered programme participation (potentially unmasking initially blinded enumerators), and no independent physical spot-checks or water-quality assays were reported.",
+      "outcome_measurement_quality": "Weak to moderate — Primary water and sanitation infrastructure outcomes use standard WHO/UNICEF Joint Monitoring Programme (JMP) definitions and multi-item secondary constructs use standardized summary indices, but every outcome (facility type, collection time/volume, hygiene/sanitation behaviours, water governance, and 2-week child morbidity) relies exclusively on single-wave endline self-report at a median of 5 months post-intervention without structured direct observation or objective testing.",
+      "reporting_bias": "Some concerns — The trial was registered on the AEA RCT Registry (AEARCTR-0004648) and reports all four preregistered primary outcomes and five preregistered subgroup analyses, but the authors explicitly disclose a post-hoc split of the secondary health behaviour and knowledge domain into three separate outcomes after inspecting the data, alongside minor shifts in how village water-point counts were operationalized as an index in Table 3.",
+      "selection_bias": "Some concerns — While all 121 village clusters were randomized simultaneously using Stata V.16 prior to intervention delivery, individual households (4 per village) were identified and recruited post-randomization at endline via a random-walk protocol without a baseline household roster or reported household non-response/replacement tracking."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1a",
+        "domain_name": "Randomization process",
+        "justification": "Clusters of proximate rural villages (121 clusters across four provinces) were randomized simultaneously using statistical software (Stata V.16) into 50 treatment clusters (145 villages) and 71 control clusters (183 villages), stratified by province and number of villages per cluster. Seven villages were randomly dropped to meet UNICEF operational targets while maintaining balance. Table 1 confirms close balance across time-invariant household housing-quality and respondent demographic variables (all cluster-adjusted t-test p >= 0.153).",
+        "rating": "Low",
+        "where_found": "PDF Page 3 (Methods: Study design and participants; Randomisation; Figure 1) and PDF Page 6 (Results: Enrolment, baseline balance and attrition; Table 1)"
+      },
+      {
+        "domain_id": "D1b",
+        "domain_name": "Timing of identification or recruitment of participants within clusters",
+        "justification": "Individual household participants were not enrolled from a pre-randomization baseline roster; instead, four households per village (head woman) and village/WASH leaders were sampled cross-sectionally at endline (median 151 days post-construction) via a random walk (every nth household from the village centre, n randomly chosen from 1 to 20). Although enumerators arrived blinded to treatment status and Table 1 shows balance on time-invariant characteristics, recruiting unblinded residents post-intervention without reporting household refusal/replacement rates or potential differential availability introduces some concerns for post-randomization participant selection.",
+        "rating": "Some concerns",
+        "where_found": "PDF Page 3 (Methods: Randomisation), PDF Page 4 (Methods: Data collection), and PDF Page 6 (Results: Table 1)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Deviations from intended interventions",
+        "justification": "Although participants and implementers could not be blinded due to the participatory community-mobilisation nature of VEA, nearby villages (within 2.5 km, or 1 km in denser South Kivu) were grouped into clusters prior to randomization specifically to mitigate spillover effects, control clusters received no VEA intervention, and primary and secondary analyses appropriately estimated intention-to-treat (ITT) effects with standard errors clustered at the randomization unit.",
+        "rating": "Low",
+        "where_found": "PDF Page 3 (Methods: Study design and participants; Randomisation) and PDF Page 5 (Methods: Statistical analysis)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Missing outcome data",
+        "justification": "All 121 randomized clusters (50 treatment clusters / 145 villages and 71 control clusters / 183 villages; 328 villages total) were successfully surveyed at endline, yielding complete data on all four primary outcomes for all 1,312 interviewed households (732 control, 580 intervention) and complete village-level index observations for all 328 villages. Multi-item secondary indices used non-missing item averages ('greedy indexing'), with minimal missingness except where structurally restricted (e.g., households with school-aged or under-5 children).",
+        "rating": "Low",
+        "where_found": "PDF Page 3 (Figure 1), PDF Page 5 (Methods: Statistical analysis), and PDF Pages 6-7 (Results: Enrolment, baseline balance and attrition; Tables 2-3)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Measurement of the outcome",
+        "justification": "All primary and secondary outcomes were strictly self-reported by unblinded participants (female household heads and village/WASH committee leaders) with no reported physical spot-check verification of latrines, water pots, soap availability, or microbiological water quality. Because VEA explicitly trains communities on target hygiene/sanitation norms and rewards meeting threshold benchmarks with formal 'Healthy Village' certification, self-reported behavioural, governance, satisfaction, and primary facility-use measures are vulnerable to social desirability and intervention-induced reporting bias; moreover, one survey module covered programme participation, risking enumerator unmasking.",
+        "rating": "High",
+        "where_found": "PDF Page 1 (Abstract), PDF Page 3 (Methods: Randomisation), PDF Pages 4-5 (Methods: Intervention; Data collection; Outcomes), and PDF Page 9 (Discussion)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Selection of the reported result",
+        "justification": "The trial was registered on the AEA RCT Registry (AEARCTR-0004648), and all four preregistered primary outcomes and five preregistered subgroup analyses are reported. However, the timing of registry submission relative to October-December 2019 endline collection is not stated in the text, the authors transparently note a data-driven modification ('After seeing the data, health behaviour and knowledge was split into three outcomes'), and the preregistered count of functional improved water points (p. 5) is presented as a standardized 'Water quality and access' index in Table 3 (p. 7).",
+        "rating": "Some concerns",
+        "where_found": "PDF Page 2 (Methods: Study design and participants), PDF Pages 4-5 (Methods: Outcomes; Statistical analysis), and PDF Page 7 (Table 3)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D1a Randomization process (computerized cluster allocation)",
+        "page": "PDF Page 3 (Methods: Randomisation)",
+        "quote": "We used statistical software (Stata V.16) to randomise"
+      },
+      {
+        "criterion": "D1a Randomization process (stratification variables)",
+        "page": "PDF Page 3 (Methods: Randomisation)",
+        "quote": "was stratified to ensure treatment and control balance"
+      },
+      {
+        "criterion": "D1b & D4 Blinding of enumerators and programme participation module",
+        "page": "PDF Page 3 (Methods: Randomisation)",
+        "quote": "in the questionnaire covered programme participation."
+      },
+      {
+        "criterion": "D1b Post-randomization endline household sampling within villages",
+        "page": "PDF Page 4 (Methods: Data collection)",
+        "quote": "selected in each village by a team of four interviewers."
+      },
+      {
+        "criterion": "D4 Self-reported measurement of all primary and secondary outcomes",
+        "page": "PDF Page 5 (Methods: Outcomes)",
+        "quote": "All primary and secondary outcomes were self-reported."
+      },
+      {
+        "criterion": "D5 Post-hoc splitting of secondary outcomes",
+        "page": "PDF Page 5 (Methods: Outcomes)",
+        "quote": "Thus, we report nine secondary outcomes."
+      }
+    ],
+    "overall_narrative_summary": "This large-scale cluster-randomized controlled trial (S366; Quattrochi et al., 2021) evaluated the Democratic Republic of Congo's national Healthy Villages and Schools (Villages et Ecoles Assainis, VEA) WASH and local governance programme across 121 clusters (328 analyzed rural villages; 1,312 households) in four conflict-affected provinces. Appraised with the RoB 2 cluster-randomized trials variant, the trial exhibits strong internal validity in cluster allocation, retention, and estimation: clusters were grouped spatially to limit spillovers, randomized simultaneously via stratified computer allocation with good balance on time-invariant household traits (D1a: Low), analyzed by intention-to-treat with cluster-robust standard errors (D2: Low), and achieved 100% cluster retention across all 121 clusters and 328 villages (D3: Low). However, overall risk of bias is High under the RoB 2 algorithm primarily due to Domain 4 (High risk): every primary and secondary outcome—including improved water and sanitation use, water collection time/volume, hygiene/sanitation behaviours, water satisfaction, and village water governance—was self-reported at endline by unblinded participants following an intensive community behaviour-change and 'Healthy Village' certification campaign, without independent observational spot-checks or water-quality testing, and with a programme-participation survey module that could unmask enumerators. Additional Some concerns arise in Domain 1b (endline random-walk household recruitment without a baseline roster or reported refusal rates) and Domain 5 (disclosed post-hoc splitting of the secondary health-behaviour index after viewing the data).",
+    "overall_rating": "High",
+    "paper_read": "full text",
+    "study_design_identified": "Cluster-randomized controlled trial (121 village clusters comprising 328 analyzed rural villages randomized into 50 treatment clusters and 71 control clusters across four provinces in the Democratic Republic of Congo)",
+    "study_id": "S366",
+    "where_found_summary": "Study design, spatial clustering, and stratified randomization: PDF Page 3 (Methods: Study design and participants; Randomisation; Figure 1). Intervention norms and 9-step protocol: PDF Page 4 (Methods: Intervention). Endline household and village-leader random-walk data collection: PDF Page 4 (Methods: Data collection). Preregistered primary/secondary outcomes, self-report status, post-hoc secondary split, and ITT specification: PDF Pages 4-5 (Methods: Outcomes; Sample size; Statistical analysis). Baseline balance, sample retention, and effect estimates: PDF Pages 6-9 (Results; Tables 1-5). Study limitations (self-report, lack of school randomization, 5-month follow-up): PDF Pages 9-10 (Discussion).",
+    "why_tool_chosen": "The Methods section establishes that the study is a prospective cluster-randomized controlled trial in which multi-village geographic clusters (121 clusters containing 328 analyzed villages) were randomly allocated to receive the community-level VEA WASH and governance intervention (50 clusters) or serve as controls (71 clusters), directly matching the RoB 2 cluster-randomized trials variant."
+  }
+}

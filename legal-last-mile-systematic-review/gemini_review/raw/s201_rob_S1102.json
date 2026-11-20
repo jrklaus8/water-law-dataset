@@ -1,0 +1,274 @@
+{
+  "study_id": "S1102",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a23232d270b07be470e4938aae72fe1ac847780f6fa2cf54d342c87ec3912f97",
+  "input_text_sha256": "6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb",
+  "prompt_sha256": "ed7639252337a565161f7d33c9135021eaac5304e4b3adae2a3a20358751a730",
+  "started_at": "2026-11-20T01:49:45.311210+00:00",
+  "completed_at": "2026-11-20T01:51:36.678933+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1102\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1102\n- Record ID: R76BD2052C008\n- Citation string: Prokopy LS (2009). Determinants and Benefits of Household Level Participation in Rural Drinking Water Projects in India. Journal of Development Studies 45(4):471-497.\n- DOI: (none)\n- Retrieval status: retrieved_cached_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=72586, sha256=6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Moderate concern: Although cross-sectional rather than longitudinal, complete-case deletion reduces the sample from 1,523 surveyed households (1,508 valid for meeting attendance; 1,408 for capital cost contribution) to N = 1,158 in the full-sample bivariate probit and first-stage propensity score models (~24% loss), and exact matched sample sizes after common-support trimming are not reported in Tables 4 and 5.",
+      "confounding": "Serious risk of bias: Households self-selected into meeting attendance and capital cost contributions. Propensity score matching (nearest 5 neighbours with replacement) adjusts only for observed covariates, leaving unobservable motivation, political ties, and intra-village proximity to water points unaddressed; moreover, pre-project water covariates were recalled retrospectively, post-matching covariate balance statistics are not reported, and matches are not restricted within the same village.",
+      "legal_measurement_quality": "Adequate contextual description with coarse household-level operationalization: Project-level institutional mandates (Village Water and Sanitation Committees, ~10% village capital cost-sharing rules, Gram Panchayat/Gram Sabha structure in Karnataka vs NGO-led SARAR and Community Action Plans in Uttar Pradesh) are clearly distinguished, while household participation under those rules is operationalized as binary self-reported planning meeting attendance and binary cash/labour/material contribution (dichotomized because 27% of households could not recall cash amounts).",
+      "measurement_bias": "Serious risk of bias: Both household participation exposures and project benefit outcomes were collected retrospectively from the same unblinded household survey respondents 4-6+ months into operation, creating high vulnerability to recall error (evidenced by 27% not recalling cash contribution amounts), justification bias, and common-method variance.",
+      "outcome_measurement_quality": "Weak (subjective/recall-based): Both outcomes—a PCA water improvements index combining seven household-reported perceived/recalled items (changes in distance, collection time, reliability, and perceived quality, plus perceived pressure drop, adequacy, and access) and a binary overall satisfaction indicator—rely exclusively on self-report without independent microbiological/chemical water testing, metered flow/pressure, or GPS distance measurement.",
+      "reporting_bias": "Moderate risk of bias: No pre-analysis plan or protocol exists, the author explicitly states that several model variations (including interaction models) were attempted with only the most meaningful presented, two subregions are omitted from disaggregated PSM tables due to small samples, and PSM robustness checks (alternative matching algorithms, calipers, Rosenbaum bounds, or balance tables) are absent.",
+      "selection_bias": "Moderate risk of bias: The 45 study villages were randomly sampled from all project systems operating for at least 4-6 months and households were systematically sampled (every nth household from a village social map, or village census where <40 households) with sampling probability weights applied in participation regressions, but household non-response rates and the exact number of observations dropped during low-end propensity score trimming are not reported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "Households self-selected into attending planning meetings and contributing toward capital costs. Although propensity score matching (psmatch2, 5 nearest neighbours with replacement) conditions on household demographics/assets, village size/inequality, and recalled pre-scheme water conditions, the author explicitly notes that PSM cannot account for unobservable differences between participants and non-participants (such as civic motivation, political connections, or micro-spatial proximity to planned infrastructure). In addition, 'before' water characteristics were measured retrospectively after project completion, no post-matching covariate balance diagnostics are reported, and matching across villages within regions allows village-level technology and NGO implementation differences to confound household-level comparisons.",
+        "rating": "Serious",
+        "where_found": "PDF Pages 8-10 (Section V, Table 1) and PDF Pages 15-18 (Section VII, Figures 2-3, Table 4)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "The 45 villages were randomly selected from a complete list of project schemes in the operation and maintenance phase for at least 4-6 months, and enumerators systematically interviewed every nth household using a village social map (or conducted a census in villages with fewer than 40 households), surveying 1,523 households. However, household refusal/non-response rates are not reported, retrospective cross-sectional sampling excludes any schemes not yet reaching 4-6 months of O&M, and in the PSM analysis households at the low end of the propensity score distributions were trimmed without reporting the number or characteristics of excluded observations.",
+        "rating": "Moderate",
+        "where_found": "PDF Pages 6-7 (Section IV. Data Collection) and PDF Pages 16-17 (Section VII, Figures 2-3)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "The two participation 'treatments'—whether anyone in the household attended at least one planning meeting and whether the household contributed cash, labour, or materials toward capital costs—were ascertained retrospectively by household self-report 4-6+ months after O&M began, during the same interview as outcome assessment. Notably, 27% of households reported they 'did not remember' or 'never knew' the cash amount contributed, compelling binary coding, and recall of planning-stage participation could be influenced by subsequent satisfaction with the completed water system.",
+        "rating": "Moderate",
+        "where_found": "PDF Page 10 (Section VI. Modelling Participation, Table 2)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "In this observational evaluation of actual household participation under World Bank-assisted participatory water supply rules, programme implementation varied substantially across villages and states (e.g., Gram Panchayat-linked committees in Karnataka versus NGO capacity-building and SARAR Community Action Plans in Uttar Pradesh; in some larger Karnataka villages, committees raised the 10% capital contribution from a few wealthy households or by selling village property rather than broad household contributions). Because PSM matches were performed across pooled and regional samples rather than strictly within villages, co-interventions and village-level implementation deviations may differ across matched treatment and control households.",
+        "rating": "Moderate",
+        "where_found": "PDF Pages 5-6 (Section III. Context) and PDF Pages 15-18 (Sections VI-VII)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "Out of 1,523 surveyed households, valid responses were 1,508 for meeting attendance and 1,408 for capital cost contribution (Table 2), and listwise deletion across explanatory covariates reduced the full-sample bivariate probit model (and the corresponding logit propensity-score estimation sample using the same covariates) to N = 1,158—a loss of 365 households (24.0%). Analytical sample sizes after common-support trimming in the PSM outcome tables (Tables 4 and 5) are not reported, and no missing-data diagnostics or imputations are conducted.",
+        "rating": "Moderate",
+        "where_found": "PDF Page 6 (Section IV), PDF Page 10 (Table 2), PDF Page 14 (Table 3), and PDF Pages 16-19 (Section VII, Tables 4-5)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "Both outcome measures—the PCA water improvements index (constructed from seven household-reported items capturing recalled changes in distance, collection time, reliability, and perceived quality, plus perceived pressure decrease, water adequacy, and access) and binary overall project satisfaction—were self-reported by unblinded respondents who simultaneously reported their own participation. Subjective satisfaction and retrospectively recalled water changes are highly vulnerable to recall error, post-hoc justification of time/money contributed, and same-source measurement bias, with no independent physical or microbiological verification.",
+        "rating": "Serious",
+        "where_found": "PDF Page 16 (Section VII. Modelling Outcomes)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-analysis plan or pre-registered protocol is reported. In Section V, the author explicitly states that several variations of models (including interaction models) were attempted and 'only the most meaningful models are presented here.' In Section VII, only a single PSM specification (nearest 5 neighbours with replacement) is reported without sensitivity checks to alternative matching estimators, bandwidths/calipers, or unobserved confounding bounds, and two subregions (UP Bundelkhand and Coastal Karnataka) are omitted from disaggregated PSM tables due to small sample sizes.",
+        "rating": "Moderate",
+        "where_found": "PDF Page 8 (Section V), PDF Page 15 (Section VI), and PDF Pages 16-19 (Section VII, Tables 4-5)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Sampling design and sample size (D2 Selection)",
+        "page": "PDF Page 6 of 26, Section IV (Data Collection)",
+        "quote": "For this research, a total of 1523 households were surveyed from 45 villages across"
+      },
+      {
+        "criterion": "Selective model reporting (D7 Reporting)",
+        "page": "PDF Page 8 of 26, Section V (Hypotheses)",
+        "quote": "While several variations of models were attempted, including models with interaction"
+      },
+      {
+        "criterion": "Retrospective exposure recall and missingness on cash contributions (D3 Intervention classification / D5 Missing data)",
+        "page": "PDF Page 10 of 26, Section VI (Modelling Participation)",
+        "quote": "households was asked, but a large number of households (27%) reported that they"
+      },
+      {
+        "criterion": "Unobserved confounding in PSM (D1 Confounding)",
+        "page": "PDF Page 16 of 26, Section VII (Modelling Outcomes)",
+        "quote": "between participants and non-participants, which is a source of bias and a"
+      },
+      {
+        "criterion": "Self-reported recalled outcome index construction (D6 Outcome measurement)",
+        "page": "PDF Page 16 of 26, Section VII (Modelling Outcomes)",
+        "quote": "household level: the change in the distance to the nearest water source; the change in"
+      },
+      {
+        "criterion": "Common-support trimming in PSM without reported trimmed N (D2 Selection / D5 Missing data)",
+        "page": "PDF Page 16 of 26, Section VII (Modelling Outcomes)",
+        "quote": "excluded from subsequent analysis (that is, they are not available for matching)."
+      }
+    ],
+    "overall_narrative_summary": "Prokopy (2009) analyzes data from a cross-sectional survey of 1,523 households across 45 randomly sampled villages in two World Bank-assisted rural water supply and environmental sanitation projects in Karnataka and Uttar Pradesh, India, pairing bivariate probit models of participation determinants with a propensity score matching (PSM) evaluation of the household-level impacts of participation (planning meeting attendance and capital cost contribution) on perceived water improvements and satisfaction. Appraised under ROBINS-I (matching the explicit quasi-experimental PSM treatment-versus-control impact evaluation in Section VII), the study is at Serious overall risk of bias. Primary methodological strengths include random sampling of operational project villages, systematic nth-household sampling within villages, explicit separation of active (meeting attendance) and passive (capital cost contribution) participation, and common-support inspection. However, Serious risk of bias arises in two domains: (1) confounding (D1), because PSM cannot address unobserved self-selection factors (civic motivation, local political ties, spatial proximity to planned water sources), relies on retrospectively recalled pre-project water characteristics as matching covariates, reports no post-matching covariate balance diagnostics, and does not match strictly within villages; and (2) outcome measurement (D6), because both the 7-item water improvements PCA index and overall project satisfaction are subjectively self-reported and retrospectively recalled in the same unblinded interview as participation. Moderate concerns also apply to selection/trimming reporting (D2), retrospective self-reported intervention classification where 27% forgot cash amounts (D3), cross-village variation in co-interventions/implementation (D4), ~24% listwise covariate missingness (N = 1,158 vs 1,523) and unreported matched N's (D5), and selective presentation of 'the most meaningful models' without PSM sensitivity analyses (D7).",
+    "overall_rating": "Serious",
+    "paper_read": "full text",
+    "study_design_identified": "Cross-sectional household survey (1,523 households in 45 randomly selected project villages) with bivariate probit models of participation determinants and a quasi-experimental propensity score matching (PSM) non-randomized evaluation of household participation impacts",
+    "study_id": "S1102",
+    "where_found_summary": " Institutional and regional project context: Section III (PDF Pages 5-6). Sampling and survey design: Section IV (PDF Pages 6-7). Hypotheses, PCA wealth index, sampling weights, and covariate definitions: Section V and Table 1 (PDF Pages 7-10). Bivariate probit participation models and missingness on cash contribution amounts: Section VI and Tables 2-3 (PDF Pages 10-15). Propensity score matching (PSM) causal evaluation, outcome definitions, common-support distributions, and regional/wealth treatment-vs-control estimates: Section VII, Figures 2-3, and Tables 4-5 (PDF Pages 15-19). Discussion of findings and limitations: Section VIII (PDF Pages 19-22).",
+    "why_tool_chosen": "Although the underlying data come from a single post-implementation household survey, the paper's causal evaluation of project benefits (Section VII, 'Modelling Outcomes', Tables 4-5) explicitly implements Propensity Score Matching (psmatch2, 5 nearest neighbours with replacement) comparing participating ('Treatment') versus non-participating ('Control') households to estimate the impact of household participation under participatory rural water project rules. Under RISK_OF_BIAS.md §1, non-randomized intervention/policy evaluations using PSM with an explicit comparator arm are appraised with ROBINS-I."
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "study_id": "S367",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "f457a96bcaec2d45b073cd1be49d3cf1f4c9483276c8c4cceb1d7dfc70d9fc19",
+  "input_text_sha256": "2c8d83030d58db1b4580f7046c4c93b2e12d2e9896521d85b58c8316091d3069",
+  "prompt_sha256": "815d377bcfb339ee9e923e8ceb7e2fe1a145511a02277cde0dabf06c6e030023",
+  "started_at": "2026-11-20T01:49:45.289124+00:00",
+  "completed_at": "2026-11-20T01:51:47.996810+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S367\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S367\n- Record ID: RDE592D874BF6\n- Citation string: Atem NV, Lee J-Y, Akom EB, Chia RW, Bello FA (2026). Barriers to Effective Water Resource Management in Foumbot, Cameroon: Infrastructure, Policy, and Community Engagement. The Journal of Engineering Geology 36(1):15-30.\n- DOI: 10.9720/kseg.2026.1.015\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 2c8d83030d58db1b4580f7046c4c93b2e12d2e9896521d85b58c8316091d3069) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=46766, sha256=2c8d83030d58db1b4580f7046c4c93b2e12d2e9896521d85b58c8316091d3069]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell (nonresponse unreported; cross-sectional design): Data collection occurred in a single cross-sectional fieldwork window (October 2-18, 2024) with no longitudinal follow-up, so panel attrition does not apply; however, the authors do not report how many households or individuals were approached, refused participation, or had missing item responses to achieve the 100 completed questionnaires.",
+      "confounding": "High concern: The study presents univariate survey proportions, descriptive utility totals, and a one-way Chi-square goodness-of-fit test with no stratification or multivariable adjustment for socioeconomic status, neighborhood infrastructure proximity, household size, or agricultural land-use intensity.",
+      "legal_measurement_quality": "Weak / High concern: Governance and policy barriers are discussed only in broad narrative terms (e.g., asserting that central government decrees lack follow-up and that Cameroon lacks comprehensive water legislation) without citing specific water statutes, decree numbers/dates, regulatory provisions, or municipal bylaws (aside from noting the November 27, 1959 presidential decree establishing Foumbot municipality and reporting Camwater tariff/connection fee schedules).",
+      "measurement_bias": "High concern: Researchers explicitly declared a non-neutral stance during community interactions (raising interviewer and social-desirability bias), relied on self-reported survey perceptions without primary microbiological or chemical water testing, and collapsed open and closed wells into a single 'Wells' category in Table 1 despite invoking the WHO/UNICEF JMP service ladder.",
+      "outcome_measurement_quality": "Weak / High concern: Primary water-access and utility-performance outcomes rely on descriptive self-reports (n = 100) and an invalid Chi-square test comparing 5 source categories against an arbitrary 20% uniform expectation; water quality degradation and waterborne disease outcomes (diarrhea, typhoid, cholera) were not directly measured in study participants or water samples but inferred from visual spot-checks and external regional studies.",
+      "reporting_bias": "High concern: No pre-registration or analysis protocol is reported; several questionnaire items explicitly described in the Methods section (perceived drinking-water safety, household water treatment practices, and family history of waterborne illness; PDF p. 5) are omitted from quantitative tabulation in the Results, and qualitative thematic sections present zero verbatim participant quotations.",
+      "selection_bias": "High concern: Five neighborhoods (Company, Njimbot 1, Nkouondja, Koudounbain, and Mbandjou) were purposively chosen and 20 participants per area (n = 100) were reportedly 'chosen at random', but no sampling frame, randomization procedure, eligibility criteria, respondent demographics, population-proportional weighting, or recruitment rules for focus groups and key informants are reported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The Abstract and Introduction clearly state the study objective to evaluate water supply and management in Foumbot municipality and investigate how barriers across infrastructure, policy, and community engagement affect water resource management.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 1-3 (Abstract, p. 15; Introduction, pp. 16-17)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Primary data from 100 questionnaires, focus group discussions, key informant interviews, and direct spot-check observations across five neighborhoods, supplemented by secondary Camwater utility statistics (2015-2021), address local water sources, infrastructure constraints, and stakeholder challenges.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-6, 9-10 (Methods, pp. 18-20; Results, pp. 23-24)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Qualitative focus group discussions, stakeholder interviews, and direct field observations are appropriate for exploring community struggles, governance barriers, maintenance practices, and stakeholder perceptions of water management.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-5 (Methods, pp. 18-19)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Following a September 2024 pre-field survey, data were collected between October 2 and October 18, 2024 via focus group discussions across five populated and peripheral neighborhoods, interviews with residents, water vendors, and community heads, and non-participant observations of water points, although interview guides and total interview/group counts are lightly specified.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-5 (Methods, pp. 18-19)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Although the Methods state that transcripts were examined, codes created, and recurrent themes identified via thematic analysis, the Results present no coding framework, no audit trail, and no distinction between empirical participant statements and secondary literature commentary.",
+        "rating": "Can't tell",
+        "where_found": "PDF pp. 5, 10-12 (Methods, p. 19; Results, pp. 24-26)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Zero verbatim quotations from interviews or focus groups and no structured observational logs are provided to substantiate qualitative claims; moreover, the research team explicitly emphasized a non-neutral stance during interactions, and several subsections (e.g., Climate Change citing hurricanes and saltwater intrusion for an inland highland municipality at 1,100-1,300 m elevation) read as generic literature assertions rather than Foumbot fieldwork evidence.",
+        "rating": "No",
+        "where_found": "PDF pp. 4-5, 11-12 (Methods, pp. 18-19; Results, pp. 25-26)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "While general topics align across collection and conclusions, the absence of empirical participant quotes, blending of generic external literature into results subsections, and lack of transparent linkage between thematic coding and specific local claims prevent verifying analytical coherence.",
+        "rating": "Can't tell",
+        "where_found": "PDF pp. 5, 10-14 (Methods, p. 19; Results and Conclusion, pp. 24-28)"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Five neighborhoods were purposively chosen to cover populated and peripheral areas and 20 participants per neighborhood (n = 100) were reportedly 'chosen at random', but the paper provides no sampling frame, randomization method, household vs. individual selection unit, or eligibility criteria.",
+        "rating": "Can't tell",
+        "where_found": "PDF pp. 4-5 (Methods, pp. 18-19)"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "No demographic profile of the 100 survey respondents is reported, fixed quotas of 20 respondents per neighborhood are unweighted for neighborhood population differences in a municipality of roughly 76,486-132,875 residents (noting conflicting 2025 population figures on PDF p. 3), and the random selection mechanism is undocumented.",
+        "rating": "Can't tell",
+        "where_found": "PDF pp. 3-5, 9 (Study Area and Methods, pp. 17-19; Table 1, p. 23)"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative descriptive 4.3: Are the measurements appropriate?",
+        "justification": "The questionnaire was piloted on 10 external respondents and invokes the WHO/UNICEF JMP drinking water service ladder, but no laboratory water quality testing was performed, Table 1 collapses open and closed wells into a single 'Wells (24)' category (preventing valid separation of JMP basic vs. unimproved sources), and exact wording/scoring of the Camwater rating and health items are omitted.",
+        "rating": "Can't tell",
+        "where_found": "PDF pp. 5, 8-10 (Methods, p. 19; Results, pp. 22-24)"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "Table 1 reports a total of 100 responses matching the 100 administered questionnaires, but the paper never states how many individuals or households were initially approached, how many declined or were unavailable, or how nonrespondents were handled.",
+        "rating": "Can't tell",
+        "where_found": "PDF pp. 4-5, 9 (Methods, pp. 18-19; Table 1, p. 23)"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "The statistical analysis contains both formulaic and substantive errors: PDF p. 6 states contingency-table formulas for expected counts and degrees of freedom '(Rows-1)(Columns-1)' while running a one-way 5-category goodness-of-fit test (df = 4), and testing whether 5 water source types have equal 20% shares does not validly test water abundance or access equity (e.g., 100% piped tap coverage would reject their null hypothesis of 'abundant distribution'). Additionally, collected survey items on water treatment and family illness are never tabulated.",
+        "rating": "No",
+        "where_found": "PDF pp. 5-6, 12-13 (Chi-Square Analysis, p. 20; Chi-Square Analysis Results, pp. 26-27)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "The authors explicitly justify combining structured questionnaires to quantify WRM practices and water source reliance with focus group discussions, interviews, and direct observations to gain deeper qualitative understanding and field verification of community struggles.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-5 (Methods, pp. 18-19)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Quantitative survey distributions (e.g., 36% stream reliance, 8% tap use, 52% poor rating of Camwater) and secondary Camwater tariff/production records are narratively integrated with field observations and qualitative governance/infrastructure explanations (power cuts, broken pipes, high connection fees) and synthesized in the conceptual model (Fig. 2b).",
+        "rating": "Yes",
+        "where_found": "PDF pp. 7-13 (Fig. 2b, pp. 21-22; Results, pp. 23-27)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Integrated conclusions over-interpret an invalid uniform-expectation Chi-square test as statistical proof of water scarcity and waterborne disease risk while blending unsubstantiated qualitative narratives and external literature assertions without primary water-quality or epidemiological measurements.",
+        "rating": "No",
+        "where_found": "PDF pp. 1, 9-14 (Abstract, p. 15; Results and Conclusion, pp. 23-28)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "Potential tensions across data sources—such as rising Camwater subscriber and production totals in Table 2 (2015-2021) alongside minimal (8%) survey tap reliance, neighborhood-level heterogeneity across populated vs. peripheral areas, and conflicting 2025 municipal population figures (76,486 vs. 132,875 on PDF p. 3)—are not examined or reconciled.",
+        "rating": "No",
+        "where_found": "PDF pp. 3, 9-13 (Study Area, p. 17; Results, pp. 23-27)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Substantial methodological shortcomings in both the qualitative component (zero participant quotes, opaque thematic derivation, explicit non-neutral researcher stance during interviews) and the quantitative descriptive component (undocumented random sampling frame/nonresponse, collapsed well categories, flawed Chi-square test formulation and interpretation) mean neither strand meets rigorous methodological standards.",
+        "rating": "No",
+        "where_found": "PDF pp. 4-6, 9-13 (Methods, pp. 18-20; Results, pp. 23-27)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Quantitative sampling across 5 neighborhoods (MMAT 4.1 / selection_bias)",
+        "page": "PDF Page 4 (Methods, p. 18)",
+        "quote": "Twenty participants were chosen at random from each of the sampled areas to take part in the conversations."
+      },
+      {
+        "criterion": "Questionnaire sample size and format (MMAT S2, 4.3)",
+        "page": "PDF Page 5 (Methods, p. 19)",
+        "quote": "Questionnaires (100) were administered and structured into an open and closed-ended format."
+      },
+      {
+        "criterion": "Researcher non-neutrality during fieldwork interactions (MMAT 1.4 / measurement_bias)",
+        "page": "PDF Page 5 (Methods, p. 19)",
+        "quote": "the research team emphasized their non-neutral stance on the water management problem"
+      },
+      {
+        "criterion": "Qualitative thematic analysis procedure (MMAT 1.3)",
+        "page": "PDF Page 5 (Data analysis, p. 19)",
+        "quote": "transcripts were examined, codes were created, and recurrent themes were identified."
+      },
+      {
+        "criterion": "Absence of primary water quality testing (MMAT 4.3 / outcome_measurement_quality)",
+        "page": "PDF Page 8 (Water Sources in Foumbot, p. 22)",
+        "quote": "Even when water quality testing is not conducted, this classification offers a foundation for"
+      },
+      {
+        "criterion": "Legal/policy characterization without specific statutory citations (legal_measurement_quality)",
+        "page": "PDF Page 12 (Government Policies, p. 26)",
+        "quote": "and decrees have been the main authoritative tool up to this point."
+      }
+    ],
+    "overall_narrative_summary": "Atem et al. (2026) report a primary convergent mixed-methods field study of water supply and resource management barriers in Foumbot municipality, Cameroon, conducted in October 2024 using structured questionnaires (n = 100 across five neighborhoods), focus group discussions, key informant interviews, direct observations, and secondary Camwater utility statistics (2015-2021). Appraised under the Mixed Methods Appraisal Tool (MMAT, Quantitative Descriptive module), the study presents high methodological concern. While the research objectives and mixed-methods rationale are clear (S1, S2, 1.1, 1.2, 5.1, 5.2 = Yes), both empirical strands exhibit major limitations. In the qualitative strand, despite claiming thematic coding of transcripts, the authors report zero verbatim participant quotations, blend generic external literature (including hurricane and saltwater intrusion claims for an inland highland town) with field findings, and explicitly emphasized a 'non-neutral stance' during community interactions (1.4 = No; 1.3, 1.5 = Can't tell). In the quantitative descriptive strand, the sampling frame, randomization mechanism, respondent demographics, and nonresponse rate are unreported (4.1, 4.2, 4.4 = Can't tell); open and closed wells are collapsed in Table 1 despite invoking the WHO/UNICEF JMP service ladder and several questionnaire items (perceived safety, water treatment, family illness) are omitted from quantitative tables (4.3 = Can't tell); and the Chi-square goodness-of-fit analysis misstates contingency-table formulas while testing an invalid null hypothesis of equal 20% usage across five source categories as a proxy for water resource abundance (4.5 = No). Consequently, integrated interpretations and quality adherence across traditions are weak (5.3, 5.4, 5.5 = No).",
+    "overall_rating": "High methodological concern (MMAT narrative judgment; overall quality cannot exceed the weakest component, with substantial limitations in both qualitative substantiation and quantitative sampling and statistical analysis)",
+    "paper_read": "full text",
+    "study_design_identified": "Primary convergent mixed-methods cross-sectional field study combining a structured participant survey (n = 100 across 5 neighborhoods) and secondary municipal utility records with focus group discussions, key informant interviews, and direct spot-check observations",
+    "study_id": "S367",
+    "where_found_summary": "Full text inspected across PDF pp. 1-16 (journal pp. 15-30): Abstract and Introduction (PDF pp. 1-3), Study Area (PDF pp. 3-4), Methods / Data Collection / Data Analysis / Chi-Square Analysis (PDF pp. 4-6), Results and Discussion including Table 1, Table 2, Figs. 2-5, and thematic barriers subsections (PDF pp. 6-13), and Conclusion and Recommendations (PDF pp. 13-14).",
+    "why_tool_chosen": "The Methods section (PDF pp. 4-6, pp. 18-20) describes a primary mixed-methods empirical design collecting and analyzing both quantitative survey data (100 structured questionnaires across five neighborhoods, descriptive percentages, secondary Camwater administrative series, and a Chi-square goodness-of-fit test in R) and qualitative field data (focus group discussions, interviews with residents, water vendors, and community heads, direct spot-check observations, and thematic coding of transcripts), with no randomized or quasi-experimental policy comparator. Under RISK_OF_BIAS.md §1, MMAT (using Screening S1-S2, Qualitative 1.1-1.5, Quantitative Descriptive 4.1-4.5, and Mixed Methods 5.1-5.5) is the exact matching appraisal instrument."
+  }
+}

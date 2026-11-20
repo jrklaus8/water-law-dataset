@@ -1,0 +1,316 @@
+{
+  "study_id": "S1152",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "70225cc4f90d2115da83d72ae218373a85de615324f4cdc1613c3208c51deb79",
+  "input_text_sha256": "27d9ad2f1ed70671df0fdcf7f343284fd9f9b5c10c73bfb41923b4d5280b2105",
+  "prompt_sha256": "1662f04f8fb21d8eab102f441036979abe58abeff193aa9edf2116d430ba2b4c",
+  "started_at": "2026-11-20T01:56:55.910710+00:00",
+  "completed_at": "2026-11-20T01:59:56.278814+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1152\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1152\n- Record ID: RD5A2982CF41B\n- Citation string: Marra S (2008). Bearing The Cost: An Examination Of The Gendered Impacts Of Water Policy Reform In Malawi. Rural Society 18(3):161-173.\n- DOI: 10.5172/rsj.351.18.3.161\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 27d9ad2f1ed70671df0fdcf7f343284fd9f9b5c10c73bfb41923b4d5280b2105) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=55702, sha256=27d9ad2f1ed70671df0fdcf7f343284fd9f9b5c10c73bfb41923b4d5280b2105]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / No information: Desk-based secondary legal/policy case study with no primary participant sample or longitudinal follow-up.",
+      "confounding": "High concern: Pre-existing poverty, HIV/AIDS burden, seasonal drought, water pollution, infrastructure breakdown, and patriarchal household cash control are described narratively without any analytical strategy to separate their effects from those of water policy reform.",
+      "legal_measurement_quality": "Weak: Although the 1998 Integrated Trade and Industry Policy and 2000 National Gender Policy PDFs were inspected directly for gender language, the core water reform instruments (1995 Water Works Act, 1999 Water Resources Management Policy and Strategy, and Article 20 of the Malawian Constitution) are analyzed secondhand via secondary literature and absent from the reference list.",
+      "measurement_bias": "High concern: Water access, fetching burden, and committee participation rely on unverified secondary statistics (with national safe-water estimates ranging from 47% to 72%), NGO/government web pages, and journalistic anecdotes without standardized primary measurement.",
+      "outcome_measurement_quality": "Weak: Gendered water insecurity outcomes (affordability, walking time, water-borne and vector-borne illness, girls' school withdrawal, and governance power) are not empirically measured post-reform and are explicitly framed largely as intended or predicted impacts.",
+      "reporting_bias": "High concern: No research protocol, systematic search strategy, or formal policy coding scheme is reported; illustrative secondary sources and anecdotes are selectively synthesized to support the paper's theoretical critique.",
+      "selection_bias": "High concern: No Methods section, document universe, or literature selection criteria are reported; the Malawi case and supporting academic, donor, NGO, and news sources were selected purposively."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Core legal and policy instruments examined in the paper—the 1995 Water Works Act, the 1999 Water Resources Policy and Strategy, and Article 20 of the Malawian Constitution—are not cited as primary texts in the reference list and are instead described and quoted secondhand via Mulwafu et al. (2002), Ferguson and Mulwafu (2005), and the 2000 National Gender Policy. Only the 1998 Integrated Trade and Industry Policy and the 2000 National Gender Policy appear to have been consulted directly as online PDFs, without pinpoint statutory section citations.",
+        "rating": "weak",
+        "where_found": "PDF pp. 8-9, 11-14 (pp. 167-168, 170-173; 'The Malawian water law reforms', 'The incorporation of women in policy', 'Gender and other water related government policy', and 'References')"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "The study clearly situates its analysis in the Republic of Malawi across the mid-1990s to 2008 reform period (covering the 1995, 1998, 1999, and 2000 national policy instruments) and notes sub-national distinctions including Lake Malawi, Lilongwe, and land inheritance differences between the matrilineal south and patrilineal north, though local statutory-customary governance variations across districts are not mapped in detail.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 5, 7-12 (pp. 164, 166-171; 'Case study: Malawi', 'Water in Malawi', 'Gender in Malawi', and 'The Malawian water law reforms')"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "The policy reform exposure is conceptually specified around the 1995 Water Works Act (fee-funded Community Water Boards, water tariffs, and legal penalties), the 1999 Water Resources Policy and Strategy (cost recovery, productive water permits, handover of smallholder irrigation schemes to farmers' associations, and 17 catchment authorities), and gender-mainstreaming omissions across national policies, though tariff schedules, permit thresholds, and geographic rollout status remain imprecise.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 8-9, 11-12 (pp. 167-168, 170-171; 'The Malawian water law reforms', 'The incorporation of women in policy', and 'Gender and other water related government policy')"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Although the author distinguishes conceptually between physical 'water scarcity' and broader 'water insecurity' (encompassing contamination, restricted access, and prohibitive pricing), specific gendered outcomes—affordability, fetching time, health, girls' schooling, irrigation livelihoods, and CWB decision-making power—are defined broadly and treated largely as predicted or prospective consequences rather than operationalized empirical indicators.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2, 7-11 (pp. 161, 166-170; 'The water crisis and the developing world', 'The impacts of water insecurity on women in Malawi', and 'The impacts of the reforms upon women')"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The article contains no Methods section, defines no sampling frame for either policy documents or secondary empirical reports, and provides no primary empirical sample of households, communities, or water boards.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2-14 (pp. 161-173; entire text, absence of Methods section; 'References')"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Selection of the Malawian case and of supporting academic studies, donor gender audits, NGO web profiles, and journalistic pieces (e.g., Tenthani 2002; Semu-Banda 2007) is purposive and undocumented, creating substantial risk of selective citation aligned with the author's theoretical thesis.",
+        "rating": "weak",
+        "where_found": "PDF pp. 5, 7-14 (pp. 164, 166-173; 'Case study: Malawi' through 'References')"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Quantitative figures (such as safe-water access estimates ranging from 72% to 47%, 50% non-functional water points, and up to four daily collection trips) and qualitative quotations are drawn from secondary papers, websites, and news articles without reporting underlying survey designs, definitions, or measurement procedures.",
+        "rating": "weak",
+        "where_found": "PDF pp. 7-12 (pp. 166-171; 'Water in Malawi', 'Women and water management in Malawi', 'The impacts of the reforms upon women', and 'Gender and other water related government policy')"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The paper has no empirical counterfactual, pre-post comparison, or causal identification strategy. The author explicitly notes that because implementation began recently, much of the discussion addresses intended implementation and predicted impacts extrapolated from theory, an early-1980s UN project anecdote, and reforms in other countries.",
+        "rating": "weak",
+        "where_found": "PDF pp. 9-11 (pp. 168-170; 'The impacts of the reforms upon women')"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "While background drivers of gendered water hardship—widespread poverty, HIV/AIDS, seasonal drought, chemical runoff and faecal contamination, non-functional infrastructure, and intra-household male financial control—are acknowledged descriptively, the analysis cannot disentangle water law reform impacts from secular poverty and infrastructure decay.",
+        "rating": "weak",
+        "where_found": "PDF pp. 5, 7-10 (pp. 164, 166-169; 'Case study: Malawi', 'Water in Malawi', 'Gender in Malawi', and 'The impacts of the reforms upon women')"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Drawing on University of Malawi and BASIS water research (Mulwafu et al. 2002; Ferguson & Mulwafu 2005; Derman et al. 2002), the paper provides informative institutional detail on Ministry of Water Development budget and capacity constraints, female membership versus male leadership on Community Water Boards, smallholder irrigation handovers to farmers' associations, household gender divisions of labour and cash control, and matrilineal versus patrilineal land inheritance.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 7-12 (pp. 166-171; 'Gender in Malawi', 'The Malawian water law reforms', 'The impacts of the reforms upon women', and 'The incorporation of women in policy')"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Replication is severely constrained by the absence of a documented search or analytical method, secondhand reliance on unreferenced water statutes/policies, and dependence on undated or ephemeral NGO, news, and government URLs accessed between 2006 and 2008.",
+        "rating": "weak",
+        "where_found": "PDF pp. 13-14 (pp. 172-173; 'References')"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "The author advances textual/discourse findings—noting zero mentions of gender or women in the 1998 Integrated Trade and Industry Policy and classifying water-related objectives in the 2000 National Gender Policy around four verbs ('lobby, promote, empower or encourage')—without reporting a formal codebook, document corpus, or systematic coding procedure.",
+        "rating": "weak",
+        "where_found": "PDF pp. 11-12 (pp. 170-171; 'The incorporation of women in policy' and 'Gender and other water related government policy')"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Aside from an author note identifying her New Zealand academic degrees and municipal planning position and an explicit theoretical commitment to WID/WAD/GAD and feminist environmentalism, there is no reflexive discussion of researcher positionality or the methodological limits of conducting a remote desk-based study of rural Malawi.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2-4 (pp. 161-163; author biographical note and 'Feminist theory')"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Policy reform exposure and gender-blindness thesis",
+        "page": "PDF Page 2 (p. 161, Abstract)",
+        "quote": "Since the mid-1990s, Malawi has undertaken a process of water policy reform."
+      },
+      {
+        "criterion": "Statutory exposure definition (1995 Water Works Act and Community Water Boards)",
+        "page": "PDF Page 8 (p. 167, The Malawian water law reforms)",
+        "quote": "The first significant changes in Malawian water law, in terms of implementation, took place in the form of the 1995 Water Works Act, which resulted in the establishment of Community Water Boards, (CWBs). These were to be self-funded by water use fees."
+      },
+      {
+        "criterion": "Secondhand reliance on Mulwafu et al. (2002) for policy implementation gaps",
+        "page": "PDF Page 9 (p. 168, The Malawian water law reforms)",
+        "quote": "Many reforms are to be implemented, but there is little said in policy about how those reforms will take place, who is responsible for them or even how they will be funded (Mulwafu et al., 2002)."
+      },
+      {
+        "criterion": "Lack of empirical post-reform causal identification (prospective/predicted impacts)",
+        "page": "PDF Page 9 (p. 168, The impacts of the reforms upon women)",
+        "quote": "Given the short period of time since these policies have begun to be implemented, much of the following discussion focuses on the intended implementation of the reforms and their predicted impacts. It also draws on evidence from other countries that have implemented similar reforms."
+      },
+      {
+        "criterion": "Omission of gender in the 1999 Water Resources Management Policy and Strategy",
+        "page": "PDF Page 11 (p. 170, The incorporation of women in policy)",
+        "quote": "The foundational Water Resources Management Policy and Strategy does not specifically address gender at all. As is common of such water reforms, there is much discourse about increasing stakeholder participation, but no specific efforts are addressed at making sure that women are amongst those involved."
+      },
+      {
+        "criterion": "Discourse critique of the 2000 National Gender Policy without measurable indicators",
+        "page": "PDF Page 12 (p. 171, Gender and other water related government policy)",
+        "quote": "In reviewing the discourse of the policy, there are no concrete indicators for improving gender equity in this area. Each gender specific water resource objective begins with one of four effectively immeasurable verbs; lobby, promote, empower or encourage (Republic of Malawi, 2000)."
+      }
+    ],
+    "overall_narrative_summary": "Marra (2008) is a desk-based single-country legal/policy institutional case study and feminist theoretical synthesis examining how Malawi's post-1995 water policy reforms (principally the 1995 Water Works Act and 1999 Water Resources Policy and Strategy, alongside the 1998 Integrated Trade and Industry Policy and 2000 National Gender Policy) affect rural and impoverished women. Assessed under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment, with no numeric score), the study exhibits weak empirical and doctrinal rigor overall (3 'adequate' domains and 10 'weak' domains). Its chief strengths lie in situating the reforms within Malawi's institutional and socio-legal context—highlighting Ministry capacity constraints, male leadership on female-staffed Community Water Boards, household cash-control asymmetries, and matrilineal versus patrilineal regional differences—and directly critiquing vague action verbs in the 2000 National Gender Policy. However, the paper contains no Methods section, no systematic search or document-selection protocol, and no primary empirical data. Crucially, the core 1995 Water Works Act, 1999 Water Resources Policy and Strategy, and Malawian Constitution are analyzed secondhand via secondary literature rather than primary statutory texts, empirical claims rely on secondary reports and journalistic/NGO web sources, and gendered impacts of the water reforms are explicitly framed largely as predicted consequences rather than measured post-reform outcomes.",
+    "overall_rating": "Weak evidentiary rigor / High risk of bias (structured non-validated judgment under the Legal Institutional Evidence Appraisal Framework; no numeric composite score)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-country legal/policy institutional case study and secondary narrative policy synthesis (desk-based policy discourse critique and secondary empirical synthesis with no Methods section, no primary fieldwork, and no systematic search)",
+    "study_id": "S1152",
+    "where_found_summary": "Full text reviewed across PDF pp. 1-14 (pp. 161-173; note PDF p. 6 / journal p. 165 contains no body text as prose flows continuously from the bottom of p. 164 to the top of p. 166). Conceptual definitions and feminist theoretical framework appear on PDF pp. 2-5 (pp. 161-164); the Malawi institutional and water context on PDF pp. 5, 7-8 (pp. 164, 166-167); water law reform provisions and prospective gendered impacts on PDF pp. 8-11 (pp. 167-170); constitutional and policy discourse review on PDF pp. 11-12 (pp. 170-171); recommendations and references on PDF pp. 12-14 (pp. 171-173). No standalone Methods section is present.",
+    "why_tool_chosen": "The study presents a jurisdiction-specific institutional and policy-legal case study ('Case study: Malawi') evaluating Malawian water law reforms and gender policy texts using secondary empirical reports and direct policy-discourse critique of selected government policy documents. It lacks primary qualitative data collection (ruling out CASP), lacks any quantitative analytical sample or quasi-experimental comparator (ruling out ROBINS-I, JBI Cross-Sectional, JBI Cohort, and MMAT), and lacks any systematic search or screening methodology (ruling out AMSTAR 2). The Legal Institutional Evidence Appraisal Framework is therefore the matching instrument for appraising its legal source accuracy, institutional contextualization, coding/sampling transparency, and causal support."
+  }
+}

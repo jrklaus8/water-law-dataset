@@ -1,0 +1,281 @@
+{
+  "study_id": "S363",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "b15d2d8bc94ffccc126df386e5cabb285b18a04c7e7040fa19297eb0c1fb1920",
+  "input_text_sha256": "2c010c119158c309889f95278f727676fea435ec7521afca6dad523840275dc6",
+  "prompt_sha256": "3cdbb05ea0a4934743f6db0bebc1557d8a0b37231f0d19c5e7dc3d3f34835df8",
+  "started_at": "2026-11-20T01:56:55.919012+00:00",
+  "completed_at": "2026-11-20T01:59:35.222020+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S363\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S363\n- Record ID: R2FB71740FDFD\n- Citation string: Sofiyah ES, Aji ADS, Suhardono S, Ridhosari B, Nastiti AD, Suryawan IWK (2025). Community Participation in Urban Sanitation Programs at Koja, Jakarta, Indonesia. Jurnal Kesehatan Masyarakat (KEMAS) 20(3):619-632.\n- DOI: 10.15294/kemas.v20i3.1990\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 2c010c119158c309889f95278f727676fea435ec7521afca6dad523840275dc6) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=51738, sha256=2c010c119158c309889f95278f727676fea435ec7521afca6dad523840275dc6]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell (not applicable to single-wave cross-sectional survey, though survey non-response rates and item-level missingness are completely unreported; additionally, Methods claims an evaluation of educational campaigns for which zero baseline or follow-up data appear)",
+      "confounding": "High risk / High concern (Table 4 adjusts simultaneously for gender, age, education, occupation, and income, but collapses multi-category socio-demographic variables into arbitrary binary cutoffs—causing residual confounding—and omits key urban sanitation confounders such as housing tenure/landlord-tenant status, household size, spatial/kelurahan clustering within Koja, and baseline municipal sewerage access)",
+      "legal_measurement_quality": "Weak / High concern (Sanitation Governance in Factor 1 is measured solely via unvalidated citizen perception items—Regular Monitoring, Aesthetic Considerations, and Drainage Socialization, Cronbach's alpha = 0.631—without identifying or coding any specific Indonesian or DKI Jakarta sanitation statutes, local regulations, enforcement mechanisms, or administrative records)",
+      "measurement_bias": "High risk / High concern (all predictors and outcomes rely on self-reported survey items with undisclosed wording and response scales; all three EFA factors exhibit sub-threshold internal consistency with Cronbach's alpha of 0.631, 0.671, and 0.541; and health-risk cluster labels are derived from subjective attitude scores rather than objective sanitary or epidemiological criteria)",
+      "outcome_measurement_quality": "Weak / High concern (the binary outcome in Table 4 measures hypothetical self-reported willingness to participate in community-based sanitation programs rather than verified behavioral participation or physical sanitation conditions, with survey item wording, binarization threshold, and raw outcome prevalence omitted)",
+      "reporting_bias": "High risk / High concern (severe discrepancy between Methods and Results: Abstract and Methods claim semi-structured stakeholder interviews, field visual inspections, and evaluation of implemented educational campaigns, yet zero qualitative data, observational results, or campaign evaluations are reported anywhere; Tables 1–3 also contain internal numerical/formatting errors, including identical Chi-square = 4.704 and p = 0.319 duplicated across Education and Occupancy in Table 3 and misinterpreting cumulative variance of 55.867% as Factor 3's individual variance)",
+      "selection_bias": "High risk / High concern (claims a 'representative sample of Koja's population' across residents, business owners, and community organization members, but provides no sampling frame, eligibility criteria, random vs. convenience recruitment procedure, study dates, response rate, or even total sample size in prose—N=396 is onlyrecoverable by summing cell counts in Table 3)"
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Inclusion and exclusion criteria are not defined. The Method section states only that surveys were distributed to 'a representative sample of Koja’s population, including a diverse cross-section of residents, business owners, and community organization members,' without specifying age/residency eligibility, household vs. individual selection rules, sampling frame, or target sample size (the analytic sample of N=396 is never stated in text and can only be inferred by summing Table 3 counts).",
+        "rating": "No",
+        "where_found": "[PDF Page 4 of 14], Method (p. 622); [PDF Page 8 of 14], Table 3 (p. 626)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The geographic setting (Koja, North Jakarta) is mapped in Figure 1 and briefly characterized, and Table 3 reports categorical distributions of gender, age, education, formal/non-formal occupation ('Occupancy'), and income across the two clusters (total N=396). However, recruitment dates, sampling methodology, response rates, sub-district (kelurahan) coverage, currency units for income, and the breakdown among residents, business owners, and community organization members are omitted.",
+        "rating": "Unclear",
+        "where_found": "[PDF Pages 3-4 of 14], Method & Figure 1 (pp. 621-622); [PDF Pages 8-9 of 14], Table 3 (pp. 626-627)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "The three sanitation exposure constructs (Factor 1: Sanitation Governance; Factor 2: Operational Sanitation Practices; Factor 3: Sanitation Infrastructure and Collaboration) were derived via Exploratory Factor Analysis of 10 survey items whose exact wording, Likert scales, and prior validation are unreported. Internal consistency falls below the conventional 0.70 threshold for all three factors (Cronbach's alpha = 0.631, 0.671, and 0.541, respectively; Factor 3, the sole significant sanitation predictor in logistic regression, has poor reliability at 0.541), and Aesthetic Considerations has conflicting factor loadings between text (0.736) and Table 1 (0.760).",
+        "rating": "No",
+        "where_found": "[PDF Pages 4-6 of 14], Method & Result and Discussion, Table 1 (pp. 622-624)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "Respondents are segmented into 'Adequate health standards citizen' (n=296) and 'Public health risk areas' (n=100) in Tables 2 and 3, but despite labels implying objective environmental or epidemiological conditions, classification was generated entirely by clustering respondents' subjective attitude factor scores (with clustering method and thresholds unspecified) rather than objective sanitary inspections, water/wastewater testing, or municipal health-risk designations.",
+        "rating": "No",
+        "where_found": "[PDF Pages 7-8 of 14], Result and Discussion, Tables 2-3 (pp. 625-626)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "The authors explicitly identify key socio-demographic and socioeconomic variables—gender, age, education, occupation, and income—as potential determinants alongside sanitation governance, practices, and infrastructure (Hypotheses H4-H8 and Table 4), although critical structural confounders in urban sanitation (such as housing tenure/homeownership, household size, and neighbourhood infrastructure availability) are not discussed.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 2 of 14], Introduction (p. 620); [PDF Pages 4-5 of 14], Method, H4-H8 (pp. 622-623); [PDF Page 9 of 14], Table 4 (p. 627)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "Multivariable binary logistic regression (Table 4) simultaneously enters the three sanitation factors alongside gender, age, education, occupation, and income. However, the Method section frames these covariates as parallel direct hypotheses rather than an explicit confounding-control strategy, arbitrarily collapses multi-category variables from Table 3 into coarse binary indicators (age <29, bachelor's degree+, income >5 million) without justification, and does not account for neighbourhood clustering or tenure status.",
+        "rating": "Unclear",
+        "where_found": "[PDF Pages 4-5 of 14], Method (pp. 622-623); [PDF Pages 9-10 of 14], Result and Discussion, Table 4 (pp. 627-628)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "The primary outcome—Citizen Willingness to Participate in Community-Based Sanitation Programs (Table 4)—is a self-reported binary indicator of hypothetical willingness rather than observed behavioral participation. Exact survey item wording, response options, dichotomization criteria, and raw prevalence of willingness in the sample are completely omitted.",
+        "rating": "No",
+        "where_found": "[PDF Pages 4-5 of 14], Method (pp. 622-623); [PDF Pages 9-10 of 14], Result and Discussion, Table 4 (pp. 627-628)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Multiple analytical and reporting flaws undermine statistical validity: (1) EFA extraction/rotation methods, KMO/Bartlett diagnostics, and total N are omitted, and the authors misinterpret cumulative variance (55.867%) in Table 1 as Factor 3's individual explained variance despite Factor 3 having the lowest eigenvalue (1.047 vs. 3.375 for Factor 1); (2) Table 3 duplicates the exact same Pearson Chi-square (4.704) and p-value (0.319) for both 5-category Education and 2-category Occupancy (a mathematical impossibility for the reported 2x2 Occupancy counts: 94/202 vs. 25/75, where true Chi-square is ~1.62); (3) Table 2 shifts columns on Factor 3, omitting Mean Square; and (4) Table 4 omits odds ratio confidence intervals, collinearity/goodness-of-fit diagnostics, and raw outcome base rates while overinterpreting 85.60% classification accuracy alongside a low Nagelkerke R-square (0.129).",
+        "rating": "No",
+        "where_found": "[PDF Pages 5-11 of 14], Result and Discussion, Tables 1-4 (pp. 623-629)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Q1 / Selection bias — unsubstantiated claim of representative sample without sampling frame, eligibility criteria, or stated N",
+        "page": "[PDF Page 4 of 14], Method (p. 622)",
+        "quote": "a representative sample of Koja’s population,"
+      },
+      {
+        "criterion": "Tool choice / Reporting bias — qualitative stakeholder interviews claimed in Methods but completely absent from Results",
+        "page": "[PDF Page 4 of 14], Method (p. 622)",
+        "quote": "structured interviews with key stakeholders"
+      },
+      {
+        "criterion": "Reporting bias — educational campaign implementation and evaluation claimed in Methods with zero data reported in Results",
+        "page": "[PDF Page 5 of 14], Method (p. 623)",
+        "quote": "effectiveness of these educational campaigns"
+      },
+      {
+        "criterion": "Q8 / Statistical analysis — misinterpretation of cumulative EFA variance (55.867%) as Factor 3's individual variance",
+        "page": "[PDF Page 6 of 14], Result and Discussion (p. 624)",
+        "quote": "influential, with the highest explained variance"
+      },
+      {
+        "criterion": "Q3 & Q8 / Exposure reliability — poor internal consistency (Cronbach's alpha = 0.541) and lowest eigenvalue (1.047) for Factor 3",
+        "page": "[PDF Page 6 of 14], Result and Discussion (p. 624)",
+        "quote": "0.541 and an Eigenvalue of 1.047."
+      },
+      {
+        "criterion": "Q7 / Outcome measurement — cross-sectional logistic regression on self-reported willingness to participate without item wording or base rate",
+        "page": "[PDF Page 9 of 14], Result and Discussion, Table 4 (p. 627)",
+        "quote": "TABLE 4. Logistic Model for Citizen Willingness to Participate in Community-Based Sanitation"
+      }
+    ],
+    "overall_narrative_summary": "High methodological concern (JBI Analytical Cross-Sectional Checklist: 1 Yes, 2 Unclear, 5 No). Empirically, this study reports a single-wave quantitative cross-sectional survey of N=396 respondents in Koja, Jakarta, analyzed via Exploratory Factor Analysis (Table 1), attitude cluster segmentation (Tables 2-3), and binary logistic regression of self-reported willingness to participate in sanitation programs (Table 4). First, there is a major reporting discrepancy between the Methods and Results: although the Abstract and Methods claim semi-structured stakeholder interviews, field visual inspections, and implementation/evaluation of educational campaigns, zero qualitative findings, observational records, or campaign evaluations appear anywhere in the paper. Second, sampling transparency is poor—no inclusion criteria, sampling frame, recruitment dates, response rate, or prose sample size are reported despite claiming a 'representative sample.' Third, measurement validity and reliability are weak: questionnaire wording and binarization cutoffs are undisclosed, all three EFA factors have Cronbach's alpha below 0.70 (0.541 for Factor 3, the primary significant predictor), 'Sanitation Governance' measures only generic perceptions rather than concrete legal/institutional rules, and 'Public health risk areas' clusters are derived from attitude scores rather than objective sanitary criteria. Fourth, statistical reporting contains demonstrable errors, including misinterpreting cumulative EFA variance (55.867%) as Factor 3's individual variance and duplicating identical Chi-square statistics (4.704, p=0.319) across Education and Occupancy in Table 3.",
+    "overall_rating": "High concern",
+    "paper_read": "full text",
+    "study_design_identified": "Analytical cross-sectional survey study (Exploratory Factor Analysis, cluster segmentation, and multivariable binary logistic regression on N=396 survey respondents; nominally described in Abstract/Methods as mixed-methods with interviews, observations, and educational campaigns, but empirically reporting only cross-sectional quantitative survey analyses)",
+    "study_id": "S363",
+    "where_found_summary": "Abstract ([PDF Page 1 of 14], p. 619); Method & Figures 1-2 ([PDF Pages 3-5 of 14], pp. 621-623); Result and Discussion & Tables 1-4 ([PDF Pages 5-11 of 14], pp. 623-629); Conclusion ([PDF Pages 11-12 of 14], pp. 629-630).",
+    "why_tool_chosen": "Although the Abstract and Method prose nominally mention 'a mixed-methods approach, including surveys, interviews, and observational studies' as well as evaluating 'educational campaigns,' zero qualitative interview participants, themes, quotes, observational data, mixed-methods integration, or campaign evaluations are presented anywhere in the Results, Discussion, or Conclusion. Because the actual empirical study reported is exclusively a single-wave quantitative cross-sectional survey testing cross-sectional associations (H1-H8) via EFA, cluster segmentation, and multivariable logistic regression without an intervention comparator, the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the exact matching tool (following protocol guidance not to assign purely quantitative studies to MMAT, while capturing the unsubstantiated Methods claims under reporting bias)."
+  }
+}

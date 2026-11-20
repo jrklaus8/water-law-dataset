@@ -1,0 +1,316 @@
+{
+  "study_id": "S494",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "4a9a6f2ac6c3b68dec1f756cd2672666f03b96d6a47e9016dd18a31449b2f3ad",
+  "input_text_sha256": "7b89fc9a38fecb222e5d13c392be788758b08399eab3e075039a19014a5ddffb",
+  "prompt_sha256": "02c5753d5c17d5a17071bd65724f23fd3ffd59120ca1279c7b648c2aacaa9464",
+  "started_at": "2026-11-20T02:08:58.241701+00:00",
+  "completed_at": "2026-11-20T02:12:16.448295+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S494\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S494\n- Record ID: RF3C4D16222DD\n- Citation string: Rahmasary A.N., Koop S.H.A., van Leeuwen C.J. (2021). Assessing Bandung's Governance Challenges of Water, Waste, and Climate Change: Lessons from Urban Indonesia. Integrated Environmental Assessment and Management.\n- DOI: 10.1002/ieam.4334\n- Retrieval status: retrieved_oa_xml\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 7b89fc9a38fecb222e5d13c392be788758b08399eab3e075039a19014a5ddffb) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=35476, sha256=7b89fc9a38fecb222e5d13c392be788758b08399eab3e075039a19014a5ddffb]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Can't tell — Cross-sectional single-city baseline assessment with no longitudinal follow-up; potential non-response or refusal among stakeholders approached for the GCF assessment is not reported in the text.",
+      "confounding": "High concern — Single-city cross-sectional diagnostic design; narrative cross-city comparisons (with Jakarta, Surabaya, Seoul, and Singapore) and governance-to-performance inferences do not adjust for structural confounders such as GDP per capita, municipal fiscal transfers, basin hydrogeology, or historical infrastructure stock.",
+      "legal_measurement_quality": "Moderate-to-weak — National statutes and regulations (Indonesia Spatial Planning Act No. 26/2007, Government Regulation No. 81/2012, Minister of Environment Regulation No. 13/2012) and municipal slum legalization are accurately cited in context, and 'Statutory compliance' (GCF indicator 9.2) is scored ordinally, but primary municipal ordinances (Perda) and administrative enforcement records are not systematically coded.",
+      "measurement_bias": "Moderate-to-high concern — TPF indicators largely substitute national Indonesian statistics for city-level pressures, CBF indicators combine secondary municipal and academic sources across disparate years (2006–2019), and GCF scores rely on subjective 5-point Likert ratings (++ to --) without reported multi-coder reliability or blinding.",
+      "outcome_measurement_quality": "Moderate — Service and environmental outcomes (24 CBF indicators, BCI = 2.6, 73% piped water coverage, 35% NRW leakage, 35% WWTP connection, >83% citywide vs 16.8% Greater Bandung slum septic tank coverage, 77% MSW collection, 12.1% green space) draw on named municipal and peer-reviewed sources, but mix data vintages and city versus metropolitan boundaries without primary audit.",
+      "reporting_bias": "Moderate concern — No pre-analysis plan or protocol registration exists; one CBF indicator ('Public participation') was deleted in a framework modification, and while all 135 GCF indicator-by-challenge cells are reported in Table 1, individual TPF/CBF indicator values and GCF qualitative evidence are selectively summarized or deferred to Supplemental Data.",
+      "selection_bias": "High concern — Bandung is purposively selected as a single case city, and the main text Methods section provides no sampling frame, inclusion criteria, or recruitment details for the primary stakeholder informants referenced via unexplained codes (e.g., WW01–WW04, SW01–SW04, FL02–FL03, UH01–UH03, WS02) or for secondary municipal reports."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The paper accurately identifies relevant Indonesian national legislation and executive regulations—including the Indonesia Spatial Planning Act No. 26/2007 (minimum 30% green space standard), Government Regulation No. 81/2012 on waste reduction/reuse/recycling, and Minister of Environment Regulation No. 13/2012 on waste banks—as well as local slum legalization initiatives. However, legal characterization frequently relies on secondary academic citations (e.g., Lubis 2018; Tarigan et al. 2016; Sholeh et al. 2019) rather than primary doctrinal verification of Bandung municipal bylaws (Perda).",
+        "rating": "adequate",
+        "where_found": "PMC7891434 - City Blueprint assessment of Bandung's integrated water resources management; The challenges of MSW in Indonesian cities; Implications for informal settlements"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "The analysis focuses on the City of Bandung and generally distinguishes municipal institutions (e.g., PDAM Tirtawening, Diskamtam, BECA) from regional facilities and boundaries (e.g., Bojongsoang WWTP in Bandung Regency, Citarum river basin, Greater Bandung Area slums) and central government authority. However, most Trends and Pressures Framework (TPF) indicators rely on national Indonesian statistics as proxies for city-level conditions, and metropolitan versus city-proper figures are occasionally blended in narrative comparisons.",
+        "rating": "adequate",
+        "where_found": "PMC7891434 - INTRODUCTION; METHODS; City Blueprint assessment of Bandung's integrated water resources management; Transferring the results of Bandung to other cities"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Urban water governance capacity and socio-environmental pressures are systematically conceptualized through the 9 governance conditions and 27 indicators of the Governance Capacity Framework (including indicator 9.1 Policy instruments and indicator 9.2 Statutory compliance) alongside 24 TPF pressure indicators. Nevertheless, specific legal or policy interventions (such as waste bank regulations, community-based sanitation pilots, and slum legalization) are discussed broadly rather than operationalized with exact statutory scope, implementation timelines, or coverage thresholds.",
+        "rating": "adequate",
+        "where_found": "PMC7891434 - METHODS; Bandung's water governance capacity; Table 1"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Integrated urban water and waste outcomes are explicitly structured via the 24 quantitative indicators of the City Blueprint Performance Framework (CBF) on a 0–10 scale and aggregated via geometric mean into the Blue City Index (BCI = 2.6), complemented by concrete physical service indicators (piped supply coverage, nonrevenue water leakage, WWTP and septic tank coverage, solid waste collection/recycling shares, and urban green space percentage). Detailed indicator formulas are deferred to external publications and Supplemental Data.",
+        "rating": "adequate",
+        "where_found": "PMC7891434 - METHODS; City Blueprint assessment of Bandung's integrated water resources management"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Although the Results sections repeatedly cite coded primary informant or stakeholder references (e.g., WW01, WW02, WW03, WW04, SW01, SW03, SW04, FL02, FL03, WS02, UH01, UH02, UH03), the Methods section contains zero information on sample size, stakeholder categories, institutional representation, or sampling strategy for the GCF assessment.",
+        "rating": "weak",
+        "where_found": "PMC7891434 - METHODS; City Blueprint assessment of Bandung's integrated water resources management; Bandung's water governance capacity; The challenges of MSW in Indonesian cities; Implications for informal settlements"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "The article does not describe how informants or documents were selected for the Bandung GCF scoring, how gatekeeper or official bias was mitigated, or what eligibility rules governed the selection of secondary municipal and academic data sources spanning 2006 to 2020. One CBF indicator ('Public participation') was also dropped without detailed justification in the text.",
+        "rating": "weak",
+        "where_found": "PMC7891434 - METHODS; Bandung's water governance capacity"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "The three-part CBA scoring architecture (0–10 concern scale for 24 TPF indicators, 0–10 performance scale and geometric mean BCI for 24 CBF indicators, and 5-point Likert scale from ++ to -- across 27 GCF indicators and 5 challenges in Table 1) is clearly stated and linked to published manuals (Koop and van Leeuwen 2020a, 2020b, 2020c) and Supplemental Data for TPF/CBF. However, raw indicator inputs and adjustments for heterogeneous source years (2006–2019) are not presented in the main article.",
+        "rating": "adequate",
+        "where_found": "PMC7891434 - METHODS; City Blueprint assessment of Bandung's integrated water resources management; Table 1"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The study is a cross-sectional single-city baseline diagnostic ('CBA has provided a baseline diagnosis of the main barriers, enablers, and learning practices') with no counterfactual, longitudinal pre-post comparison, or quasi-experimental design. Despite this, the text makes directional causal claims—such as asserting that smart monitoring deficits result in limited statutory compliance and attributing higher BCIs in Singapore and Seoul to superior governance capacity—relying only on descriptive alignment and external cross-city correlations.",
+        "rating": "weak",
+        "where_found": "PMC7891434 - Bandung's water governance capacity; Transferring the results of Bandung to other cities; CONCLUSIONS"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Cross-city comparisons between Bandung, Jakarta, Surabaya, Seoul, and Singapore, as well as inferences linking governance capacity to service outcomes, do not control for major macroeconomic, fiscal, demographic, or geophysical confounders (such as huge disparities in GDP per capita, highland basin subsidence and hydrology, or legacy sewer capital stock). TPF pressures are described qualitatively alongside CBF/GCF scores rather than analytically adjusted for.",
+        "rating": "weak",
+        "where_found": "PMC7891434 - Bandung's social, environmental, financial, and governance challenges according to the TPF; Transferring the results of Bandung to other cities"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The paper provides detailed institutional and operational context across Bandung's urban water and waste sectors, examining municipal utility PDAM Tirtawening, the Bojongsoang WWTP, community-based sanitation (CBS) maintenance dynamics, formal landfills versus informal waste collection and waste banks ('Kang Pisman'), local environmental NGOs, inter-municipal association APEKSI, central-local governance friction, and slum relocation/upgrading along the Cikapundung River.",
+        "rating": "strong",
+        "where_found": "PMC7891434 - City Blueprint assessment of Bandung's integrated water resources management; Bandung's water governance capacity; Transferring the results of Bandung to other cities; The challenges of MSW in Indonesian cities; Implications for informal settlements"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "While the standardized CBA indicator definitions (TPF, CBF, GCF) have published reference manuals and Supplemental Data is cited for updated TPF and CBF details, the main text omits the GCF informant roster, interview protocol, and indicator-level evidence mapping for Bandung's 135 ordinal scores in Table 1, preventing independent empirical replication of the core governance capacity ratings.",
+        "rating": "weak",
+        "where_found": "PMC7891434 - METHODS; Table 1"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "All 27 GCF indicators across 5 water challenges are scored on a 5-point ordinal scale (++ to --) in Table 1 and supported in prose by undefined alphanumeric codes (e.g., WW02, SW03, FL02, UH02), yet the Methods section provides no key for these codes, no explanation of how qualitative or documentary evidence was translated into ordinal Likert ratings, no coder count or inter-rater reliability procedure, and no audit trail for 'learning-by-doing' updates.",
+        "rating": "weak",
+        "where_found": "PMC7891434 - METHODS; Bandung's water governance capacity; Table 1"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Beyond a standard conflict-of-interest disclaimer, the authors do not reflect on their positionality—including the fact that two co-authors developed and steward the proprietary City Blueprint® Approach—or on how iterative stakeholder engagement ('updated in a learning-by-doing fashion with input from stakeholders') may have shaped subjective governance scoring.",
+        "rating": "weak",
+        "where_found": "PMC7891434 - METHODS; Disclaimer"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D3/D4/D7 — Three-framework City Blueprint Approach diagnostic design",
+        "page": "PMC7891434 - METHODS (para. 1)",
+        "quote": "This study applied the City Blueprint® Approach (CBA) which consists of 3 complementary assessment frameworks (Figure 1)."
+      },
+      {
+        "criterion": "D2/D7 — Reliance on national secondary indicators for TPF",
+        "page": "PMC7891434 - METHODS (para. 3)",
+        "quote": "Data for most of the TPF indicators are national and can be found in open access websites such as the CIA, World Bank, OECD, and WHO (Koop and van Leeuwen 2020a)."
+      },
+      {
+        "criterion": "D6/Reporting bias — Deletion of Public participation indicator in CBF revision",
+        "page": "PMC7891434 - METHODS (para. 3)",
+        "quote": "One indicator of the CBF has been deleted (Public participation), and the category descriptions have been modified."
+      },
+      {
+        "criterion": "D3/D12 — Semiquantitative Governance Capacity Framework structure",
+        "page": "PMC7891434 - METHODS (para. 4)",
+        "quote": "The GCF is a diagnostic semiquantitative assessment consisting of 9 enabling governance conditions that together determine how well governmental and nongovernmental stakeholders cooperate"
+      },
+      {
+        "criterion": "D1 — Statutory accuracy and non-compliance with Spatial Planning Act No. 26/2007",
+        "page": "PMC7891434 - City Blueprint assessment of Bandung's integrated water resources management (para. 5)",
+        "quote": "However, with a share of only 12.1% of green space in Bandung (Diskamtam 2015), the city does not comply with standards set out by the Indonesia Spatial Planning Act No 26/2007 (ISPA 2007) that requires a minimum of 30%."
+      },
+      {
+        "criterion": "D5/D8/D12 — Causal claim linking monitoring to statutory compliance and unexplained informant code (SW03)",
+        "page": "PMC7891434 - Bandung's water governance capacity (para. 2)",
+        "quote": "Underperformance is observed for smart monitoring (indicator 3.1), which may limit policy evaluation (indicator 3.2) and results in limited statutory compliance (indicator 9.2). Accountable monitoring of the amount of waste brought in and out of the landfill is currently lacking so that it detains any opportunity for research and technology development (SW03)."
+      }
+    ],
+    "overall_narrative_summary": "Structured non-validated appraisal under the Legal Institutional Evidence Appraisal Framework indicates moderate-to-high methodological concern for inferential claims, alongside strong institutional contextualization. Substantively, the study conducts a single-city urban water, waste, and climate governance diagnostic of Bandung, Indonesia, applying the City Blueprint® Approach: secondary national and municipal indicator benchmarking via the Trends and Pressures Framework (24 indicators) and City Blueprint Performance Framework (24 indicators; BCI = 2.6), paired with a semiquantitative Governance Capacity Framework matrix (27 indicators scored ++ to -- across 5 water challenges in Table 1). Its chief strengths lie in rich local institutional context (D10: strong) and clear statutory/jurisdictional framing and indicator architecture (D1–D4, D7: adequate), accurately situating PDAM Tirtawening, Bojongsoang WWTP, community-based sanitation, waste banks, slum legalization, and Spatial Planning Act No. 26/2007 compliance deficits. However, primary methodological transparency for the core GCF component is weak: although the Results embed coded stakeholder references (e.g., WW01–WW04, SW01–SW04, FL02–FL03, UH01–UH03, WS02), the Methods section omits any description of stakeholder sampling, recruitment, interviewee counts, coding rubrics, or inter-rater verification (D5, D6, D11, D12: weak), and provides no researcher reflexivity despite co-authors evaluating their own proprietary framework (D13: weak). Finally, as a single-city cross-sectional baseline using mixed-vintage secondary statistics (2006–2020), causal identification and confounding control for cross-city and governance-to-outcome claims are weak (D8, D9: weak).",
+    "overall_rating": "Structured non-validated judgment: Moderate-to-high methodological concern (strong institutional context and adequate indicator/legal framing, but weak sampling, selection, coding transparency, replication detail, reflexivity, and causal/confounding control)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-city institutional and urban water governance diagnostic case study combining secondary national/municipal indicator benchmarking (Trends and Pressures Framework and City Blueprint Performance Framework, N=1 city) with a semiquantitative stakeholder-informed Governance Capacity Framework (GCF) scoring matrix",
+    "study_id": "S494",
+    "where_found_summary": "PMC7891434 OA XML full text: INTRODUCTION; METHODS; Bandung's social, environmental, financial, and governance challenges according to the TPF; City Blueprint assessment of Bandung's integrated water resources management; Bandung's water governance capacity; Transferring the results of Bandung to other cities; The challenges of MSW in Indonesian cities; Implications for informal settlements; CONCLUSIONS; Disclaimer; Table 1.",
+    "why_tool_chosen": "The paper is a single-city institutional governance diagnostic case study of Bandung using the City Blueprint® Approach (secondary macro/municipal indicator indices TPF and CBF for N=1 city plus semiquantitative Likert scoring of 27 governance capacity indicators in GCF alongside statutory/regulatory institutional analysis). It has no randomized allocation (excluding RoB 2), no non-randomized intervention/comparator arm (excluding ROBINS-I), no sampled analytical cross-sectional or cohort dataset with statistical estimation (excluding JBI Cross-Sectional and Cohort checklists), is not a systematic review (excluding AMSTAR 2), is not a purely qualitative study (excluding CASP), and does not contain a sampled quantitative empirical study alongside a reported qualitative primary methodology as required for MMAT (TPF/CBF compile N=1 secondary city indicators, and no primary qualitative or survey methods are reported in Methods despite parenthetical informant codes in Results). The Legal Institutional Evidence Appraisal Framework is therefore the most appropriate instrument for this institutional governance case study."
+  }
+}

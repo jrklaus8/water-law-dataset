@@ -1,0 +1,316 @@
+{
+  "study_id": "S1044",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "984f5b908e7baa9dec3ef4affac1d64eb268c1b5f51f57917c8bbc8b68d280a6",
+  "input_text_sha256": "63db35bdb7521b2b9b9281bcbbbb2422aebd0fd47f3cf2f3953f37e6c25293df",
+  "prompt_sha256": "68e4874c5ea135e52078f35f5d3e8c657c1c7bd472513ce78914c73288d3b34c",
+  "started_at": "2026-11-20T02:12:30.937702+00:00",
+  "completed_at": "2026-11-20T02:14:48.146269+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1044\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1044\n- Record ID: R650BE63591AA\n- Citation string: Gonzalez-Gomez F, Garcia-Rubio MA, Gonzalez-Martinez J (2014). Beyond the public-private controversy in urban water management in Spain. Utilities Policy 31:1-9.\n- DOI: 10.1016/j.jup.2014.07.004\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 63db35bdb7521b2b9b9281bcbbbb2422aebd0fd47f3cf2f3953f37e6c25293df) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=62458, sha256=63db35bdb7521b2b9b9281bcbbbb2422aebd0fd47f3cf2f3953f37e6c25293df]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not assessable for primary fieldwork (cross-sectional municipal census with unreported completeness rate across Spain's 8,117 municipalities; PDF Pages 2-4); high missingness in cited secondary administrative reporting (e.g., 63% of municipalities representing 58% of the population failed to report mandatory tap-water quality analyses to SINAC in 2011; PDF Page 7).",
+      "confounding": "High concern: the paper's own descriptive comparisons (e.g., average municipal population of 14,008 under PPPs vs. 3,416 under public management, regional unaccounted-for water rates, and small-municipality SINAC non-compliance) are unadjusted, although Section 3 explicitly recognizes operating-environment complexity, cream-skimming by private operators, and service-quality differences as confounders in prior Spanish studies (PDF Pages 3-4).",
+      "legal_measurement_quality": "Strong-to-adequate conceptual and doctrinal characterization of Spanish local-government water jurisdiction (Law 7/1985 Articles 25-26), direct vs. indirect PPP management forms, concession duration caps, and drinking-water sanitary rules (Royal Decree 140/2003), but weak empirical coding transparency because no protocol or verification rules are reported for classifying all Spanish municipalities in the authors' fieldwork (PDF Pages 2-4, 7).",
+      "measurement_bias": "High concern / Can't tell for primary fieldwork: no Methods section reports data sources, collection dates, verification procedures, or coding criteria for the municipal management census (Fig. 1), the 37 tender processes (Footnote 9), or the tariff revision proceedings (Section 5.1); secondary water-loss and tap-water reporting metrics rely on official INE, MHAP, and SINAC aggregates with acknowledged reporting gaps (PDF Pages 3-7).",
+      "outcome_measurement_quality": "Weak-to-adequate: market penetration and operator concentration shares are reported from undocumented primary fieldwork, while technical and service outcomes (efficiency, tariffs, unaccounted-for water, wastewater compliance, and SINAC tap-water quality reporting) rely on narrative synthesis of sub-national or cross-sectional studies and aggregate regional/national official statistics rather than audited utility-level microdata (PDF Pages 3-8).",
+      "reporting_bias": "Moderate-to-high concern: no pre-specified protocol or systematic search/inclusion strategy governs the selection of prior studies in Section 3, the illustrative municipal capture/remunicipalization cases in Sections 4.3-5, the 37 tender processes in 2013-2014 'for which information is available' (Footnote 9), or the tariff revision proceedings cited in Section 5.1 (PDF Pages 3-6).",
+      "selection_bias": "High concern: while the municipal privatization mapping claims census coverage via fieldwork (PDF Page 3), completeness is undocumented, and the 37 public tenders (PDF Page 5, Footnote 9), tariff revision proceedings (PDF Page 6), and municipal case examples (PDF Pages 5-6) rely on convenience/availability or purposive selection; furthermore, Section 3 notes endogenous selection of private operators into larger, more profitable municipalities (PDF Pages 3-4)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Accurately cites core Spanish and EU primary legal instruments governing municipal water jurisdiction (Articles 25 and 26 of Law 7/1985 of 2 April), drinking-water sanitary monitoring (Royal Decree 140/2003), urban wastewater treatment (Directive 91/271/CEE), citizen participation (Water Framework Directive 2000/60/EC), and comparative European reforms (UK 1973 Water Act, Portugal Decree-Law 379/93, Italy Law 36/94 'Galli'). However, specific statutory citations are omitted for Spanish public-procurement/concession rules governing the 50-year BOT and 25-year management contract caps and concession-fee budget rules.",
+        "rating": "adequate",
+        "where_found": "[PDF Page 2 of 9], Section 2; [PDF Page 5 of 9], Section 4.1; [PDF Page 6 of 9], Section 5.1; [PDF Page 7 of 9], Sections 5.4-5.5"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly delineates jurisdictional competencies across Spain's 8,117 municipalities, 325 inter-municipal groupings (consortiums and mancomunidades), Provincial Councils, Autonomous Communities, River Basin Authorities, national ministries, and EU directive obligations, alongside explicit institutional comparisons with England and Wales, France, Portugal, and Italy.",
+        "rating": "strong",
+        "where_found": "[PDF Pages 2-3 of 9], Section 2 & Table 1; [PDF Pages 6-8 of 9], Sections 5.1-5.2 & Section 6"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Precisely differentiates direct public management modalities (municipal in-house provision, municipal associations, local autonomous entities, and wholly municipally owned public commercial companies) from indirect/private management modalities (concessions/contractual PPPs, mixed-capital institutional PPPs, interested management, agreements, and leasing), while clarifying that infrastructure ownership remains public in Spain.",
+        "rating": "strong",
+        "where_found": "[PDF Pages 2-3 of 9], Section 2"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Defines structural and governance indicators clearly (share of municipalities and population under private management, operator market share, bidder counts in tenders, regional unaccounted-for water percentages, and SINAC water-quality reporting rates), but service performance outcomes (efficiency, tariff levels, network leakage, actual tap-water quality) are synthesized narratively from heterogeneous secondary studies and aggregate official reports rather than measured uniformly across utilities.",
+        "rating": "adequate",
+        "where_found": "[PDF Pages 3-4 of 9], Sections 2-3; [PDF Page 5 of 9], Section 4.2; [PDF Pages 6-8 of 9], Sections 5.1, 5.3-5.4 & Fig. 2"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Although Section 2 refers to 'census information obtained via the field work undertaken for our research' across Spain's 8,117 municipalities (mapped in Fig. 1), the paper contains no Methods section explaining the sampling frame, response/coverage rate, or missing-municipality handling; similarly, Footnote 9 reports 37 tender processes in 2013-2014 'for which information is available' and Section 5.1 cites 'tariff revision proceedings' without stating universe size or sampling criteria.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 3-4 of 9], Section 2 & Fig. 1; [PDF Page 5 of 9], Section 4.2, Footnote 9; [PDF Page 6 of 9], Section 5.1"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Selection of the 37 tender processes is restricted to cases with available information, illustrative municipal cases of regulatory capture (Alberic, Villafranca de los Barros) and remunicipalization/opposition (Torredelcampo, Alhaurín de la Torre, Arenys de Munt, Madrid, etc.) are chosen purposively/anecdotally, and the literature review in Section 3 has no systematic search or inclusion protocol.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 3-4 of 9], Section 3; [PDF Pages 5-6 of 9], Sections 4.2-4.3 & Section 5"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Provides no methodological documentation of how primary fieldwork data were gathered, verified, or dated to determine municipal management forms and corporate group market shares, nor how tariff revision proceedings were audited; secondary official indicators (INE unaccounted-for water, MHAP losses in <50,000-inhabitant municipalities, SINAC reporting compliance) are clearly attributed to government reports with explicit caveats on aggregate/incomplete coverage.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 3-4 of 9], Sections 2-3 & Footnote 6; [PDF Pages 6-8 of 9], Sections 5.1, 5.3-5.4, Footnotes 10, 12-13 & Fig. 2"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Employs no causal identification design; links between privatization/fragmentation, limited tender competition, concession fee diversion, regulatory capture, water losses, pricing, and SINAC non-compliance rest on descriptive statistics, institutional reasoning, and narrative synthesis of prior observational studies, with the authors explicitly concluding that existing Spanish research cannot establish the superiority of public or private management.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 3-6 of 9], Sections 3-4; [PDF Pages 6-7 of 9], Sections 5.1-5.5"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "The authors' own primary and secondary empirical comparisons (e.g., population size differences by management type, regional unaccounted-for water, small-municipality water-quality reporting gaps) apply no statistical or design controls for confounders, although Section 3 thoughtfully highlights operating-environment complexity, cream-skimming of profitable municipalities, spatial neighbor effects, and unobserved cost/quality differences when critiquing prior Spanish econometric studies.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 3-4 of 9], Sections 2-3 & Footnote 4; [PDF Pages 6-7 of 9], Sections 5.1, 5.3-5.4"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides an extensive, nuanced account of Spain's post-transition municipal fiscal constraints, Province Official Gazette first-price sealed-bid tendering, oligopolistic regional specialization by AGBAR (Suez) and Aqualia (FCC), multi-level administrative fragmentation across ministries, river basin agencies, Autonomous Communities, and municipalities, and constitutional constraints on creating an Ofwat-style national regulator.",
+        "rating": "strong",
+        "where_found": "[PDF Pages 2-3 of 9], Section 2; [PDF Pages 5-8 of 9], Sections 4-6"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Primary empirical claims regarding municipal privatization shares, operator concentration, 2013-2014 tender bidder counts, and tariff revision proceedings cannot be independently replicated from the paper because underlying municipal microdata, source registries, and dates of observation are not disclosed, whereas cited statutory provisions and published government reports (INE, MHAP, MSCSS) are publicly traceable.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 3-6 of 9], Section 2, Fig. 1, Section 4.2 Footnote 9 & Section 5.1; [PDF Page 9 of 9], References"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Reports no coding manual, classification rules for multi-municipal consortiums or mixed-ownership arrangements, handling of missing or ambiguous municipal records, or inter-rater verification procedures for constructing the national municipal database or coding tender/tariff documents.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 2-4 of 9], Section 2 & Fig. 1; [PDF Pages 5-6 of 9], Section 4.2 Footnote 9 & Section 5.1"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Contains no discussion of researcher positionality, interpretive standpoint, or institutional roles—despite one co-author's affiliation with a provincial public administration (Diputación de Granada) and heavy reliance in Section 3 on the academic co-authors' own prior empirical studies—beyond standard acknowledgment of public research grants.",
+        "rating": "weak",
+        "where_found": "[PDF Page 1 of 9], Author affiliations; [PDF Pages 3-4 of 9], Section 3; [PDF Page 9 of 9], Acknowledgments"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Fieldwork basis and institutional reform scope",
+        "page": "[PDF Page 1 of 9], Abstract",
+        "quote": "publiceprivate controversy and contributes to the literature by using ﬁeldwork conducted by the authors"
+      },
+      {
+        "criterion": "D1 Legal source accuracy and D2 Jurisdictional specificity",
+        "page": "[PDF Page 2 of 9], Section 2",
+        "quote": "Law 7/1985, 2nd April, Regulating Local Regime Basis). Considering"
+      },
+      {
+        "criterion": "D5 Sampling transparency and D7 Measurement transparency (municipal census fieldwork)",
+        "page": "[PDF Page 3 of 9], Section 2",
+        "quote": "work undertaken for our research, 23% of Spanish municipalities"
+      },
+      {
+        "criterion": "D8 Causal identification and D11 Replication potential (data availability barriers)",
+        "page": "[PDF Page 3 of 9], Section 3",
+        "quote": "signiﬁcant barriers to obtaining the necessary data to make"
+      },
+      {
+        "criterion": "D5 Sampling transparency and D6 Selection process (public tender data)",
+        "page": "[PDF Page 5 of 9], Section 4.2, Footnote 9",
+        "quote": "tender processes in 2013 and 2014 for which information is available, the details are"
+      },
+      {
+        "criterion": "D4 Outcome definition and D7 Measurement transparency (SINAC tap-water reporting compliance)",
+        "page": "[PDF Page 7 of 9], Section 5.4",
+        "quote": "In 2011 only 37% of Spanish municipalities, representing 42% of the"
+      }
+    ],
+    "overall_narrative_summary": "Gonzalez-Gomez, Garcia-Rubio, and Gonzalez-Martinez (2014) present a doctrinal-empirical institutional case study and policy analysis of urban water management in Spain. Appraised under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment; no numeric score computed), the paper demonstrates strong jurisdictional specificity (D2), exposure definition across public and PPP management modalities (D3), and institutional-contextual analysis of municipal fragmentation, concession incentives, oligopolistic market structure, and constitutional limits on national regulation (D10), alongside adequate legal source accuracy (D1) and descriptive outcome definition (D4). However, empirical rigor is substantially constrained by the absence of a dedicated Methods section: primary fieldwork claiming census coverage of Spanish municipalities (23% of municipalities and 55% of population under private management; 67% municipal / 75% population private share held by AGBAR and Aqualia), bidder counts from 37 tender processes in 2013-2014, and observations from tariff revision proceedings lack sampling documentation (D5), systematic case selection (D6), measurement and coding protocols (D7, D12), dataset replicability (D11), and researcher reflexivity (D13). Causal claims and performance comparisons rely on unadjusted descriptive statistics and a non-systematic narrative review of prior Spanish studies without formal causal identification (D8) or empirical confounding control (D9), although the authors candidly acknowledge industry opacity, missing official tap-water quality notifications (58% of population missing in SINAC in 2011), and selection of private operators into larger, more profitable municipalities.",
+    "overall_rating": "Structured non-validated judgment: Moderate-to-high methodological concern for empirical claims (strong jurisdictional, exposure, and institutional characterization, but weak sampling, coding, measurement transparency, causal identification, and confounding control)",
+    "paper_read": "full text",
+    "study_design_identified": "Doctrinal-empirical institutional case study and regulatory policy analysis combining undocumented national municipal-census fieldwork, purposive public-tender and tariff-proceeding observations, secondary official administrative statistics, and narrative literature synthesis",
+    "study_id": "S1044",
+    "where_found_summary": "Abstract & Section 1 Introduction ([PDF Pages 1-2 of 9]); Section 2 Characteristics of the Spanish urban water-management model, Table 1, primary municipal fieldwork statistics & Fig. 1 ([PDF Pages 2-4 of 9]); Section 3 Narrative review of Spanish public-vs.-private empirical studies ([PDF Pages 3-4 of 9]); Section 4 Institutional critique of privatization goals, tender competition (Footnote 9), and regulatory/oversight deficits ([PDF Pages 4-6 of 9]); Section 5 Pending institutional reforms, tariff revision observations, secondary water-loss (MHAP, INE Fig. 2) and drinking-water quality reporting (Royal Decree 140/2003, SINAC/MSCSS) statistics ([PDF Pages 6-8 of 9]); Section 6 Conclusions, Acknowledgments & References ([PDF Pages 8-9 of 9]).",
+    "why_tool_chosen": "The paper is a doctrinal-empirical hybrid and national legal-institutional case study rather than a conventional quantitative comparative study, qualitative interview study, or systematic review. Unlike pure commentary ('NONE'), it reports original primary fieldwork mapping private participation and corporate concentration across Spanish municipalities (Section 2, Fig. 1), bidder counts from 37 tender processes (Footnote 9), and observations from tariff revision proceedings (Section 5.1), integrated with statutory/regulatory analysis (Law 7/1985, Royal Decree 140/2003, EU Directives) and official administrative compliance statistics (INE, MHAP, SINAC). Because it neither conducts cross-sectional statistical hypothesis testing/regression ('JBI Analytical Cross Sectional'), evaluates a quasi-experimental intervention ('ROBINS-I'), nor uses a systematic literature search ('AMSTAR 2'), the 13-domain Legal Institutional Evidence Appraisal Framework is the exact matching instrument under RISK_OF_BIAS.md §§1-2."
+  }
+}

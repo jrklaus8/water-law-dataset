@@ -1,0 +1,295 @@
+{
+  "study_id": "S643",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "874362dd04016d015fe79e7fc6513157a12a2eb414fc002daf65c2557f7c07c9",
+  "input_text_sha256": "0ef787e2dcbc51f2bbf988a07af758b20dc71ff3421d342637578d3f625f4388",
+  "prompt_sha256": "26ff16369a459f777f1dc9883a6329ac08cd88eab70e25c9de8514c76aaa92ce",
+  "started_at": "2026-11-20T02:06:10.390926+00:00",
+  "completed_at": "2026-11-20T02:08:58.186224+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S643\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S643\n- Record ID: RC4A4206BDF16\n- Citation string: Appelblad Fredby J, Nilsson D (2013). From 'All for some' to 'Some for all'? A historical geography of pro-poor water provision in Kampala. Journal of Eastern African Studies 7(1):40-57.\n- DOI: 10.1080/17531055.2012.708543\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 0ef787e2dcbc51f2bbf988a07af758b20dc71ff3421d342637578d3f625f4388) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=57366, sha256=0ef787e2dcbc51f2bbf988a07af758b20dc71ff3421d342637578d3f625f4388]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / Not applicable: Although interviews were conducted in two waves (2006 and 2008, Endnote 61, PDF p. 16), the study is not structured as a longitudinal panel and provides no information on informant follow-up or systematic tracking of installed pre-paid standposts over time.",
+      "confounding": "High concern (descriptive qualitative design without counterfactual control): Temporal changes in Kampala water coverage, new connections after the 2004 connection policy, and lower water prices under the Kisenyi pre-paid pilot co-occurred with donor subsidies, internal management restructuring, population growth, and political standpost campaigns without design or analytical controls.",
+      "legal_measurement_quality": "Adequate (narrative institutional level): Colonial administrative dualism under the 1900 Buganda Agreement (Kampala Township vs. Kibuga), the 1972 creation of NWSC, the 1995 Water Statute, 2000-2004 Internally Delegated Area Management Contracts (IDAMCs), the 2004 subsidized connection policy, and Kisenyi pro-poor eligibility/tariff rules are documented via archival and official sources, whereas informal land-tenure and landlord-tenant rules are treated broadly rather than through granular doctrinal coding.",
+      "measurement_bias": "High concern / Can't tell: Interview guides, question wording, recording/note-taking, translation procedures, and archival selection protocols are unreported; interview data are conveyed only via brief authorial paraphrases, and citywide access/connection figures rely on unverified utility administrative reports.",
+      "outcome_measurement_quality": "Weak (aggregate administrative counts and unquantified qualitative impressions): Outcomes such as citywide coverage (73%), annual connection counts, kiosk vs. pre-paid prices (17 UGX per 20-litre jerrycan), disconnections, loss of vendor credit, and landlord coercion rely on NWSC/Ministry reports and anecdotal informant statements rather than systematic household-level measurement of water use, reliability, or expenditure in informal settlements.",
+      "reporting_bias": "Moderate-to-high concern: Absence of an explicit qualitative coding protocol, lack of verbatim interviewee quotes, and unattributed empirical claims on PDF pp. 12-13 (pp. 50-51) regarding loss of vendor credit and landlord coercion introduce risk of selective narrative synthesis, though both strengths and drawbacks of utility reforms are discussed.",
+      "selection_bias": "High concern / Can't tell: Primary fieldwork was confined to Kisenyi I and II parishes (Endnote 61, PDF p. 16) without justification of site selection across Kampala's informal settlements; recruitment procedures for the 30 standpost vendors and institutional informants are unreported, utility offices assisted the research (Acknowledgements, PDF p. 15), and ordinary low-income tenants/non-users are not documented as direct interviewees."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Clear statement of aims",
+        "justification": "The Abstract and Introduction clearly state the study's objective: examining the historical mechanisms and geographical factors that have created barriers to public water provision for Kampala's urban poor since the colonial era, and evaluating whether contemporary utility reforms and pre-paid metering genuinely move service delivery from 'all for some' to 'some for all'.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF p. 2 / p. 40); Introduction (PDF pp. 2-3 / pp. 40-41)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Qualitative methodology appropriate",
+        "justification": "A qualitative historical-geographical approach combining colonial archival records, utility policy/administrative documents, and primary stakeholder/vendor interviews is well suited to investigating long-term institutional path dependence, socio-spatial exclusion, and local water-vending dynamics in informal settlements.",
+        "rating": "Yes",
+        "where_found": "Introduction (PDF pp. 2-3 / pp. 40-41); Endnotes 4-12, 48, 54, 61, 63, 67-78 (PDF pp. 15-17 / pp. 53-55)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Research design appropriate to address aims",
+        "justification": "Pairing a century-long historical-institutional trace of Kampala's water sector with a local case study of the Kisenyi pro-poor pilot is topically coherent, but the article contains no standalone Methods section and provides no explicit rationale for the research design, selection of Kisenyi I and II over other informal settlements, or procedures linking historical and field data.",
+        "rating": "Can't tell",
+        "where_found": "Introduction (PDF p. 3 / p. 41); The return of the 'coin-in-the-slot machine' (PDF pp. 10-12 / pp. 48-50); Endnote 61 (PDF p. 16 / p. 54)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Recruitment strategy appropriate to aims",
+        "justification": "Endnote 61 notes that 2006 and 2008 interviews included elected community leaders, NWSC/branch officials, project consultants, NGO representatives, and 30 standpost vendors (21 female, 9 male), plus caretakers/plumbers (Endnote 71). However, how participants were identified and recruited, refusal rates, and why ordinary low-income household tenants/consumers were not systematically sampled are unreported.",
+        "rating": "Can't tell",
+        "where_found": "Acknowledgements (PDF p. 15 / p. 53); Endnotes 48, 54, 61, 63, 67, 68, 71, 72, 74, 78 (PDF pp. 16-17 / pp. 54-55)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Data collected in a way that addressed research issue",
+        "justification": "While archival colonial files (UK and Kenya National Archives), NWSC/Ministry reports, and 2006/2008 field interviews (plus October 2008 email correspondence) are cited, the paper omits essential collection details: interview format, topic guides, language/interpretation in Kisenyi, audio recording vs. field notes, archival selection strategy, and data saturation.",
+        "rating": "Can't tell",
+        "where_found": "Endnotes 4-12, 48, 54, 61, 63, 67-78 (PDF pp. 15-17 / pp. 53-55)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Relationship between researcher and participants adequately considered",
+        "justification": "There is no discussion of researcher reflexivity, positionality as Sida/SAREC-funded Swedish researchers, or how reliance on assistance from NWSC headquarters and Kampala Water City and Kisenyi branch offices (acknowledged on PDF p. 15) may have shaped informant access, vendor candour, or interpretation of utility performance.",
+        "rating": "No",
+        "where_found": "Acknowledgements (PDF p. 15 / p. 53); Endnote 61 (PDF p. 16 / p. 54) (absent throughout text)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Ethical issues considered",
+        "justification": "Informants are cited by institutional role and interview date rather than personal name, but uniquely identifiable roles (e.g. Branch Manager Kisenyi Branch) remain identifiable, and there is no mention of informed consent, ethical review, or safeguards for informal water vendors whose livelihoods were directly threatened by the utility's pre-paid meters.",
+        "rating": "Can't tell",
+        "where_found": "Endnotes 48, 54, 61, 63, 67, 68, 71, 72, 74, 78 (PDF pp. 16-17 / pp. 54-55) (no ethics statement)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Data analysis sufficiently rigorous",
+        "justification": "No qualitative coding, thematic analysis, or systematic triangulation method is described. Field interview findings are reported exclusively as brief authorial assertions with endnote citations, zero verbatim participant quotes are presented to allow independent scrutiny, and several empirical claims about vendor credit loss and landlord coercion (PDF pp. 12-13 / pp. 50-51) carry no specific source attribution.",
+        "rating": "No",
+        "where_found": "Main text (PDF pp. 8-15 / pp. 46-53) and Endnotes (PDF pp. 15-17 / pp. 53-55)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Clear statement of findings",
+        "justification": "The Discussion and conclusions clearly synthesize the study's central arguments on organizational and technological continuity from colonial PWD to NWSC, why the 2004 private-connection subsidy and vendor kiosks bypassed informal marshy settlements with insecure property rights, why election-driven 'yellow water' taps proved unsustainable, and the early promise and risks of pre-paid standposts under internal management contracts.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF p. 2 / p. 40); Discussion and conclusions (PDF pp. 13-15 / pp. 51-53)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research",
+        "justification": "Narrative assessment: The article provides valuable historical-spatial and institutional insight into how colonial dual jurisdiction (1900 Buganda Agreement), unplanned settlement geography, and insecure land tenure/landlord relations obstruct conventional private-connection policies and shape pro-poor pre-paid alternatives in Kampala. However, its evidentiary strength regarding local household impacts of pre-paid metering is limited by opaque field methodology and early pilot timing (2008-2009).",
+        "rating": "Substantively valuable contextual contribution, tempered by weak methodological reporting (narrative assessment)",
+        "where_found": "Spatial structure of informality; Current service provision for the poor; The return of the 'coin-in-the-slot machine'; Discussion and conclusions (PDF pp. 6-15 / pp. 44-53)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Q1 Clear statement of aims",
+        "page": "PDF p. 3 (p. 41, Introduction)",
+        "quote": "led to the formation of barriers to provide the poor with public water services in"
+      },
+      {
+        "criterion": "Q3-Q5 Fieldwork design, recruitment, and data collection reporting",
+        "page": "PDF p. 16 (p. 54, Endnote 61)",
+        "quote": "Empirical studies were carried out in the project parishes of Kisenyi I and Kisenyi II in"
+      },
+      {
+        "criterion": "Q4 Recruitment strategy (standpost vendor sample)",
+        "page": "PDF p. 16 (p. 54, Endnote 61)",
+        "quote": "vendors, a majority, 21, were female, and the remaining nine were male."
+      },
+      {
+        "criterion": "Q6 Researcher-participant relationship and utility gatekeeping",
+        "page": "PDF p. 15 (p. 53, Acknowledgements)",
+        "quote": "The authors are thankful for the assistance and interest that the study has received."
+      },
+      {
+        "criterion": "Legal measurement quality and Q9 Clear statement of findings",
+        "page": "PDF p. 9 (p. 47, Current service provision for the poor)",
+        "quote": "private connections remain: the lack of planning and insecure property rights."
+      },
+      {
+        "criterion": "Q8 Data analysis rigor and reporting bias (unattributed empirical claim)",
+        "page": "PDF p. 13 (p. 51, 'Water for the urban poor': the magic bullet?)",
+        "quote": "A challenge to the project is also that some of the landlords in the project area are"
+      }
+    ],
+    "overall_narrative_summary": "Appelblad Fredby and Nilsson (2013) present a historical-geographical qualitative case study of urban water provision in Kampala, combining colonial archival records (UK and Kenya National Archives), NWSC and Ugandan ministry reports, and primary field interviews conducted in 2006 and 2008 in Kisenyi I and II parishes with 30 standpost vendors, utility managers/staff, consultants, NGO representatives, and community leaders. Appraised with the CASP Qualitative Checklist, the study raises high methodological concern (3 Yes, 4 Can't tell, and 2 No ratings across Q1-Q9). Its strengths lie in clearly stated research aims (Q1), an appropriate qualitative archival-and-fieldwork approach (Q2), well-documented historical and institutional tracing of utility reforms, and a coherent synthesis of findings linking colonial spatial dualism and insecure tenure to the failure of private-connection subsidies (Q9). However, the article has no dedicated Methods section in the main body, relegating its primary fieldwork description to Endnote 61. Consequently, case selection and research design justification (Q3), informant recruitment and non-inclusion of low-income end-user tenants (Q4), interview and recording/translation procedures (Q5), and research ethics/consent safeguards (Q7) cannot be evaluated ('Can't tell'), while researcher reflexivity regarding NWSC/Kampala Water gatekeeping (Q6) and auditable qualitative coding or verbatim evidentiary support for key field claims (Q8) are absent ('No').",
+    "overall_rating": "High methodological concern (4 Can't tell items and 2 No items across Q1-Q9)",
+    "paper_read": "full text",
+    "study_design_identified": "Primary qualitative historical-geographical case study combining archival/policy document analysis and stakeholder/vendor interviews in Kampala (Kisenyi I and II parishes)",
+    "study_id": "S643",
+    "where_found_summary": "Aims and framing in Abstract and Introduction (PDF pp. 2-3 / pp. 40-41); archival colonial and institutional reform history in 'A century of water supply in Kampala' (PDF pp. 3-6 / pp. 41-44) and Endnotes 4-30 (PDF pp. 15-16 / pp. 53-54); spatial/tenure barriers, 2004 connection policy, and Kisenyi pre-paid meter pilot in 'Public service provision and the urban poor' (PDF pp. 6-13 / pp. 44-51); synthesis in 'Discussion and conclusions' (PDF pp. 13-15 / pp. 51-53); institutional assistance in Acknowledgements (PDF p. 15 / p. 53); primary interview sample and fieldwork disclosures in Endnotes 48, 54, 61, 63, 67, 68, 71, 72, 74, and 78 (PDF pp. 16-17 / pp. 54-55).",
+    "why_tool_chosen": "Although the main body reads as a historical-geographical narrative without a standalone Methods section, Endnote 61 and interview citations (Notes 48, 54, 63, 67, 68, 71, 72, 74, 78) establish that the study rests on primary qualitative fieldwork conducted in Kisenyi I and II in 2006 and 2008 (interviews with 30 standpost water vendors, NWSC/Kampala Water officials, consultants, community leaders, caretakers, and NGO staff) alongside archival colonial and policy documents. Under RISK_OF_BIAS.md §1, a primary qualitative documentary and interview-based field case study maps directly to the CASP Qualitative Checklist (whereas the Legal Institutional Evidence Appraisal Framework is reserved for studies fitting none of the six conventional empirical designs)."
+  }
+}

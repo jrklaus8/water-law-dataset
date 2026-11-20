@@ -1,0 +1,281 @@
+{
+  "study_id": "S1075",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d9b1d4b0f0273b3514aaefe8d5fd2cfea70762492678ce6da514ca0d2e5a2bb8",
+  "input_text_sha256": "0ce94ed120d29d6c44ecb21550de1562a178cd5c9ce02f284560b33447e1fc15",
+  "prompt_sha256": "10871d0f1284152c7d3c4ab38bb07d172a7b17c120d60c36fc2112ed6c761704",
+  "started_at": "2026-11-20T01:53:40.460014+00:00",
+  "completed_at": "2026-11-20T01:56:02.110336+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1075\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1075\n- Record ID: R6633D02DAFEB\n- Citation string: Silvestre HC (2012). Public-private partnership and corporate public sector organizations: Alternative ways to increase social performance in the Portuguese water sector? Utilities Policy 22:41-49.\n- DOI: 10.1016/j.jup.2012.01.002\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 0ce94ed120d29d6c44ecb21550de1562a178cd5c9ce02f284560b33447e1fc15) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=66278, sha256=0ce94ed120d29d6c44ecb21550de1562a178cd5c9ce02f284560b33447e1fc15]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low risk: Cross-sectional census of all 308 Portuguese municipalities with 100% completeness (308/308) on tariff and institutional variables and 96.4% completeness (297/308) on complaint and water-quality variables, though the 11 missing municipalities on quality metrics are not explained (Table 1, PDF Page 4).",
+      "confounding": "High risk: No design or statistical controls are implemented for major municipal confounders (population/customer base size, urban vs. rural density, hydrological/topographical cost drivers, network age/leakage, baseline municipal fiscal stress driving PPP adoption, or concession contract stage), nor are property, management model, and organizational costs mutually adjusted for one another (Sections 4.3 and 5, PDF Pages 5-8).",
+      "legal_measurement_quality": "Moderate: Statutory governance categories (Municipal, Inter-municipal and Regional Corporations Act of 1998; Decree-Law 86/2003; Decree-Law 194/2009; EU Directive 2000/60/CE) and the five Portuguese water delivery models are grounded in national law and ERSAR regulatory classifications, but dichotomizing municipal concessions as private 'property' conflates delegated management with asset ownership, and treating five unordered institutional models as a linear 1-to-5 scale in correlations and linearity tests distorts legal measurement (Sections 3, 4.1, 4.3, and Table 5, PDF Pages 3-8).",
+      "measurement_bias": "Moderate to high risk: Standardized regulatory tariffs and EU water-testing metrics are objective, but 'organizational costs' (OC) are collapsed into four ordinal levels without disclosing Euro cut-offs and suffer from systematic accounting asymmetry (municipal bureaucracies omit shared town-hall overhead prior to Law 194/2009, whereas PPPs and municipal corporations internalize full costs), and raw complaint counts (Comp) are not normalized per customer/connection and conflate tariff-hike complaints with operational service failures (Sections 4.1 and 5, PDF Pages 4, 6-7).",
+      "outcome_measurement_quality": "Mixed (strong for tariffs and water quality compliance; weak for complaints): Domestic tariff bills at 60, 120, and 180 m3 (CP'60, CP'120, CP'180) and EU-mandated parametric sample completion (PaT) and drinking-water compliance (PaV) come from mandatory, standardized ERSAR regulatory reporting, whereas service quality is proxied by raw annual complaint counts (Comp, range 0-291) unadjusted for population served and confounded by price dissatisfaction (Section 4.1, Table 1, PDF Page 4; Section 5, PDF Page 6).",
+      "reporting_bias": "Moderate concern: No pre-analysis plan exists, subgroup sample sizes across the two property categories, five management models, and four organizational cost brackets are never tabulated, and subgroup means are reported selectively in prose while omitting subgroup distributions for water-quality compliance (PaV) across management models despite a statistically significant omnibus ANOVA (p = .000 in Table 3, PDF Page 7).",
+      "selection_bias": "Low risk for sample inclusion (mandatory national regulatory census covering all 308 Portuguese municipalities in 2009), but high risk of endogenous treatment/exposure selection bias because municipalities with aging, leaky networks and fiscal constraints preferentially entered PPP concessions rather than remaining traditional bureaucracies (Section 4.1, PDF Page 4; Section 5, PDF Page 6)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Yes. The sample comprises the complete census of all 308 Portuguese municipalities included in the 2009 Portuguese Water Sector Regulator Annual Report (ERSAR, 2009), with mandatory reporting enforced by financial penalties yielding 308 observations for tariff and institutional variables and 297 observations for service/water quality indicators.",
+        "rating": "Yes",
+        "where_found": "Section 4.1 (Data and variables) and Table 1, PDF Page 4"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "No. While the macro-level legal and institutional context of the Portuguese water sector is described (25 concessions since 1995, 1998 Municipal Corporations Act, Decree-Laws 86/2003 and 194/2009), the characteristics of the 308 municipal subjects—such as population served, urban/rural composition, regional geography, network age, and exact sample counts in each of the five management models and four cost categories—are omitted, with Table 1 reporting only uninformative parametric means (e.g., MgM Mean = 2.24) for nominal codes.",
+        "rating": "No",
+        "where_found": "Sections 3, 4, and 4.1, Table 1, PDF Pages 3-4"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Unclear. Institutional exposures (Pro and MgM) come from official ERSAR regulatory classifications, but municipal concessionaires appear coded as 'private property' despite concessions involving delegated operation rather than ownership transfer, and the third independent variable—organizational costs (OC)—is discretized from Euros into four categories (null, low, medium, high) without reporting the numerical cut-offs or accounting scope, despite traditional bureaucracies omitting shared municipal costs prior to Law 194/2009.",
+        "rating": "Unclear",
+        "where_found": "Section 4.1, PDF Page 4; Section 5, PDF Page 7"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "Yes. Municipal water service delivery arrangements and regulatory reporting obligations were classified according to standardized national statutes (Municipal, Inter-municipal and Regional Corporations Act of 1998; Decree-Law 86/2003; Decree-Law 194/2009), EU Directive 2000/60/CE, and uniform annual reporting rules enforced by the national regulator ERSAR across all Portuguese municipalities.",
+        "rating": "Yes",
+        "where_found": "Sections 3 and 4.1, PDF Pages 3-4"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "No. Although the Discussion mentions post-hoc institutional explanations (shared town-hall overhead in bureaucracies, aging leaky networks requiring private financing, and contract life-cycle stages), the study design fails to systematically identify critical municipal-level confounders—most notably municipal population/connections served (which mechanically inflates raw complaint counts), urban vs. rural density, hydrological/source water conditions, and baseline municipal fiscal and infrastructure conditions.",
+        "rating": "No",
+        "where_found": "Section 4.1, PDF Page 4; Section 5, PDF Pages 6-8"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "No. No design or analytical strategies (such as multivariable regression, stratification, matching, or per-capita normalization of complaints) were employed to address confounding. Instead, Section 4.3 explicitly opts to test each independent variable separately via univariate one-way ANOVAs without even mutually controlling for property, management model, and organizational costs.",
+        "rating": "No",
+        "where_found": "Section 4.3 (Analytical tools), PDF Pages 5-6"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "Unclear. Five of the six outcomes—standardized domestic user tariffs at 60, 120, and 180 m3 (CP'60, CP'120, CP'180) and EU-mandated parametric test completion (PaT) and drinking-water compliance (PaV)—are valid, standardized ERSAR regulatory indicators. However, the sixth outcome, service quality measured as the raw number of complaints received in 2009 (Comp, range 0-291), is not normalized by customer population/connections served, lacks explanation for 11 missing municipalities, and conflates tariff-increase complaints with service quality.",
+        "rating": "Unclear",
+        "where_found": "Section 4.1 and Table 1, PDF Page 4; Section 5, PDF Page 6"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "No. The analysis relies exclusively on separate univariate one-way ANOVAs and bivariate correlations with zero multivariable adjustment; treats an unordered 5-category nominal variable (management model, MgM) as continuous/interval by computing means/SDs (Table 1), testing 'linearity' across nominal codes, and computing bivariate correlation coefficients (Table 5); discretizes continuous cost data into 4 arbitrary categories; applies parametric ANOVA to highly skewed count (Comp) and ceiling-bounded percentage (PaT, mean 99.88%) outcomes; and reports pairwise subgroup claims across 5 management models without post-hoc multiple-comparison tests.",
+        "rating": "No",
+        "where_found": "Section 4.1 (Table 1), Section 4.3, Section 5 (Tables 2-5), PDF Pages 4-8"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Cross-sectional study design (Step 1 tool selection)",
+        "page": "PDF Page 4, Section 4.1",
+        "quote": "Our survey was based on a cross-sectional research design"
+      },
+      {
+        "criterion": "JBI Q1 — Census sample inclusion and response rate",
+        "page": "PDF Page 4, Section 4.1",
+        "quote": "hundred percent response rate for the majority of the indicators."
+      },
+      {
+        "criterion": "JBI Q3 — Arbitrary discretization of organizational costs without thresholds",
+        "page": "PDF Page 4, Section 4.1",
+        "quote": "have a low cost; 3) if it is a medium cost; and 4) if organizational"
+      },
+      {
+        "criterion": "JBI Q7 — Raw complaint count used as service quality outcome",
+        "page": "PDF Page 4, Section 4.1",
+        "quote": "number of complaints received in 2009, which measures the quality"
+      },
+      {
+        "criterion": "JBI Q6 & Q8 — Univariate separate analysis without multivariable confounding adjustment",
+        "page": "PDF Page 6, Section 4.3",
+        "quote": "the relationship between the variables from a separate perspective"
+      },
+      {
+        "criterion": "JBI Q3 & Q5 — Accounting asymmetry and uninternalized shared costs in municipal bureaucracies",
+        "page": "PDF Page 7, Section 5",
+        "quote": "the town-hall organizational structure, some costs are shared"
+      }
+    ],
+    "overall_narrative_summary": "High methodological concern. Silvestre (2012) conducts a single-year (2009) analytical cross-sectional study of all 308 Portuguese municipalities using regulatory data from the Portuguese Water Sector Regulator (ERSAR) to compare water tariffs, customer complaints, and drinking-water quality compliance across public vs. private property, five institutional management models, and four organizational cost categories. Key strengths include census-level national municipal coverage and standardized regulatory metrics for domestic water tariffs (at 60, 120, and 180 m3) and EU Water Framework Directive parametric testing/compliance. However, internal validity for comparing institutional models is severely compromised by (1) complete absence of multivariable adjustment or confounding control (e.g., municipal population size, urban/rural density, baseline network dilapidation, and fiscal stress driving selection into PPPs); (2) systematic cost-accounting asymmetry prior to Law 194/2009, whereby municipal bureaucracies shared unrecorded overhead with town halls while PPPs and municipal corporations internalized full capital and operating costs; (3) discretization of organizational costs into four categories without disclosed Euro cut-offs and use of raw, unnormalized complaint counts that scale with customer population and tariff dissatisfaction; and (4) inappropriate statistical methods, including separate univariate one-way ANOVAs without post-hoc tests and parametric linearity/correlation analyses applied to unordered nominal management-model codes (1-5). Consequently, the study's strong causal policy conclusion recommending a halt to water PPPs is not supported by its cross-sectional bivariate design.",
+    "overall_rating": "High concern",
+    "paper_read": "full text",
+    "study_design_identified": "Quantitative analytical cross-sectional study (single-year 2009 regulatory survey census of 308 Portuguese municipalities analysed with univariate one-way ANOVA and bivariate correlations)",
+    "study_id": "S1075",
+    "where_found_summary": "Research design, sample (N=308 municipalities; N=297 for quality indicators), and variable definitions are in Section 4 and Section 4.1 with descriptive statistics in Table 1 (PDF Page 4). Hypotheses (H1-H6) are in Section 4.2 (PDF Pages 4-5). Statistical methods (one-way ANOVA, eta-squared, linearity, and bivariate correlations) are in Section 4.3 (PDF Pages 5-6). Empirical results, Tables 2-5, and post-hoc institutional explanations regarding network investment needs and shared bureaucracy costs are in Section 5 (PDF Pages 6-8) and Section 6 (PDF Pages 8-9).",
+    "why_tool_chosen": "Section 4.1 explicitly states that the empirical analysis uses a cross-sectional research design based on a single year (2009) of regulatory survey data from 308 Portuguese municipalities, comparing exposures (property, management model, organizational costs) and outcomes (user prices, complaints, parametric water tests/quality) via univariate one-way ANOVA and bivariate correlations without any longitudinal panel or quasi-experimental intervention comparator. Under RISK_OF_BIAS.md §1, quantitative observational cross-sectional studies without a quasi-experimental intervention structure map directly to the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies."
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "study_id": "S875",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "761ff84dcaf6748cf706ffa188b815ba1dd138fa1f76cf0e9746f050cc094059",
+  "input_text_sha256": "54dbe891f492ca45aa1133768588366de377289645c3d4b28a5e93018baa6a2a",
+  "prompt_sha256": "0f9ce2d05c71771e27de0df0272674eb2f5d1f88dc1182f21375f542062881e9",
+  "started_at": "2026-11-20T02:12:30.940842+00:00",
+  "completed_at": "2026-11-20T02:15:10.011811+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S875\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S875\n- Record ID: R74AD122FBBD1\n- Citation string: Hanchett S, Akhter S, Khan MH (2003). Water, sanitation and hygiene in Bangladeshi slums: an evaluation of the WaterAid-Bangladesh urban programme. Environment & Urbanization.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 54dbe891f492ca45aa1133768588366de377289645c3d4b28a5e93018baa6a2a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=39762, sha256=54dbe891f492ca45aa1133768588366de377289645c3d4b28a5e93018baa6a2a]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / unclear risk of missing data: as a single post-intervention cross-sectional survey, longitudinal panel attrition does not apply, although qualitative accounts note poor residents dropping out of committees and defaulting on monthly water bills (PDF pp. 7, 11). In the household survey, Tables 2 and 3 sum to the reported 1,130 households, but household non-response/refusal rates are omitted, 1 of 46 visited sites lacked hygiene-education data (PDF p. 10), and the realized split of 491 beneficiaries vs. 639 non-beneficiaries contradicts the stated equal-sampling design (PDF p. 4) without explanation.",
+      "confounding": "High risk of confounding: the quantitative impact evaluation relies on a post-only comparison of 491 beneficiary and 639 non-beneficiary households with no pre-intervention baseline and no multivariable regression or statistical adjustment. Although Tables 1-4 stratify descriptively across three poverty tiers (very poor, middle/medium poor, solvent), unadjusted confounding remains severe due to household self-selection into fee-paying facilities, intra-slum distance to water mains and commercial edges, landlord control, and concurrent NGO hygiene programmes in 8 of 42 active sites (PDF pp. 4, 7-10, 12).",
+      "legal_measurement_quality": "Moderate (descriptive programme-level operationalization): the paper clearly describes the core legal-administrative intervention—NGO mediation with municipal corporations and metropolitan utilities (Dhaka and Chittagong Water and Sewerage Authorities) to obtain authorized ('legal') piped water connections for informal slum communities lacking tenure security, contrasted with 'illegal connections' and eviction threats (PDF pp. 2-5, 8, 12)—but does not systematically code or measure formal connection agreements, municipal by-laws, or household tenure status at the analytical unit level.",
+      "measurement_bias": "Moderate risk of measurement bias: water source, defecation practice, hygiene lesson recall/compliance, committee participation, and poverty-tier criteria rely on unblinded household questionnaire self-reports (primarily female respondents, PDF p. 3) without microbiological water testing, metered volume tracking, or structured behavioural observation. Moreover, classifying households with access to a slum water point or tubewell as having a 'safe source' (Table 2) masks volume rationing among destitute households who only purchase 1-2 pots/day for drinking and revert to swamps or unsafe sources for bathing and washing (PDF pp. 6-8).",
+      "outcome_measurement_quality": "Moderate: survey outcomes clearly disaggregate drinking water source types and inside- vs. outside-slum location (Table 2) as well as sanitary vs. high-risk defecation facilities (Table 3), complemented by rich qualitative accounts of tariff structures, loan repayment schedules, and committee governance (PDF pp. 5-12). However, quantitative results are reported solely as descriptive percentages without confidence intervals, standard errors, objective water-quality/health metrics, or volumetric consumption data.",
+      "reporting_bias": "Moderate-to-high concern: no study protocol or pre-analysis plan is referenced, and the published paper is a secondary condensation of a 2001 external consultancy report 'summarized by Stephen Mezulianik and Vicky Blagbrough', the latter serving as WaterAid's Programme Learning Facilitator (PDF p. 1). Only selected descriptive cross-tabulations are presented (e.g., Table 4 reports responses to a single survey item, PDF p. 10) without inferential statistics, although negative findings on cost-recovery failures and exclusion of the poorest are candidly reported.",
+      "selection_bias": "High risk of selection bias: at the settlement level, partner NGOs selectively entered slums where residents could afford cost-recovery payments while passing over destitute settlements (PDF p. 12), and one partner's area (BAWPA) was excluded from the survey for security reasons (PDF pp. 3-4). At the household level, beneficiary status required willingness and financial capacity to pay tariffs/instalments, slum-level sampling frames and refusal rates are unreported, and the analyzed sample is unexplainedly imbalanced (491 beneficiaries vs. 639 non-beneficiaries) despite a stated equal-allocation random sampling rule (PDF p. 4, Tables 2-3)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The evaluation clearly states its overarching empirical objective: assessing whether the WaterAid-Bangladesh urban programme and its seven partner NGOs were delivering tangible water, sanitation, hygiene, and governance benefits to the urban poor—specifically including the 'poorest of the poor'—under a full cost-recovery model in Dhaka and Chittagong slums.",
+        "rating": "Yes",
+        "where_found": "PDF Page 1 (Summary) & PDF Page 3 (Section III.a, Rationale and methodology)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Combining a 1,130-household survey stratified by beneficiary status and three poverty tiers (very poor, middle/medium poor, solvent) with qualitative field observations, group discussions, and interviews with slum residents and NGO staff directly addresses both service coverage and socio-economic barriers to reaching the poorest.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-4 (Section III.a) & PDF Pages 6-12 (Sections III.c-III.f, Tables 1-5)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Ethnographic/anthropological field methods—including direct observation, group discussions, household case vignettes, and key informant/in-depth interviews—are well suited to uncovering intra-slum power dynamics, landlord capture, household cash-flow trade-offs, and practical constraints on hygiene and committee participation.",
+        "rating": "Yes",
+        "where_found": "PDF Page 1 (Author notes) & PDF Pages 3, 6-12 (Sections III.a, III.c-III.f)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Although the paper identifies observation, group discussions, in-depth interviews, key informant interviews, and visits to 46 randomly selected sites, this summarized article omits essential methodological details including the number of interviews and group discussions conducted, qualitative participant selection procedures, interview guides, and recording/transcription protocols.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 1 (Author notes), PDF Page 3 (Section III.a) & PDF Page 10 (Section III.e)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "While the author notes state that anthropologist Shireen Akhter 'took responsibility for qualitative analysis' and the text presents illustrative NGO staff quotes and a household case study, no qualitative coding framework, thematic analysis procedure, or data-reduction method is described in the published summary.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 1 (Author notes) & PDF Pages 6-13 (Sections III.c-IV)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Core qualitative interpretations—that full cost-recovery and per-pot water pricing price out destitute families, that 12-hour workdays and cramped housing impede hygiene compliance, and that committees exclude the poorest while landlords exert de facto control—are well grounded in concrete field examples (such as the Ahura slum household vignette) and direct verbatim quotes from NGO staff and managers.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 6-13 (Sections III.c-IV)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "The substantive narrative aligns field observations and staff interviews logically with its conclusions, but because the published article is a third-party summary omitting qualitative sampling and analytical procedures, complete methodological coherence from raw data collection through analysis cannot be verified.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 1 (Header/Author notes) & PDF Pages 3, 6-13 (Sections III.a, III.c-IV)"
+      },
+      {
+        "domain_id": "3.1",
+        "domain_name": "Quantitative non-randomized 3.1: Are the participants representative of the target population?",
+        "justification": "Although households were sampled randomly within slums in rough proportion to each partner NGO's beneficiary share, one partner's entire working area (BAWPA) was excluded for security reasons, partner NGOs themselves bypassed slums where the poorest could not pay, slum-level sampling frames and household response rates are not reported, and the realized sample (491 beneficiaries vs. 639 non-beneficiaries) diverges without explanation from the stated equal-sampling design.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 3-4 (Section III.a), PDF Page 7 (Table 2) & PDF Page 12 (Section IV)"
+      },
+      {
+        "domain_id": "3.2",
+        "domain_name": "Quantitative non-randomized 3.2: Are measurements appropriate regarding both the outcome and intervention (or exposure)?",
+        "justification": "Household questionnaires appropriately classified programme beneficiary status, socio-economic tier (using income, child schooling, rooms/building materials, and food-borrowing criteria), drinking water source inside vs. outside the slum, defecation facility type, hygiene recall, and committee membership, though indicators rely on self-report without microbiological or volumetric verification.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-4 (Section III.a) & PDF Pages 6-11 (Sections III.c-III.f, Tables 1-5)"
+      },
+      {
+        "domain_id": "3.3",
+        "domain_name": "Quantitative non-randomized 3.3: Are there complete outcome data?",
+        "justification": "Tables 2 and 3 account for all 1,130 surveyed households (491 beneficiaries and 639 non-beneficiaries), but the paper reports neither survey refusal/non-response rates nor sample denominators for Tables 1 and 4, leaves 1 of 46 visited sites with 'no information', and never explains why 491 vs. 639 households were analyzed when 'equal numbers of beneficiary and non-beneficiary households were selected'.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 3-4 (Section III.a, Table 1), PDF Page 7 (Table 2), PDF Page 9 (Table 3) & PDF Pages 10-11 (Section III.e, Tables 4-5)"
+      },
+      {
+        "domain_id": "3.4",
+        "domain_name": "Quantitative non-randomized 3.4: Are the confounders accounted for in the design and analysis?",
+        "justification": "Beyond descriptive cross-tabulation by three socio-economic categories and within-slum sampling of non-beneficiaries, no baseline pre-intervention data were collected and no statistical adjustment or regression controlled for household self-selection into fee-paying membership, tenure/landlord relations, spatial proximity to water lines, or concurrent hygiene interventions by other NGOs in 8 of 42 sites.",
+        "rating": "No",
+        "where_found": "PDF Pages 3-4 (Section III.a), PDF Pages 7-11 (Tables 2-4, Section III.e) & PDF Page 12 (Section IV)"
+      },
+      {
+        "domain_id": "3.5",
+        "domain_name": "Quantitative non-randomized 3.5: During the study period, is the intervention administered (or exposure occurred) as intended?",
+        "justification": "Substantial deviations from the intended community-owned, full-cost-recovery model occurred during implementation: one partner abandoned monthly billing on 90% of its water points due to non-payment, pilot sanitation blocks operated without cost-recovery plans or sold services to passers-by, 3 of 46 visited sites lacked hygiene education while 8 involved other NGOs, and landlords formed de facto tenant committees instead of genuine community ownership.",
+        "rating": "No",
+        "where_found": "PDF Page 7 (Section III.c), PDF Page 9 (Section III.d), PDF Page 10 (Section III.e) & PDF Page 12 (Section III.f)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "Section III.a states that the evaluation used a combination of qualitative and quantitative methods, which practically suits evaluating both service access and social exclusion, but the paper provides no explicit methodological justification for choosing a mixed-methods design.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 3 (Section III.a, Rationale and methodology)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Across every thematic results section (water access, sanitation, hygiene promotion, and community management), quantitative survey tables (Tables 1-5) are directly integrated with qualitative case studies, field observations, and NGO staff interviews to explain the mechanisms behind observed coverage and participation patterns.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 6-12 (Sections III.c-III.f)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Synthesizing household survey rates with qualitative evidence produces a coherent, well-substantiated conclusion: legal municipal connections and community facilities substantially expanded physical WASH access in slums, yet strict full cost-recovery, per-pot pricing, time poverty, and slum power hierarchies systematically prevent the poorest households from achieving full usage or governance representation.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 6-13 (Sections III.c-IV)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "The authors explicitly reconcile the striking apparent discrepancy between Table 2 (showing 98.7% of very poor beneficiaries using a safe main drinking water source inside the slum) and unanimous qualitative NGO staff assessments that the programme fails the poorest: destitute households buy or receive 1-2 pots/day for drinking—counting as access in the survey—while remaining unable to afford sufficient water for bathing, laundry, or latrine fees, and the poorest settlements are screened out.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 6-8 (Section III.c, Table 2) & PDF Pages 12-13 (Section IV)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Neither empirical strand fully meets the methodological rigour standards of its tradition in the published report: the qualitative strand lacks transparent reporting of sample sizes, interview selection, and coding procedures, while the quantitative non-randomized comparison lacks baseline data, confounding adjustment, sampling-frame/non-response reporting, and inferential statistical analysis.",
+        "rating": "No",
+        "where_found": "PDF Page 1 (Header/Author notes), PDF Pages 3-4 (Section III.a) & PDF Pages 6-12 (Sections III.c-IV)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods design (MMAT tool selection & 5.1)",
+        "page": "PDF Page 3, Section III.a",
+        "quote": "using a combination of qualitative (observation, group discussions and key"
+      },
+      {
+        "criterion": "Sampling exclusion and representativeness (MMAT 3.1 & selection_bias)",
+        "page": "PDF Page 3, Section III.a",
+        "quote": "The area of one working partner, BAWPA, was excluded from the survey"
+      },
+      {
+        "criterion": "Deviations from intended cost-recovery intervention (MMAT 3.5)",
+        "page": "PDF Page 7, Section III.c",
+        "quote": "monthly payments for 90 per cent of its water points because too many"
+      },
+      {
+        "criterion": "Qualitative substantiation & mixed-methods integration on committee exclusion (MMAT 1.4 & 5.2)",
+        "page": "PDF Page 11, Section III.f",
+        "quote": "There aren’t very poor people on the committees. We don’t interfere."
+      },
+      {
+        "criterion": "Legal-institutional water connection operationalization (legal_measurement_quality)",
+        "page": "PDF Page 12, Section IV",
+        "quote": "one legal water point approval from Dhaka Water and Sewerage Authority was"
+      },
+      {
+        "criterion": "Programmatic screening and selection/confounding by ability to pay (MMAT 3.1, 3.4 & 5.4)",
+        "page": "PDF Page 12, Section IV",
+        "quote": "We’re reaching poor people, but not the poorest, because they are not able to"
+      }
+    ],
+    "overall_narrative_summary": "This paper presents a mixed-methods external evaluation of the WaterAid-Bangladesh Urban Programme across informal settlements ('slums') in Dhaka and Chittagong, originally conducted in November 2001 by an anthropologist, a qualitative consultant, and a survey researcher, and summarized for publication by two non-fieldwork writers (including WaterAid's Programme Learning Facilitator; PDF p. 1). Appraised using the MMAT (2018) covering qualitative (1.1-1.5), quantitative non-randomized (3.1-3.5), and mixed-methods integration (5.1-5.5) criteria, the study's greatest methodological strength lies in its substantive integration (5.2-5.4: Yes). Pairing descriptive survey comparisons (N = 1,130: 491 beneficiary and 639 non-beneficiary households) with household case vignettes, field observations, and partner NGO staff interviews allows the authors to explain why high headline access to safe drinking water inside slums (98.4% of beneficiaries vs. 77.3% of non-beneficiaries; Table 2) coexists with severe exclusion of the 'poorest of the poor' from adequate daily water volumes, sanitary latrines, and management committees under a 100% cost-recovery mandate. However, per MMAT guidance that overall quality cannot exceed the weakest component, overall methodological concern is high. In the quantitative non-randomized strand, confounding is unaddressed beyond three-tier poverty cross-tabulations (3.4: No)—with self-selection into fee-paying user groups, selective NGO entry into better-off slums, exclusion of one partner's area (BAWPA) for security reasons, no baseline data, no inferential statistics, and an unexplained 491 vs. 639 sample split despite a stated equal-allocation rule (3.1, 3.3: Can't tell)—and major implementation deviations occurred (3.5: No). In the qualitative strand, third-party summarization omits interview counts, sampling frames, and coding/analysis procedures (1.2, 1.3, 1.5: Can't tell), resulting in non-adherence to full quality criteria across both traditions (5.5: No).",
+    "overall_rating": "High methodological concern (per MMAT 2018 narrative rules, overall quality is bounded by the weakest components: unadjusted selection/confounding bias and implementation deviations in the quantitative non-randomized survey [3.4-3.5 No; 3.1, 3.3 Can't tell] and incomplete methodological reporting in the summarized qualitative component [1.2, 1.3, 1.5 Can't tell; 5.5 No], partially offset by strong qualitative-quantitative integration [5.2-5.4 Yes])",
+    "paper_read": "full text",
+    "study_design_identified": "Convergent mixed-methods programme impact evaluation combining qualitative fieldwork (observation, group discussions, in-depth and key informant interviews, household case study) and a non-randomized comparative cross-sectional household survey (N = 1,130: 491 programme beneficiary and 639 non-beneficiary households in Dhaka and Chittagong slums).",
+    "study_id": "S875",
+    "where_found_summary": "Authorship, roles, and third-party summarization note on PDF Page 1 (journal p. 43); programme and slum context on PDF Pages 1-3 (pp. 43-45); evaluation rationale, mixed-methods design, sampling, and poverty tiers on PDF Pages 3-4 (Section III.a, pp. 45-46, Table 1); technical/institutional design of legal water points and sanitation blocks on PDF Pages 4-6 (Section III.b, pp. 46-48); integrated quantitative and qualitative findings on water access, sanitation, hygiene promotion, and community management on PDF Pages 6-12 (Sections III.c-III.f, pp. 48-54, Tables 2-5); synthesis on municipal legal approvals and cost-recovery barriers on PDF Pages 12-13 (Section IV, pp. 54-55).",
+    "why_tool_chosen": "Section III.a explicitly reports a primary mixed-methods evaluation combining qualitative empirical data collection (observation, group discussions, in-depth and key informant interviews led by anthropologist Shireen Akhter) and quantitative empirical data collection (a 1,130-household questionnaire survey comparing beneficiary and non-beneficiary households led by Mohidul Hoque Khan), with integrated interpretation throughout Sections III.c-IV. Under RISK_OF_BIAS.md §1, MMAT (with the 3.1-3.5 quantitative non-randomized comparative block) is the exact matching instrument rather than a purely quantitative or purely qualitative checklist."
+  }
+}
