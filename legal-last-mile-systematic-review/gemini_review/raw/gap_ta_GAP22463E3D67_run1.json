@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP22463E3D67",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "11ea2644531dadb1cb7a93e75364806ecdb89e223cfc3a5eeed15b5a5b982df8",
+  "prompt_sha256": "c33019f203ab28565b84daeb99fbcb67bcc3b67c7aef4c3c1643cfff7579ff5c",
+  "started_at": "2026-11-21T14:36:04.853855+00:00",
+  "completed_at": "2026-11-21T14:36:41.240908+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "unclear",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Abstract",
+        "quote": "The conditions of informal settlements determine, to some extent, the nature of the water and sanitation infrastructure."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "Some informal settlements develop spontaneously, with little government intervention or planning and little information regarding the residents of the area or the plots on which dwellings are built."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Abstract",
+        "quote": "The consequence is that, where infrastructure expansion for these settlements is authorised and financed, the practical and technical difficulty of development is significant."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the plain literal reading of Criterion 2 yield an 'unsure' verdict at Title/Abstract stage. The text appears to be a truncated introductory excerpt (with footnotes) discussing water and sanitation network expansion in informal settlements, referencing tenure insecurity, lack of plot/resident records, government planning, and authorisation and financing of infrastructure expansion, while cutting off before detailing the study's analytical focus and empirical methods.",
+    "rationale": "The provided title and abstract (which appear to be a truncated opening excerpt with footnotes from the article body) clearly address household and community water and sanitation infrastructure and network connections in slums/informal settlements (c1 = yes, c4 = yes). It references tenure insecurity, absence of plot/resident information, government planning, and whether infrastructure expansion is authorised and financed, making a narrow legal/administrative/tenure/utility-governance mechanism plausible (c2_narrow = unclear, c2_plain = unclear). Because the excerpt cuts off mid-sentence in the introductory discussion, whether the full paper presents empirical primary evidence or a systematic synthesis versus a non-empirical review cannot be determined without full-text inspection (c3 = unclear). Per Phase 5 rules against prematurely excluding ambiguous informal-settlement water/sanitation records, full-text retrieval is required ('unsure').",
+    "record_id": "GAP22463E3D67"
+  }
+}

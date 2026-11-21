@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP0FB66D023D",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b67358bc1f9a76828cb4bd38cd04506a7dcdece59e670b31fa3efdceab1d67c3",
+  "prompt_sha256": "68ff78b05704b49f7461da1d83d26dd34ed006906069f9cd55df60ba60cf71a5",
+  "started_at": "2026-11-21T14:39:15.830931+00:00",
+  "completed_at": "2026-11-21T14:41:52.506065+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "allowed the market transfer of water-use concessions between individual irrigators."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "greater user participation in irrigation management, as well as to increase irrigators' incentives to improve water-use efficiency."
+      },
+      {
+        "criterion": "c2_legal_admin_plain",
+        "page": "Title/Abstract",
+        "quote": "The paper reviews water allocation institutions in Mexico and provides case studies of water allocation and decision-making."
+      }
+    ],
+    "exclusion_code": "E07",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Although the study examines formal legal and institutional mechanisms (Mexico's 1992 Federal Water Law, transferable water-use concessions/permits, and water allocation institutions), those rules govern agricultural irrigation management and bulk water resource allocation rather than household or community water/sanitation service access. Both the narrow and plain Criterion 2 readings therefore yield 'exclude' because Criteria 1 and 4 are not met.",
+    "rationale": "Excluded under E07 (wrong service). The paper examines Mexico's 1992 Federal Water Law and market transfers of water-use concessions/permits among agricultural irrigators, focusing on irrigation management, irrigators' water-use efficiency, and bulk water resource allocation rather than household or community drinking water or sanitation service access.",
+    "record_id": "GAP0FB66D023D"
+  }
+}

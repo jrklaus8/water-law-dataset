@@ -1,0 +1,181 @@
+{
+  "candidate_id": "GAP0AC292AF07",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "400a8a06344aa54cad689fb2761b462c482482e61f655659d441fe34d7fa2ed9",
+  "prompt_sha256": "a8af0454f9dceb616531a4652bcb88ea380c3e6887ff9f751fcaffe33d76b7fe",
+  "started_at": "2026-11-21T14:52:21.889822+00:00",
+  "completed_at": "2026-11-21T14:53:27.188175+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "no",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "This briefing note provides a rapid scan of partnership initiatives by the World Bank, the African Development Bank (AfDB) and the Water and Sanitation Program (WSP) to improve the state of water and sanitation services in Africa."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "The collaboration is now focusing on: a) intensifying operational cooperation and joint work in additional African countries, including fragile and post-conflict countries"
+      }
+    ],
+    "exclusion_code": "E05",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Excluded under both narrow and plain Criterion 2 readings: this is a non-empirical donor briefing note summarizing inter-agency operational partnerships, information sharing, and capacity-building among the World Bank, AfDB, and WSP rather than an empirical study or systematic review of legal, regulatory, institutional, or administrative mechanisms governing household or community service access.",
+    "rationale": "Although the record broadly concerns water and sanitation services in Africa (C1), it is an institutional briefing note providing a rapid scan of inter-donor partnership activities (operational cooperation, information sharing, capacity-building training, and results monitoring) among the World Bank, AfDB, and WSP. It neither presents empirical primary research or a systematic review (failing C3, E05) nor examines legal, regulatory, or administrative rules governing household/community water or sanitation access outcomes (failing C2 and C4).",
+    "record_id": "GAP0AC292AF07"
+  }
+}

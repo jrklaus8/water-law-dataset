@@ -1,0 +1,181 @@
+{
+  "candidate_id": "GAP4FE5EA1F86",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f8f88cb0fed795dcc3f89d18afdda1be32b0b6d2a6543943f78f3bfb23280b99",
+  "prompt_sha256": "b456a73a2a70d3b993cfc7f0dc10ed57138435d63b97f25a3950eb71ac3f5c48",
+  "started_at": "2026-11-21T14:52:21.889924+00:00",
+  "completed_at": "2026-11-21T14:53:24.980664+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow / c4_access_outcome",
+        "page": "Abstract",
+        "quote": "Using household survey data, this paper estimates the mortality impact of improved water and sanitation access in order to evaluate the potential contribution of water and sanitation investment toward achieving the child mortality targets defined in Millennium Development Goal 4."
+      },
+      {
+        "criterion": "c2_legal_admin_plain / c4_access_outcome",
+        "page": "Abstract",
+        "quote": "Combining this analysis with cost data for water and sanitation infrastructure, the authors estimate that the average cost per life-year saved ranges between 65 and 80 percent of developing countries' annual gross domestic product per capita."
+      }
+    ],
+    "exclusion_code": "E03",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the literal/plain wording of Criterion 2 yield an exclude decision: the study examines physical water and sanitation infrastructure coverage/investment as an independent variable predicting child mortality and macro cost per life-year saved, with no legal, administrative, institutional, regulatory or governance mechanism and no service-access outcome.",
+    "rationale": "Although this empirical study involves household water and sanitation infrastructure (c1 = yes, c3 = yes), it treats improved water and sanitation access as the exposure/explanatory variable to estimate child mortality reductions and macro cost-effectiveness (cost per life-year saved relative to GDP per capita). It does not examine any legal, administrative, regulatory, tenure, tariff or governance mechanism governing access (failing Criterion 2; E03) nor does it evaluate determinants of household service access as an outcome (failing Criterion 4; E04).",
+    "record_id": "GAP4FE5EA1F86"
+  }
+}

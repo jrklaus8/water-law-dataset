@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPAB0587EC8B",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "0da78596604145d19fc71b14fa2b066a7bdabdc4956a506bf819bb5c277ada75",
+  "prompt_sha256": "1b3c8cbf7d4039a3cd1f7459c05377b6b465a6ee5b34843bba19900a4f98a147",
+  "started_at": "2026-11-21T14:42:59.810624+00:00",
+  "completed_at": "2026-11-21T14:43:47.336278+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "unclear",
+      "c3_empirical_or_systematic_review": "no",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "Quantifying Water and Sanitation in Development Cooperation: Power or Perversity?"
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "In this paper, we critical analyze two early periods of target setting together with their most recent incarnation in the 2000/1 Millennium Development Goals (MDGs)."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "In a final section, we offer some brief conclusions on the implications for the post-2015 agenda and some potential alternative measurement routes to tread."
+      }
+    ],
+    "exclusion_code": "E05",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Under the narrow 2026-10-13 Criterion 2 reading, international development target setting and MDG indicator design clearly fail Criterion 2 (no domestic legal, regulatory, tenure, tariff, discretion, enforcement, or utility-structure mechanism). Under the literal/plain Criterion 2 wording, global MDG target setting could arguably touch broad international governance/institutional factors (unclear), but the decision remains exclude under both readings because the paper is a conceptual/critical essay on global measurement agendas without primary empirical evidence or systematic synthesis (E05) and does not evaluate empirical service-access outcomes.",
+    "rationale": "While the paper addresses domestic water and sanitation in international development cooperation (c1 = yes), it is a critical/conceptual historical essay examining global quantitative target setting (1976 onward, the MDGs, and post-2015 measurement options) rather than an empirical primary study or systematic review (c3 = no, E05). It also neither examines a legal or administrative rule mechanism governing household/community service access under narrow Criterion 2 (c2_narrow = no) nor evaluates empirical water/sanitation access outcomes (c4 = no).",
+    "record_id": "GAPAB0587EC8B"
+  }
+}

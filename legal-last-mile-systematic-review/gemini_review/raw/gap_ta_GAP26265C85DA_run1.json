@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP26265C85DA",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "202117113992d47e724672dfd1dd168adb981261b40074fc297034ae4cec6b8e",
+  "prompt_sha256": "6a31e352ef86fc67b5115f9250c87c19ed944f116d2f1a0fc80deb4728561b67",
+  "started_at": "2026-11-21T14:42:59.811757+00:00",
+  "completed_at": "2026-11-21T14:43:30.337713+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "The main goal shall be to assess socio-economic, cultural, and environmental factors influencing compliance with WASH and to recommend suitable evidence-based interventions to improve health outcomes."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "Analysis of this data highlights insufficient access to clean water, deeply held cultural beliefs that guide hygiene practices, and grossly inadequate sanitation infrastructure as key barriers to effective WASH practices."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "Using a mixed-methods approach, data were collected using structured surveys and in-depth interviews with residents, community leaders, and key informants."
+      }
+    ],
+    "exclusion_code": "E03",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "No divergence between plain and narrow Criterion 2 readings: the study focuses exclusively on socio-economic, cultural, and environmental determinants of household WASH practices and infrastructure scarcity in a remote settlement, without examining any legal, administrative, regulatory, institutional, or governance mechanism.",
+    "rationale": "Mixed-methods primary study of WASH challenges on Chilwa Island, Zambia. Although it touches on household/community water access and sanitation infrastructure (C1, C4) using empirical survey and interview data (C3), its explicit exposure scope is socio-economic, cultural, and environmental factors shaping WASH practices rather than any legal, administrative, regulatory, tenure, tariff, or institutional mechanism governing service access (fails C2; exclude under E03).",
+    "record_id": "GAP26265C85DA"
+  }
+}

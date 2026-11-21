@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPF2C5A95A19",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "212383304a0f950ff2ee8ea7049607e92e8ac66800a24bd5b924cf66543c0ddd",
+  "prompt_sha256": "88eced2cfdfb0770e8062a8a7db25a3ed750965c28f95b1d85ae6ceb010123bc",
+  "started_at": "2026-11-21T14:42:59.809768+00:00",
+  "completed_at": "2026-11-21T14:52:21.855660+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access, c4_access_outcome",
+        "page": "Abstract",
+        "quote": "There is great variation in terms of access to water sources, amount and quality of water consumed, and access to sanitation facilities."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow, c2_legal_admin_plain",
+        "page": "Abstract",
+        "quote": "The served and unserved population is dependent on multiple modes and models of water provisioning to meet their basic requirements."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow, c2_legal_admin_plain, c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "This chapter does a comprehensive analysis of these challenges and chart out the impact of these issues on Indian economy. In addition, it examines major government policies promulgated in recent years to address these issues and explore the future challenges for the Indian economy."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under the literal/plain Criterion 2 wording, c2_legal_admin_plain is 'yes' because the title and abstract explicitly examine a 'Policy Framework', 'multiple modes and models of water provisioning', and 'major government policies promulgated in recent years'. Under the 2026-10-13 narrow rule-type reading, c2_legal_admin_narrow is 'unclear' because the abstract does not clarify whether the chapter evaluates specific legal, regulatory, tariff/subsidy, tenure, or utility-ownership/provisioning rule-types governing access or merely summarizes macro-level national WASH programs. Both Phase 5 decisions remain 'unsure' because empirical study status (c3) also cannot be resolved without full-text inspection.",
+    "rationale": "The record clearly addresses household/population drinking water and sanitation access in India (c1 = yes) and describes disparities in access to water sources, water quantity/quality, and sanitation facilities alongside health and macroeconomic impacts (c4 = yes). However, two criteria are ambiguous from the title and abstract alone and require full-text verification: (1) c2_legal_admin_narrow is 'unclear' because references to 'Policy Framework', 'multiple modes and models of water provisioning', and 'major government policies promulgated in recent years' could encompass utility/institutional provisioning structures, regulatory frameworks, or tariff/subsidy rules, or could instead be limited to unanalysed macro-policy/program overviews; and (2) c3_empirical_or_systematic_review is 'unclear' because 'This chapter does a comprehensive analysis of these challenges' may rely on empirical analysis of household survey/secondary data (common in Indian water governance chapters) or may be a non-empirical narrative overview chapter. Per Phase 5 rules against premature exclusion of ambiguous governance abstracts, the verdict is 'unsure'.",
+    "record_id": "GAPF2C5A95A19"
+  }
+}

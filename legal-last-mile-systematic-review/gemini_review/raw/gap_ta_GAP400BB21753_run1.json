@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP400BB21753",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "1793ce21d6031dfa564545103ddc7b257b552a21d44008e23db4570e7092665d",
+  "prompt_sha256": "87beffe1d0aeb7819d6cb2c3bf1814c88006eda772693567f9bd16f552fdf402",
+  "started_at": "2026-11-21T14:38:11.802978+00:00",
+  "completed_at": "2026-11-21T14:39:13.604857+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access; c2_legal_admin_narrow",
+        "page": "abstract",
+        "quote": "public-private partnerships (PPP) have emerged as a usual way of local water services provision."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "abstract",
+        "quote": "Second, we estimate the model using a sample of Spanish municipal water services recently privatized."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow; c4_access_outcome",
+        "page": "abstract",
+        "quote": "Moreover, the fact of setting a high reservation price as a way to guarantee a minimum amount of resources has had consequences in terms of water price increases after water services privatization."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "No divergence between plain and narrow Criterion 2: municipal water privatization, PPP contracting-out, and procurement reservation-price rules satisfy both the literal governance/institutional wording and the narrow utility-ownership/regulatory-structure and tariff/cost-recovery mechanisms. Both decisions are 'unsure' solely because full text is needed to verify Criterion 4 (household residential affordability/access outcomes vs. aggregate utility/fiscal pricing).",
+    "rationale": "The study empirically estimates the impact of public-private partnerships (contracting-out/privatization) and concession reservation prices in Spanish municipal urban water supply (satisfying C1, C2 narrow and plain, and C3). However, the abstract frames outcomes around local government debt reduction and 'water price increases' without specifying whether residential household water bills, affordability burdens, or household access/disconnection outcomes are analysed versus aggregate utility price/revenue indices. Full-text review is required to verify Criterion 4 eligibility.",
+    "record_id": "GAP400BB21753"
+  }
+}

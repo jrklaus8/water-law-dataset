@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPAB42509F7B",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "667a2edc39feb9032ed285a646d96de79619e7fc1a9996ac240dfb8449aa23b3",
+  "prompt_sha256": "59775f403d24d56a321c705474161ffd89cd5705442eb98d9ec156fb6fe4abd2",
+  "started_at": "2026-11-21T14:38:11.803209+00:00",
+  "completed_at": "2026-11-21T14:38:35.208159+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title",
+        "quote": "Nature-Based Solutions in Coastal Governance, A Legal Analysis of Beach Concession Contracts in Mar del Plata, Argentina"
+      },
+      {
+        "criterion": "c2_legal_admin_plain",
+        "page": "Abstract",
+        "quote": "analyzes 36 tender specifications corresponding to the Fiscal Tourist Units managed by the Municipality."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Abstract",
+        "quote": "The content analysis indicates that, although environmental management and water-efficiency requirements are increasingly incorporated into tender specifications, explicit NBS criteria remain largely absent."
+      }
+    ],
+    "exclusion_code": "E01",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the plain Criterion 2 reading yield exclusion because the study fails Criterion 1 (it examines coastal ecosystem governance and commercial beach tourist unit concessions rather than household or community water/sanitation service access) and Criterion 4 (outcomes concern inclusion of Nature-Based Solutions and environmental clauses in beach concession tenders rather than household/community service access).",
+    "rationale": "Exclude (E01 - wrong topic). This study conducts an environmental-law and content analysis of 36 municipal tender specifications for commercial beach tourist concessions (Fiscal Tourist Units) in Mar del Plata, Argentina, focusing on coastal adaptation, aquifer protection, water-efficiency clauses, and Nature-Based Solutions. It does not examine household or community water or sanitation service access (fails Criterion 1) or any household/community water or sanitation access outcome (fails Criterion 4).",
+    "record_id": "GAPAB42509F7B"
+  }
+}

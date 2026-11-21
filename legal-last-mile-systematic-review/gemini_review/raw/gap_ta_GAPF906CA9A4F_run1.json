@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPF906CA9A4F",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "e4d94fd1d2eb918797fd7adb1825f7c7b6c594c0db4405c5c927e851dd2412bc",
+  "prompt_sha256": "a944bec473672d42d646384ff73b604044afadb9880832c7e02fad906aae10ab",
+  "started_at": "2026-11-21T14:38:11.803272+00:00",
+  "completed_at": "2026-11-21T14:38:34.160889+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "no",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "In this paper we offer several proposals in order to investigate the relationship between water access and happiness, suggesting some situations that would merit further research."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "Moreover, we have included some methodological notes in order to achieve this objective."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "Firstly, it can favour the contemplation of water access as a human right. Secondly, it can serve as a framework for the decision-making process carried out by Governments and NGOs in developing countries."
+      }
+    ],
+    "exclusion_code": "E05",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Excluded under both narrow and plain readings of Criterion 2: the paper is a conceptual/methodological proposal to study how water access affects subjective well-being rather than an empirical evaluation of any legal, administrative, institutional, or governance determinant of water access.",
+    "rationale": "This conceptual and methodological paper offers research proposals and methodological notes on investigating how water access affects subjective well-being (happiness). It presents no empirical primary data or systematic synthesis (E05), reverses the causal direction of interest (treating water access as a predictor of subjective well-being rather than an access outcome), and does not empirically examine any legal, administrative, or regulatory mechanism governing service access beyond noting potential relevance to human-rights framing and NGO/government decision-making.",
+    "record_id": "GAPF906CA9A4F"
+  }
+}

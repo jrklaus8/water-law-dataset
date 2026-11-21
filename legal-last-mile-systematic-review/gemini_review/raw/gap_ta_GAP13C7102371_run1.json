@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP13C7102371",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "388347363b04807de7f6425e88bd8512472419fc2664c1f324f89dea524862e6",
+  "prompt_sha256": "10f84a688cb079bb356768888e6f8769f54281344a71f1c68d6f98e9df5709d1",
+  "started_at": "2026-11-21T14:39:15.829844+00:00",
+  "completed_at": "2026-11-21T14:39:55.236195+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access / c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "through an historical appraisal of the rolling out of water and power networks in very different contexts, that ownership is just one of the factors in urban network service provision and management"
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Abstract",
+        "quote": "to understand how and why networks are universalized (or not) and what socio-spatial effects they produce."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "With case studies chosen from various socio historical contexts, from Papal Rome to colonial Cape Town, statist Paris to liberal Los Angeles"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under the plain reading of Criterion 2, c2_legal_admin_plain is clearly 'yes' because the paper explicitly analyses utility ownership, governance frameworks, urban regimes and regulation; under the 2026-10-13 narrow reading, c2_legal_admin_narrow is 'unclear' because full text is needed to see whether concrete utility-ownership or regulatory rules governing water access are examined rather than broad macro-political-economy context. Both readings yield 'unsure' at Title/Abstract stage because empirical primary case-study status (c3) also requires full-text verification.",
+    "rationale": "The abstract addresses urban water (and power) network rollout, service universalization and socio-spatial fragmentation ('splintering') across four historical urban case studies (Rome, Cape Town, Paris and Los Angeles), examining public versus private utility ownership, unbundling, governance frameworks and regulation. Full-text review is required to determine (1) whether the historical case studies report primary empirical/archival evidence rather than a purely conceptual or secondary synthesis, and (2) under the narrow Criterion 2 reading, whether specific utility-ownership or regulatory mechanisms governing water service access are analysed rather than macro-level urban regime background alone.",
+    "record_id": "GAP13C7102371"
+  }
+}

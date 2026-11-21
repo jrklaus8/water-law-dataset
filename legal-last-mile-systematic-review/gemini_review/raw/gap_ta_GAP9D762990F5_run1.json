@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP9D762990F5",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "497265100f38efe0b483c65c41e4024f7a3552e31abd96049f728b954c47614f",
+  "prompt_sha256": "7d8ff5da4f0017f07c6149f47e6467af7f9d772e64af091366fedc0cf9fe5347",
+  "started_at": "2026-11-21T14:52:21.889721+00:00",
+  "completed_at": "2026-11-21T14:52:51.215381+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title",
+        "quote": "Water Supply and Sanitation (WSS): Strengthening Climate-Informed Project Design"
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "Climate-informed projects aimed at boosting water utilities’ performance are likely to succeed in achieving intended results by investing in energy efficiency, nonrevenue water (NRW) reduction, climate resilience, and demand-side water use efficiency."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "Abstract",
+        "quote": "Extending water supply and sanitation (WSS) services, especially to unserved or underserved segments in areas with high climate risks, requires managing water resources efficiently and taking into account climate change–related factors."
+      }
+    ],
+    "exclusion_code": "E03",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Excluded under both the narrow rule-type reading and the plain Criterion 2 wording because the record focuses on generic climate-informed project design and technical/operational utility investments (energy efficiency, NRW reduction, climate resilience, demand-side water use efficiency, and water resource management) with no legal, administrative, institutional, regulatory, or governance mechanism examined.",
+    "rationale": "Although the record concerns extending water supply and sanitation services to unserved or underserved segments (C1/C4), its exposure is climate-informed project design and technical/operational investments (energy efficiency, nonrevenue water reduction, climate resilience, and demand-side efficiency) rather than any legal, administrative, regulatory, tariff, tenure, or utility-governance rule or mechanism (failing C2; generic project delivery is expressly out of scope). Excluded under E03 (wrong exposure).",
+    "record_id": "GAP9D762990F5"
+  }
+}

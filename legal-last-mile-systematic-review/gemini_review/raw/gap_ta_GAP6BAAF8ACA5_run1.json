@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP6BAAF8ACA5",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "83cbe35f7bf13dad859e937919be1cad80eb70d014621d24dab304ecb94b0863",
+  "prompt_sha256": "d5e916b63a32336801a78668d7a497ded06a0354bafb0a6515240660d44c7df8",
+  "started_at": "2026-11-21T14:42:59.811070+00:00",
+  "completed_at": "2026-11-21T14:43:33.927583+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "This research investigates the obstacles preventing local contractors from becoming main players in Zambia's construction sector, particularly in water and sanitation projects."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "The study suggests that promoting local contractors' growth and competitiveness requires various measures, such as government confidence in their capabilities, tax incentives, procurement reforms, financial support, partnerships, segmented contracts, and fostering self-sufficiency."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "The research defines theoretical propositions and strategies aimed at increasing local contractor involvement in infrastructure development."
+      }
+    ],
+    "exclusion_code": "E01",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Although procurement reforms, tax incentives, and segmented contracts represent institutional/regulatory procurement measures in a literal sense, they concern construction-firm participation in public tenders rather than legal or administrative rules governing household or community service access; under both Criterion 2 readings the record is excluded for wrong topic and lack of any water/sanitation service-access outcome.",
+    "rationale": "Excluded (E01): This study examines industrial/procurement barriers to local construction contractor participation and competitiveness in public infrastructure tenders in Zambia's water and sanitation construction sub-sector. Its population is construction contractors and its target outcome is local contractor involvement in infrastructure procurement rather than household or community water or sanitation service access, coverage, reliability, affordability, or exclusion.",
+    "record_id": "GAP6BAAF8ACA5"
+  }
+}

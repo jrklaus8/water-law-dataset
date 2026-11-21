@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP691E692759",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "460ffcc52e9ccf49e3ef7d19117b1d44b71d4a8c594211598c28db76db5434d9",
+  "prompt_sha256": "d8d88f27ef87de833b15896436a3f19aa595453d8f31ef66a0da4db6e8cae00a",
+  "started_at": "2026-11-21T14:42:59.810119+00:00",
+  "completed_at": "2026-11-21T14:43:58.248943+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "We study them using a stated preference experiment in Hangzhou, China, where households faced either an increasing block tariff (IBT) or a flat-rate tariff in the baseline scenario, followed by two hypothetical IBT schedules."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Abstract",
+        "quote": "A one-standard-deviation increase in threshold tightness is associated with a 14.65 m3 reduction in annual household water consumption, about 14% of the sample mean; the price-gap estimate is smaller."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Abstract",
+        "quote": "threshold tightness predicts willingness to adopt water-saving technologies, but not unfavorable bill assessments, and we find no clear visual evidence of marginal-price bunching."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "No divergence between narrow and plain Criterion 2 readings: nonlinear domestic water tariff design (increasing block tariffs vs. flat-rate tariffs, block quantity thresholds and price gaps) directly satisfies both the active 2026-10-13 narrow tariff/cost-recovery rule-type criterion and the literal/plain Criterion 2 wording. Both decisions are 'unsure' solely because full-text review is needed to determine whether Criterion 4 service-access/affordability outcomes (as opposed to purely hypothetical conservation demand-reduction and technology-adoption intentions) are substantively evaluated.",
+    "rationale": "This empirical study examines domestic water tariff structure (increasing block tariffs vs. flat-rate tariffs, focusing on block quantity threshold tightness and price gaps) among households in Hangzhou, China, satisfying Criterion 1 (household water service), Criterion 2 under both narrow and plain readings (tariff design), and Criterion 3 (empirical stated-preference and baseline household survey evidence). However, the study is framed around demand conservation and willingness to adopt water-saving technologies in hypothetical stated-preference IBT scenarios, while also reporting reductions in annual household water consumption and testing 'unfavorable bill assessments' (a plausible affordability/bill-burden indicator) alongside baseline IBT vs. flat-rate exposure. Full-text retrieval ('unsure') is required to verify whether the study reports eligible household water access, essential-quantity, or affordability outcomes rather than purely hypothetical behavioral conservation intentions.",
+    "record_id": "GAP691E692759"
+  }
+}

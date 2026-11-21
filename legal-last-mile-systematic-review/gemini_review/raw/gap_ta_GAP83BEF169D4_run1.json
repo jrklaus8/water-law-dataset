@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP83BEF169D4",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "c9072cd4ed5f87c16e884d723ae98f0c4901847c636e3d1c730211d38e06cd1a",
+  "prompt_sha256": "0ea0da1eb339f32914c593cd7adf8e3e335132a2cb218ffce3475ae1bc63f090",
+  "started_at": "2026-11-21T14:52:21.888247+00:00",
+  "completed_at": "2026-11-21T14:53:30.202843+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title",
+        "quote": "Information and Modeling Issues in Designing Water and Sanitation Subsidy Schemes"
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "The model used to design Panama's water subsidy proposal addressed these questions: a) What are the targeting properties of different eligibility criteria for the subsidy?"
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "Customer databases of the water company, which provide robust information on the measured consumption of formal customers, but little information on unmeasured consumption, informal customers, willingness to pay, or socioeconomic variables."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "No divergence between the literal/plain and narrow rule-type readings of Criterion 2: household water/sanitation subsidy design, eligibility criteria, targeting rules, and administrative costs clearly satisfy both readings. Both decisions are 'unsure' pending full-text verification of primary empirical analysis versus purely methodological/ex-ante spreadsheet simulation.",
+    "rationale": "The record clearly concerns household water and sanitation service access (C1 = yes) and explicitly examines a core administrative/regulatory tariff-and-subsidy mechanism—specifically eligibility criteria, targeting properties, formal versus informal customer coverage, and administrative costs in designing Panama's water subsidy proposal (C2 narrow = yes; C2 plain = yes). However, because the title and abstract frame the paper around methodological data-collation and spreadsheet simulation modeling issues for an ex-ante subsidy proposal, full-text inspection is required to determine whether the paper reports primary empirical analysis of household/utility data on service affordability, targeting, or exclusion outcomes (C3 = unclear; C4 = unclear) rather than a purely methodological or hypothetical simulation discussion.",
+    "record_id": "GAP83BEF169D4"
+  }
+}

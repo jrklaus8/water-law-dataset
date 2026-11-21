@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP5565FBCB15",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "aa7e931e59b47873c937557d78be0ce8c478962e14f4d223dfd5223ed7f442f5",
+  "prompt_sha256": "334f2df03122444f411c33a922a47ef26a03a62b2fbe2bbf927cbc9a1dd5fb15",
+  "started_at": "2026-11-21T14:39:15.831563+00:00",
+  "completed_at": "2026-11-21T14:39:41.836613+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "in-depth discussions among urban governance stakeholders in Kigali between September 2017 – December 2018 and a review of the literature on sanitation in Kigali."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "Efforts to improve sanitation for residents in informal settlements in Kigali are hampered by three main challenges: lack of a central sewerage management and treatment system"
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "While there are strategies laid down to deal with sanitation issues in the upcoming Kigali masterplan of 2020, measures such as strengthened awareness at local level will be necessary."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under plain Criterion 2, the study clearly engages with urban governance, municipal master-planning (Kigali masterplan of 2020), and public policy/funding initiatives (c2_legal_admin_plain = yes), whereas under the narrow rule-type Criterion 2 reading it is unclear from the abstract alone whether specific planning, tenure, regulatory, or financing rules governing informal-settlement sanitation access are analysed versus generic infrastructure deficits and awareness measures (c2_legal_admin_narrow = unclear). Both readings yield an overall Phase 5 verdict of unsure because full-text inspection is also required to determine whether the stakeholder discussions and literature synthesis constitute primary qualitative empirical research or a systematic review (c3 = unclear).",
+    "rationale": "The paper addresses liquid and solid waste sanitation access for residents of informal settlements in Kigali, Rwanda (c1 = yes, c4 = yes). However, full-text review is required on two grounds: (1) under the narrow Criterion 2 reading, it is unclear whether the analysis of informal settlements, public funding, and the Kigali masterplan of 2020 examines specific legal, planning/tenure, regulatory, or subsidy/financing rules rather than general infrastructure shortfalls and local awareness; and (2) under Criterion 3, it is unclear whether the 'in-depth discussions among urban governance stakeholders' and 'review of the literature' represent systematic qualitative empirical data or a narrative policy-community synthesis. Per Phase 5 protocol rules against prematurely excluding ambiguous informal-settlement governance abstracts, the record is retained as unsure.",
+    "record_id": "GAP5565FBCB15"
+  }
+}

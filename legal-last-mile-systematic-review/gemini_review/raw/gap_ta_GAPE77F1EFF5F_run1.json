@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPE77F1EFF5F",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "1cf8cb5d54360c799b8015a0d32e2e962fa91b70a1036705ce46893a282b9211",
+  "prompt_sha256": "cb92132a83fb4a8dd2e01641247274468be5fd87d3dfc28f0b0d762e1d6329b1",
+  "started_at": "2026-11-21T14:52:21.884072+00:00",
+  "completed_at": "2026-11-21T14:53:36.561640+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "unclear",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access & c2_legal_admin",
+        "page": "Abstract",
+        "quote": "Using latrine desludging services in Dakar as a case-study, we document that prices are 40% lower in competitive areas than in areas where prices are coordinated by a trade association."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow & c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "We then develop an experimental just-in-time auction platform with random variation in several design features to formally test for collusive conduct and estimate the welfare costs of imperfect competition."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Abstract",
+        "quote": "This would significantly increase take-up of the improved sanitation technology, with back-of-the-envelope calculations suggesting improvements in health of a similar magnitude to those from building improved sewerage systems."
+      }
+    ],
+    "exclusion_code": "E03",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under the active 2026-10-13 narrow rule-type reading of Criterion 2, private bidder collusion, trade-association price coordination, and researcher-designed experimental auction features are private industrial-organization/market-design mechanisms rather than state legal, administrative, regulatory, tenure, public tariff/subsidy, enforcement, or utility-regulatory rules (exclude, E03). Under the literal plain wording of Criterion 2 ('any legal, administrative, institutional, regulatory, or governance factor'), trade-association price coordination and institutional auction rules plausibly constitute institutional or market-governance factors warranting full-text inspection (unsure).",
+    "rationale": "The study empirically examines household sanitation access (latrine desludging prices and counterfactual take-up of improved sanitation technology in Dakar, Senegal; C1=yes, C3=yes, C4=yes). However, under the narrow rule-type reading of Criterion 2, the exposure studied is private-sector imperfect competition/bidder collusion (including informal/private price coordination by a trade association) and researcher-randomized design features in an experimental auction platform, rather than a legal, administrative, regulatory, tenure, public tariff/subsidy, bureaucratic discretion, enforcement/disconnection, or utility-regulatory mechanism (C2_narrow=no; E03 wrong exposure).",
+    "record_id": "GAPE77F1EFF5F"
+  }
+}

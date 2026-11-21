@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP342E0A1B8F",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b86a42e94aede593425bcab80122925c513d29660dcd079d342352f97fb89e41",
+  "prompt_sha256": "032e0d95f58ba034c2dfb785826c79cc5e819e9ba90f0215bbd956aee4d52b2a",
+  "started_at": "2026-11-21T14:38:11.802751+00:00",
+  "completed_at": "2026-11-21T14:38:40.437197+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "no",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "Hence, reviewing Araral’s perspectives and showing its implication for the Ethiopian water sector would inform policymakers"
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "The focus of this review article is “The Failure of Water Utilities Privatization: Synthesis of Evidence, Analysis and Implications”"
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "This review article is divided into five parts: introduction, hypothesis (fiscal and efficiency), evidence and explanation for the failure of privatization, the limitations of the article, and the implication for the Ethiopian water utility sector."
+      }
+    ],
+    "exclusion_code": "E05",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "No difference between plain and narrow Criterion 2 readings: public water utility privatization and ownership reform satisfy Criterion 2 under both readings, but the record is excluded under Criterion 3 (E05) because it is a narrative critical commentary/book-style review of a single article by Eduardo Araral rather than primary empirical research or a systematic review.",
+    "rationale": "Although the topic concerns public water utility privatization and institutional reform (satisfying Criterion 1 and Criterion 2 under both narrow and plain readings), the abstract explicitly shows that this piece is a critical commentary/review of a single published paper by Professor Eduardo Araral (\"The Failure of Water Utilities Privatization: Synthesis of Evidence, Analysis and Implications\"), examining \"the limitations of the article, and the implication for the Ethiopian water utility sector.\" It presents neither primary empirical data collection nor a systematic empirical synthesis/meta-analysis, failing Criterion 3 (E05).",
+    "record_id": "GAP342E0A1B8F"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP3F7F5B8D15",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "d457b041af7389b01215cf8b001289922b72e39477670c76a74bf0db23d57788",
+  "prompt_sha256": "f15c6b6b69d70798e55e789b4fee591feaf221883e156a7bb6d9eb5573ec8d68",
+  "started_at": "2026-11-21T14:37:03.797792+00:00",
+  "completed_at": "2026-11-21T14:37:35.833711+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "The paper focuses on the safety of women in slums in accessing sanitation facilities."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "These factors are related to the infrastructure of toilet blocks, the location of the toilet, the route to the toilet, timings of toilet use, and the number of toilets."
+      },
+      {
+        "criterion": "c2_legal_admin_plain",
+        "page": "Title/Abstract",
+        "quote": "The study found that most cases of violence or crime against women are due to a lack of lighting in and on the route to access sanitation and water facilities, lack of access to the toilet block, as well as the dangerous location of Public Toilets (PTs) and Common toilet complexes (CTCs)."
+      }
+    ],
+    "exclusion_code": "E03",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Excluded under both narrow and plain readings of Criterion 2 because the literature review examines physical, infrastructural, and spatial safety determinants (toilet block infrastructure, lighting, siting/location, route, and number of toilets) of gender-based violence when accessing slum toilets rather than any legal, administrative, regulatory, institutional, or governance mechanism.",
+    "rationale": "Although the literature review addresses women's safe access to and usage of slum water and sanitation facilities (Criterion 1 and Criterion 4), the abstract explicitly specifies that the determinants analysed are physical and spatial infrastructure features—toilet block infrastructure, lighting, route, siting of public/community toilets, timings of use, and number of toilets—affecting exposure to crime and sexual violence. No legal, administrative, regulatory, tenure, tariff, or institutional governance mechanism is examined (E03: wrong exposure).",
+    "record_id": "GAP3F7F5B8D15"
+  }
+}

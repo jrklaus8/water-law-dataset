@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP8634FA3CD7",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "60de049168b90de0b8abaead3a2cb48e35f7a5724495b79857a55f105a44619e",
+  "prompt_sha256": "bc5d6b5f01b39586359f0c11eb7d84fd217870692f67b0ea1ff6f841e0023368",
+  "started_at": "2026-11-21T14:37:03.798549+00:00",
+  "completed_at": "2026-11-21T14:37:36.454725+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c4_service_access_outcome",
+        "page": "Abstract",
+        "quote": "Census-based housing and demographic indicators were integrated with environmental, topographic, pollution, and accessibility data to construct four infrastructure and housing indices aligned with UN-Habitat definitions: improved water access, improved sanitation access, sufficient living area, and housing durability."
+      },
+      {
+        "criterion": "c2_exposure_mechanism",
+        "page": "Abstract",
+        "quote": "These indices were analyzed using unsupervised clustering and complemented by correlational and predictive analyses to examine socio-environmental factors associated with service access."
+      },
+      {
+        "criterion": "c2_exposure_mechanism",
+        "page": "Abstract",
+        "quote": "Variation in water and sanitation access is strongly associated with socio-economic deprivation, environmental exposure, topographic conditions, and accessibility to health services."
+      }
+    ],
+    "exclusion_code": "E03",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Excluded under both narrow and plain readings of Criterion 2. Despite using the phrase 'Infrastructural Regimes' in the title, the abstract makes clear that 'regimes' refers to statistical clusters (Structured, Partially Structured, Unstructured) derived from unsupervised clustering of physical infrastructure indices, and the explanatory analysis examines socio-economic, environmental, topographic, health-accessibility, and urban-morphological correlates rather than any legal, administrative, regulatory, institutional, or governance mechanism. References to 'policy frameworks' and 'urban policy' are strictly introductory motivation and concluding policy implications.",
+    "rationale": "This empirical national-scale geospatial and census study measures household improved water and sanitation access across more than 12,000 Brazilian favelas (satisfying C1, C3, and C4), but fails Criterion 2 (E03: wrong exposure). The study explicitly integrates demographic, environmental, topographic, pollution, accessibility, and built-environment morphological variables to classify statistical 'infrastructural regimes' via unsupervised clustering and model socio-environmental correlates of service access, without examining any legal, administrative, tenure-rule, tariff, regulatory, or institutional governance mechanism.",
+    "record_id": "GAP8634FA3CD7"
+  }
+}

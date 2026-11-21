@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPE28C399993",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "ba314942ab2da931a80bdd21f97b3870e99064c2397f12defc7289cdfef0f979",
+  "prompt_sha256": "45ad72601a51b7cfd0e2b382ee081faac168f4e3c85381831a47c562b11d34f4",
+  "started_at": "2026-11-21T14:37:03.799010+00:00",
+  "completed_at": "2026-11-21T14:38:11.793380+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title",
+        "quote": "Making the Poor Pay for Public Goods via Microfinance: Economic and Political Pitfalls in the Case of Water and Sanitation"
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "The paper concludes that trying to make the poor pay for public goods runs into four pitfalls: politics, public capacity, values and equity."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "Two cases, from Vietnam and India, are presented and evaluated. Despite their dissimilar settings and institutional designs, evidence is found"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under the literal/plain wording of Criterion 2, c2_legal_admin_plain is 'yes' because the abstract explicitly examines 'collective governance solutions', 'institutional designs', and 'public capacity' in household water and sanitation provision. Under the active 2026-10-13 narrow rule-type reading, c2_legal_admin_narrow is 'unclear' because full text is required to determine whether the microfinance/cost-recovery arrangements in Vietnam and India involve formal municipal/utility cost-recovery, connection-fee, subsidy, or public-private regulatory/ownership rules rather than purely private NGO credit delivery. Both decision and plain_criterion2_decision are 'unsure' because full text is also needed to verify primary empirical data collection (c3) as opposed to illustrative secondary case vignettes.",
+    "rationale": "The study clearly addresses household water and sanitation service provision and equity/payment barriers for poor households in Vietnam and India (c1='yes', c4='yes'). However, full-text retrieval ('unsure') is required for two reasons: (1) under the narrow Criterion 2 reading, it is unclear from the abstract alone whether the two evaluated water/sanitation microfinance schemes operate through state, municipal, or utility cost-recovery, subsidy, tariff/connection-fee, or regulatory/institutional rules versus purely private microcredit lending (c2_legal_admin_narrow='unclear'); and (2) while two cases from Vietnam and India are 'presented and evaluated' with 'evidence' found, the abstract does not specify whether those case evaluations rely on primary empirical data or secondary conceptual/illustrative review (c3='unclear').",
+    "record_id": "GAPE28C399993"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP0142CA26D6",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "7f3d633a47f468b5eabd900568ac3fe6ebdadb974635dc4698e14cc060ec6fee",
+  "prompt_sha256": "9edc00ed14902e2b134926a5e32755091f34b697d4b5bfd827e67f31d5da00ee",
+  "started_at": "2026-11-21T14:52:21.889562+00:00",
+  "completed_at": "2026-11-21T14:52:56.970386+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "unclear",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "Sanitation, Water Supply and Hygiene in Urban Informal Settlements"
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "peri-urban and informal settlements have been consistently identified as areas which are underserviced and overlooked for water and sanitation services."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "conducted research in informal settlements in the capital Port Moresby and a representative provincial town (Wewak) to understand the conditions, aspirations, barriers and opportunities to improve water, sanitation and hygiene for informal settlers."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the literal plain reading of Criterion 2 yield 'unsure' at the Title/Abstract stage: the study investigates WASH conditions, affordability, and 'barriers and opportunities' in urban informal settlements in the context of PNG's draft National WASH Policy (noting land and housing ownership context), so full-text review is required to confirm whether institutional/governance factors (plain) and specific tenure, utility-mandate, or tariff/subsidy rules (narrow) are empirically analyzed rather than purely physical/behavioural baseline conditions.",
+    "rationale": "This 2014 World Bank WSP empirical study examines household/community water supply and sanitation access, service coverage gaps, affordability, and barriers in urban informal settlements in Port Moresby and Wewak, Papua New Guinea (meeting Criteria 1, 3, and 4). Because World Bank WSP informal-settlement WASH barrier assessments frequently examine land tenure/informality restrictions, utility service-area mandates, and tariff/connection-cost barriers—especially when framed around a draft National WASH Policy—but the abstract does not explicitly specify which barriers are analyzed, the record is retained as 'unsure' for full-text verification under Phase 5 informal-settlement screening rules.",
+    "record_id": "GAP0142CA26D6"
+  }
+}

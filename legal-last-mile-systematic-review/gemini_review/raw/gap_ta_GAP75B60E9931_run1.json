@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP75B60E9931",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "1ed89df906bdd518e58248e81222e9c2b34548a1561f3de32450f3a3eabb610b",
+  "prompt_sha256": "e42ab15f26acab687dbe5cd4bb01ea10959e678bdc86b3af4331b699f95b4282",
+  "started_at": "2026-11-21T14:38:11.803140+00:00",
+  "completed_at": "2026-11-21T14:38:40.700392+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access & c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "case study of the Management Contract for Water and Wastewater Service in the Amman Governorate, Jordan."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "mainly judicial and international institutions and specific contract rules were constraining the discretion of the contracting parties."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review & c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "The field study discovered that the resulting discretionary power of certain actors was used opportunistically, which had a detrimental effect on the outcome of the PSP arrangement."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "No divergence between plain and narrow Criterion 2: the study directly examines utility management contract rules, regulatory structure, judicial institutions, and actor discretion (satisfying both narrow rule-type and plain institutional/governance readings), while remaining unsure at Title/Abstract because full text is required to verify whether 'performance of a privately operated water utility' includes concrete water/sanitation access, continuity, coverage, or affordability outcomes (Criterion 4).",
+    "rationale": "This empirical field case study investigates the Management Contract for Water and Wastewater Services in Amman, Jordan, examining how specific contract rules, regulatory institutions, and judicial checks constrain or enable discretionary behaviour in operating a municipal water and wastewater utility (meeting Criteria 1, 2 narrow/plain, and 3). However, the abstract refers generally to the 'outcome of the PSP arrangement' and 'performance of a privately operated water utility' without specifying whether household- or user-facing service access outcomes (such as supply continuity, coverage, connection, reliability, or affordability) are measured alongside contractual/managerial indicators. Full-text review is therefore required to verify Criterion 4.",
+    "record_id": "GAP75B60E9931"
+  }
+}

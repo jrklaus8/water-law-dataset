@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP97D66A417E",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "182201ae1f4772c6eb21aad5c00443e8120c5fe04edd402b9b22fb4b1e061c07",
+  "prompt_sha256": "38d149267a3ccf92938390d76614a53fd250d0f3dbadaa269fea40152219625b",
+  "started_at": "2026-11-21T14:54:20.691103+00:00",
+  "completed_at": "2026-11-21T14:55:05.299389+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "no",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title",
+        "quote": "Rainwater Treatment in Informal Settlements with a One Health Approach and Community Service Learning"
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "aims to transfer knowledge on a rain-water harvesting and treatment system to the community involver in the educational processes"
+      },
+      {
+        "criterion": "c2_legal_admin_plain",
+        "page": "Abstract",
+        "quote": "This project encompassed territorial assessment, technological design and implementation, and edu-cation on healthy housing"
+      }
+    ],
+    "exclusion_code": "E03",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the literal/plain Criterion 2 wording yield exclude: although set in an informal settlement lacking a formal aqueduct, the study describes a university service-learning technological rainwater treatment and health education project implemented with an NGO rather than examining any legal, administrative, institutional, regulatory, or governance mechanism.",
+    "rationale": "While the case study addresses drinking water access in an informal settlement in Bogotá, Colombia (Criterion 1 and Criterion 4), the intervention/exposure examined is a community service-learning project focused on technological design and implementation of a rainwater harvesting and treatment system and healthy housing education. Lack of a formal aqueduct is mentioned solely as problem background; no legal, administrative, regulatory, tenure, tariff, discretion, enforcement, or institutional governance mechanism governing service access is analysed (E03).",
+    "record_id": "GAP97D66A417E"
+  }
+}
