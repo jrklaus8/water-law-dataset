@@ -1,0 +1,277 @@
+{
+  "record_id": "RF8804799E515",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f5595012124704d0c67f2dbe5d4d2ef94369ab6d05689b42579e58260e83db99",
+  "prompt_sha256": "a7c0f4970175ae5de6405bc75f7e03b0927b8e095e2776494d7acd21c51be338",
+  "started_at": "2026-11-21T14:46:36.161094+00:00",
+  "completed_at": "2026-11-21T14:49:20.856271+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household/residential access to drinking water supply services across municipalities of the Rio de Janeiro Metropolitan Area (RJMA), including municipal distribution network coverage and intermittent water supply in peripheral municipalities.",
+      "c2": "Passes the plain wording of Criterion 2 (plain=yes) because it examines water supply governance, CEDAE's centralised supramunicipal utility management model, public sanitation investment policies, and Paraíba do Sul river-basin reservoir operating rules. However, it fails the narrow 2026-10-13 rule-type mechanism reading (narrow=no): its primary explanatory focus is physical infrastructure incompleteness (unbuilt conduits, broken or insufficient distribution reservoirs, low effectiveness of capital expansion investments), macro-governance/political economy ('hydrosocial scarcity' prioritising the metropolitan core and industrial facilities), and upstream bulk water resource availability/hydropower reservoir rules (which the paper notes did not affect RJMA supply). Brief mentions of CEDAE's 3-day cistern storage requirement for Declaration of Possibility for Supply (DPA) in social housing and manual valve switchovers are anecdotal illustrations of institutionalised physical scarcity rather than an empirical analysis of a rule-type legal or administrative mechanism governing household service access.",
+      "c3": "Multi-source empirical case study combining descriptive quantitative analysis of IBGE 2000 and 2010 Census municipal residential connection data, diagnostic data from Municipal Sanitation Plans and the State Water Resources Plan (PERHI 2014), and primary qualitative semi-structured interviews with CEDAE managers and technicians conducted under the Desafio project.",
+      "c4": "Reports municipal residential water distribution network connection counts and percentages (2000 and 2010 IBGE Censuses) as well as service continuity/intermittency (e.g., water supplied only 2 to 4 days per week in several Baixada Fluminense municipalities and unserved districts).",
+      "c5": "Identifies the population and units of analysis (residences and municipalities across the Eastern and Western RJMA supply macro-systems, including 1,701,973 urban residents in the Eastern system and residence counts across 12 Western system municipalities; interview sample size not reported), the macro-management/infrastructure and bulk-water exposures, municipal connection and continuity outcomes, and a multi-source case study design.",
+      "c6": "Full text is in English (with Portuguese and Spanish abstracts); English is eligible without translation."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 26",
+        "quote": "This article analyses the current situation regarding water supply in the Rio de Janeiro Metropolitan Area (RJMA) through the conceptual lenses of hydrosocial scarcity and the human right to water. In addition, it assesses to what extent the availability of bulk water may act as an aggravating factor in this context, especially in consideration of recent water crises."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 26",
+        "quote": "Other sources include: scientific articles; semi structured interviews with CEDAE technicians and managers performed by researchers from the PROURB-FAU-UFRJ Laboratory of Urban Water Research as a part of the Desafio project"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13 of 26",
+        "quote": "In a significant portion of the municipalities of Duque de Caxias, Nova Iguaçu, Queimados, Belford Roxo, Paracambi and Japeri, the frequency of water supply is usually limited to two or three times a week."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 18 of 26",
+        "quote": "In these areas, various districts live through structural scarcity due to incomplete public supply systems and the style of service management. These are components of what has been designated hydrosocial scarcity. Above all, the style of service management has not managed to install complete and efficient water supply systems in the outlying metropolitan municipalities."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 19 of 26",
+        "quote": "The lack of service to these areas is fruit of public sanitation policy implemented by the CEDAE, which is marked by the low effectiveness of investments made in these territories."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Centralised metropolitan water utility management model (CEDAE), incomplete physical supply and storage infrastructure investments, priority bulk allocation to industrial complexes and core municipalities, and upstream Paraíba do Sul bulk water reservoir operating rules",
+    "outcome": "Residential connection rates to the water distribution network by municipality (2000 and 2010 IBGE Censuses) and supply continuity/intermittency (days per week of water delivery)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Residences and urban populations across municipalities of the Rio de Janeiro Metropolitan Area served by the Imunana/Laranjal System (1,701,973 urban residents in 2010 across 4 areas) and the Guandu/Lajes/Acari System (12 municipalities in IBGE 2000 and 2010 Censuses), plus CEDAE managers and technicians interviewed (exact interview count not reported)",
+    "rationale": "Full text examined. Although the paper empirically examines municipal residential water network coverage and intermittent supply in the Rio de Janeiro Metropolitan Area (satisfying C1, C3, C4, C5 and C6) and satisfies the plain broad wording of Criterion 2 by discussing utility management and river-basin governance (plain_criterion2_decision: include), it fails Criterion 2 under the active 2026-10-13 rule-type mechanism clarification (E03: Wrong exposure). Its analysis attributes peripheral access deficits and intermittency to incomplete physical infrastructure (unbuilt distribution networks, inoperative or insufficient storage reservoirs, ineffective public capital investments), macro-level political-economic priorities ('hydrosocial scarcity' favouring core cities and industrial complexes), and bulk water resource/engineering planning, rather than empirically evaluating a legal, regulatory, or administrative rule-type mechanism directly governing household or community service access.",
+    "record_id": "RF8804799E515",
+    "study_design": "Multi-source empirical case study combining secondary census and planning/engineering document data with qualitative semi-structured interviews"
+  }
+}

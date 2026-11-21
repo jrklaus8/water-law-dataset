@@ -1,0 +1,264 @@
+{
+  "record_id": "R79C46BF956B3",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "e3d1dd33aeeb8f97773a0e12ffbc290f6ac02be4c9978b45c6ba0fda96ebbac8",
+  "prompt_sha256": "813a06498cd048db40923fc2fbf72722aa7f93d8b049ebf622ecbe197c8e2b7e",
+  "started_at": "2026-11-21T15:06:57.799035+00:00",
+  "completed_at": "2026-11-21T15:08:37.347307+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "RoB 2 (cluster-randomized trials variant)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "High concern: Although coupon non-redemption over 90 days is observed passively for enrolled households, the authors explicitly report incomplete follow-up data collection due to logistical constraints (p. 12): 3 of 62 requesting households lacked coupon numbers and were excluded; 10 requesting households lacked baseline pit-fullness data (9 un-enrolled neighbor households plus 1 missing response); 98 to 111 observations were lost to missing covariates in Models 3 and 5 (Table 9, p. 12); 14 of 59 valid service requests (24%) went unfulfilled during the trial window and lacked data on whether an individual or group empty was requested; and 12 of 62 requesting households were lost to the follow-up stated-preference survey (50/62 surveyed, p. 14).",
+      "confounding": "Some concerns: Volumetric prices and group discounts were cluster-randomized at the village level across 30 villages (p. 4, 7), but 12 distinct price-discount coupon versions across only 30 clusters (~2.5 villages per coupon arm) create substantial vulnerability to small-sample cluster imbalance. No baseline balance table across arms is presented, group-discount and household-responsibility coefficients attenuate and lose statistical significance when pit fullness is added (Table 9, p. 12-13), household-level logistic regressions do not account for village clustering (p. 7, 12), and the unweighted follow-up discrete choice model pools oversampled service requesters (50/62) with a random subsample of non-requesters (107) without adjustment (p. 14).",
+      "legal_measurement_quality": "Weak / contextual only: Legal, regulatory, and municipal institutional features are treated either as background context or bundled hypothetical service attributes rather than coded legal exposures. Specifically, the paper notes without statutory citation that sludge dumping is illegal and carries a stiff fine (p. 10), that forthcoming government regulations will prohibit pit sealing in crowded urban areas (p. 9), that Pit Vidura pays a municipal tipping fee at a sanctioned disposal site (p. 6), that households pay the city US$2/month for solid waste collection (p. 9, 16), and operationalizes 'formality of services' in the discrete choice experiment as a bundled attribute combining business registration, branding, uniforms, and personal protective equipment (Table 4, p. 5).",
+      "measurement_bias": "Some concerns (High concern for secondary group-empty and stated-preference outcomes): Primary revealed-preference uptake ('Any Empty') was measured objectively via serialized coupons matched to household IDs upon service request (p. 4), and cost figures came directly from Pit Vidura expense logs (p. 5-6). However, for the 14 of 59 valid requests that Pit Vidura did not fulfill during the study period, whether the request was for a group or individual empty was unrecorded and imputed as individual (p. 12); self-reported sanitation disposal practices suffered severe social desirability/evasion bias given illegality of dumping (64% answered 'I don't know/I don't want to say', p. 10); and stated-preference WTP estimates suffered major hypothetical/reporting bias, producing a sealing WTP more than double observed market rates (p. 16).",
+      "outcome_measurement_quality": "Adequate for primary revealed-preference service request uptake and provider accounting costs, but weak for group-empty uptake and stated-preference WTP: Coupon serial-number verification provided reliable administrative tracking of whether an enrolled household requested service (p. 4), and operational/overhead accounting records grounded the cost scenarios (p. 5-6, 10-11). Conversely, outcome subtype classification failed for 24% (14/59) of matched requests (imputed as individual empties, p. 12), stated-preference WTP estimates diverged sharply from market prices (p. 16), and physical fecal sludge containment or health outcomes were not measured.",
+      "reporting_bias": "Some concerns: No trial registration, pre-analysis plan, or published study protocol is reported. In the revealed-preference regression analysis, six baseline household characteristics from Survey 1 were tested sequentially; the two yielding statistically significant coefficients were highlighted in main-text Table 9 while the remaining four non-significant models were relegated to Supplementary Table S1 (p. 12, 17).",
+      "selection_bias": "Some concerns: Sectors (10 of 35) and non-adjacent villages (30) were purposively selected for dense informal settlements and Executive Secretary endorsement, excluding high-income sectors and areas near prior Pit Vidura marketing (p. 3-4). Within villages, systematic every-third-household sampling replaced refusals with nearest neighbors without recording refusal counts while enumerators already held the village's assigned coupon type (p. 4, 6). Additionally, 12 non-enrolled neighbor households self-selected into group empties after randomization (with 9 included in Models 1 and 2, p. 7, 12), and the stated-preference sample (n=157) disproportionately combined 50 requesters with 107 non-requesters (p. 14)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1a",
+        "domain_name": "Randomization process",
+        "justification": "The 30 selected villages were randomly assigned one of 12 coupon price/group-discount versions (p. 4, Table 3; p. 7). However, the paper provides no information on how the random allocation sequence was generated, whether allocation was concealed when selecting/assigning the 30 villages, or whether cluster and household baseline characteristics were balanced across the 12 coupon versions (only ~2.5 villages per price version, creating nontrivial risk of chance cluster imbalance).",
+        "rating": "Some concerns",
+        "where_found": "Section 2.1-2.2 (PDF p. 3-4, Table 3); Section 2.5 (PDF p. 7)"
+      },
+      {
+        "domain_id": "D1b",
+        "domain_name": "Timing of identification or recruitment of participants within clusters",
+        "justification": "Villages were assigned a single coupon version and enumerators recruited households via a systematic every-third-house walk while simultaneously distributing the village's coupon and administering Survey 1, replacing refusals with the nearest neighbor (p. 4, 6). Refusal rates by coupon arm are not reported, enumerators were not blinded to the village coupon price during recruitment, and 12 un-enrolled 'neighbor' households self-selected into the study post-randomization via group empties with coupon holders (9 of whom were retained in the revealed-preference regression sample, making N=1,176 in Models 1-2; p. 7, 12).",
+        "rating": "Some concerns",
+        "where_found": "Section 2.1-2.2 (PDF p. 4); Section 2.4-2.5 (PDF p. 6-7); Section 3.3 (PDF p. 12)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Deviations from intended interventions",
+        "justification": "Participants and service providers were inherently aware of assigned coupon prices/discounts because price variation was the intended economic stimulus, and weekly SMS reminders were sent uniformly to all enrolled households (p. 6). However, Pit Vidura operated its rented flatbed truck under capacity and failed to deliver emptying services to 14 of the 59 coupon-verified requesting households during the 90-day trial window (p. 10, 12), and the household-level logistic regressions in Section 2.5 and Table 9 did not adjust for village-level clustering (no cluster-robust standard errors or random effects reported) despite village-level randomization, alongside inclusion of 9 un-enrolled neighbor households in Models 1-2 (p. 7, 12).",
+        "rating": "Some concerns",
+        "where_found": "Section 2.4-2.5 (PDF p. 6-7); Section 3.2-3.3 (PDF p. 10, 12, Table 9)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Missing outcome data",
+        "justification": "Because overall 90-day pit-emptying uptake was low (62 requests out of ~1,179 households), missingness among outcome events had high leverage, as the authors explicitly acknowledge (p. 12). Three of the 62 requesting households lacked coupon numbers and were dropped entirely; 10 requesting households lacked baseline pit fullness data (excluding them from Models 4-5); 98-111 households had missing covariate data in Models 3 and 5; and critically, for the 14 of 59 valid requesting households (24% of all matched requests) that did not receive service during the trial, the study could not determine whether they requested a group or individual empty and imputed all 14 as individual empties, directly biasing the group-empty outcome models (p. 12). Follow-up stated-preference surveys also missed 12 of 62 requesting households (p. 14).",
+        "rating": "High",
+        "where_found": "Section 3.3 (PDF p. 12, Table 9); Section 3.4 (PDF p. 14)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Measurement of the outcome",
+        "justification": "For the primary revealed-preference outcome ('Any Empty'), requests were tracked administratively by checking coupon serial numbers against household identification numbers (p. 4), which carries low observer bias. However, for the co-primary revealed-preference outcome ('Group Empty'), failure to record request modality for the 14 unserved requesters led the authors to assume all 14 were individual requests, introducing systematic outcome misclassification that the authors note likely depressed group-discount impact estimates (p. 12). Furthermore, the companion stated-preference WTP outcome (Survey 2/3, n=157) exhibited substantial hypothetical/reporting bias, with estimated WTP for pit sealing more than double observed market prices (p. 16).",
+        "rating": "Some concerns",
+        "where_found": "Section 2.2-2.3 (PDF p. 4-5); Section 3.3-3.4 (PDF p. 12, 14); Section 4 (PDF p. 16)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Selection of the reported result",
+        "justification": "No trial registration, pre-specified protocol, or pre-analysis plan is reported. In the revealed-preference analysis, the authors screened six baseline household covariates from Survey 1 in combination with price and group discount, presenting the two statistically significant predictors in main-text Table 9 while relegating the four non-significant covariates to Supplementary Table S1 (p. 12, 17).",
+        "rating": "Some concerns",
+        "where_found": "Section 2.5 (PDF p. 7-8); Section 3.3 (PDF p. 12-13, Table 9); Supplementary Materials note (PDF p. 17)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Cluster-level random assignment of coupon prices across villages (D1a / study design)",
+        "page": "PDF Page 4, Section 2.2",
+        "quote": "Each village was randomly assigned one type of coupon, and all of the participants in that village"
+      },
+      {
+        "criterion": "Cluster randomization used for revealed-preference uptake modeling (D1a / study design)",
+        "page": "PDF Page 7, Section 2.5",
+        "quote": "Cluster randomization of coupon prices allowed for us to create a statistical model of uptake,"
+      },
+      {
+        "criterion": "Incomplete follow-up data collection and missingness among requesting households (D3 / attrition)",
+        "page": "PDF Page 12, Section 3.3",
+        "quote": "Unfortunately, our data collection during follow up was incomplete, due to logistical constraints."
+      },
+      {
+        "criterion": "Imputation of unfulfilled service requests as individual empties (D3 / D4)",
+        "page": "PDF Page 12, Section 3.3",
+        "quote": "For these households, we have assumed that they requested individual empties."
+      },
+      {
+        "criterion": "Hypothetical / reporting bias in stated-preference WTP estimates relative to market rates (D4 / measurement_bias)",
+        "page": "PDF Page 16, Section 4",
+        "quote": "Our stated preference results do not correspond with our estimates for current market prices"
+      },
+      {
+        "criterion": "Contextual reference to forthcoming municipal regulations prohibiting pit sealing (legal_measurement_quality)",
+        "page": "PDF Page 9, Section 3.1",
+        "quote": "no longer practical in crowded urban areas, and under forthcoming government regulations, will be"
+      }
+    ],
+    "overall_narrative_summary": "Burt, Sklar, and Murray (2019) is a multi-component quantitative demand-and-cost study in Kigali's informal settlements anchored by a cluster-randomized revealed-preference coupon pricing trial across 30 villages (N=1,167 enrolled households assigned at the village level to 12 volumetric price and group-discount combinations over 90 days), supplemented by a follow-up stated-preference discrete choice experiment (n=157 households) and an operational cost model of Pit Vidura's flatbed vs. exhauster truck emptying services. Appraised under the RoB 2 cluster-randomized trials variant, the study is rated High risk of bias overall. Key methodological strengths include exogenous village-level randomization of real service prices, serialized coupon tracking of service requests, and direct expense-report costing. However, serious limitations arise across multiple domains: (1) randomization sequence generation, allocation concealment, and cluster-level baseline balance across the 12 price versions (averaging only 2.5 villages per version) are unreported (D1a: Some concerns); (2) enumerators recruited households and replaced refusals post-allocation while holding village coupons, and 9 un-enrolled neighbor households self-selected into group empties and were included in regression models (D1b: Some concerns); (3) household-level logistic regressions did not account for village clustering, and service capacity constraints left 14 of 59 valid requests unserved (D2: Some concerns); (4) data gaps disproportionately affected the small pool of 62 service requests—3 requests lacked coupon IDs, 10 lacked baseline pit fullness, ~100 households had missing covariates in adjusted models, and 14 of 59 matched requests (24%) lacked group-vs-individual request classification and were imputed as individual empties (D3: High; D4: Some concerns); (5) stated-preference WTP estimates showed severe hypothetical/reporting bias, exceeding observed market sealing costs by more than twofold (D4); and (6) no protocol or pre-analysis plan was registered prior to covariate screening (D5: Some concerns). Legal and institutional factors (illegal dumping fines, forthcoming bans on pit sealing, municipal tipping fees, and solid-waste fee collection) are discussed only as background or bundled survey attributes rather than measured legal exposures.",
+    "overall_rating": "High",
+    "paper_read": "full text",
+    "study_design_identified": "Cluster-randomized revealed-preference field pricing trial (30 villages across 10 sectors in Kigali, N=1,167 enrolled households) paired with a follow-up cross-sectional stated-preference discrete choice experiment (n=157) and provider operational cost accounting",
+    "study_id": "R79C46BF956B3",
+    "where_found_summary": "Methods: Section 2.1 Household Sampling Protocol (PDF p. 3-4), Section 2.2 Revealed Preference Study Design (PDF p. 4, Table 3), Section 2.3 Stated Preference Study Design (PDF p. 5, Table 4), Section 2.4 Data Collection (PDF p. 5-7, Table 5), Section 2.5 Data Analysis (PDF p. 7-8). Results: Section 3.1 Market Analysis (PDF p. 8-10, Table 6, Figure 1), Section 3.2 Cost Analysis (PDF p. 10-11, Tables 7-8), Section 3.3 Willingness to Pay—Revealed Preference Analysis (PDF p. 12-14, Tables 9-10, Figure 2), Section 3.4 Willingness to Pay-Stated Preference Analysis (PDF p. 14, Table 11). Discussion & Limitations: Section 4 (PDF p. 14-16) and Supplementary Materials note (PDF p. 17).",
+    "why_tool_chosen": "The primary causal/empirical component estimating household demand for improved pit-latrine emptying is a cluster-randomized trial in which 30 villages across 10 sectors of Kigali were randomly assigned at the village (cluster) level to 1 of 12 coupon price/group-discount versions and tracked for real service uptake over 90 days (Sections 2.1, 2.2, and 2.5, PDF p. 3-4, 7). All study components (cluster-randomized revealed-preference trial, follow-up discrete choice survey, and accounting cost model) are quantitative with no qualitative data collection, making the RoB 2 cluster-randomized trials variant the exact matching instrument under RISK_OF_BIAS.md §1."
+  }
+}

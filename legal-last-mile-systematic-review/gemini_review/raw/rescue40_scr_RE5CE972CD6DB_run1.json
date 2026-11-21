@@ -1,0 +1,277 @@
+{
+  "record_id": "RE5CE972CD6DB",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "76d8e8c471664c7f1f1e9bd79340d2a815f32fce690d8e21afc18f0382def31b",
+  "prompt_sha256": "5420a89d90561dca93bba06c4f1487cc5acd7ee3bf1d4280e75c56f46c9dbf56",
+  "started_at": "2026-11-21T14:36:03.222583+00:00",
+  "completed_at": "2026-11-21T14:40:09.875037+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines community sanitation and associated water service provision via communal bio-centres (latrines, showers, biogas, and water tanks) in the Kibera informal settlement, Nairobi, Kenya.",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the plain wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), this paper would be included (plain_criterion2_decision = 'include') because it centrally examines urban sanitation governance, NGO-CBO institutional partnerships, and community-state co-production under a participatory slum-upgrading programme (KENSUP). Under the active 2026-10-13 clarification, however, it fails Criterion 2 (E03 Wrong exposure): the exposure studied is participatory infrastructure project delivery, local socio-spatial 'place-making'/'embeddedness' of communal bio-centres, and post-construction deliberative co-production rather than a rule-type mechanism governing service access. Although Section 5.3 briefly notes that one CBO (Jasho Letu) faced bureaucratic procedures and needed written permission from the Chief to connect its bio-centre water pipe to Nairobi City Water Services and obtain a water-tank permit (and Section 5.2 notes a 2-3 Kenyan shilling user fee and NGO capacity checks on CBOs), these rule-adjacent details are mentioned only descriptively in passing as examples of negotiating with resource gatekeepers and are not analysed as the study's exposure or mechanism.",
+      "c3": "Contains primary qualitative ethnographic evidence collected between July 2011 and February 2013 across eight major bio-centres in Kibera (interviewing on average five CBO members per centre, plus user interviews and field observations) alongside 2013 focus group discussions and a workshop with NGO workers and Nairobi City Council officials, presenting two detailed bio-centre case studies (Tosha/Jasho Letu and KILYO).",
+      "c4": "Reports qualitative outcomes relevant to service availability, utilisation, connection, and exclusion alongside organisational outcomes: daily utilisation at the Tosha bio-centre (600 users daily at 2-3 Kenyan shillings per use), delayed operational availability at Jasho Letu's built bio-centre (estimated 100-user daily capacity) pending municipal water-pipe connection and water-tank installation, night-time lockouts leaving residents reliant on 'flying toilets', and cited NGO user-survey findings that women avoid bio-centres due to non-customised toilet/shower design and lack of street lighting after dark.",
+      "c5": "Population and unit of analysis (CBOs, informal-settlement residents/users, NGO staff, and municipal planners around bio-centres in Kibera, Nairobi; 8 bio-centres visited with 2 focal case studies), exposure (participatory upgrading / NGO-CBO co-production and local socio-spatial embeddedness of bio-centre infrastructure, which is out of scope under narrow Criterion 2), outcomes, and qualitative ethnographic case-study design are clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "Page 3 (p. 1557, Abstract)",
+        "quote": "Drawing on a case study of the informal sanitation infrastructure known as a bio-centre, which has been introduced by a participatory upgrading programme in Nairobi, Kenya, this article proposes to pay attention to ways that informal settlers experience infrastructure, embed it into their everyday context of place-making and use it in unplanned manners."
+      },
+      {
+        "criterion": "c3",
+        "page": "Page 5 (p. 1559, Section 2. Methodology)",
+        "quote": "Between July 2011 and February 2013, I intermittently visited Kibera slum’s eight major bio-centres, interviewing on average ﬁve members of each CBO."
+      },
+      {
+        "criterion": "c4",
+        "page": "Page 11 (p. 1565, Section 5.3)",
+        "quote": "Being the ﬁrst, fully NGO-led and the largest bio-centre, Tosha attracted on average 600 users daily and generated a small but steady income."
+      },
+      {
+        "criterion": "c2",
+        "page": "Page 11 (p. 1565, Section 5.3)",
+        "quote": "After construction, however, the CBO needed to learn to deal with bureaucratic procedures to connect their bio-centre’s water pipe to the city’s ofﬁcial supply grid and to arrange a permit to build different components of the infrastructure such as the water tank."
+      },
+      {
+        "criterion": "c2",
+        "page": "Page 11 (p. 1565, Section 5.3)",
+        "quote": "For the community members, whether they are dealing with state or non-state actors does not really matter: what matters is that the infrastructure is embedded in the community, and they need to ﬁnd whatever ways to access and negotiate with the gatekeepers to realise its operation and develop the business according to the demands of the community."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Participatory slum-upgrading project implementation (KENSUP / NGO-CBO partnerships), local socio-spatial embeddedness ('place-making') of communal bio-centres, and deliberative co-production between CBOs, NGOs, and municipal planners.",
+    "outcome": "Unplanned post-construction uses and operational trajectories of communal bio-centres, including CBO spin-off replication (Tosha/Jasho Letu, where Jasho Letu's 100-user/day facility remained not yet fully operational pending water-pipe connection and tank installation), facility misuse for drug dealing (KILYO), daily utilisation at Tosha (600 users/day at 2-3 Kenyan shillings per toilet/shower use), and women's reluctance/non-use at night due to facility design and absent street lighting.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Community-based organisations (CBOs), informal-settlement residents/users, local NGO staff (Umande Trust), and Nairobi City Council planners involved in communal bio-centres in Kibera informal settlement, Nairobi, Kenya (field visits to 8 major bio-centres with ~5 CBO members interviewed per centre, focus group discussions, and 2 focal bio-centre case studies: Tosha/Jasho Letu and KILYO).",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 narrow rule-type reading of Criterion 2. This ethnographic case study investigates how donor- and NGO-supported communal sanitation 'bio-centres' introduced under Nairobi's participatory slum-upgrading programme (KENSUP) become locally embedded through everyday 'place-making' (leading either to CBO spin-off projects or to youth livelihood appropriation and drug dealing) and argues for ongoing post-construction monitoring and deliberative co-production among CBOs, NGOs, and City Council planners. While the paper passes the plain wording of Criterion 2 (plain_criterion2_decision = 'include') as an empirical study of participatory urban sanitation governance and co-production, and while one interview passage in Section 5.3 notes in passing that a spun-off CBO needed the Chief's written permission and bureaucratic permits to connect its water pipe to Nairobi City Water Services and install a water tank, the paper does not examine any rule-type legal, regulatory, or administrative mechanism governing service access as its exposure; instead, its focus is participatory project delivery, socio-spatial embeddedness, and collaborative project follow-up. Confidence is rated medium because of the brief descriptive evidence on permitting hurdles delaying municipal water-pipe connection in one sub-case.",
+    "record_id": "RE5CE972CD6DB",
+    "study_design": "Qualitative ethnographic multiple-case study (field observations, semi-structured interviews across 8 bio-centres, and focus group discussions/workshop)."
+  }
+}

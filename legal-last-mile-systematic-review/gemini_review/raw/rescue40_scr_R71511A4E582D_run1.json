@@ -1,0 +1,282 @@
+{
+  "record_id": "R71511A4E582D",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "affa56be558f6a9eb9f8f6e9ba3420444f51eacf83a29c529eb7fb7b79c6f2e7",
+  "prompt_sha256": "203c92286f14d69ed1126ca5f2072ba93e273da84da8bd5aaa0f83ddc0b25c2a",
+  "started_at": "2026-11-21T14:36:03.217607+00:00",
+  "completed_at": "2026-11-21T14:42:34.638035+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails C1 (Exclusion Criterion 7: water-resource studies unrelated to household or community service access). Although the English metadata translates 'políticas de gestão' as 'administration techniques', the Portuguese full text examines rural farming populations' relationship with natural water resources ('recursos hídricos' — springs, streams, and rivers in micro-watersheds) used directly for garden irrigation, livestock, artisanal processing, and domestic consumption. The authors explicitly distinguish these rural 'direct consumers' ('consumidores diretos') of natural water sources from populations served by water utilities ('por meio da empresa que a trata e distribui', PDF p. 13). Municipal tanker trucks ('caminhões-pipas'), rainwater cisterns ('Programa Um Milhão de Cisternas'), and post-migration village ('povoado') municipal water supply are mentioned only peripherally as last-resort coping responses when natural springs dry up, not as the object of water-service access analysis.",
+      "c2": "Plain reading vs. narrow 2026-10-13 rule-type reading: Under the literal/plain broad wording of Criterion 2, the paper discusses statutory and customary water-resource governance factors — specifically Brazil's Water Resources Law (Law No. 9.433/1997, ANA, river basin committees 'comitês de bacia', bulk water abstraction permits 'outorga', and bulk pricing) alongside informal peasant customary norms ('normas costumeiras' / 'regulação comunitária') governing natural spring sharing and brief remarks on municipal patronage ('apadrinhamento do poder público') in village/tanker-truck water and environmental policing ('repressão policial, multas'). However, even under the plain wording of Criterion 2, the full-text decision remains 'exclude' because those governance discussions concern raw natural water resources rather than water/sanitation service access and Law 9.433/1997 had not been implemented locally in the studied basins (PDF pp. 6, 14). (Even if rural domestic self-supply/tanker fallback were generously treated as C1 access so that plain C2 were borderline 'yes' on customary/governance factors, the paper clearly fails the active narrow C2 rule.) Under the narrow 2026-10-13 rule-type clarification, c2 is 'no': Law 9.433/1997 is unimplemented bulk water-resources macro-governance background ('no seu período de vigência a lei pouco tenha influenciado consumo e costumes —raras bacias têm comitê instituído ou negociado—', PDF p. 6), the empirical fieldwork centers on cultural perceptions of water purity/circularity ('água fina' vs. 'água grande', 'água-dom') and informal neighborly sharing of natural springs, and passing mentions of political patronage or conservation fines do not empirically analyze any rule-type mechanism (eligibility screening, administrative burden, documentation/tenure rules, tariffs, discretion, enforcement, or utility regulatory structure) directly governing water or sanitation service access.",
+      "c3": "Satisfies C3: contains primary qualitative empirical fieldwork conducted in 1999–2002 across 22 rural communities and 188 rural families in six municipalities of the Jequitinhonha Valley, Minas Gerais, using semi-structured family interviews and community meetings.",
+      "c4": "Fails C4 for service-access outcomes: the authors state that the study was designed to capture qualitative cultural perceptions and customs regarding natural water resources rather than quantify scarcity or abundance (PDF p. 3). While it qualitatively describes consequences of natural spring depletion (abandoning irrigated gardens, 3-day collection rotations 'rodízio' at seeps, women's fetching labor, cultural reluctance toward rainwater cisterns, fallback on municipal tanker trucks, and migration to villages), it does not evaluate household or community water-service access, connection, continuity, or affordability outcomes.",
+      "c5": "Fails C5: although the population (188 rural families in 22 communities) and qualitative study design are identifiable, an eligible service-access exposure-outcome link cannot be identified because Law 9.433/1997 and river basin committees had not been instituted or influenced local consumption in the studied communities (PDF pp. 6, 14) and the fieldwork investigates cultural perceptions and customary sharing of natural springs rather than a service-access rule.",
+      "c6": "Satisfies C6: full text is in Portuguese, which is directly eligible without translation under Criterion 9."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 18 (OBJETIVO E MÉTODO)",
+        "quote": "O objetivo deste artigo é analisar alguns aspectos da relação entre população e recursos hídricos. Investiga a percepção cultural e usos locais da água para compreender de que formas tais costumes dialogam ou conflitam com as normas legais e técnicas propostas pelas agências reguladoras do recurso."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 13 of 18 (CONSUMIDORES, ACORDOS E DESACORDOS)",
+        "quote": "Em sua grande maioria, aquelas são formadas por consumidores diretos, enquanto a população urbana consome água por meio da empresa que a trata e distribui."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 18 (POPULAÇÃO E RECURSOS)",
+        "quote": "Embora no seu período de vigência a lei pouco tenha influenciado consumo e costumes —raras bacias têm comitê instituído ou negociado— a redefinição das normas legais sobre recursos hídricos estimulou a organização de interesses que envolvem empresas e Estado."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 18 (ESCASSEZ, COSTUME E MOBILIDADE ESPACIAL)",
+        "quote": "Sendo pouca, geralmente a água da nascente é dividida para todos os moradores da comunidade que têm direito. Consumo e distribuição de água, portanto, são normatizados, havendo critérios para usar."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 18 (OBJETIVO E MÉTODO)",
+        "quote": "Ao todo, no período 1999/2002 foram pesquisadas 22 comunidades e entrevistadas 188 famílias rurais."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 3 of 18 (OBJETIVO E MÉTODO)",
+        "quote": "Como o objetivo do estudo não era quantificar escassez ou abundância do recurso, não houve preocupação com análise estatística. Buscava-se compreender percepções e atitudes, informações fundamentalmente qualitativas."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Customary community norms and cultural perceptions of natural water resources (água-dom, spring sharing) contrasted conceptually with Brazil's National Water Resources Policy (Law No. 9.433/1997, river basin committees, bulk water permits/pricing)",
+    "outcome": "Qualitative cultural perceptions of natural water purity and scarcity (água fina vs. água grande), customary spring-sharing practices, and household/agrarian coping with spring depletion (abandoning irrigated gardens, 3-day spring collection rotations, women's fetching labor, fallback on tanker trucks/cisterns, and rural-to-village migration)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "188 rural farming families across 22 rural communities in 6 municipalities of the Upper, Middle, and Lower Jequitinhonha Valley, Minas Gerais (Turmalina, Veredinha, Medina, Joaíma, Monte Formoso, and Jequitinhonha)",
+    "rationale": "Excluded at full text as E01 (Wrong topic — natural water-resources management and cultural ecology rather than household/community water or sanitation service access; also fails Criterion 2 under the 2026-10-13 rule-type clarification). Based on qualitative interviews with 188 rural farming families in 22 communities of the Jequitinhonha Valley (1999–2002), Ribeiro & Galizoni (2003) examine peasant cultural perceptions of natural water ('água fina' from flowing springs vs. 'água grande' in rivers; water as a divine gift 'dom') and informal customary sharing of springs across agricultural micro-watersheds, contrasting these 'direct consumers' ('consumidores diretos') of natural water sources with bulk water-resources governance under Brazil's Law No. 9.433/1997 (ANA, river basin committees, bulk 'outorga' and pricing for hydropower/irrigation). It does not study water or sanitation service access (mentioning drought tanker trucks, rainwater cisterns, and post-migration village municipal supply only peripherally), and Law 9.433/1997 had not even been implemented locally in the studied basins (PDF pp. 6, 14), so no rule-type legal or administrative mechanism governing water or sanitation service access is empirically examined.",
+    "record_id": "R71511A4E582D",
+    "study_design": "Qualitative field study (semi-structured family interviews and community meetings/debates, 1999–2002)"
+  }
+}

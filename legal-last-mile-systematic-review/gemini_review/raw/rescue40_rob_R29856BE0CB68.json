@@ -1,0 +1,273 @@
+{
+  "record_id": "R29856BE0CB68",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "7c1ff1bff36d460e501432eea57ef3c0dd07c136390c223eb5896d76713eff55",
+  "prompt_sha256": "cdaa6ac25cda343ad3ac89e522278d1442eeb81394a9c86b18055cb4e0433859",
+  "started_at": "2026-11-21T15:06:57.813065+00:00",
+  "completed_at": "2026-11-21T15:11:05.274464+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Some-to-high concern: Household survey pickup response rate was high (80.1%; 669 completed out of 835 contacted, with 75 refusals and 91 non-completions), but choice-task-level missingness in econometric estimation was large and unexplained—Table 4 includes only N = 1,321 of 1,992 potential WTA choice tasks (33.7% loss, well above the 15.2% 'Don't know' rate in Table 3) and N = 1,111 of 2,022 potential WTP choice tasks (45.1% loss, well above the 12.2% 'Don't know' rate).",
+      "confounding": "High concern: Within each survey version, a near-orthogonal fractional factorial design (mean attribute correlation ~0.06) and multivariable multinomial probit testing of socio-demographic covariates (retaining years of residence) were used; however, the allocation mechanism and demographic balance across the 332 WTA and 337 WTP respondents were not reported, high-interruption streets were oversampled without survey weights, and WTA vs WTP property-rights framing was confounded by design with different baseline service levels, asymmetric communication options, and non-comparable payment periodicities (one-off bill rebate vs annual water bill increase).",
+      "legal_measurement_quality": "Weak / Not empirically operationalized: Legal and institutional arrangements—specifically General Service Level Agreements / Guaranteed Service Levels implemented in Victoria and New South Wales and consumer vs utility property rights—are discussed only conceptually in Sections 1 and 7 to motivate WTA vs WTP framing; no statutory, regulatory, or contractual rule in Adelaide was coded or measured, and the authors explicitly note they did not estimate willingness to pay for Guaranteed Service Levels.",
+      "measurement_bias": "High concern: Explanatory service-quality scenarios and choice outcomes rely on unincentivized hypothetical stated-preference vignettes without consequentiality safeguards against hypothetical bias, and the WTA vs WTP comparison bundles property-rights framing with asymmetric baseline reference points (3 hours and 0 interruptions in WTA vs 6 hours and 2 interruptions in WTP), non-parallel communication attributes, and differing payment periodicities.",
+      "outcome_measurement_quality": "Weak: Dependent variables are hypothetical stated choices across six choice cards per respondent (with 15.2% WTA and 12.2% WTP 'Don't know' responses) rather than observed household water supply or rebate outcomes, further undermined by unexplained estimation sample drops and conflicting implicit price calculations between Section 6.2 text and Table 5.",
+      "reporting_bias": "High concern: No pre-analysis plan is reported, rejected socio-demographic covariates are omitted, Table 4 omits the Frequency x Duration interaction stated as included in Section 6.1 and displays a sign/t-statistic mismatch for Years of residence (beta = -0.867, t = 2.508), Section 6.2 prose and Table 5 report conflicting implicit prices ($29.10 vs $41.18; $0.15 vs $1.45; $4.05 vs $7.95), and Table 5 mislabels Communication Level 2 ($9.37) as 'Alternative supply arrangements', leading Section 7 to erroneously conclude that alternative water supply was statistically significant despite non-significant estimates in Table 4.",
+      "selection_bias": "Some concern: Households were randomly sampled (n = 835, 80.1% response rate) from an objective SA Water database frame, but sampling was restricted to Adelaide streets with three or more water service interruptions in a two-year period (oversampling outage-prone streets without reweighting; sample modal weekly income was $400-$599 vs $600-$699 for metropolitan Adelaide), within-household respondent eligibility rules were not specified, and the procedure for assigning households to WTA (n = 332) versus WTP (n = 337) questionnaires was not reported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Geographic and street-level sampling frame criteria were clearly defined: households in Adelaide, South Australia located on streets recording three or more water service interruptions over a two-year period in the South Australian Water database were placed into a stratified sampling frame, from which 835 households were randomly drawn. However, within-household eligibility rules (e.g., whether the respondent had to be an adult bill-payer or head of household) were not explicitly stated.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4-5, Section 3 (The Study Area, the Nature of Service Interruptions and the Sample)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The Adelaide urban water setting (population ~1.1 million, climate, asbestos cement and cast iron mains, 24.6 breaks per 100 km of mains, and United Water operating under contract with SA Water) and core sample characteristics (669 completed surveys, 80.1% response rate, mean household size of 2.7 in WTP and 2.5 in WTA, modal age and weekly income compared against ABS Census data, 61% prior interruption experience, and inconvenience distribution) are described in reasonable detail, although full socio-demographic summary tables by survey arm are not presented.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4-5, Section 3 (The Study Area, the Nature of Service Interruptions and the Sample)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Within each discrete choice questionnaire, hypothetical water service attributes were developed via industry consultation, focus groups, and two pretests using a 192-choice-set D-efficient fractional factorial design (32 blocks of 6 choice sets; D-efficiency = 69%). However, no real-world legal or service exposure (such as coverage under a General Service Level Agreement) was measured, allocation of respondents between WTA and WTP questionnaires was not explained, and across the WTA vs WTP comparison the property-rights framing was directly confounded with different baseline 'current practice' levels, non-parallel communication levels, and incompatible payment periodicities (one-off rebate vs annual bill increase).",
+        "rating": "Unclear",
+        "where_found": "PDF Pages 5-7, Section 4 (Description of the Questionnaire), Tables 1-2"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "To identify the target population exposed to frequent infrastructure disruptions, street-level interruption history (three or more water supply interruptions in a two-year period) was determined objectively using South Australian Water's administrative outage database, while individual household experience of interruptions (61%) and perceived inconvenience were self-reported in the questionnaire.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4-5, Section 3 (The Study Area, the Nature of Service Interruptions and the Sample)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "The authors identified household socio-demographic factors (specifically noting lower sample weekly income relative to the Adelaide census mode because lower-income households may more readily accept compensation, as well as years of residence), attribute interactions (frequency x duration), and design-level differences in attribute levels and payment periodicity between the WTA and WTP treatments, although demographic balance across the WTA and WTP subsamples was not fully examined.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3, 5-6, 9-10, Sections 1, 3, 4, and 6.1"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "Within each choice model, the authors used a near-orthogonal experimental design (average attribute correlation ~0.06) and tested socio-demographic covariates in multivariable multinomial probit specifications (retaining years of residence). However, they reported no strategy (such as randomization or covariate balance testing) to address potential differences between the 332 WTA and 337 WTP respondents, applied no weights for oversampling high-interruption streets, and could not analytically separate WTA/WTP property-rights framing from the design confound of differing baseline levels, communication options, and payment vehicles.",
+        "rating": "Unclear",
+        "where_found": "PDF Pages 5-7, 9-10, Sections 3, 4, and 6.1, Table 4"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "Outcomes consist of unincentivized hypothetical stated choices across six choice cards per respondent (with 15.2% WTA and 12.2% WTP 'Don't know' responses) and derived implicit prices. Although pretested via focus groups and two pilot tests, no consequentiality or cheap-talk safeguards against hypothetical bias are reported, handling of 'Don't know' responses is unspecified, and reported implicit price outcomes conflict between text and tables.",
+        "rating": "Unclear",
+        "where_found": "PDF Pages 5-6, 9-12, Sections 4, 6, and 6.2, Tables 3-5"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Multiple analytical and reporting defects are present: (1) each respondent completed six repeated choice sets, but the cross-sectional multinomial probit specification does not account for within-respondent panel correlation across repeated tasks; (2) Table 4 estimation sample sizes (N = 1,321 WTA; N = 1,111 WTP) reflect unexplained loss of 33.7% of 1,992 WTA choice tasks and 45.1% of 2,022 WTP choice tasks, far exceeding reported 'Don't know' rates (15.2% and 12.2%); (3) Section 6.1 states a Frequency x Duration interaction was included in both models (despite p = 0.102 in WTP) and Section 6.2 uses it in the implicit price formula, yet Table 4 omits the interaction coefficient and reports a sign mismatch for Years of residence (beta = -0.867, t = 2.508); and (4) Section 6.2 prose and Table 5 report contradictory implicit prices ($29.10 vs $41.18; $0.15 vs $1.45; $4.05 vs $7.95), while Table 5 mislabels Communication Level 2 ($9.37) as 'Alternative supply arrangements', causing Section 7 to falsely claim alternative water supply was statistically significant when Table 4 shows it was insignificant (t = 1.539 and -0.082).",
+        "rating": "No",
+        "where_found": "PDF Pages 8-12, Sections 5, 6.1, 6.2, and 7, Tables 3-5"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Conceptual motivation referencing regulatory General Service Level Agreements rather than empirical legal measurement",
+        "page": "[PDF Page 2 of 14], Section 1 (Introduction)",
+        "quote": "by regulators for various bulk water utilities to guarantee specified levels of service"
+      },
+      {
+        "criterion": "Household sampling and completion counts from the stratified SA Water street frame",
+        "page": "[PDF Page 5 of 14], Section 3 (The Study Area, the Nature of Service Interruptions and the Sample)",
+        "quote": "A total of 835 randomly drawn households from the sampling frame were contacted"
+      },
+      {
+        "criterion": "Design confound and non-comparability of payment vehicles between WTA and WTP questionnaires",
+        "page": "[PDF Page 6 of 14], Section 4 (Description of the Questionnaire)",
+        "quote": "the periodicity of the payment vehicle is different for the two treatments"
+      },
+      {
+        "criterion": "Internal discrepancy in WTP implicit prices reported in prose ($0.15 and $4.05) versus Table 5 ($1.45 and $7.95)",
+        "page": "[PDF Page 11 of 14], Section 6.2 (Estimates of Willingness to Accept and Willingness to Pay)",
+        "quote": "$0.15 to reduce the duration of an interruption by one hour and $4.05 to reduce"
+      },
+      {
+        "criterion": "Unsupported conclusion claiming alternative water supply was significant despite non-significant coefficients in Table 4",
+        "page": "[PDF Page 12 of 14], Section 7 (Conclusions and Future Research)",
+        "quote": "the provision of additional communication and provision of alternative water supply"
+      }
+    ],
+    "overall_narrative_summary": "This study is a cross-sectional stated-preference discrete choice modelling survey of 669 urban households in Adelaide, South Australia (332 completing a willingness-to-accept compensation [WTA] survey and 337 completing a willingness-to-pay [WTP] survey), appraised using the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies. Overall methodological risk of bias is judged as High concern (4 Yes, 3 Unclear, 1 No; narrative judgment, no composite score). Strengths include an objective utility-database sampling frame targeting streets with three or more water supply interruptions in two years, a high drop-off-pick-up household response rate (80.1%), and pretested choice sets organized in a D-efficient fractional factorial design (D-efficiency = 69%). However, serious methodological and reporting limitations undermine the study's central comparative inferences: (1) how households were allocated between WTA and WTP survey versions is unreported and demographic balance across subsamples is largely unverified; (2) WTA vs WTP property-rights framing is confounded by design with different baseline 'current practice' levels, non-parallel communication options, and incompatible payment vehicles (a one-off bill rebate vs an annual water rate increase); (3) repeated choice observations (six per respondent) are modeled without accounting for within-respondent panel correlation, and 33.7% (WTA) to 45.1% (WTP) of potential choice-task observations are excluded from Table 4 beyond explained 'Don't know' rates without explanation; (4) Table 4 omits the Frequency x Duration interaction stated as included in Section 6.1 and contains a parameter sign/t-statistic mismatch on Years of residence, while Section 6.2 prose and Table 5 report conflicting implicit prices and mislabel Communication Level 2 ($9.37) as 'Alternative supply arrangements', leading Section 7 to erroneously conclude that alternative water supply significantly influenced WTA choices; and (5) legal/regulatory General Service Level Agreements are discussed only conceptually as background motivation rather than empirically measured.",
+    "overall_rating": "High concern",
+    "paper_read": "full text",
+    "study_design_identified": "Cross-sectional stated-preference discrete choice experiment (choice modelling) household survey comparing willingness-to-accept compensation (WTA) and willingness-to-pay (WTP) split-sample questionnaires",
+    "study_id": "R29856BE0CB68",
+    "where_found_summary": "Study setting, SA Water street outage sampling frame, response rate (669/835 = 80.1%), and sample demographics: PDF Pages 4-5 (Section 3). Questionnaire design, focus-group pretesting, WTA vs WTP choice-set attributes, payment vehicle differences, and 192-set/32-block D-efficient design: PDF Pages 5-7 (Section 4, Tables 1-2). Random utility / multinomial probit econometric specification: PDF Pages 7-9 (Section 5). Choice distributions, multinomial probit estimates, implicit prices, and internal reporting discrepancies: PDF Pages 9-12 (Sections 6, 6.1, 6.2, and 7, Tables 3-5). Conceptual discussion of General Service Level Agreements / Guaranteed Service Levels: PDF Pages 2-3 (Section 1) and Pages 12-13 (Section 7).",
+    "why_tool_chosen": "The study is a single-wave, drop-off-pick-up quantitative household survey (n = 669) in Adelaide that estimates cross-sectional multinomial probit regressions on hypothetical discrete choice sets under WTA and WTP framings. The JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the best-fitting official tool because (1) no real-world intervention or longitudinal policy change was implemented (ruling out ROBINS-I and JBI Cohort), (2) participants were not randomized to a real-world treatment with a common outcome scale—nor is random assignment of respondents between WTA and WTP questionnaires even reported—and separate cross-sectional valuation regressions are estimated for each version (ruling out RoB 2), (3) focus groups were used strictly for pre-survey instrument development with no qualitative empirical component reported (ruling out CASP and MMAT), and (4) legal property rights and General Service Level Agreements serve only as conceptual framing for a conventional quantitative survey rather than a doctrinal/jurimetric design."
+  }
+}

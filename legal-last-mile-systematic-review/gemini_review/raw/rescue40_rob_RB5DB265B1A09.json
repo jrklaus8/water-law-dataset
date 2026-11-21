@@ -1,0 +1,211 @@
+{
+  "record_id": "RB5DB265B1A09",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "c2240c0e6d5616d3bcc1e6fc1d76b79501d4054820ba292f6e2415e0310c375e",
+  "prompt_sha256": "abba0ae2f0f8520a7c4f2e1e9bac26756ede3d3f2afeb258d5ba4d6d0d8c2a4d",
+  "started_at": "2026-11-21T15:06:57.821181+00:00",
+  "completed_at": "2026-11-21T15:08:03.573825+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "cannot_tell",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "cannot_tell",
+      "confounding": "cannot_tell",
+      "legal_measurement_quality": "cannot_tell",
+      "measurement_bias": "cannot_tell",
+      "outcome_measurement_quality": "cannot_tell",
+      "reporting_bias": "cannot_tell",
+      "selection_bias": "cannot_tell"
+    },
+    "domain_ratings": [],
+    "evidence_quotes": [
+      {
+        "criterion": "Full article pagination vs. 2-page preview",
+        "page": "PDF Page 2 (p. 252, Header)",
+        "quote": "Perspectives on Global Development and Technology 20 (2021) 251–277"
+      },
+      {
+        "criterion": "Stated water supply indicators in Abstract",
+        "page": "PDF Page 1 (p. 251, Abstract)",
+        "quote": "This article examines urban water supply systems by using indicators such as quantity,"
+      },
+      {
+        "criterion": "Institutional scope in Abstract",
+        "page": "PDF Page 1 (p. 251, Abstract)",
+        "quote": "This study focuses on domestic water aspects in non-municipal areas and argues"
+      },
+      {
+        "criterion": "Mid-sentence truncation at end of cached PDF preview",
+        "page": "PDF Page 2 (p. 252, Section 1 Introduction)",
+        "quote": "accessibility and water governance in selected localities (non-municipal) of"
+      }
+    ],
+    "overall_narrative_summary": "No risk-of-bias appraisal could be conducted because the retrieved cached PDF is an incomplete 2-page publisher preview (pp. 251–252 of pp. 251–277). Only the header, abstract, keywords, and opening four paragraphs of Section 1 (Introduction) are available before the text truncates mid-sentence at the bottom of page 252. Although the abstract and opening introduction describe a focus on domestic water supply indicators (quantity, quality, accessibility, and reliability), water inequity, and the governance role of informal local institutions (dorbar shnong) in non-municipal localities of Shillong, India, pages 253–277—which contain the Methods, sampling/recruitment procedures, measurement operationalization, analytical strategy, and Results—are completely absent. In accordance with blinding and non-guessing rules, study design, appraisal tool selection, overall rating, and all seven cross-tool bias domains are recorded as cannot_tell.",
+    "overall_rating": "cannot_tell",
+    "paper_read": "partial_or_scan",
+    "study_design_identified": "cannot_tell (cached PDF is a truncated 2-page publisher preview spanning pp. 251–252 of 251–277 and ending mid-sentence in Section 1 Introduction; Methods and Results sections are missing)",
+    "study_id": "RB5DB265B1A09",
+    "where_found_summary": "PDF Pages 1–2 of 2 (journal pp. 251–252 of 251–277): Header, Abstract, Keywords (p. 251), and opening of Section 1 Introduction (pp. 251–252, cutting off mid-sentence at bottom of p. 252; pp. 253–277 missing).",
+    "why_tool_chosen": "The provided source text is a truncated 2-page Brill preview PDF (pp. 251–252 of a 27-page article, pp. 251–277) containing only the abstract, keywords, and opening paragraphs of the Introduction. Because pages 253–277 (including the entire Methods and Results sections) are missing, it is impossible to verify without guessing whether the study uses a quantitative cross-sectional survey (JBI), qualitative interviews/fieldwork (CASP), mixed methods (MMAT), or an institutional case study (Legal Institutional Evidence Appraisal Framework). Per appraisal rules prohibiting guessing from title or abstract alone, chosen_tool is set to cannot_tell."
+  }
+}

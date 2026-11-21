@@ -1,0 +1,277 @@
+{
+  "record_id": "R86567443C17D",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "4e8adb7fcd352f09648383eae3d237a5276a4701f679d06fd32ee12bb58f7379",
+  "prompt_sha256": "8ae803483a2ab9b4f5af5eb9eb324f6ab7e176ad32f206069c3673d6bd5015df",
+  "started_at": "2026-11-21T14:46:36.139754+00:00",
+  "completed_at": "2026-11-21T14:48:00.103808+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Topically, the paper addresses rural community-managed water supply systems (CMWS) and strategies to achieve universal access and long-term sustainability of drinking water supply in rural Brazil, though it does not empirically measure household or community service access.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, the paper topically discusses institutional, regulatory, and governance strategies for rural water supply (including national and municipal sanitation plans, legal instruments between municipalities and community associations, SISAR institutional support, and tariff-setting recommendations), though only as normative proposals rather than an empirically observed governance factor; even if treated as satisfying the plain wording of Criterion 2, the overall decision remains exclude (plain_criterion2_decision = exclude) because the study reports no water-access outcome (c4 = no). Under the narrow 2026-10-13 rule-type reading, Criterion 2 is no: the paper does not empirically examine any operational rule-type mechanism directly governing service access (eligibility screening, administrative burden, documentation or tenure requirements, enacted tariff/cost-recovery rules, discretion, enforcement, or utility regulatory structure governing access). Instead, it formulates a broad normative multiscale management action plan blending macro-governance policy, project delivery, post-construction technical support, and general tariff/legal recommendations for expert opinion validation.",
+      "c3": "The paper combines an unsystematic narrative overview of the literature and secondary descriptions of Ceará's SISAR model with primary expert-opinion data from structured face-to-face binary ('yes'/'no') interviews of 11 rural water and sanitation specialists conducted in May 2016 (Tables 2–4). While primary expert-elicitation data are present, there are no empirical field observations from households, communities, or water utilities.",
+      "c4": "The only primary outcome measured and reported is specialist agreement ('In Favor' vs. 'Against' vote counts among 11 experts in Tables 2–4, retaining strategies with >80% agreement) on proposed management strategies. No empirical outcome relevant to household or community water access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion is measured (national rural coverage and SISAR beneficiary numbers on pages 2–3 are background statistics cited from secondary sources).",
+      "c5": "Although the expert-panel consultation method (n = 11 specialists) is identifiable, the paper does not provide an empirical population of water users/communities, an observed legal or governance exposure, or an empirical service-access outcome; instead, experts rate hypothetical policy and management recommendations.",
+      "c6": "Full text is published in English, which is eligible without translation."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "In this context, the National Rural Sanitation Program (PNSR) highlights guidelines and strategies for action in rural areas, aiming to achieve equity and sustainability in access to water in regions far from urban centers [14]."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2",
+        "quote": "In this study, we used a combination of methods based on reviews of the existing literature, lessons learned from successful experiences, and the evaluation of specialists to propose multiscale management strategies helpful in evaluating and planning the management of community-managed water supply systems."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4",
+        "quote": "The specialist panel, with eleven experts in water and sanitation, demonstrated agreement with the actions with either answer ‘yes’ or ‘no’. Based on the first evaluation’s results, the most accepted strategies were selected and improved."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5",
+        "quote": "Evaluating the proposals allowed a better adaptation and development of proposals, priorities, and more effective strategies, considering the critical factors and the system’s sustainability in the long term. Only strategies with agreement above 80% among specialists were considered for this study."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "Therefore, based on these critical factors, a proposal for strategies and actions is presented (Table 5). This was directed among the governmental spheres, indicating their respective responsibilities to provide rural communities with access to quality water and thus achieve sustainability in the management and operation of supply systems."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "14 proposed multiscale management strategies (at national, local/regional, and community levels) presented as normative action-plan items for expert evaluation (no empirically observed governance or rule-type exposure)",
+    "outcome": "Binary expert agreement ('In Favor' vs. 'Against' counts among 11 specialists; >80% agreement threshold) on proposed sustainability strategies (Tables 2–4); no empirical water access, connection, availability, reliability, quantity, affordability, or exclusion outcome reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "11 specialists with at least 10 years of professional experience in rural water and sanitation (3 federal, 7 state, 1 municipal) interviewed face-to-face at the VIII National Seminar and III Latin American Rural Water and Sanitation Meeting in Fortaleza, Ceará (May 2016)",
+    "rationale": "Excluded (E04: Wrong outcome; also fails narrow Criterion 2 and Criterion 5). This paper formulates a normative multiscale action plan for community-managed rural water supply systems in Brazil based on a narrative literature review and secondary background on Ceará's SISAR model, and validates the proposed strategies through binary ('yes'/'no') face-to-face interviews with 11 rural water and sanitation specialists (Tables 2–4). The only primary outcome reported is the count of experts voting 'In Favor' vs. 'Against' each proposed strategy; no empirical outcome measuring household or community water access, connection, availability, reliability, continuity, quantity, affordability, or exclusion is reported. Moreover, under the 2026-10-13 narrow Criterion 2 reading, no operational rule-type mechanism governing service access is empirically examined (only broad normative policy, engineering, support, and tariff/regulatory recommendations are proposed). Even under the plain wording of Criterion 2, the study is excluded because it lacks any empirical water-access outcome.",
+    "record_id": "R86567443C17D",
+    "study_design": "Expert panel validation / structured face-to-face binary survey of specialists (n = 11) combined with narrative literature review to formulate a normative strategy plan"
+  }
+}

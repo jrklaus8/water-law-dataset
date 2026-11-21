@@ -1,0 +1,341 @@
+{
+  "record_id": "R2C27ABFF8EF6",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "cb2ac15a61fe556b2cd7b67259fb5094b3fe2d27fd6c7d2bbc6d183d136b1b43",
+  "prompt_sha256": "747b79eef8ed33267c7c6c11eabb88d42a60437aacfbfa17687853f78c15d94f",
+  "started_at": "2026-11-21T15:03:04.836901+00:00",
+  "completed_at": "2026-11-21T15:05:57.898969+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / No information — Primary fieldwork is cross-sectional and secondary portal data span 2014-2020, but the paper provides zero information on household response, refusal, or replacement rates among the 264 randomly selected households, or on missing corporate CSR disclosures in the Odisha State CSR Portal.",
+      "confounding": "High concern — Observational descriptive mixed-methods design with no control/non-CSR comparator villages and no design-based or statistical adjustment for village remoteness, baseline hydro-geological conditions, socio-economic composition, or concurrent central/state government rural development schemes (e.g., central Swachh Bharat Abhiyan funds vs corporate CSR spend).",
+      "legal_measurement_quality": "Moderate concern (adequate statutory framing, weak project-level disaggregation) — Accurately states the statutory net-worth, turnover, net-profit thresholds, and 2% mandatory CSR spending rule under Section 135 and Schedule VII of India's Companies Act, 2013 (PDF p. 2) and compiles official Odisha State CSR Portal ('Go Care') records for 2014-2020 (PDF pp. 6-10), critically identifying reporting overlaps across Schedule VII heads; however, it does not cross-verify statutory MCA filings or separate central scheme funds from corporate statutory CSR outlays at the village level.",
+      "measurement_bias": "High concern — No structured questionnaire, interview guide, or FGD protocol is presented; secondary CSR expenditure indicators on the State CSR Portal suffer from unstandardized category overlap and missing head-wise unit costs (PDF pp. 6-7, 11-12), and primary infrastructure/WASH assessments rely on unstandardized field observation and qualitative narratives without systematic household-level measurement.",
+      "outcome_measurement_quality": "High concern (weak quantitative rigor, informative qualitative detail) — Sanitation and water infrastructure outcomes (unusable toilets built without piped water connections, open defecation persistence, choked/polluted water pipes, defunct borewells due to low water tables) are vividly documented via village observations and verbatim community narratives (Tables 3-4, PDF pp. 11-16), but lack household-level prevalence tabulations across the 264 sampled households, physical engineering audits, or microbiological/chemical water-quality testing.",
+      "reporting_bias": "High concern — Despite explicitly drawing a statistical random sample of 264 beneficiary households across 8 villages using the Yamane (1967) formula (PDF p. 5), the paper omits all quantitative household survey frequencies and statistical results, reporting only qualitative ASRSS summary matrices (Table 3) and selected anonymous quotes (Table 4) without explaining quote selection criteria; no study protocol or pre-analysis plan is mentioned.",
+      "selection_bias": "High concern — Two of seven CSR-investing corporations (HAL Koraput and NALCO Damanjodi) and eight villages (four per company) were purposively selected without transparent village-level inclusion criteria or comparison villages (PDF p. 5); while 264 households were reportedly sampled randomly within the eight villages using Yamane's (1967) formula, the underlying population frame, per-village sample allocation, and respondent demographics are unreported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The paper explicitly states three concrete research objectives: (1) studying achievements and shortfalls of rural development programmes executed under CSR, (2) tracing factors/reasons behind programme shortfalls, and (3) studying community perceptions of CSR rural development programmes and their sustainability in Koraput district, Odisha.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-5, Research Objective, Data and Methodology"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Combining 2014-2020 secondary CSR expenditure and project records from the Odisha State CSR Portal ('Go Care') and company annual reports with primary interviews, focus group discussions, and field observations in eight CSR beneficiary villages provides relevant macro-financial and ground-level experiential data to address the stated objectives, notwithstanding reporting omissions in the household survey component.",
+        "rating": "Yes",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF pp. 6-16, Result and Discussion"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Direct qualitative engagement through stakeholder interviews, focus group discussions, and village field observations is appropriate for investigating beneficiary perceptions, practical usability of toilets/water/roads/solar lights, and local political-economy reasons for programme shortfalls.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-5, Research Objective, Data and Methodology"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Although the author mentions interviews, focus group discussions, field visits, and field notes across eight villages (264 sampled households), the paper provides no interview or FGD topic guide, number or composition of FGDs, participant recruitment/gender/caste breakdown, language/translation procedures, audio-recording practices, or fieldwork duration.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF pp. 15-16, Table 4 Note"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Findings are organized into an author-devised ASRSS (Achievements, Shortfalls, Reasons, Suggested Strategies) qualitative matrix (Table 3) and village-linked verbatim quotes (Table 4), but the paper describes no qualitative coding method, thematic analysis process, data triangulation rules, or procedure for selecting illustrative narratives from the 264 sampled households and group discussions.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 11, Rural Development Projects through an ASRSS Lens; PDF pp. 13-16, Tables 3-4"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Core empirical interpretations regarding physical infrastructure shortfalls—such as household toilets remaining unused or used for storage due to missing piped water and cramped/poor construction, stolen solar batteries, and defunct/polluted water systems—are directly supported by specific village observations and verbatim community quotes across named villages (Kapsiput, Bhitarmarichmal, Nuaguda, Jhulaguda, Routput, Rajpalma, Bhitargarh), though broader attributions of political motives or fund siphoning are more speculative.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 11-16, Projects at a Glance and Tables 3-4"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "While the research objectives, infrastructure themes, ASRSS summaries, and narrative quotes align thematically, methodological coherence is weakened by an unexplained disconnect between the reported random sampling of 264 beneficiary households and the purely illustrative, non-systematic presentation of qualitative group/individual narratives without analytic documentation.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF pp. 11-17, Result and Discussion and Observations and Findings"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative Descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Compiling complete district- and state-level CSR expenditure records (2014-15 to 2019-20) from the Odisha State CSR Portal ('Go Care') alongside purposive selection of the two dominant CSR spenders (HAL and NALCO, representing ~90% of Koraput CSR expenditure) and stratified random household sampling (Yamane 1967 formula) within eight beneficiary villages is a relevant descriptive design for examining CSR outlays and village-level reach.",
+        "rating": "Yes",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF pp. 6-10, Tables 1-2 and Graphs 1-5"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative Descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "The two studied corporations (out of seven CSR-active companies in Koraput) and the eight study villages (four per company) were purposively selected without documented selection criteria, the total population frame N used in the Yamane (1967) calculation for the 264 households is omitted, and zero demographic or village-wise sample characteristics are reported to verify representativeness.",
+        "rating": "No",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF p. 9, Rural Development Projects in Koraput and the Role of Companies"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative Descriptive 4.3: Are the measurements appropriate?",
+        "justification": "Secondary expenditure measurements from the State CSR Portal suffer from unstandardized sector definitions, overlapping classification of identical activities (e.g., toilets placed under Rural Development, Health and Sanitation, Education, or Swachh Bharat), and 25% anonymous implementing agencies; meanwhile, for the primary N=264 household sample, no quantitative variables, survey instruments, or standardized infrastructure/WASH metrics are defined or reported at all.",
+        "rating": "No",
+        "where_found": "PDF pp. 5-7, Research Objective, Data and Methodology and CSR Engagement/Investment sections; PDF pp. 10-12, Graph 4 and Projects at a Glance"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative Descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "The paper provides no information on household contact, participation, refusal, or replacement rates for the 264 randomly selected households, nor does it assess reporting completeness of companies on the Odisha Go Care CSR portal.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF pp. 6-10, Result and Discussion"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative Descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Despite invoking Yamane's (1967) statistical formula to draw 264 random household samples, the paper presents zero quantitative statistical tabulations or descriptive frequencies from the household survey; secondary portal analysis is limited to raw totals, percentages, and unadjusted summary rows in Table 2 that include an erroneous arithmetic artifact ('Max = 2439.374' in the '% of Exp at Koraput' column) and omit inflation adjustments or per-capita normalization.",
+        "rating": "No",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF pp. 7-10, Table 2 and Graphs 1-5"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "The study explicitly justifies combining quantitative secondary CSR financial/project records with primary qualitative stakeholder interactions to evaluate the 'INs and OUTs' of CSR rural development—matching official financial inputs against lived community outcomes and functional sustainability.",
+        "rating": "Yes",
+        "where_found": "PDF p. 1, Abstract; PDF pp. 4-5, Research Objective, Data and Methodology; PDF pp. 11-12, Projects at a Glance"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Across all four focal infrastructure sectors (toilets, roads, solar street lights, and water service infrastructure), the author systematically pairs sector-level CSR financial allocations from the Odisha CSR portal and company reports with qualitative field observations, ASRSS evaluations, and beneficiary narratives to cross-compare financial outlays with ground-level utility.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 11-16, Rural Development Projects through an ASRSS Lens, Projects at a Glance, and Tables 3-4"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "The integrated synthesis coherently demonstrates how substantial reported CSR outlays (e.g., Rs. 404.67 lakh under Swachh Bharat/environment and Rs. 148.25 lakh for water infrastructure) fail to yield commensurate sanitation and safe-water benefits when physical assets are constructed without water connections, hydro-geological assessment, community consultation, or maintenance systems.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 11-17, Projects at a Glance, Tables 3-4, Observations and Findings, and Conclusion"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "Explaining the stark divergence between 'hefty'/'spectacular' official CSR expenditure figures and dysfunctional village-level deliverables is the central thesis of the paper, traced to portal category overlaps, target-counting ('number games'), lack of community participation, and absence of maintenance or post-project impact assessments.",
+        "rating": "Yes",
+        "where_found": "PDF p. 1, Abstract; PDF pp. 6-7, CSR Engagement/Investment; PDF pp. 13-17, Table 3, Observations and Findings, and Conclusion"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Neither empirical component satisfies standard methodological rigor: the quantitative descriptive component completely omits results from the 264-household random sample, relies on overlapping secondary portal categories, and contains summary table errors, while the qualitative component lacks transparent data collection protocols, coding/analytic documentation, ethical review/consent reporting (beyond anonymizing quote names), and researcher reflexivity.",
+        "rating": "No",
+        "where_found": "PDF p. 5, Research Objective, Data and Methodology; PDF pp. 8-16, Tables 2-4"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods primary and secondary data reliance (MMAT choice & 5.1)",
+        "page": "PDF Page 1, Abstract",
+        "quote": "The study has relied on both quantitative and qualitative data"
+      },
+      {
+        "criterion": "Multistage sampling and Yamane N=264 household sample whose quantitative results are omitted (MMAT 4.1, 4.2, 4.5 & reporting_bias)",
+        "page": "PDF Page 5, Research Objective, Data and Methodology",
+        "quote": "From the eight villages, 264 samples were selected"
+      },
+      {
+        "criterion": "Secondary quantitative data compilation from Odisha State CSR Portal (MMAT 4.1, 4.3 & legal_measurement_quality)",
+        "page": "PDF Page 8, Result and Discussion / Table 2",
+        "quote": "Data collected and Compiled from State CSR Website on 28th January 2021."
+      },
+      {
+        "criterion": "Qualitative outcome finding on unusable CSR toilets lacking piped water connections (MMAT 1.4 & outcome_measurement_quality)",
+        "page": "PDF Page 15, Result and Discussion / Table 4 (Kapsiput)",
+        "quote": "remained unfulfilled as there is no piped water connection to the"
+      },
+      {
+        "criterion": "Qualitative outcome finding on dysfunctional and polluted CSR piped water supply (MMAT 1.4 & outcome_measurement_quality)",
+        "page": "PDF Page 16, Result and Discussion / Table 4 (Bhitargarh, Jhulaguda)",
+        "quote": "dysfunctional, were choked with pollutants, and could not provide"
+      },
+      {
+        "criterion": "Core integrated conclusion on lack of participatory design and follow-up impact assessment (MMAT 5.3 & 5.4)",
+        "page": "PDF Page 1, Abstract",
+        "quote": "designing of rural development programmes by the CSR units, and follow-up impact assessments are"
+      }
+    ],
+    "overall_narrative_summary": "Mohapatra (2022) conducts a convergent mixed-methods study examining Corporate Social Responsibility (CSR) rural development interventions—specifically toilet construction, road construction/repair, solar street lighting, and water service infrastructure—implemented under Section 135 / Schedule VII of India's Companies Act, 2013 by HAL and NALCO in Koraput district, Odisha (2014-2020). Appraised using the MMAT (2018) with the Quantitative Descriptive block (4.1-4.5), the study's main strength lies in its substantive mixed-methods rationale and integration (5.1-5.4): pairing official CSR portal expenditure records ('Go Care') with village fieldwork effectively exposes the gap between sizeable reported financial outlays and non-functional local WASH infrastructure (e.g., toilets built without water supply, dry borewells dug without groundwater assessment, and unmaintained/polluted piped water systems). However, methodological risk of bias is high across both empirical traditions (5.5 = No). In the quantitative component, companies (2 of 7) and villages (8 total) were purposively selected without comparison villages (4.2 = No), secondary portal categories suffer from severe classification overlap (4.3 = No), household nonresponse is unreported (4.4 = Can't tell), and—most critically—despite drawing a random sample of 264 households using Yamane's (1967) statistical formula, zero quantitative household survey data or frequencies are ever reported, while Table 2 contains summary calculation artifacts (4.5 = No). In the qualitative component, data collection instruments, FGD counts/composition, coding procedures, and quote selection rules are undocumented (1.2, 1.3, 1.5 = Can't tell). Per MMAT 2018 guidance, overall methodological quality cannot exceed the weakest component, warranting high methodological concern.",
+    "overall_rating": "High methodological concern (per MMAT 2018 guidance, no numeric score is computed and overall quality cannot exceed the weakest component; 4 'No' ratings in 4.2, 4.3, 4.5, and 5.5 plus 4 'Can't tell' ratings in 1.2, 1.3, 1.5, and 4.4)",
+    "paper_read": "full text",
+    "study_design_identified": "Convergent mixed-methods empirical study combining descriptive quantitative analysis of secondary CSR expenditure/project records (Odisha State CSR Portal 'Go Care' and company annual reports, 2014-2020) and a multistage purposive/random household sample (N=264 across 8 villages) with primary qualitative interviews, focus group discussions, and field observations",
+    "study_id": "R2C27ABFF8EF6",
+    "where_found_summary": "Abstract (PDF p. 1); Introduction & statutory Companies Act 2013 framing (PDF p. 2); Research Objective, Data and Methodology (PDF pp. 4-5); CSR Engagement & Investment quantitative descriptive tables and graphs (PDF pp. 5-10, Tables 1-2, Graphs 1-5); ASRSS qualitative evaluation and beneficiary narratives on toilets, roads, solar lights, and water infrastructure (PDF pp. 11-16, Tables 3-4); Observations, Findings, and Conclusion (PDF pp. 16-18).",
+    "why_tool_chosen": "The paper explicitly collects and integrates both quantitative and qualitative empirical data (PDF p. 1, p. 5): (1) quantitative descriptive data on CSR financial allocations, sectoral shares, project completion status, and implementing agencies compiled from the Odisha State CSR Portal ('Go Care') and corporate annual reports (2014-2020, Table 2 and Graphs 1-5), alongside a multistage stratified random sample of 264 beneficiary households calculated via Yamane's (1967) formula; and (2) primary qualitative fieldwork comprising interviews, focus group discussions, and field observations across eight villages (Tables 3-4). Because there is no randomized assignment, no non-intervention comparator arm or quasi-experimental design (ruling out RoB 2 and ROBINS-I), and genuine integration of quantitative descriptive and qualitative primary components (ruling out single-method JBI or CASP checklists), MMAT (2018) with the Quantitative Descriptive component (items 4.1-4.5) is the exact matching appraisal tool."
+  }
+}
