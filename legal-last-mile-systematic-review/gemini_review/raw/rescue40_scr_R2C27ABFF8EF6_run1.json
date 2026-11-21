@@ -1,0 +1,282 @@
+{
+  "record_id": "R2C27ABFF8EF6",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "cb2ac15a61fe556b2cd7b67259fb5094b3fe2d27fd6c7d2bbc6d183d136b1b43",
+  "prompt_sha256": "6f3c9c4ec539dfffdf7112b59e36f9c15dea8c45552a91ad4150fedd2f05ff00",
+  "started_at": "2026-11-21T14:36:03.210138+00:00",
+  "completed_at": "2026-11-21T14:37:03.020071+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community sanitation and drinking water service access in rural villages (specifically CSR-funded construction of household/school toilets and construction/repair of water service infrastructure including piped water supply, overhead tanks, tube wells, and borewells).",
+      "c2": "Passes the plain wording of Criterion 2 (plain=yes) because it examines Corporate Social Responsibility (CSR) governance mandated under Schedule VII of India's Companies Act, 2013, corporate CSR reporting/accounting practices on the Odisha State CSR portal, and corporate/state partnership arrangements for rural infrastructure delivery. However, it fails the narrow 2026-10-13 rule-type reading (narrow=no): the Companies Act 2013 CSR mandate functions as macro-level corporate spending background, and the empirical analysis evaluates generic CSR project delivery shortfalls across roads, solar lights, toilets, and water infrastructure (poor construction quality, lack of water supply to toilets, absence of needs assessment/community consultation, failure to check groundwater tables, and lack of post-installation maintenance) rather than a rule-type legal or administrative mechanism directly governing service access (such as eligibility screening, administrative burden, tenure/documentation rules, tariff/cost-recovery rules, street-level discretion, enforcement, or utility regulatory structure).",
+      "c3": "Mixed-methods empirical study combining secondary CSR expenditure data (2014-2020 from the Odisha State CSR Portal Go Care and company annual reports) with primary field interviews, focus group discussions, and observations among 264 sampled households across 8 villages in Koraput district, Odisha.",
+      "c4": "Reports qualitative community- and household-level service access and functionality outcomes, including whether households use constructed toilets or revert to open defecation due to missing piped water connections and poor build quality, and whether piped water systems, overhead tanks, and borewells deliver functional potable water or remain defunct.",
+      "c5": "Population (264 sampled beneficiary households in 8 villages around HAL Koraput and NALCO Damanjodi in Koraput district, Odisha, plus district CSR project/expenditure records), exposure (CSR rural infrastructure delivery under the Companies Act 2013), outcomes (qualitative toilet use and water supply functionality/availability alongside CSR spending patterns), and mixed-methods field/secondary study design are clearly identifiable.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 5 of 20",
+        "quote": "So far, as rural development projects are concerned, four specific people-centric intervention projects, i.e., the construction of roads, installation of solar lights, construction of toilets and drinking water provision, have been brought into analysis and discussion. From the eight villages, 264 samples were selected for the study using the Yamane (1967) formula to calculate the sample from the know population."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 2 of 20",
+        "quote": "The Corporate Social Responsibility (CSR) guidelines floated through the Companies Act, 2013 made it mandatory for CSR units to engage in rural development activities notified in Scheduled VII of the Act."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 14 of 20",
+        "quote": "Companies make one-time provisions without supervision and maintenance provisions, making the investment redundant and superficial or fruitless."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 17 of 20",
+        "quote": "Major reasons behind the shortfall of the programmes include low-quality infrastructure, lack of need assessment, awareness, maintenance, proprietor and community participation."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 11 of 20",
+        "quote": "It has been found from the study areas that corporate constructed toilets at the backside of houses without any water supply system nearby. The villagers of Kapsiput cited the difficulty to collect water from open water sources located far away in the absence of piped water supply, and added that most of them, thereby, prefer open defecation."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 15 of 20",
+        "quote": "The overhead water tank and piped water supply system at Kapsiput villages have not been functional since its construction. People depend on river and stream water, which is muddy, unhygienic, and unsafe."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Corporate Social Responsibility (CSR) rural development project expenditure and physical infrastructure delivery (toilets, water supply systems, roads, and solar street lights) by HAL and NALCO under the Companies Act, 2013 CSR spending mandate",
+    "outcome": "Qualitative household/village functionality and use of CSR-built toilets (vs. open defecation) and piped water/borewell systems (defunct systems, reliance on unsafe surface water), plus district-level CSR expenditure patterns",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "264 randomly sampled beneficiary households across 8 purposively selected villages in Koraput district, Odisha (4 villages each in HAL Koraput and NALCO Damanjodi areas), plus secondary district CSR expenditure records (2014-2020)",
+    "rationale": "This mixed-methods study empirically examines rural toilet construction and drinking water infrastructure alongside roads and solar street lights delivered by corporate CSR units (HAL and NALCO) in Koraput district, Odisha. Although it satisfies the broad/plain wording of Criterion 2 by examining CSR institutional implementation following the mandatory 2% CSR spending provision of the Companies Act, 2013, it is excluded as E03 (Wrong exposure) under the active 2026-10-13 narrow rule-type reading of Criterion 2. The study evaluates generic corporate rural infrastructure project delivery, budget classification, build quality, community participation, and lack of post-installation maintenance rather than any rule-type legal, regulatory, or administrative mechanism directly governing household water or sanitation service access (such as eligibility rules, documentation/tenure requirements, tariffs, enforcement, or utility regulatory structure).",
+    "record_id": "R2C27ABFF8EF6",
+    "study_design": "Mixed-methods empirical study combining secondary administrative CSR expenditure analysis (2014-2020) with primary household interviews, focus group discussions, and field observation"
+  }
+}

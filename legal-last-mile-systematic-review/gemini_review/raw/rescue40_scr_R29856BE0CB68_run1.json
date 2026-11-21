@@ -1,0 +1,277 @@
+{
+  "record_id": "R29856BE0CB68",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "7c1ff1bff36d460e501432eea57ef3c0dd07c136390c223eb5896d76713eff55",
+  "prompt_sha256": "85434f7860365debe748274c30338c8206c329dbc51a9044dc5009ebb34563cf",
+  "started_at": "2026-11-21T14:42:34.666147+00:00",
+  "completed_at": "2026-11-21T14:44:26.348790+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Australia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household potable water service standards in Adelaide, Australia, specifically attributes of water supply interruptions and continuity/reliability of household water services.",
+      "c2": "Fails under the narrow 2026-10-13 rule-type reading: the study does not empirically examine an enacted or operational legal, administrative, or regulatory rule-type mechanism governing water access (such as eligibility screening, documentation/tenure requirements, disconnection enforcement, tariff/cost-recovery access rules, or actual Guaranteed Service Level regulations). Instead, it tests stated-preference survey framing (willingness to pay via hypothetical annual bill increases vs. willingness to accept compensation via hypothetical one-off bill rebates) across hypothetical choice sets, and explicitly notes on PDF Page 12 that it did not examine Guaranteed Service Levels. Under the plain wording of Criterion 2, regulatory General Service Level Agreements and customer property rights serve only as conceptual motivation rather than an empirically analysed institutional variable; even if hypothetical customer service standards and bill rebates were treated as borderline passing plain Criterion 2, the study would still be excluded under Criterion 4 because it measures only stated-preference valuation rather than realized access or reliability outcomes.",
+      "c3": "Contains primary quantitative empirical data from a drop-off-pick-up stated-preference discrete choice survey of 669 randomly sampled households in Adelaide, analysed using multinomial probit models.",
+      "c4": "Fails Criterion 4: outage duration and frequency are exogenous hypothetical attributes on survey choice cards rather than measured outcomes. The empirical outcomes reported are respondent choices among hypothetical service-standard scenarios and derived non-market implicit prices (willingness to pay and willingness to accept compensation in dollars), not actual water access, connection, availability, reliability, quantity, affordability, or exclusion. Descriptive mention of past interruptions in the sample profile is unanalysed background.",
+      "c5": "Population and unit of analysis (household respondents in Adelaide, N=669), experimental exposure (WTP vs. WTAC framing and hypothetical service-standard choice attributes), outcome (stated choices and implicit prices), and study design (discrete choice experiment) are clearly reported.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 14",
+        "quote": "In this paper, we explore the use of choice modelling for obtaining implicit prices for attributes associated with changes in the reliability of household water services."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 14",
+        "quote": "Use of this approach allows us to investigate whether the attributes associated with quality of service that respondents value when using willingness to pay are different to those that they value when willingness to accept compensation is used."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 14",
+        "quote": "it has not examined the community’s willingness to pay for Guaranteed Service Levels."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 14",
+        "quote": "A total of 835 randomly drawn households from the sampling frame were contacted to fill out the survey and 669 were completed in total."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 14",
+        "quote": "One of the purposes of this paper is to estimate willingness to accept compensation and willingness to pay for variations in customer service standards. In this case we are interested in the point estimates or the implicit price for the various attributes of service that enter the multinomial probit models."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Stated-preference elicitation framing (willingness to accept compensation via hypothetical one-off water bill rebates vs. willingness to pay via hypothetical annual water bill increases) and experimentally varied hypothetical customer service standard attributes (outage duration, outage frequency, communication method, alternative water supply)",
+    "outcome": "Stated discrete choices among hypothetical customer service standard packages and derived implicit marginal prices (willingness to pay and willingness to accept compensation in Australian dollars) for service attributes",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Urban households in Adelaide, South Australia (stratified random sample of streets with 3+ water supply interruptions in a two-year period; 835 households contacted, 669 completed surveys comprising 332 WTAC and 337 WTP surveys; unit of analysis: household respondent / choice task)",
+    "rationale": "Excluded under E03 (Wrong exposure), and also fails Criterion 4 (Wrong outcome). This is a stated-preference environmental/utility valuation study in Adelaide, Australia comparing willingness to pay (hypothetical annual bill increases) and willingness to accept compensation (hypothetical one-off bill rebates) across hypothetical water-interruption scenarios in a choice experiment. Although regulatory General Service Level Agreements and customer property rights motivate the framing conceptually, no actual legal, administrative, or regulatory rule governing water service access is empirically examined (failing Criterion 2 under both narrow and plain readings; even if borderline under the plain reading of Criterion 2, plain_criterion2_decision remains exclude because the only analysed outcomes are stated choices and implicit monetary valuations rather than realized water access, connection, reliability, or affordability under Criterion 4).",
+    "record_id": "R29856BE0CB68",
+    "study_design": "Cross-sectional stated-preference discrete choice experiment (choice modelling survey analysed with multinomial probit models)"
+  }
+}

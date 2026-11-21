@@ -1,0 +1,292 @@
+{
+  "record_id": "RDD3426650476",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "001256c0c99f4457d76a074a13bc7e440ebb3651037d1fb68dccc2bc843fec46",
+  "prompt_sha256": "c4ff70d6291d927de7320b6b6f5f59782ee94efca2906d43431c2dbad35f0135",
+  "started_at": "2026-11-21T15:03:04.870337+00:00",
+  "completed_at": "2026-11-21T15:06:02.605400+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / Not applicable: Single-timepoint qualitative interviews have no longitudinal panel attrition, but the paper does not report participant refusal rates during recruitment or explain why responses for only 6 of the 18 interviewed workers are reported in Table 3 (PDF pp. 5, 7).",
+      "confounding": "Not applicable (qualitative descriptive study; contextual heterogeneity unadjusted): Causal confounding is not formally applicable as no treatment effect is estimated, though substantial structural heterogeneity across the 12 sampled facilities (drinking water vs. wastewater plants, activated sludge vs. oxidation/package plants, and capacities spanning 0.25 to 18.9 MLD in Section 2.2 or 0.8 to 43 ML/day in self-reports) is pooled rather than analytically disaggregated (PDF pp. 4, 11).",
+      "legal_measurement_quality": "Weak: South African legal and regulatory instruments (Constitution s. 27(1)(b), Category B/C municipal definitions, National Water Act 36 of 1998, Water Services Act, and SANS 241:2015 limits) and Ostrom's IAD 'rules-in-use' are discussed only as conceptual/background framing; no plant-specific water-use licences, effluent discharge permits, municipal bylaws, or official Green/Blue Drop audit records were empirically collected or verified (PDF pp. 2-3, 8).",
+      "measurement_bias": "High concern: Institutional performance, regulatory compliance, and water-quality practices are measured exclusively via brief 30-45 minute self-reported worker interviews conducted at plants after obtaining District Manager gatekeeper permission, creating social desirability risk and compounded by unspecified audio-recording versus note-taking and TshiVenda-to-English translation procedures (PDF pp. 3, 5-6).",
+      "outcome_measurement_quality": "Weak: Water and wastewater quality, SANS 241 compliance, river-standard effluent safety, breakdown handling, and daily treatment volumes rely solely on unverified worker perceptions (e.g., whether staff drink tap water at the plant) with zero independent physicochemical/microbiological testing or plant logbook verification, and malfunctioning inflow/outflow meters prevented basic volume measurement at at least one plant (PDF pp. 6-11).",
+      "reporting_bias": "High concern: Selective and inconsistent reporting is evident—Table 3 presents testing parameters for only 6 of the 18 participants without accounting for the other 12 (PDF p. 7); Section 3 cites a code referencing 'question 24' despite Table 2 listing only 16 questions (PDF pp. 5-6); and Table 4 claims 'Unclear roles, poor coordination between stakeholders' and 'Low public engagement' for Vhembe despite Table 2 containing no interview questions on those topics (PDF pp. 6, 13).",
+      "selection_bias": "High concern / Can't tell: From 4 local municipalities and 49 treatment works (21 WTWs and 28 WWTWs, including 13 not owned/operated by the Water Services Authority) in Vhembe District Municipality, the study sampled 2 local municipalities (Thulamela and Makhado), 12 plants, and 18 workers without reporting plant or participant selection criteria, refusal rates, or why municipal governance and regulatory officials were excluded (PDF pp. 4-5)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Was there a clear statement of the aims of the research?",
+        "justification": "Section 1 clearly states the study's aim—to assess the institutional arrangements, operational challenges, and environmental concerns affecting water and wastewater treatment plants in the Vhembe District Municipality—and breaks this into examining governance structures, infrastructure/capacity constraints, and water-quality sustainability issues, supported by clear public health and service-delivery context.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF p. 1); Section 1 Introduction (PDF p. 3)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Is a qualitative methodology appropriate?",
+        "justification": "Exploring frontline plant supervisors' and process controllers' perceptions, operational practices ('rules-in-use'), and day-to-day institutional bottlenecks within treatment works aligns appropriately with an exploratory qualitative interview approach.",
+        "rating": "Yes",
+        "where_found": "Section 2.3 Sampling and Data Collection (PDF p. 5)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the research design appropriate to address the aims of the research?",
+        "justification": "The authors justify using semi-structured in-depth interviews paired with deductive thematic analysis under Ostrom's Institutional Analysis and Development (IAD) framework to obtain in-depth operational insights rather than statistical estimates, although relying exclusively on plant-level staff without documentary compliance records or municipal/regulatory decision-makers narrows the institutional scope.",
+        "rating": "Yes",
+        "where_found": "Section 1 (PDF p. 3); Sections 2.3-2.4 (PDF p. 5)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Was the recruitment strategy appropriate to the aims of the research?",
+        "justification": "While Section 2.3 states that 18 employees (10 WTW, 8 WWTW; supervisors, chief process controllers, and process controllers) were selected based on their plant roles, no criteria or rationale are provided for selecting Thulamela and Makhado out of four local municipalities, selecting 12 out of 49 district plants (13 of which are not owned/operated by the Water Services Authority), recruiting specific individuals per plant, or tracking non-participation.",
+        "rating": "Can't tell",
+        "where_found": "Sections 2.2-2.3 (PDF pp. 4-5)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were the data collected in a way that addressed the research issue?",
+        "justification": "The paper reports conducting 30-45 minute daytime in-person interviews in English or TshiVenda using a 16-question guide (Table 2) and claims data saturation after 18 interviews, but it does not clarify whether interviews were audio-recorded and transcribed verbatim or reconstructed from handwritten notes ('notes and transcripts' / 'hard copies of the interview notes'), how TshiVenda responses were translated, whether interview settings at workplaces were private, or how closed yes/no prompts in Table 2 yielded in-depth data.",
+        "rating": "Can't tell",
+        "where_found": "Section 2.1 (PDF p. 3); Section 2.3 (PDF p. 5); Table 2 (PDF p. 6)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Has the relationship between researcher and participants been adequately considered?",
+        "justification": "The authors do not discuss researcher reflexivity, positionality, or power dynamics—notably failing to examine how obtaining formal permission from the District Manager of Vhembe District Municipality prior to interviewing municipal plant employees on-site might influence candid reporting of operational failures or regulatory non-compliance.",
+        "rating": "No",
+        "where_found": "Sections 2.1-2.4 (PDF pp. 3-5)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Have ethical issues been taken into consideration?",
+        "justification": "Formal ethical approval was granted by the University of Mpumalanga Research Ethics Committee (UMP/Dalu/1/2022), municipal permission was obtained, voluntary participation and informed consent were described, participant names were replaced with alphanumeric codes, and consent forms/notes were locked away—notwithstanding a minor editorial contradiction in the MDPI back-matter boilerplate ('Informed Consent Statement: Not applicable').",
+        "rating": "Yes",
+        "where_found": "Section 2.1 Research Ethics (PDF p. 3); Institutional Review Board & Informed Consent Statements (PDF p. 14)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was the data analysis sufficiently rigorous?",
+        "justification": "Data analysis is described in just four generic sentences in Section 2.4; 'coding' as illustrated in Section 3 ('T1/P5/Q1', citing 'question 24' whereas Table 2 has 16 questions) merely indexes pre-set question topics and respondent numbers rather than demonstrating rigorous thematic coding; single-analyst coding (K.M.) had no reported verification; quotes are mostly brief sentence fragments; and Table 3 selectively reports only 6 of 18 interviewees without explanation.",
+        "rating": "No",
+        "where_found": "Section 2.4 & Section 3 (PDF p. 5); Table 2 (PDF p. 6); Table 3 (PDF p. 7); Author Contributions (PDF p. 14)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Is there a clear statement of findings?",
+        "justification": "Although findings are organized clearly across five themes (Sections 3.1-3.5) and note divergent worker views on water quality, there is no triangulation or respondent validation, denominators across the 18 interviewees are largely omitted, and summary claims in Table 4 (e.g., 'Low public engagement' and 'Unclear roles, poor coordination between stakeholders' in Vhembe) go beyond the empirical interview questions and evidence presented.",
+        "rating": "Can't tell",
+        "where_found": "Sections 3.1-3.5 (PDF pp. 5-13); Table 4 (PDF p. 13); Section 4 Conclusions (PDF p. 14)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research?",
+        "justification": "Narrative assessment: Moderately valuable as descriptive local evidence highlighting frontline operational vulnerabilities in rural South African municipal treatment plants—specifically stage-6 load-shedding halts, broken dosing pumps and flow meters, chlorine shortages, inconsistent SANS 241 parameter testing, and operator qualification gaps—framed through Ostrom's IAD model, but lack of objective water-quality/compliance triangulation and analytical weaknesses limit wider transferability.",
+        "rating": "Moderately valuable locally, with limited transferability due to methodological constraints",
+        "where_found": "Sections 3.1-3.5 (PDF pp. 6-13); Section 4 & Recommendation for Future Works (PDF p. 14)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Q4 Recruitment and plant selection transparency",
+        "page": "PDF Page 4, Section 2.2 Study Area",
+        "quote": "has 21 water treatment works, and 28 wastewater treatment works recorded, and 13 of them"
+      },
+      {
+        "criterion": "Q4 Selection of municipalities without stated criteria",
+        "page": "PDF Page 4, Section 2.2 Study Area",
+        "quote": "were selected in this study, which were Thulamela and Makhado Local Municipalities."
+      },
+      {
+        "criterion": "Q5 Interview duration and bilingual administration without translation protocol",
+        "page": "PDF Page 5, Section 2.3 Sampling and Data Collection",
+        "quote": "workers were interviewed for between 30 and 45 min during the day, either in English or"
+      },
+      {
+        "criterion": "Q6 / Q7 Gatekeeper permission from District Manager prior to staff interviews",
+        "page": "PDF Page 3, Section 2.1 Research Ethics",
+        "quote": "Before conducting the study, application documents were submitted to the District"
+      },
+      {
+        "criterion": "Q8 Superficial question-indexing described as thematic coding",
+        "page": "PDF Page 5, Section 3 Results and Discussion",
+        "quote": "particular codes were assigned to each response as part of the coding process. For instance,"
+      },
+      {
+        "criterion": "Outcome measurement limitation due to broken flow meters",
+        "page": "PDF Page 11, Section 3.5 Theme 5: Water Volume in Waterworks Plants",
+        "quote": "One participant expressed uncertainty regarding the amount of water they treat daily"
+      }
+    ],
+    "overall_narrative_summary": "This primary qualitative study conducted semi-structured in-person interviews with 18 employees (supervisors, chief process controllers, and process controllers) across 12 water and wastewater treatment plants in Thulamela and Makhado Local Municipalities (Vhembe District Municipality, South Africa), applying deductive thematic analysis guided by Ostrom's Institutional Analysis and Development (IAD) framework. Appraised with the CASP Qualitative Checklist, the study exhibits high methodological concern (4 Yes, 3 Can't tell, and 2 No ratings across Q1-Q9). Strengths include a clear statement of research aims, an appropriate qualitative framing for exploring plant-level operational perceptions, and documented university ethics committee approval (UMP/Dalu/1/2022) with participant anonymization. However, major limitations weaken internal validity and credibility: (1) selection criteria are unreported for choosing 2 of 4 local municipalities, 12 of 49 district plants, and 18 workers, while higher-level municipal and regulatory actors were omitted despite institutional governance aims; (2) recording and transcription procedures ('notes and transcripts') and TshiVenda-to-English translation methods are unspecified; (3) researcher reflexivity is absent despite interviewing municipal employees after obtaining District Manager gatekeeper approval; (4) thematic coding is minimally described and conflated with participant/question IDs, with selective reporting of only 6 of 18 respondents in Table 3; and (5) all compliance and water-quality outcomes rely solely on unverified worker self-reports, while summary claims in Table 4 (e.g., low public engagement and poor stakeholder coordination) extend beyond the administered interview guide.",
+    "overall_rating": "High methodological concern (3 Can't tell and 2 No items)",
+    "paper_read": "full text",
+    "study_design_identified": "Primary qualitative study using semi-structured in-depth interviews and deductive thematic analysis framed by Ostrom's Institutional Analysis and Development (IAD) framework",
+    "study_id": "RDD3426650476",
+    "where_found_summary": "Abstract (PDF p. 1); Section 1 Introduction (PDF pp. 1-3); Section 2 Methods §§2.1-2.4 (PDF pp. 3-5); Section 3 Results and Discussion §§3.1-3.5 and Tables 2-4 (PDF pp. 5-13); Section 4 Conclusions, IRB & Informed Consent Statements, and Author Contributions (PDF p. 14).",
+    "why_tool_chosen": "Sections 2.3 and 2.4 explicitly identify the empirical design as a primary qualitative study comprising semi-structured, in-depth interviews with 18 treatment-plant employees analyzed via deductive thematic analysis, with no primary quantitative estimation or comparator intervention; therefore, the CASP Qualitative Checklist is the exact matching instrument under RISK_OF_BIAS.md §1."
+  }
+}

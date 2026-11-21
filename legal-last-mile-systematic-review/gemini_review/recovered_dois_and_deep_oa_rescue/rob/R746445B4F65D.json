@@ -1,0 +1,109 @@
+{
+  "record_id": "R746445B4F65D",
+  "order": 18,
+  "retrieval_status": "retrieved_cached_pdf",
+  "chosen_tool": "ROBINS-I",
+  "confidence": "high",
+  "cross_tool_domains": {
+    "attrition": "Moderate risk: Service areas with fewer than 12 concurrent months of water usage and payment records were excluded altogether, runs of two or more consecutive zero-revenue months and extreme outliers (<1% of cleaned records) were dropped, ~5% of on-premises tariff-months lack revenue values in Table 3, and customer population counts over time were unavailable.",
+    "confounding": "Serious risk: GEE models adjust only for mean-centred tariff level, connection type, and binary payment modality (prepaid vs. conventional), leaving critical confounders—household wealth/ability to pay, density and quality of competing water sources, scheme reliability, infrastructure age, and seasonal rainfall—uncontrolled in regression estimates.",
+    "legal_measurement_quality": "Moderate / Adequate quality: Service delivery and investment models (state-led public infrastructure with delegated private O&M vs. private/NGO build-operate enterprises), WHO/UNICEF JMP connection types, payment rules (PAYF, monthly billing, prepaid credit), and PPP-adjusted volumetric tariffs are clearly operationalized, though informal attendant mark-ups and contract enforcement details are unobserved.",
+    "measurement_bias": "Serious risk: Secondary operator logs could not be independently verified against manipulation or recording error, and outcome measurement suffers from intervention-specific distortions—arrears payments lumped into monthly revenue for on-premises billing and credit purchase-to-redemption timing lags in prepaid meter records.",
+    "outcome_measurement_quality": "Low-to-moderate quality (Serious risk of bias): Volumetric revenue (2019 PPP $/m3) and water dispensed (m3/waterpoint/month) come from unverified operator administrative records, lack per-capita user denominators, conflate arrears with current monthly revenue in billed connections, and only partially resolve monthly credit-redemption lags in prepaid systems.",
+    "reporting_bias": "No information: No pre-registration or pre-analysis plan is reported (data stem from an ongoing PhD project), although model specification choices (autoregressive vs. unstructured QIC comparison) and leave-one-out sensitivity analyses by operator and year are transparently documented.",
+    "selection_bias": "Serious risk: Convenience sample of five collaborating, high-performing operators that enforce user payments and keep digital records in Ghana, Rwanda, and Uganda; analytic sample further restricted post hoc to service areas with >=12 concurrent months of data, co-existing or upgraded connection types, and <2 consecutive zero-revenue months."
+  },
+  "domain_ratings": [
+    {
+      "domain_id": "D1",
+      "domain_name": "Bias due to confounding",
+      "justification": "The GEE regression models include only three explanatory variables (mean-centred tariff level, on- vs. off-premises connection type, and binary prepaid vs. conventional payment approach). The authors explicitly state that exogenous confounders—including density of competing waterpoints, local socioeconomic vulnerabilities/wealth (which jointly drive selection into on-premises connections, higher tariffs, and payment behaviour), infrastructure age, scheme reliability, and operator-specific efficiencies—are neither in the records nor controlled in the regression models, relying instead on qualitative pattern comparison across four archetypes.",
+      "rating": "Serious",
+      "where_found": "Section 2.2 (PDF pp. 6–7); Section 2.3 (PDF p. 7); Section 4.2 (PDF p. 15); Section 4.4 (PDF pp. 16–17)"
+    },
+    {
+      "domain_id": "D2",
+      "domain_name": "Bias in selection of participants into the study",
+      "justification": "Inclusion was restricted to five collaborating operators in Ghana, Rwanda, and Uganda that maintain high-quality records and enforce regular user payments, which the authors acknowledge introduces an unavoidable selection bias toward high-performing operators. Furthermore, service areas were selected into the analytic sample conditional on post-intervention operational continuity and record completeness (>=12 concurrent months of usage and payment data, presence of both connection types or upgrades in the vicinity, and exclusion of >=2 consecutive zero-revenue months assumed to reflect operational issues).",
+      "rating": "Serious",
+      "where_found": "Section 2.1 (PDF pp. 5–6); Section 4.1 (PDF p. 15); Section 4.4 (PDF p. 16)"
+    },
+    {
+      "domain_id": "D3",
+      "domain_name": "Bias in classification of interventions",
+      "justification": "Connection types (on-premises vs. off-premises aligned with WHO/UNICEF JMP definitions, splitting mixed schemes into separate service areas) and payment modalities (PAYF, monthly billing, prepaid credit) are clearly defined and checked through unstructured interviews with operator data specialists. However, classification relies on retrospective secondary operator logs that could not be independently verified, and PAYF and monthly billing had to be collapsed into a single 'conventional payments' category due to complete collinearity with connection type.",
+      "rating": "Moderate",
+      "where_found": "Section 2.1 (PDF p. 5); Section 2.3 (PDF p. 7); Section 4.4 (PDF p. 16)"
+    },
+    {
+      "domain_id": "D4",
+      "domain_name": "Bias due to deviations from intended interventions",
+      "justification": "In routine rural piped water operations, deviations from nominal tariff and payment protocols occurred across comparators, including customers paying in arrears under monthly billing, potential unregulated price mark-ups by standpipe/kiosk attendants obscuring actual user prices, and unrecorded service disruptions or administrative collection lapses.",
+      "rating": "Moderate",
+      "where_found": "Section 2.1 (PDF p. 6); Section 4.2 (PDF p. 15); Section 4.4 (PDF pp. 16–17)"
+    },
+    {
+      "domain_id": "D5",
+      "domain_name": "Bias due to missing data",
+      "justification": "An unreported number of service areas with fewer than 12 concurrent months of water usage and payment records were excluded entirely. Within included service areas, runs of >=2 consecutive months with zero revenue, months with positive revenue but zero usage, and extreme outliers (<1% of records) were dropped, Table 3 shows ~5% fewer revenue scheme-months than tariff scheme-months for on-premises connections (e.g., 2,094 vs. 2,206 in Archetype 1), and longitudinal customer counts were unavailable to normalize per-capita demand.",
+      "rating": "Moderate",
+      "where_found": "Section 2.1 (PDF pp. 5–6); Table 3 (PDF pp. 10–11); Section 4.4 (PDF p. 16)"
+    },
+    {
+      "domain_id": "D6",
+      "domain_name": "Bias in measurement of outcomes",
+      "justification": "Volumetric revenue ($/m3) and water volume dispensed were extracted from operator administrative records that the authors note are prone to inadvertent recording errors and manipulation and could not be directly verified. Crucially, measurement errors differ systematically by intervention arm: (1) arrears payments are lumped into monthly revenue records for on-premises connections (causing measured volumetric revenue to exceed actual tariff levels in Archetypes 1 and 3), and (2) for prepaid credit meters, the time lag between credit purchase and water redemption is only partially captured by monthly aggregation, potentially inflating calculated volumetric revenue rates for prepaid systems.",
+      "rating": "Serious",
+      "where_found": "Section 2.1 (PDF p. 6); Section 3.3 (PDF pp. 11–13); Section 4.4 (PDF p. 16)"
+    },
+    {
+      "domain_id": "D7",
+      "domain_name": "Bias in selection of the reported result",
+      "justification": "No pre-analysis plan or registered study protocol is reported for this secondary PhD dataset analysis, so pre-specification of archetype definitions, outlier exclusion thresholds, and GEE interaction parameterizations cannot be verified (rated 'No information' per ROBINS-I guidance when no protocol exists, though the authors transparently report QIC comparison of correlation structures and leave-one-out sensitivity analyses in the supplement).",
+      "rating": "No information",
+      "where_found": "Section 2.3 (PDF p. 7); Section 3.4 (PDF p. 13); Data availability statement (PDF p. 17)"
+    }
+  ],
+  "evidence_quotes": [
+    {
+      "criterion": "Study design and longitudinal panel dataset scope",
+      "page": "PDF Page 5, Section 2.1",
+      "quote": "This study utilises data from ﬁve piped water operators spanning the years 2016 to 2019."
+    },
+    {
+      "criterion": "D1 Confounding — unmeasured exogenous factors uncontrolled in records",
+      "page": "PDF Page 6, Section 2.2",
+      "quote": "explicit in the records nor manifested in extreme outliers and therefore cannot be controlled or resolved."
+    },
+    {
+      "criterion": "D1 Confounding — limited covariate adjustment in GEE regression models",
+      "page": "PDF Page 7, Section 2.3",
+      "quote": "service area archetypes, we do not need to account extensively for covariates in the regression models."
+    },
+    {
+      "criterion": "D6 Measurement of outcomes — arrears lumped into monthly revenue records",
+      "page": "PDF Page 6, Section 2.1",
+      "quote": "Arrears are otherwise lumped into monthly revenue, introducing a known source"
+    },
+    {
+      "criterion": "D6 Measurement of outcomes — prepaid credit purchase-redemption lag bias",
+      "page": "PDF Page 13, Section 3.3",
+      "quote": "This potential bias may cause the calculated volumetric revenue rates associated with prepaid credit payments"
+    },
+    {
+      "criterion": "D5 Missing data — lack of longitudinal water user counts",
+      "page": "PDF Page 16, Section 4.4",
+      "quote": "Third, accurate data on number of water users over time are not consistently available."
+    }
+  ],
+  "overall_narrative_summary": "Armstrong, Hope, and Koehler (2022) conduct a comparative longitudinal panel analysis (>3,900 monthly records from 2016–2019 across five operators in Ghana, Rwanda, and Uganda) using service area archetypes and repeated-measures Generalized Estimating Equations (GEE) to evaluate how connection type (on-premises vs. off-premises) and payment modality (prepaid credit vs. conventional PAYF and monthly billing) affect volumetric water revenue when controlling for tariff level. Appraised with ROBINS-I, the study has an overall Serious risk of bias. Serious concerns arise in three domains: (D1) Confounding, as GEE regressions adjust only for tariff level, connection type, and payment modality while omitting key socioeconomic, environmental, competing-source, and reliability confounders; (D2) Selection bias, due to convenience sampling of five high-performing, record-keeping operators and post-hoc exclusion of service areas with <12 concurrent months of data or >=2 consecutive zero-revenue months; and (D6) Outcome measurement, because unverified operator logs contain modality-specific measurement distortions—specifically, arrears lumped into on-premises monthly revenue and credit purchase-to-redemption lags in prepaid meter records. Classification of interventions (D3), operational deviations such as informal vendor mark-ups and arrears (D4), and missing data including absent user denominators (D5) pose Moderate risk, while D7 is rated No information in the absence of a pre-registered analysis plan (notwithstanding helpful leave-one-out sensitivity checks).",
+  "overall_rating": "Serious",
+  "paper_read": "full text",
+  "study_design_identified": "Comparative longitudinal/panel observational study (3,900+ monthly operational records from 2016–2019 across 5 piped water operators in Ghana, Rwanda, and Uganda, analysed via archetype analysis and repeated-measures Generalized Estimating Equations [GEE])",
+  "where_found_summary": "Abstract (PDF p. 2); Section 2.1 Data classification and cleaning (PDF pp. 5–6); Section 2.2 Rationale for service area archetypes (PDF pp. 6–7); Section 2.3 Regression approach (PDF p. 7); Section 3.1–3.4 Results, Table 3 & Table 5 (PDF pp. 7–14); Section 4.1–4.3 Discussion (PDF pp. 14–16); Section 4.4 Limitations (PDF pp. 16–17); Data availability statement (PDF p. 17).",
+  "why_tool_chosen": "The study is a non-randomized comparative longitudinal/panel evaluation of rural piped water infrastructure and payment interventions—comparing on-premises vs. off-premises connections, prepaid credit meters/ATMs vs. conventional pay-as-you-fetch (PAYF) and monthly billing approaches, and enterprise-led vs. state-led public investment archetypes—using >3,900 monthly panel records (2016–2019) and repeated-measures GEE regression. Under RISK_OF_BIAS.md §1, comparative longitudinal/panel evaluations of policy or service delivery interventions with genuine comparators map directly to ROBINS-I.",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-21T15:08:48.781841+00:00",
+  "file_sha256": "93e6724fea17de72b1c287f00eedd563742416efce26b51198a28c734377985d",
+  "input_sha256": "082f4832e1c1052af2518f1e3085a58c039fd7da927835c2f12a7b7dbcc896f3"
+}

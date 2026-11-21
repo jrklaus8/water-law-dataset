@@ -1,0 +1,341 @@
+{
+  "record_id": "R262744119C0D",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "ffbe9975f756d3b1dc2dbad3d093fefc293299f24e399659e1589746b42fd5de",
+  "prompt_sha256": "d9740e509e79600d4a665ba850937b9feada69638913113f5874565cbedb0041",
+  "started_at": "2026-11-21T15:03:04.856690+00:00",
+  "completed_at": "2026-11-21T15:06:57.759516+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / Not applicable for longitudinal attrition — The study is cross-sectional (no longitudinal panel follow-up), and Formula (1) incorporated an assumed 10% non-response allowance (k = 0.1) while permitting proxy interviews with household members aged >15 when household heads were absent ([PDF Page 6], Section 2.2.1); however, actual household refusal rates, item missingness, and the proportion of proxy respondents are not reported.",
+      "confounding": "High concern — Quantitative associations between urban location/distance, collection time, water price, and disease occurrence rely exclusively on unadjusted bivariate correlations (r = -0.42 in Section 3.2; correlation matrix in Table 3 / Figure 6, [PDF Pages 11, 14-15]). No socioeconomic, demographic, sanitation/latrine proximity, or topographic confounders are adjusted for in reported analyses, and the multivariable logistic regression stated in Section 2.3 ([PDF Page 7]) is completely absent from Results.",
+      "legal_measurement_quality": "Weak / High concern — Legal, planning, and land-tenure dimensions are operationalized descriptively via household self-report of plot title status (29.74% without formal titles; 4.03% with parallel titles, [PDF Page 15], Section 3.4), coarse Formal/Informal neighborhood classifications (Tables 1-2), unquoted institutional testimonies regarding unsystematic building permits and land titles ([PDF Page 13], Section 3.3), and a high-level chronology of 1927-2021 planning instruments ([PDF Page 11], Section 3.1) without doctrinal verification of statutory provisions or cadastral records (with [PDF Page 21], Section 5 noting incomplete access to technical and cadastral data).",
+      "measurement_bias": "High concern — Household survey constructs including 'water stress', 'perceptions of water quality', and 'Diseases' (Table 3 / Figure 6) lack standardized operational definitions, recall windows, or validated scales, and Section 5 ([PDF Page 21]) acknowledges reliance on self-reported data. Multi-temporal Landsat (1984-2024) supervised classifications and Pléiades cost-distance models ([PDF Pages 6-7]) report no classification accuracy statistics (e.g., kappa/error matrix) or calibrated friction parameters, and secondary 2024 cholera surveillance (1,732 cases) and 2025 microbiological testing (104 samples, citing [83,84]) are not linked at the household level to the 655 survey respondents ([PDF Page 16], Section 3.5).",
+      "outcome_measurement_quality": "Moderate-to-high concern — Drinking water service outcomes triangulate georeferenced REGIDESO pipe/reservoir layouts, Pléiades cost-distance modeling, utility production figures (25,000-30,000 m3/day), household survey reports of water sources, collection times (mean 45 min), and parallel-market prices, plus aggregate cholera and microbiological data ([PDF Pages 5-7, 14-16]). However, household-level water access, collection time, expenditure, and waterborne morbidity rely on unvalidated self-reports without specified recall periods, and microbiological/cholera figures are secondary city/zone aggregates rather than direct measurements on surveyed households.",
+      "reporting_bias": "High concern — Section 2.3 ([PDF Page 7]) explicitly states that logistic regression was performed to assess the dependence of water stress on spatial, demographic, and physical factors at a p = 0.06 threshold, yet zero logistic regression coefficients, odds ratios, or p-values appear anywhere in the Results section. Qualitative institutional interviews ('six interview guides') are reported only as unattributed summary statements without participant counts or quotes, and minor numerical discrepancies occur across text and tables (e.g., 44% vs 43.7% parallel market use; Ibanda cholera case-fatality rate 8/427 reported as 1.33% rather than 1.87% on [PDF Page 16]).",
+      "selection_bias": "High concern — For the household survey (n = 655 across 67 blocks in 14 districts), blocks were selected purposively based on urbanization level, density, and source diversity ([PDF Page 5], Section 2.2.1), Formula (1) ([PDF Page 6]) does not mathematically reproduce n = 655 from its stated parameters, all households in selected blocks were interviewed without probability-proportional-to-size weighting, 62% of respondents were male heads of household, and Section 5 ([PDF Page 21]) acknowledges the exclusion of some peripheral areas. For the qualitative interviews ([PDF Pages 5, 7]), informant selection criteria and sample size are unreported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The authors clearly state the study objective to analyze the impacts of urban sprawl on Bukavu's drinking water network service in terms of satisfaction, health/socioeconomic consequences, household coping alternatives, and institutional/non-institutional supply actors.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 3], Section 1; [PDF Page 21], Section 5"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Combining multi-temporal satellite imagery (1984-2024), GIS cost-distance modeling, a 655-household survey across 14 districts, archival urban plans (1927-2021), and semi-structured institutional interviews provides relevant empirical data to examine spatial sprawl, water access inequalities, and governance constraints, despite execution weaknesses.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 5-7], Sections 2.2-2.3; [PDF Pages 8-17], Section 3"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Qualitative inquiry (semi-structured interviews with REGIDESO and municipal/state technical officials, field observations of infrastructure, and documentary review of historical urban master plans) is well suited to investigating governance fragmentation, unsystematic permitting, and institutional capacity alongside spatial-quantitative patterns.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 3, 5, 7], Sections 1, 2.2.1, 2.3; [PDF Pages 11-14], Sections 3.1, 3.3"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Although the authors mention field visits, urban archive collection, and semi-structured interviews with REGIDESO officials and public authorities using six interview guides, they omit the number of interviewees, purposive/key-informant selection criteria, interview setting/duration, recording/transcription procedures, and the contents of the six guides.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 5, 7], Sections 2.2.1, 2.3; [PDF Page 22], Acknowledgments"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Section 2.3 describes software for GIS and quantitative statistics (QGIS, Excel, Minitab, R) but reports no qualitative coding, thematic analysis, or documentary analysis methodology showing how interview testimonies and planning archives (1927-2021) were systematically analyzed.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 7], Section 2.3; [PDF Pages 11, 13-14], Sections 3.1, 3.3"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Qualitative claims regarding unsystematic land-title and building-permit procedures, lack of inter-tier coordination, and planned utility upgrades are presented solely as generalized authorial summaries ('Testimonies collected report...', 'The institutional officials interviewed pointed to...') without any verbatim interview quotes, informant identifiers, or specific textual citations to planning instruments.",
+        "rating": "No",
+        "where_found": "[PDF Pages 11, 12-14], Sections 3.1, 3.3"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "While governance and planning interpretations in Sections 3.1 and 3.3 align topically with the stated aims, the absence of reported interviewee sampling, interview guide contents, and qualitative analytic procedures prevents verification of coherence across collection, analysis, and interpretation.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 5, 7, 11, 12-14], Sections 2.2.1, 2.3, 3.1, 3.3"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative Descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Surveying 655 households across 67 blocks spanning all 14 districts of Bukavu covers citywide heterogeneity in principle, but how the 67 blocks were selected within districts beyond purposive criteria ('urbanization level, population density, and diversity of water supply sources') lacks a defined sampling frame, and Formula (1) as printed (denominator mza rather than ma^2, yielding ~396 even if squared) does not mathematically match the reported n = 655.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 5-6], Section 2.2.1"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative Descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "Blocks were chosen purposively rather than via probability sampling, all households in selected blocks were surveyed without population or cluster weighting across disproportionately sized communes (e.g., Kadutu holds ~43% of Bukavu's population), 62% of respondents were male household heads, and Section 5 explicitly acknowledges that exclusion of some peripheral areas constrains generalizability.",
+        "rating": "No",
+        "where_found": "[PDF Pages 3, 5-6, 14, 21], Sections 2.1.1, 2.2.1, 3.3 (Table 2), 5"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative Descriptive 4.3: Are the measurements appropriate?",
+        "justification": "Questionnaires were translated and pre-tested and GIS layers used standard Landsat, SRTM, Pléiades, and GPS workflows; however, key analytical variables ('water stress', 'Diseases' in Table 3 / Figure 6, and perceptions of water quality) lack operational definitions or recall periods, supervised satellite classification accuracy and cost-distance friction values (Fric) are unvalidated, and secondary 2024 cholera and 2025 microbiological data ([83,84]) are not clearly linked to surveyed households.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 5-7, 14-16], Sections 2.2.1-2.2.4, 3.3-3.5"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative Descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "Formula (1) assumed a 10% non-response allowance (k = 0.1) and interviewers substituted another household member aged >15 if the household head was absent, but the actual participation/refusal rate and the share of proxy respondents are never reported.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 6], Section 2.2.1"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative Descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Section 2.3 states that logistic regression was performed to test the dependence of water stress on spatial, demographic, and physical factors (at p < 0.06), yet no logistic regression results appear anywhere in the paper. Reported statistics are restricted to unweighted percentages and unadjusted bivariate correlations without confidence intervals, p-values (Table 3), cluster adjustment for the 67 blocks, or confounding control, alongside arithmetic errors (e.g., 8/427 cholera deaths reported as 1.33% rather than 1.87%).",
+        "rating": "No",
+        "where_found": "[PDF Page 7], Section 2.3; [PDF Pages 11, 14-16], Sections 3.2, 3.3 (Table 3), 3.4 (Figure 6), 3.5"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "Section 1 justifies a systemic approach linking physical/demographic urban sprawl and household water-access deficits with institutional governance and alternative supply strategies, providing a clear substantive rationale for combining GIS/survey data with institutional interviews and archival planning documents.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 3], Section 1; [PDF Page 21], Section 5"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Although quantitative spatial/household findings and qualitative institutional/archival observations are woven together narratively in Sections 3.1, 3.3, and 3.4, the Methods section defines no formal mixed-methods integration design or joint display linking specific interview or archival evidence to the 67 surveyed blocks or urban strata.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 5-7], Sections 2.2-2.3; [PDF Pages 11-16], Sections 3.1, 3.3, 3.4"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Sections 3.3-3.5 and 4.1-4.4 synthesize the spatial expansion maps, REGIDESO production gap, household tenure/coping survey metrics, and institutional governance accounts into a coherent explanation of socio-spatial water inequality in Bukavu.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 12-21], Sections 3.3-3.5, 4.1-4.4"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "Potential discrepancies across data streams—such as the existence of successive planning instruments (1927-2021, SDAU, PUR) and 61% theoretical access (up to 64%-75% in Bagira and Ibanda in Table 2) versus institutional claims of a missing operational policy framework and survey findings that nearly 60% of households lack drinking water within 500 m—are not explicitly examined or reconciled.",
+        "rating": "No",
+        "where_found": "[PDF Pages 10-16], Sections 3.1, 3.3 (Table 2), 3.5"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Neither empirical strand meets core methodological quality standards: the qualitative component lacks basic reporting of interviewee sampling, guides, coding, and supporting quotations (1.2-1.5), while the quantitative descriptive component suffers from purposive block selection and peripheral exclusions (4.2), unreported non-response (4.4), undefined health/stress constructs, and an unreported logistic regression (4.5).",
+        "rating": "No",
+        "where_found": "[PDF Pages 5-7, 11-16, 21], Sections 2.2-2.3, 3, 5"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods empirical design combining household quantitative survey, GIS, field observation, and qualitative data",
+        "page": "[PDF Page 21], Section 5 (Conclusions)",
+        "quote": "The methodology used is based on direct field observation and the collection of quantitative"
+      },
+      {
+        "criterion": "Purposive selection of survey blocks (Quantitative 4.1 / 4.2; selection_bias)",
+        "page": "[PDF Page 5], Section 2.2.1 (Sampling Campaign)",
+        "quote": "selected based on urbanization level, population density, and diversity of water supply"
+      },
+      {
+        "criterion": "Qualitative semi-structured interviews with six interview guides lacking sampling and coding details (Qualitative 1.2 / 1.3)",
+        "page": "[PDF Page 7], Section 2.3 (Tools, Data Processing, and Analysis)",
+        "quote": "This information was supplemented by semi-structured interviews"
+      },
+      {
+        "criterion": "Stated logistic regression omitted from Results (Quantitative 4.5; reporting_bias; confounding)",
+        "page": "[PDF Page 7], Section 2.3 (Tools, Data Processing, and Analysis)",
+        "quote": "regression was performed to assess the dependence of water stress on various spatial,"
+      },
+      {
+        "criterion": "Unsubstantiated qualitative governance assertions on land titles and building permits (Qualitative 1.4; legal_measurement_quality)",
+        "page": "[PDF Page 13], Section 3.3 (Governance Challenges, Structural Limitations of the Service, and Alternatives for Access to Water in Bukavu)",
+        "quote": "issuing land titles and building permits appear to be unsystematic, and exchanges between"
+      },
+      {
+        "criterion": "Author-acknowledged self-report bias, peripheral exclusions, and incomplete cadastral access (Quantitative 4.2 / 4.3; selection_bias; measurement_bias)",
+        "page": "[PDF Page 21], Section 5 (Conclusions)",
+        "quote": "self-reported data, exclusion of some peripheral areas, limited geospatial resolution, and"
+      }
+    ],
+    "overall_narrative_summary": "Mugisho Nyambwe et al. (2025) conduct a convergent mixed-methods case study of urban sprawl and drinking water services in Bukavu, DR Congo, combining multi-temporal Landsat/Pléiades/SRTM spatial analysis (1980-2024), a cross-sectional survey of 655 households across 67 blocks in 14 districts, archival review of urban planning documents (1927-2021, SDAU, PUR), field observations, and semi-structured interviews using six interview guides with REGIDESO and public officials. Appraised with MMAT (2018) using the quantitative descriptive block (4.1-4.5), overall methodological quality is low (high risk of bias), as MMAT overall quality cannot exceed the weakest component. While the mixed-methods rationale (5.1) and broad descriptive triangulation of spatial expansion, colonial utility capacity deficits, land tenure overlap, and coping strategies (5.3) are informative, both primary empirical strands exhibit major limitations. In the qualitative strand, interviewee counts, selection procedures, interview guide contents, qualitative coding methods, and verbatim supporting quotations are entirely absent (1.2-1.5). In the quantitative strand, blocks were selected purposively with acknowledged exclusion of some peripheral areas (4.2), Formula (1) does not mathematically match n = 655 (4.1), actual non-response is unreported (4.4), key variables ('water stress' and 'Diseases') lack clear operational definitions or household-level linkage to secondary cholera/microbiological data (4.3), statistical reporting relies on unweighted percentages and unadjusted bivariate correlations without confounding control, and the multivariable logistic regression announced in Section 2.3 is completely omitted from Results (4.5).",
+    "overall_rating": "High methodological concern / Low overall quality (per MMAT 2018 guidance, no numeric score is computed and overall quality cannot exceed the weakest component: major methodological and reporting limitations affect both the qualitative interview/archival component and the quantitative cross-sectional household/GIS component)",
+    "paper_read": "full text",
+    "study_design_identified": "Convergent mixed-methods empirical case study combining (1) a quantitative cross-sectional household survey (n = 655 households across 67 blocks in 14 districts) and diachronic remote-sensing/GIS spatial analysis (1984-2024 Landsat, Pléiades cost-distance, SRTM DEM) with (2) qualitative semi-structured institutional interviews (six interview guides with REGIDESO and municipal/technical officials), archival urban-plan review (1927-2021), and field observations",
+    "study_id": "R262744119C0D",
+    "where_found_summary": "Study aims in Section 1 ([PDF Page 3]) and Section 5 ([PDF Page 21]); household sampling, GIS workflows, semi-structured interviews, and statistical plan in Sections 2.2-2.3 ([PDF Pages 5-7]); urban sprawl and planning archives in Section 3.1 ([PDF Pages 8-11]); spatial coverage correlations in Section 3.2 ([PDF Pages 11-12]); institutional governance interviews, REGIDESO production data, coping strategies, and correlation table in Section 3.3 ([PDF Pages 12-14]); land-tenure survey metrics and correlation matrix in Section 3.4 ([PDF Pages 14-16]); cholera and microbiological contamination data in Section 3.5 ([PDF Pages 16-17]); methodological limitations in Section 5 ([PDF Page 21]); ethics and municipal interview acknowledgments on [PDF Page 22].",
+    "why_tool_chosen": "The study collects and integrates both primary quantitative data (a 655-household semi-structured questionnaire survey across 67 blocks plus multi-temporal satellite/GIS spatial analysis) and primary qualitative data (semi-structured interviews with REGIDESO officials, municipal authorities, and state technical heads using six interview guides, direct field observations, and documentary review of 1927-2021 urban plans), as explicitly confirmed in Section 2.2.1 ([PDF Pages 5-6]), Section 2.3 ([PDF Page 7]), and Section 5 ([PDF Page 21]: 'collection of quantitative data at the household level as well as qualitative data'). Because there is no experimental or quasi-experimental policy comparator (ruling out ROBINS-I) and the quantitative component reports prevalence estimates and unadjusted correlations from a single cross-sectional prevalence sample formula, MMAT (2018) with the Quantitative Descriptive module (4.1-4.5) alongside Qualitative (1.1-1.5) and Mixed-Methods Integration (5.1-5.5) is the exact matching instrument."
+  }
+}

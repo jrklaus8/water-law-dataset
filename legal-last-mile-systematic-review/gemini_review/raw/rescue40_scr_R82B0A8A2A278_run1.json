@@ -1,0 +1,277 @@
+{
+  "record_id": "R82B0A8A2A278",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "3c4fbcc0def06429c09ad9a69d48d4245776b808bcb7bd46f13d91f344fef7c3",
+  "prompt_sha256": "8ca955546809eea20987bba0e0f51433b6f2fe3b6c3b306a2b407047cf551b65",
+  "started_at": "2026-11-21T14:46:36.134888+00:00",
+  "completed_at": "2026-11-21T14:48:18.763692+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Vietnam",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household piped water supply, indoor sanitation/wastewater plumbing, and public water spouts/wells in the Quang Trung social housing complex in Vinh City, Vietnam.",
+      "c2": "Passes the plain wording of Criterion 2 (plain=yes) because it discusses socialist urban governance, municipal housing management (Division of Housing under the Provincial People's Committee), rank-based apartment floor allocation, and post-Doi moi housing privatization shifting upkeep responsibility from the state to tenants. However, it fails the narrow 2026-10-13 rule-type mechanism reading (narrow=no): it does not analyze a legal, regulatory, or administrative rule directly governing water or sanitation service access (such as water eligibility screening, documentation/tenure barriers to connection, tariff/cost-recovery rules, enforcement, or utility regulatory structure). Instead, water shortages in the 1970s-1980s stemmed from GDR infrastructure project delivery and hydraulic/pumping pressure failure, while the 2010 fieldwork examines physical building decay and indoor leaks against macro-governance shifts from socialist state paternalism to privatized apartment ownership and moral norms of collective care.",
+      "c3": "Empirical ethnographic and archival study drawing on multi-year fieldwork in Vinh City (2006, 2009, 2010-11 including nine months living in the Quang Trung complex, and 2012), interviews with residents, municipal officials, and East German technicians, and archival research in Vinh, Hanoi, and Berlin.",
+      "c4": "Reports qualitative household-level outcomes of water availability, continuity/reliability, low hydraulic pressure leaving upper-floor taps dry, nightly queuing and water hauling from public spouts/wells, wastewater pipe backups/overflows, and chronic indoor leaks after regular supply resumed.",
+      "c5": "Identifies population and unit of analysis (households and residents of the 5-story Quang Trung social housing complex built for >8,000 state employees and workers in Vinh City), exposure (East German-engineered socialist water/sanitation infrastructure, hydraulic breakdown, and state maintenance neglect), outcome (dry taps on upper floors, coping water-hauling labor, wastewater backups, and indoor leaks), and study design (qualitative ethnographic and archival case study).",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 9 of 16 (p. 527)",
+        "quote": "At issue was not water scarcity—engineers made certain that storage facilities would provide for the basic needs of each household—but the technology of water ﬂow and distribution itself. There was only enough pressure to move water up two ﬂights of stairs."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 10 of 16 (p. 528)",
+        "quote": "And yet the provincial government did not have the ﬁnancial means to maintain or expand new technical systems after GDR material support ended."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 12 of 16 (p. 530)",
+        "quote": "This lack of clarity had much to do with the ambiguous ownership history of the apartments: built by the GDR, gifted to the city, allocated to state employees, managed by municipal authorities, and then, most recently, privatized, turning tenants into bona ﬁde owners."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 14 of 16 (p. 532, Note 1)",
+        "quote": "Fieldwork for this article took place in Vinh City in 2006, 2009, 2010–11, and 2012."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 10 of 16 (p. 528)",
+        "quote": "Typically, at some point between 11:00 p.m. and 2:00 a.m., the water would be turned on, but the ﬂow was not long or strong enough for it to reach the upper ﬂoors. Residents would then descend quickly and walk to the nearest public spout to collect water to bring home."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "East German-engineered socialist water and sanitation infrastructure (\"technopolitics of visibility\"), physical/hydraulic pressure breakdown, and post-Doi moi state retreat from housing maintenance in Vinh City",
+    "outcome": "Household piped water availability and pressure failure on upper floors (requiring nightly water hauling from public spouts/wells), wastewater backups, indoor plumbing leaks, and gendered collective repair/coping practices",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households and residents (state employees, cadres, and factory workers; >8,000 residents initially) in the Quang Trung social housing complex in Vinh City, Nghe An Province, Vietnam, plus interviewed municipal officials and East German technicians",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 Criterion 2 clarification. Although this ethnographic and archival study examines household water and sanitation conditions in a Vietnamese social housing complex (c1=yes, c3=yes, c4=yes) and discusses socialist urban governance, state housing allocation, and post-Doi moi apartment privatization in broad terms (so plain_criterion2_decision is \"include\"), it does not analyze a rule-type legal, regulatory, or administrative mechanism directly governing water or sanitation service access. Water deprivation on upper floors in the postwar era resulted from engineering/hydraulic pressure limitations and municipal fiscal shortages following East German reconstruction project delivery, while contemporary disputes center on physical building decay, indoor leaks after regular water access was restored in the mid-1990s, and moral expectations of state paternalism rather than rules governing water/sanitation access.",
+    "record_id": "R82B0A8A2A278",
+    "study_design": "Qualitative ethnographic and historical/archival case study"
+  }
+}

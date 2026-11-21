@@ -1,0 +1,341 @@
+{
+  "record_id": "R1C7B5A6466D9",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "96405aee125ff5703577cfaf8736ba52d31814f9018bab15e5a5954966c8ecc7",
+  "prompt_sha256": "a003fca411c5307fcddb30ab3dff43823a0aab8ec21a005f1ad0843634c93cbb",
+  "started_at": "2026-11-21T15:06:57.829262+00:00",
+  "completed_at": "2026-11-21T15:10:22.925651+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "medium",
+    "cross_tool_domains": {
+      "attrition": "Can't tell — Fieldwork used a cross-sectional two-phase design (2007-2008) rather than a longitudinal panel, and household survey nonresponse, refusal, or replacement rates in reaching n=30 per case (N=180; Table 3.3, PDF p. 52) are not reported in the accessible text (PDF pp. 1-70, truncated before Chapters 5-8).",
+      "confounding": "High concern — Observational comparative case study of six purposively selected micro spring forests without a quasi-experimental counterfactual design. Case-level institutional differences are intertwined with ecological, historical, spatial, and demographic heterogeneity (e.g., ethnic composition and in-migration differences across cases in Table 3.3, PDF p. 52). Section 3.6 (PDF p. 54) describes unadjusted ANOVA and a four-predictor linear regression for daily household water fetched, and empirical model specifications in Chapters 5-7 are truncated.",
+      "legal_measurement_quality": "Strong (for national statutory/customary tenure analysis; local rule coding truncated) — Chapter 4 (PDF pp. 56-70) directly examines primary Tanzanian statutes and policies (Land Act No. 4 of 1999, Village Land Act No. 5 of 1999, Water Ordinances of 1923/1948/1959, Water Utilization Act of 1974 and amendments, National Water Policy 2002, Forest Act No. 14 of 2002, National Forest Policy 1998) and distinguishes statutory, administrative, and customary land, water, forest, and tree tenure across national, basin, district, ward, village, and clan levels; empirical chapters documenting local HESAWA rules and village by-laws (Chapters 5-7) are truncated.",
+      "measurement_bias": "Moderate concern / Can't tell (partial truncation) — Strengths in Section 3.4 (PDF pp. 50-51) include objective GPS household-to-spring distance and GIS area measurements, 100% plot enumeration of trees >4 cm DBH, physical tank tape-measurements, stopwatch volumetric flow-rate measurements, questionnaire pre-testing (n=10), and consistent single-researcher interviewing in local languages. Limitations include retrospective recall of historical conditions, group household response dynamics, reliance on local/institutional perceptions rather than laboratory testing for water quality (TOC Section 5.3, PDF p. 9), and truncation of Chapters 5-8 and the survey instrument after PDF p. 70.",
+      "outcome_measurement_quality": "Moderate / Can't tell (partial truncation) — Chapter 3.4 (PDF p. 51) specifies rigorous direct physical protocols for forest condition (complete census of stems >4 cm DBH at 1.3 m, basal area, species composition, GIS area) and water source dimensions/flow rate (tape measure and timed container filling across seasons), whereas daily household water volume is self-reported and water quality is assessed via local/institutional perceptions rather than microbiological/chemical assays; empirical outcome tables in Chapters 5-7 are truncated after PDF p. 70.",
+      "reporting_bias": "Can't tell — No pre-registration or protocol is cited in Chapter 3, and because the provided PDF text is truncated at page 70 of 216 (omitting Chapters 5-8 and Appendices), concordance between planned analyses in Section 3.6 and reported empirical results cannot be verified.",
+      "selection_bias": "High concern — Six of 22 visited micro spring forests were purposively selected with assistance from a District Community Development technician explicitly based on ownership, settlement distance, and forest outcome condition ('good condition and bad condition'; Section 3.3, PDF p. 46). Household sampling used fixed quotas of n=30 per case irrespective of user population size, relied on formal water users' registers in five cases (potentially omitting unregistered users), and in Nzuitaka relied on a single village guide recalling 30 household names per zone from memory as the sampling frame (PDF p. 47)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "Sections 1.3 and 1.4 clearly state the overarching objective, four specific research objectives, and four structured main research questions with explicit sub-questions covering tenure dynamics, institutional interfaces, physical water and forest conditions, everyday management practices, and sectoral versus integrated governance.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 18-19 of 216], Chapter 1, Sections 1.3-1.4 (pp. 4-5)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Table 3.2 and Sections 3.3-3.4 explicitly align legal/policy review, Phase 1 PRA/ethnographic/key-informant qualitative methods, and Phase 2 household surveys, forest inventories, and physical water-source measurements with each of the four research objectives (though empirical outputs in Chapters 5-8 are truncated after PDF p. 70).",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 47-51 of 216], Chapter 3, Sections 3.3-3.4 and Table 3.2 (pp. 33-37)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Investigating institutional bricolage, legal pluralism, customary beliefs/taboos, and actor negotiations over micro spring forests requires qualitative ethnographic, participatory, key-informant, and doctrinal/policy inquiry alongside biophysical and survey data.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 25-26, 45-46 of 216], Chapter 2 Sections 2.1-2.2 and Chapter 3 Section 3.2 (pp. 11-12, 31-32)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Phase 1 (January 2007 to April 2008) combined statutory/policy document review, key informant interviews (village executive officers, ward health officers, clan leaders, elders, district officials), six PRA techniques (10-15 participants balanced by age, gender, and wealth), participant observation, and follow-up open-ended household interviews in Kikerewe, Kijita, and Kisukuma.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 47-50 of 216], Chapter 3, Sections 3.3-3.4 and Table 3.2 (pp. 33-36)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Section 3.6 describes thematic content analysis of recorded interview dialogues, and Chapter 4 grounds national tenure analysis in statutory texts and secondary literature, but truncation of the source PDF after page 70 (omitting empirical Chapters 5-8) prevents verifying how primary qualitative field data were coded and transformed into empirical findings.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 54, 56-70 of 216], Chapter 3 Section 3.6 and Chapter 4 (pp. 40, 42-56; Chapters 5-8 truncated)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Primary empirical chapters presenting qualitative PRA outputs, ethnographic observations, and respondent accounts (Chapters 5-8, PDF pp. 74-180) are truncated from the provided text, precluding verification of empirical substantiation for qualitative interpretations beyond Chapter 4's statutory review.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 8-10, 56-70 of 216], Table of Contents and Chapter 4 (Chapters 5-8 truncated)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "Chapters 1-3 establish coherent links between the institutional bricolage/legal pluralism conceptual framework, multi-method qualitative fieldwork, and thematic content analysis, and Section 3.2/3.4 discusses researcher insider-outsider positionality, but truncation after PDF p. 70 prevents verifying end-to-end coherence into empirical interpretation in Chapters 5-8.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 39-40, 44-55 of 216], Chapter 2 Section 2.8 and Chapter 3 Sections 3.2-3.6 (pp. 25-26, 30-41; Chapters 5-8 truncated)"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative Descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Two-stage design combining purposive selection of six contrasting micro spring forests (varying in ownership, settlement proximity, and management history), random selection of 30 water-using households per site (N=180) for comparative survey description, and complete 100% census of trees >4 cm DBH per forest patch is relevant in structure to characterizing site-specific resource use and biophysical conditions, despite frame weaknesses assessed under item 4.2.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 46-47, 51 of 216], Chapter 3, Sections 3.3-3.4 (pp. 32-33, 37)"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative Descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "Sample representativeness is compromised by (1) purposive selection of 6 of 22 visited forests explicitly choosing cases in 'good condition and bad condition' with a district technician, (2) reliance on formal water users' registers in five sites (which may exclude unregistered or occasional users), (3) reliance on a single village guide naming 30 households per zone from memory as the sampling frame in Nzuitaka, and (4) fixed equal quotas of n=30 per site regardless of total user household population.",
+        "rating": "No",
+        "where_found": "[PDF Pages 46-47, 52 of 216], Chapter 3, Sections 3.3 and 3.5, Table 3.3 (pp. 32-33, 38)"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative Descriptive 4.3: Are the measurements appropriate?",
+        "justification": "Biophysical and spatial measurements in Section 3.4 are appropriate and clearly specified (GPS household-to-source distances and GIS forest area, full plot census of trees >4 cm DBH at 1.3 m height, tape-measured spring dimensions, and stopwatch volumetric flow rate), and the household questionnaire was pre-tested on 10 households. However, the survey instrument (Appendices) and Chapters 5-7 operationalizations (including subjective/institutional water quality rankings and self-reported water volumes) are truncated after PDF p. 70.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 9, 50-51 of 216], TOC Section 5.3 and Chapter 3 Section 3.4 (pp. viii, 36-37; Chapters 5-7 and Appendices truncated)"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative Descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "Table 3.3 reports 30 interviewed households in each of the six cases (N=180), but Chapter 3 does not report initial contact numbers, refusal or absence rates, or household replacement procedures, and Chapters 5-8 are truncated.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 47, 50, 52 of 216], Chapter 3, Sections 3.3-3.5 and Table 3.3 (pp. 33, 36, 38)"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative Descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Section 3.6 outlines descriptive frequencies/means, ANOVA, and linear regression of daily household water fetched on distance, household size, alternative sources, and source dependence in SPSS, plus tree density and basal area calculations in Excel, but truncation of Chapters 5-7 prevents checking model diagnostics, clustering adjustments across the six cases, uncertainty reporting, and test execution.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 54-55 of 216], Chapter 3, Section 3.6 (pp. 40-41; Chapters 5-7 truncated)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "Section 3.2 provides an explicit rationale for sequential mixed-methods inquiry: Phase 1 qualitative fieldwork established unrecorded socio-historical and ecological context and informed Phase 2 survey design, while integrating qualitative, household survey, and biophysical inventory data enabled triangulation and explanation of underlying social mechanisms.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 45-46, 50 of 216], Chapter 3, Sections 3.2 and 3.4 (pp. 31-32, 36)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Sections 3.4 and 3.6 describe design-level connection (using Phase 1 qualitative insights to refine Phase 2 questionnaire items and planning integrated reporting across Chapters 5-8), but truncation of PDF pages 71-216 precludes verifying how qualitative, survey, and ecological data were integrated in the empirical chapters.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 50, 54-55 of 216], Chapter 3, Sections 3.4 and 3.6 (pp. 36, 40-41; Chapters 5-8 truncated)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Empirical results and synthesis chapters (Chapters 5-8, PDF pp. 74-180) are truncated in the provided full text, preventing evaluation of integrated qualitative-quantitative interpretation.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 9-10, 55 of 216], Table of Contents and Chapter 3 Section 3.6 (Chapters 5-8 truncated)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "Although Sections 3.2, 3.4, and 3.6 state that household interviews and survey results were cross-checked against public PRA meetings and qualitative accounts via triangulation, truncation after PDF p. 70 prevents verifying whether empirical divergences were identified and reconciled in Chapters 5-8.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 45-46, 49-50, 55 of 216], Chapter 3, Sections 3.2, 3.4, and 3.6 (Chapters 5-8 truncated)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Per MMAT 2018 guidance, overall adherence fails when an individual component exhibits clear methodological flaws: the quantitative component fails sample representativeness (4.2 rated 'No' due to purposive site selection on outcome condition, reliance on formal user registers, unrecorded nonresponse, and village-guide memory listing of 30 names per zone in Nzuitaka), and empirical reporting/analytic rigor in Chapters 5-8 cannot be verified due to text truncation.",
+        "rating": "No",
+        "where_found": "[PDF Pages 46-55 of 216], Chapter 3, Sections 3.2-3.6 (pp. 30-41; Chapters 5-8 truncated)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods two-phase design (MMAT S2, 1.2, 5.1)",
+        "page": "[PDF Page 45 of 216], Chapter 3, Section 3.2 (p. 31)",
+        "quote": "The first phase started from January 2007 to April 2008 with a qualitative data collection"
+      },
+      {
+        "criterion": "Purposive case selection on outcome condition and ownership (MMAT 4.2; selection_bias)",
+        "page": "[PDF Page 46 of 216], Chapter 3, Section 3.3 (p. 32)",
+        "quote": "those relatively in good condition and bad condition; those owned by individuals,"
+      },
+      {
+        "criterion": "Informal guide-nominated sampling frame in Nzuitaka (MMAT 4.2; selection_bias)",
+        "page": "[PDF Page 47 of 216], Chapter 3, Section 3.3 (p. 33)",
+        "quote": "researcher requested one village member who was guiding the researcher in the"
+      },
+      {
+        "criterion": "Quantitative household survey sample and single-interviewer administration (MMAT 4.1, 4.3; measurement_bias)",
+        "page": "[PDF Page 50 of 216], Chapter 3, Section 3.4 (p. 36)",
+        "quote": "The questionnaire was administered to 180 respondents, and the researcher alone"
+      },
+      {
+        "criterion": "Spatial GPS measurement of household-to-water-source distances (MMAT 4.3; outcome_measurement_quality)",
+        "page": "[PDF Page 51 of 216], Chapter 3, Section 3.4 (p. 37)",
+        "quote": "Global Positioning System (GPS) was used to measure the distances of each"
+      },
+      {
+        "criterion": "Quantitative regression specification and doctrinal tenure analysis (MMAT 4.5; confounding; legal_measurement_quality)",
+        "page": "[PDF Page 54 of 216], Chapter 3, Section 3.6 (p. 40)",
+        "quote": "A linear regression analysis was used to show the relationship between the amount of"
+      }
+    ],
+    "overall_narrative_summary": "Katani (2010) is a doctoral thesis conducting a sequential exploratory mixed-methods comparative case study of six micro spring forests on Ukerewe main Island, Tanzania, appraised using the MMAT (2018) with the Quantitative Descriptive component (4.1-4.5). Note that the provided source text includes PDF pages 1-70 of 216 (covering front matter, Table of Contents, Chapter 1 Introduction, Chapter 2 Theoretical Framework, the complete Chapter 3 Methodological Approach, and most of Chapter 4 Tenure Systems Administration and Dynamics) and is truncated before Empirical Chapters 5-8 and the Appendices. Based on the complete Methods chapter and legal-institutional chapter, the study demonstrates clear research objectives and questions (S1: Yes), appropriate multi-method qualitative design (1.1-1.2: Yes) combining statutory/policy analysis, key informant interviews, six PRA tools, and local-language ethnography with explicit reflection on the author's former residence on Ukerewe, a well-justified sequential mixed-methods rationale (5.1: Yes), strong doctrinal analysis of Tanzanian land, water, forest, and tree tenure statutes (Chapter 4), and objective physical measurement protocols for GPS distances, GIS forest area, full-plot tree mensuration (>4 cm DBH), and timed spring flow rates. However, methodological concerns are substantial in the quantitative sampling strategy (4.2: No; 5.5: No): the six study forests were purposively selected partly on outcome status ('good condition and bad condition'), household sampling used fixed quotas (n=30 per case, N=180) without population weights, five sites sampled only from formal water users' registers, and Nzuitaka relied on a village guide naming 30 households per zone from memory. In addition, observational case comparisons are vulnerable to confounding across heterogeneous villages, survey nonresponse rates are unreported (4.4: Can't tell), and truncation after PDF page 70 prevents verification of empirical qualitative substantiation (1.3-1.5: Can't tell), statistical execution (4.5: Can't tell), and mixed-methods results integration (5.2-5.4: Can't tell). Per MMAT 2018 guidance, no numeric composite score is calculated, and overall methodological quality is bounded by the documented sampling/confounding limitations and partial text availability.",
+    "overall_rating": "High concern / partially unassessable due to truncated empirical chapters (no numeric score per MMAT 2018 guidance; weakest component is Quantitative Descriptive sample representativeness [4.2 = No] and component quality adherence [5.5 = No], while empirical derivation, statistical execution, nonresponse, and results integration [1.3-1.5, 4.3-4.5, 5.2-5.4] are rated Can't tell because PDF text is truncated after page 70 of 216)",
+    "paper_read": "partial_or_scan",
+    "study_design_identified": "Sequential exploratory mixed-methods comparative case study (Phase 1 qualitative policy/statutory review, ethnography, PRA, and key informant interviews; Phase 2 cross-sectional household survey [N=180 across 6 cases], complete-plot forest inventory, and physical water source measurements)",
+    "study_id": "R1C7B5A6466D9",
+    "where_found_summary": "Chapter 1 Sections 1.3-1.4 ([PDF Pages 18-19 of 216], thesis pp. 4-5); Chapter 2 Sections 2.1-2.8 ([PDF Pages 22-40 of 216], thesis pp. 8-26); Chapter 3 Sections 3.1-3.6 and Tables 3.1-3.3 ([PDF Pages 41-55 of 216], thesis pp. 27-41); Chapter 4 Sections 4.1-4.4 ([PDF Pages 56-70 of 216], thesis pp. 42-56); Table of Contents and Lists of Tables/Figures ([PDF Pages 8-12 of 216], thesis pp. vii-xi). PDF pages 71-216 (end of Chapter 4, Chapters 5-8, References, and Appendices) were truncated in the provided source text.",
+    "why_tool_chosen": "Chapter 3 (Sections 3.2-3.6, [PDF Pages 44-55 of 216]) explicitly designs and executes a primary two-phase mixed-methods comparative case study combining substantial qualitative inquiry (Phase 1: statutory/policy review, key informant interviews, six PRA tools, and ethnographic observation analyzed via thematic content analysis) with substantial quantitative empirical data collection and statistical analysis (Phase 2: structured survey of N=180 randomly sampled households across 6 micro spring forests, GPS distance/GIS area measurement, complete forest stand mensuration, and volumetric water-flow measurements analyzed via descriptive statistics, ANOVA, and linear regression). Under RISK_OF_BIAS.md §1, genuine primary mixed-methods studies combining qualitative and quantitative components must be appraised with MMAT (Mixed Methods Appraisal Tool), using the Quantitative Descriptive block (4.1-4.5) for the cross-sectional multi-site household and ecological survey component."
+  }
+}

@@ -1,0 +1,341 @@
+{
+  "record_id": "R27265EBE4A8E",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "a507ee3a29d18f710f51f504938667a8136cb502b39fe103e9fea1b87d4c4353",
+  "prompt_sha256": "47de768adfe5d56fb19ae9d5606b809d9f5ea300d6f3a793897f2ebeb039bc32",
+  "started_at": "2026-11-21T15:06:57.836757+00:00",
+  "completed_at": "2026-11-21T15:10:05.390526+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / Not applicable for single-wave household surveys. The 2008-2009 Santa household survey (n=125) and December 2015 Huancayo urban survey (n=911) are cross-sectional and do not report refusal, non-contact, or item nonresponse rates (Section 3.3, PDF Pages 16-17), while Fig. 7 excludes an unspecified number of residences with built-in reservoir tanks (PDF Page 50). For longitudinal biophysical sensor monitoring, equipment loss/theft was mitigated via discreet placement, duplicate sensors, and institutional partnerships (Section 3.1, PDF Page 10).",
+      "confounding": "High concern (descriptive synthesis without causal adjustment). Comparisons across the Santa and Shullcas basins and across three Cordillera Blanca sub-catchments with differing glacier cover (3%, 17%, 36%; Table 1, PDF Page 42) are purely descriptive; no multivariable regression or quasi-experimental design is used to separate glacier recession from confounding differences in elevation, hydrogeology, mining pollution, infrastructure proximity, or household livelihood portfolios (Sections 3.3 and 4.3, PDF Pages 15-17, 22-29).",
+      "legal_measurement_quality": "Adequate narrative institutional characterization (not measured at the household/unit level). The authors accurately identify relevant Peruvian water governance statutes and administrative mechanisms—including Peru's 2009 Hydrologic Resources Law, the Program for Water Rights Formalization (PROFODUA) volumetric licensing regime, post-1969 agrarian reform usufruct entitlements, ANA Resolution #676-2011-ANA at Lake Conococha, stalled basin watershed councils, and the 2014 payments for ecosystem services statute (Law No. 30215)—and contrast them with customary community irrigation governance (Sections 3.3, 4.3.3, and 5, PDF Pages 16, 27-29, 36). However, formal versus customary entitlement status is not systematically coded or linked to household water-access outcomes.",
+      "measurement_bias": "Moderate concern. Biophysical hydrology (hydrochemical/isotopic HBCM mixing, dye/heat tracing, LiDAR, UAV thermal imagery) and Landsat NDVI/NDSI land-cover analyses use objective, well-documented protocols (Sections 3.1-3.2, PDF Pages 10-15). Conversely, human water-access outcomes rely on self-reported perceptions of glacier recession and dry-season water shortages (Santa n=125; Shullcas n=10) and a briefly reported survey of daily hours of residential water access in Huancayo (n=911) whose questionnaire wording, validation, recall period, and criteria for excluding homes with built-in reservoir tanks are unreported (Section 3.3, PDF Pages 16-17; Table 1, PDF Page 42; Fig. 7, PDF Page 50).",
+      "outcome_measurement_quality": "Mixed: strong for biophysical water supply/source partitioning, moderate-to-weak reporting detail for human water access. Streamflow source partitioning (n=90 samples in Santa; n=87 in Shullcas) and ecohydrologic sensor measurements are rigorously specified (Sections 3.1 and 4.1, PDF Pages 10-21), whereas household water-access outcomes are limited to brief binary perception percentages in the Santa sub-catchments (Table 1, PDF Page 42; Section 4.3.1, PDF Page 22) and mapped categorical bands of daily hours of municipal water service in Huancayo (Fig. 7, PDF Page 50) without instrument validation or household-level water quality/quantity metrics.",
+      "reporting_bias": "Some concern / Can't tell. No study protocol or pre-analysis plan is cited. Although the 2008-2009 Santa survey coded structured responses across 234 variables and 9,360 possible data points (Section 3.3, PDF Page 16), only two perception items are tabulated in Table 1 (PDF Page 42, where normal-approximation confidence intervals exceed 100%, e.g., 98 +/- 3.8), and qualitative interviews are synthesized narratively without verbatim participant quotes or systematic coding frequencies.",
+      "selection_bias": "Moderate-to-high concern / Can't tell overall. In the three Santa River highland sub-catchments (n=125 households), selection bias was actively mitigated using a spatially-based, stratified random sampling frame built from high-resolution satellite imagery (Section 3.3, PDF Page 16), though response rates are omitted. In contrast, the December 2015 Huancayo urban water-access survey (n=911 households, PDF Page 17) reports no sampling strategy or frame at all and excludes residences with built-in reservoir tanks (Fig. 7, PDF Page 50), and recruitment/purposive selection rules for Santa key-informant interviews and the 10 Shullcas walking interviews are not fully specified (Section 3.3, PDF Pages 16-17)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "Section 1 (PDF Pages 4-5) clearly states the aim of developing and applying a multi-level coupled hydro-social conceptual framework across two glacierized Peruvian watersheds to examine how hydrologic transformation, land cover change, perceptions, water infrastructure, and water rights/governance interact to shape water access and risks; Section 3.2 (PDF Page 13) also states explicit land-cover research questions.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF Pages 2-3); Section 1 (PDF Pages 4-5); Section 3.2 (PDF Page 13)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Multi-scale hydrological/isotopic field measurements, satellite/UAV remote sensing, two household surveys (n=125 in Santa tributaries; n=911 in Huancayo), key-informant and walking interviews, participant observation, and legal/institutional documents directly capture the biophysical and social dimensions of the research objectives.",
+        "rating": "Yes",
+        "where_found": "Section 3.1-3.3 (PDF Pages 10-17); Section 4.1-4.3 (PDF Pages 18-29)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Key-informant interviews, mobile 'walking interviews' in alpine/periglacial landscapes, participant observation of watershed meetings, and legal/archival/institutional analysis are well suited to investigating lived perceptions of hydrological change, customary versus formal water entitlements, and multi-scalar governance conflicts.",
+        "rating": "Yes",
+        "where_found": "Section 3.3 (PDF Pages 15-17)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Data collection triangulated 18 open-ended household survey items (n=125), formal and informal key-informant interviews across public, private, and civil-society actors, participant observation of local/regional/watershed meetings, legal and policy documents in the Santa basin, and 10 semi-structured/unstructured walking interviews across diverse stakeholders over 8 weeks in the Shullcas basin.",
+        "rating": "Yes",
+        "where_found": "Section 3.3 (PDF Pages 15-17)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Although open-ended survey responses were transcribed and entered into qualitative databases (PDF Page 16), the article does not describe the qualitative coding scheme, thematic analysis procedure, researcher reflexivity, or analytic rules used to derive findings from interview transcripts, field notes, and archival texts.",
+        "rating": "Can't tell",
+        "where_found": "Section 3.3 (PDF Pages 16-17); Section 4.3 (PDF Pages 22-29)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Governance and infrastructure claims in the Santa basin are substantiated via specific dated field-interview citations (e.g., Chavimochic 2013; Duke 2011; PROFODUA 2011; Paron-Llullan 2011), ANA administrative resolutions, and Ombudsman conflict reports, though verbatim participant quotations from the 10 Shullcas walking interviews and Santa household open-ended questions are not presented in the text.",
+        "rating": "Yes",
+        "where_found": "Section 4.3.1-4.3.3 (PDF Pages 22-29); References (PDF Pages 52-59)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "Because the qualitative analytic and coding procedures linking raw interview/observation data to synthesized themes are omitted in this synthesis article (see 1.3) and no verbatim excerpts from the newly reported Shullcas walking interviews are shown, full methodological coherence across collection, analysis, and interpretation cannot be verified from the text alone.",
+        "rating": "Can't tell",
+        "where_found": "Section 3.3 (PDF Pages 15-17); Section 4.3 (PDF Pages 22-29)"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative Descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "While the 2008-2009 Santa tributary survey (n=125) used a rigorous spatially-based, stratified random sampling frame from high-resolution satellite imagery (PDF Page 16), the December 2015 Huancayo urban residential water-access survey (n=911)—the largest survey in the paper—is introduced in a single sentence with zero description of its sampling frame or household selection method (PDF Page 17).",
+        "rating": "Can't tell",
+        "where_found": "Section 3.3 (PDF Pages 16-17); Fig. 7 (PDF Page 50)"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative Descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "The authors state that the 125-household Santa survey was representative (PDF Page 16) but provide no target population counts or demographic comparisons in this paper; for the 911-household Huancayo survey (city population ~470,000, PDF Page 9), no representativeness assessment is provided and homes with built-in reservoir tanks are excluded without reporting how many residences were omitted (Fig. 7, PDF Page 50).",
+        "rating": "Can't tell",
+        "where_found": "Section 2 (PDF Page 9); Section 3.3 (PDF Pages 16-17); Fig. 7 (PDF Page 50)"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative Descriptive 4.3: Are the measurements appropriate?",
+        "justification": "Biophysical measurements (hydrochemical HBCM source partitioning, LiDAR/UAV, Landsat NDVI/NDSI) are well specified (Sections 3.1-3.2), but for the human water-access surveys—particularly the 2015 Huancayo survey of daily hours of water access (n=911)—exact questionnaire wording, measurement/recall protocols, instrument pre-testing, and operational criteria for excluding homes with built-in reservoir tanks are unreported.",
+        "rating": "Can't tell",
+        "where_found": "Section 3.1-3.3 (PDF Pages 10-17); Table 1 (PDF Page 42); Fig. 7 (PDF Page 50)"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative Descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "Neither the 125-household Santa survey nor the 911-household Huancayo survey reports the total number of households approached, participation/refusal rates, or reasons for nonresponse.",
+        "rating": "Can't tell",
+        "where_found": "Section 3.3 (PDF Pages 16-17)"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative Descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Descriptive percentages, spatial mapping of daily water-access hour bands (Fig. 7), land-cover net-transition calculations (Fig. 6), and hydrochemical mixing proportions are appropriate for descriptive multi-site characterization, although Table 1 reports symmetric confidence intervals that exceed the 100% upper bound (e.g., 98 +/- 3.8%), indicating an unadjusted normal approximation near boundary proportions.",
+        "rating": "Yes",
+        "where_found": "Section 4.1-4.3 (PDF Pages 18-23); Table 1 (PDF Page 42); Fig. 6-7 (PDF Pages 49-50)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "Section 1 explicitly justifies why biophysical runoff and population-density models alone fail to capture local and supra-local vulnerabilities, motivating a coupled transdisciplinary design combining hydrology/remote sensing, household surveys, and qualitative institutional/ethnographic inquiry.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF Pages 2-3); Section 1 (PDF Pages 4-5)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Hydrological/isotopic results, land-cover change mapping, household perception and water-access surveys, and qualitative governance/infrastructure analyses are tightly integrated across elevation zones in both study basins and synthesized visually in Figures 1 and 8.",
+        "rating": "Yes",
+        "where_found": "Section 4 (PDF Pages 18-29); Section 5 (PDF Pages 29-37); Fig. 1 (PDF Page 43); Fig. 8 (PDF Page 51)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Sections 5 and 6 clearly interpret how physical water partitioning (glacier melt vs. groundwater), water contamination, conveyance infrastructure hazards, and overlapping formal (PROFODUA / 2009 law) and customary water entitlements jointly produce uneven hydro-social vulnerability.",
+        "rating": "Yes",
+        "where_found": "Section 5 (PDF Pages 29-37); Section 6 (PDF Pages 37-40)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "The authors explicitly address and explain apparent divergences across data streams—such as why perceived dry-season water declines vary inversely with sub-catchment glacier cover (Table 1), why urban Huancayo suffers severe rationing despite complete dry-season river diversion and <20% glacial contribution to Shullcas baseflow, and why formal volumetric water rights under PROFODUA diverge from un-gauged customary highland irrigation practice.",
+        "rating": "Yes",
+        "where_found": "Section 4.3.1 (PDF Pages 22-23); Section 4.3.3 (PDF Pages 28-29); Section 5 (PDF Pages 30-36)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Because this broad synthesis paper omits critical primary methodological reporting in both the quantitative descriptive survey component (no sampling method, sample frame, exclusion count for reservoir-tank homes, instrument validation, or response rate for the n=911 Huancayo survey; no response rate and boundary-exceeding CIs in the n=125 Santa survey) and the qualitative component (no coding/analytic protocol, reflexivity, or verbatim interview quotes), the empirical social components do not fully satisfy standalone methodological quality criteria as reported here.",
+        "rating": "No",
+        "where_found": "Section 3.3 (PDF Pages 15-17); Section 4.3 (PDF Pages 22-29); Table 1 (PDF Page 42); Fig. 7 (PDF Page 50)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Santa River tributary household survey sample and sub-catchment breakdown (MMAT 4.1 / 4.2)",
+        "page": "PDF Page 16, Section 3.3",
+        "quote": "representative sample comprised of 125 households (40 from Querococha, 32 from Quilcay,"
+      },
+      {
+        "criterion": "Semi-structured household survey design combining structured and open-ended items (MMAT 1.2 / 4.3)",
+        "page": "PDF Page 16, Section 3.3",
+        "quote": "administer semi-structured surveys. The anonymous surveys contained 32 structured and 18"
+      },
+      {
+        "criterion": "Qualitative legal, institutional, historical, and archival methods in the Santa watershed (MMAT 1.1 / 1.2)",
+        "page": "PDF Page 16, Section 3.3",
+        "quote": "These methods included legal, institutional, historical, archival, and"
+      },
+      {
+        "criterion": "Qualitative semi-structured and unstructured interviews in the Shullcas watershed (MMAT 1.1 / 1.2)",
+        "page": "PDF Page 17, Section 3.3",
+        "quote": "hydrologic change were pursued through ten semi-structured and unstructured interviews"
+      },
+      {
+        "criterion": "Unreported sampling methodology for the 2015 Huancayo urban water-access survey (MMAT 4.1 / 4.4 / 5.5)",
+        "page": "PDF Page 17, Section 3.3",
+        "quote": "water access was carried out in 911 households within the city of Huancayo during"
+      },
+      {
+        "criterion": "Operationalization of Peruvian water rights formalization under the 2009 Hydrologic Resources Law and PROFODUA (Legal measurement)",
+        "page": "PDF Page 28, Section 4.3.3",
+        "quote": "the direction of the Program for Water Rights Formalization (PROFODUA) with financial"
+      }
+    ],
+    "overall_narrative_summary": "Mark et al. (2017) present a transdisciplinary mixed-methods synthesis and comparative watershed case study of coupled biophysical and social determinants of water access across two glacierized Peruvian basins (the Santa River and Shullcas River watersheds). Methodological strengths include a compelling conceptual rationale for mixed-methods integration (MMAT 5.1-5.4), rigorous multi-scale hydrological/isotopic and remote-sensing protocols (Sections 3.1-3.2), a spatially stratified random household sampling frame in three Santa sub-catchments (n=125; Section 3.3, PDF Page 16), and rich institutional contextualization of Peru's 2009 Hydrologic Resources Law and PROFODUA water-rights formalization (Section 4.3.3, PDF Pages 27-29). However, per MMAT 2018 guidance—where overall methodological quality is bounded by the weakest empirical component—several primary social-science reporting gaps introduce moderate-to-high risk of bias: the newly reported December 2015 Huancayo urban water-access survey (n=911 households) is described in a single sentence with no sampling strategy, target frame, instrument validation, nonresponse rate, or count of excluded residences with built-in reservoir tanks (PDF Pages 17, 50); the Santa survey omits nonresponse rates and reports normal-approximation confidence intervals exceeding 100% in Table 1 (PDF Page 42); and the qualitative component omits coding/thematic analysis protocols, researcher reflexivity, ethical review/consent details, and verbatim informant quotes (MMAT 1.3, 1.5, 4.1-4.4, 5.5).",
+    "overall_rating": "Moderate-to-high methodological concern (strong mixed-methods rationale and cross-component synthesis [5.1-5.4 Yes], but bounded per MMAT 2018 guidance by unreported sampling, nonresponse, and measurement details in the quantitative descriptive surveys [4.1-4.4 Can't tell] and unreported qualitative coding/analytic procedures [1.3, 1.5 Can't tell; 5.5 No]; no numeric score computed)",
+    "paper_read": "full text",
+    "study_design_identified": "Transdisciplinary mixed-methods comparative watershed case study and synthesis combining quantitative descriptive household surveys (n=125 in Santa sub-catchments; n=911 in Huancayo) and biophysical/remote-sensing measurements with qualitative key-informant and walking interviews, participant observation, and legal-institutional document analysis",
+    "study_id": "R27265EBE4A8E",
+    "where_found_summary": "Abstract (PDF Pages 2-3); Section 1 Introduction (PDF Pages 3-5); Section 2 Setting (PDF Pages 5-10); Section 3 Methods: 3.1 Pro-glacial hydrologic transformation (PDF Pages 10-13), 3.2 Land cover change (PDF Pages 13-15), 3.3 Social Processes (PDF Pages 15-17); Section 4 Results: 4.1-4.2 (PDF Pages 18-21), 4.3.1 Perceptions (PDF Pages 22-23), 4.3.2 Water Use and Infrastructure (PDF Pages 23-27), 4.3.3 Water Rights and Governance (PDF Pages 27-29); Section 5 Discussion (PDF Pages 29-37); Table 1 (PDF Page 42); Figures 1, 6, 7, and 8 (PDF Pages 43, 49, 50, 51).",
+    "why_tool_chosen": "Section 3 (PDF Pages 10-17) reports a genuine mixed-methods empirical design that collects, analyzes, and integrates primary and synthesized quantitative descriptive data (a spatially stratified random survey of 125 households in three Santa River sub-catchments and an urban water-access survey of 911 households in Huancayo, alongside hydrological/isotopic and Landsat/UAV measurements) and qualitative data (open-ended survey items, extensive key-informant interviews, participant observation, legal/institutional/archival analysis in the Santa basin, and 10 semi-structured/unstructured walking interviews in the Shullcas basin) within an integrated hydro-social framework. Accordingly, MMAT (with the Quantitative Descriptive 4.1-4.5 block) is the exact matching instrument under RISK_OF_BIAS.md §1."
+  }
+}

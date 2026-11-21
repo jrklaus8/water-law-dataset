@@ -1,0 +1,341 @@
+{
+  "record_id": "RC3824F034384",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "ea58a04b030e81d1452d9a12572da9147a1c5d3f912c20d56a5b1d33e4af11b0",
+  "prompt_sha256": "20554eb8bcbd80370743fdfcc03ba2b514d43de8cb51abf6f9736efa52e0808d",
+  "started_at": "2026-11-21T15:11:05.304071+00:00",
+  "completed_at": "2026-11-21T15:20:55.911934+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell: Household survey response/completion rates and missing data are not reported, despite contextual acknowledgment of seasonal migration and plot abandonment among settlers in the new area (PDF pp. 3, 6; pp. 283, 286).",
+      "confounding": "Not applicable / Uncontrolled descriptive design: Descriptive mixed-methods case study mapping water uses, rights, and institutions without causal effect estimation or statistical confounding control (beyond descriptive stratification by old vs. new irrigated area and narrative disaggregation by gender and class).",
+      "legal_measurement_quality": "Moderate-to-strong conceptual operationalization, weak statutory citation: Formal and de facto water and land rights are systematically disaggregated across six water-use sectors using Schlager and Ostrom's (1992) bundle-of-rights framework (access, withdrawal, management, exclusion, alienation) and organizational mapping (PMC, SPCs, DCOs, FCGs, FCSs, NWS&DB standpipe rules), though primary Sri Lankan statutes, regulations, and administrative instruments are not cited by title or section.",
+      "measurement_bias": "High concern / Can't tell: Survey questionnaires, water quality parameters and assay protocols, observation checklists, and focus group/key informant interview guides are omitted; qualitative institutional findings triangulate multiple stakeholder types and prior IIMI evaluations, but provide no coding procedures or verbatim quotes.",
+      "outcome_measurement_quality": "Weak / Qualitative-descriptive only: Water use categories, reliability (e.g., variable standpipe supply for only a few hours per day; dry-season canal releases once in 14 days), and governance representation are reported qualitatively and typologically (Tables 1-2), while collected household survey data and water quality measurements are not quantitatively reported.",
+      "reporting_bias": "High concern: Although the Methods paragraph reports collecting a stratified household survey (n = 156) and multi-source water quality measurements, quantitative survey tabulations and physical/chemical water quality results are omitted from the article in favour of narrative synthesis.",
+      "selection_bias": "High concern / Can't tell: The household survey stratified by old and new settlement areas (78 households per stratum; n = 156), supplemented by ~10 focus groups, direct observations, and key informant interviews, lacks reporting of sampling frames, within-stratum selection procedures (random vs. purposive/convenience), water-quality site selection, and participant recruitment criteria."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The paper clearly states its objectives: to identify the multiple agricultural and non-agricultural uses and users of water in the Kirindi Oya irrigation system, analyze the formal and informal institutional/water-rights environment, and evaluate the scope for a multi-user negotiation platform.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF p. 1 / p. 281); Introduction (PDF p. 2 / p. 282)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Multi-method field data (stratified household survey, observations at standpipes and tanks, focus group discussions, key informant interviews across state agencies and user groups, and secondary project reports) are substantively suited to identifying water uses/users and institutional governance structures.",
+        "rating": "Yes",
+        "where_found": "Introduction (PDF pp. 2-3 / pp. 282-283); Results sections (PDF pp. 3-11 / pp. 283-291)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "A qualitative institutional case study grounded in common-pool resource theory, Schlager and Ostrom's bundle-of-rights framework, and negotiation platform concepts is well matched to analyzing informal water practices, gendered intra-household roles, and multi-agency governance gaps.",
+        "rating": "Yes",
+        "where_found": "Introduction (PDF pp. 2-3 / pp. 282-283); Note 2 (PDF p. 12 / p. 292)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Fieldwork triangulated direct observations at standpipes and tanks, approximately 10 focus group discussions with diverse users (e.g., women cultivators, curd pot makers), and key informant interviews with officials (Irrigation Department, NWS&DB), local politicians, and user group representatives (FOs, Standpipe Committees, Fisheries Cooperative Societies).",
+        "rating": "Yes",
+        "where_found": "Introduction (PDF pp. 2-3 / pp. 282-283)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Although the sector-by-sector typology of uses (Table 1) and institutional mapping (Table 2) plausibly synthesize fieldwork and prior IIMI studies, the authors do not describe how observations, focus groups, or interviews were recorded, coded, or systematically analyzed.",
+        "rating": "Can't tell",
+        "where_found": "Introduction (PDF pp. 2-3 / pp. 282-283); Identifying uses, users, and sources & The institutional environment (PDF pp. 3-10 / pp. 283-290)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Selected empirical claims cite interviews or focus groups (e.g., shrimp farming impacts on p. 283; fishermen's views and standpipe norms on p. 288) alongside secondary IIMI reports, but the paper provides no verbatim participant quotations, fieldnote excerpts, or transparent evidentiary audit trail linking primary data to interpretations.",
+        "rating": "Can't tell",
+        "where_found": "Site description, Identifying uses, users, and sources & The institutional environment (PDF pp. 3-11 / pp. 283-291)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "There is clear conceptual coherence linking the theoretical framing of multiple-use commons and property-rights bundles, stakeholder fieldwork across use sectors, analysis of formal versus de facto rights, and conclusions on expanding the Project Management Committee.",
+        "rating": "Yes",
+        "where_found": "Introduction through Conclusion (PDF pp. 2-12 / pp. 282-292)"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Stratifying the household survey between the established old Ellegala area and the post-1987 new settlement area (78 households per area; n = 156) and sampling water quality across system sources directly aligns with structural differences in water rights, tenure, and domestic supply infrastructure.",
+        "rating": "Yes",
+        "where_found": "Introduction & Site description (PDF pp. 2-3 / pp. 282-283)"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "For a study population of roughly 87,750 inhabitants (~30% in the new area), the paper omits the sampling frame, village/household selection method within each stratum (probability vs. convenience), sample size rationale, and water-quality site selection criteria.",
+        "rating": "Can't tell",
+        "where_found": "Introduction & Site description (PDF pp. 2-3 / pp. 282-283)"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative descriptive 4.3: Are the measurements appropriate?",
+        "justification": "The paper mentions a household survey and multi-source water quality measurements but provides no information on questionnaire design, variable definitions, validation, or the specific chemical/physical/microbiological water quality parameters and testing protocols used.",
+        "rating": "Can't tell",
+        "where_found": "Introduction (PDF pp. 2-3 / pp. 282-283)"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "Household survey response rates and missingness are unreported, and documented seasonal out-migration and plot abandonment in the new settlement area raise unaddressed risk of nonresponse/absence bias.",
+        "rating": "Can't tell",
+        "where_found": "Introduction, Site description & Field crop production (PDF pp. 2-3, 6 / pp. 282-283, 286)"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "No statistical analyses, descriptive survey tables, stratum weighting (despite unequal 70%/30% population shares), or quantitative water quality measurements are presented anywhere in the article.",
+        "rating": "No",
+        "where_found": "Results sections (PDF pp. 3-11 / pp. 283-291)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "The authors articulate a complementary interdisciplinary logic: using the stratified household survey, water quality measurements, observations, and focus groups to identify the range of water uses and users, and key informant interviews to examine institutional management implications.",
+        "rating": "Yes",
+        "where_found": "Introduction (PDF pp. 2-3 / pp. 282-283)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Although insights from the survey, observations, focus groups, and interviews appear merged into narrative descriptions and Table 1, the complete omission of quantitative survey and water quality data prevents verification of how quantitative and qualitative components were integrated.",
+        "rating": "Can't tell",
+        "where_found": "Identifying uses, users, and sources & Table 1 (PDF pp. 3-5 / pp. 283-285)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Because quantitative empirical findings from the 156-household survey and water quality testing are not separately reported, readers cannot assess how integrated outputs added to or modified insights from qualitative interviews and secondary reports.",
+        "rating": "Can't tell",
+        "where_found": "Results and Discussion sections (PDF pp. 3-11 / pp. 283-291)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "While discrepancies between formal rules and informal practices are discussed qualitatively, no comparison or reconciliation of potential divergences between quantitative survey/water-quality data and qualitative interview/focus-group accounts is reported.",
+        "rating": "Can't tell",
+        "where_found": "The institutional environment (PDF pp. 5-11 / pp. 285-291)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "The quantitative descriptive component omits within-stratum sampling methods, response rates, measurement details, and statistical outputs, while the qualitative component omits recruitment criteria, analytic/coding procedures, verbatim quotes, and researcher reflexivity.",
+        "rating": "No",
+        "where_found": "Introduction through Conclusion (PDF pp. 2-12 / pp. 282-292)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Quantitative component in Methods (stratified household survey)",
+        "page": "PDF Page 2 of 13 (Introduction, p. 282)",
+        "quote": "The study used a household survey"
+      },
+      {
+        "criterion": "Qualitative component in Methods (observations and focus groups)",
+        "page": "PDF Page 3 of 13 (Introduction, p. 283)",
+        "quote": "direct observations at standpipes and tanks were done"
+      },
+      {
+        "criterion": "Multiple uses and users identified across the system",
+        "page": "PDF Page 1 of 13 (Abstract, p. 281)",
+        "quote": "People use irrigation system water not only for ﬁeld crops, but also for ﬁshing, homestead gardens, and livestock."
+      },
+      {
+        "criterion": "Sectoral restriction of formal water rights",
+        "page": "PDF Page 5 of 13 (The institutional environment, p. 285)",
+        "quote": "rights are recognized only for irrigation and domestic"
+      },
+      {
+        "criterion": "Domestic standpipe water supply reliability outcome",
+        "page": "PDF Page 8 of 13 (The institutional environment: Domestic, p. 288)",
+        "quote": "only a few hours a day and these hours can vary every"
+      },
+      {
+        "criterion": "Conceptual operationalization of overlapping water rights",
+        "page": "PDF Page 12 of 13 (Notes, Note 2, p. 292)",
+        "quote": "To identify the water rights of different types of overlapping"
+      }
+    ],
+    "overall_narrative_summary": "Meinzen-Dick and Bakker (1999) present an interdisciplinary mixed-methods case study of multiple water uses, formal and informal property rights, and governance institutions in the Kirindi Oya irrigation system, Sri Lanka. Per the Methods paragraph (PDF pp. 2-3 / pp. 282-283), primary fieldwork combined a quantitative descriptive component (a household survey stratified by old and new settlement areas with 78 households per stratum [n = 156], plus multi-source water quality measurements) and a qualitative component (direct observations at standpipes and tanks, ~10 focus group discussions, and key informant interviews across government agencies, politicians, and user organizations), supplemented by prior IIMI reports. Conceptually and qualitatively, the paper offers a coherent institutional analysis using Schlager and Ostrom's bundle-of-rights framework and Steins and Edwards's common-pool negotiation platform framework to document how sectoral agencies and male-dominated Farmers' Organizations marginalize non-paddy uses (homestead gardens, domestic standpipes, livestock, fisheries, micro-enterprises, and wetlands). Methodologically, however, empirical reporting is severely incomplete: for the quantitative component, within-stratum sampling procedures, response rates, survey/water-quality instruments, and statistical or tabular results are omitted; for the qualitative component, recruitment procedures, coding/analytic methods, and verbatim quotes are absent; and mixed-methods integration cannot be independently verified. Following MMAT 2018 guidance (no composite score; overall quality bounded by the weakest component), the study carries high methodological concern due to unreported quantitative descriptive data and unverified integration.",
+    "overall_rating": "High methodological concern (per MMAT 2018 guidance, overall quality cannot exceed the weakest component: quantitative descriptive reporting and mixed-methods integration)",
+    "paper_read": "full text",
+    "study_design_identified": "Mixed-methods descriptive case study combining a stratified household survey (78 households each in old and new areas; n = 156) and multi-source water quality measurements with direct observations, ~10 focus group discussions, key informant interviews, and institutional analysis",
+    "study_id": "RC3824F034384",
+    "where_found_summary": "Research aims in Abstract (PDF p. 1 / p. 281) and Introduction (PDF p. 2 / p. 282); mixed-methods fieldwork design in final paragraph of Introduction (PDF pp. 2-3 / pp. 282-283); context and settlement strata in Site description (PDF pp. 3-4 / pp. 283-284); typology of uses/users in Identifying uses, users, and sources and Table 1 (PDF pp. 3-5 / pp. 283-285); formal/de facto rights and organizational analysis in The institutional environment and Table 2 (PDF pp. 5-10 / pp. 285-290); platform assessment in Accommodating multiple users (PDF pp. 9-11 / pp. 289-291); bundle-of-rights operationalization in Note 2 (PDF p. 12 / p. 292).",
+    "why_tool_chosen": "Classified from the Methods description at the end of the Introduction (PDF pp. 2-3 / pp. 282-283), the primary study explicitly combines quantitative empirical methods (a household survey stratified by old and new irrigated areas, n = 78 per stratum [156 total], and water quality measurements across system sources) with qualitative empirical methods (direct observations at standpipes and tanks, ~10 focus group discussions, and key informant interviews with officials, politicians, and user group representatives). Because it is a primary mixed-methods descriptive field study with no randomized or quasi-experimental intervention comparator, MMAT (using the Quantitative Descriptive 4.1-4.5 block alongside Qualitative 1.1-1.5 and Mixed-Methods 5.1-5.5) is the exact matching instrument."
+  }
+}
