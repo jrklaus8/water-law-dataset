@@ -1,0 +1,107 @@
+{
+  "sample_id": "71",
+  "case_id": "ECLI:NL:RBMNE:2022:1007",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "fc86ec5a9ce6f4b0834cab33eaed0b0de3f7c52ab2254100b1260f29ff44973f",
+  "prompt_sha256": "75476fd33440c3d33f8815fc6db838aa098de5d535a6eda08fe8b7b263a5e264",
+  "started_at": "2026-11-21T14:27:52.647907+00:00",
+  "completed_at": "2026-11-21T14:28:35.887511+00:00",
+  "raw_request": {
+    "type_name": "blind_jurimetric_coder",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "sample_id",
+        "mananciais_calibrated_label",
+        "strict_service_access_label",
+        "governance_category_21",
+        "involves_connection_or_informal_settlement",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "sample_id": {
+          "type": "string"
+        },
+        "mananciais_calibrated_label": {
+          "type": "string",
+          "enum": [
+            "WATER",
+            "NOT_WATER",
+            "UNCERTAIN"
+          ]
+        },
+        "strict_service_access_label": {
+          "type": "string",
+          "enum": [
+            "WATER",
+            "NOT_WATER",
+            "UNCERTAIN"
+          ]
+        },
+        "governance_category_21": {
+          "type": "string",
+          "enum": [
+            "tariff_dispute",
+            "connection_refusal",
+            "water_quality",
+            "informal_settlement",
+            "groundwater",
+            "sanitation_sewage",
+            "flooding",
+            "riparian_waterway",
+            "environmental_protection",
+            "spatial_planning_water",
+            "waterboard_governance",
+            "pipe_leak_damage",
+            "water_theft_fraud",
+            "regulatory_permit",
+            "hydroelectric_dam",
+            "irrigation_agricultural",
+            "fisheries_water",
+            "water_infrastructure_contract",
+            "not_water_related",
+            "other_water",
+            "unclear"
+          ]
+        },
+        "involves_connection_or_informal_settlement": {
+          "type": "boolean"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes": [
+      "Artikel 3.131 Activiteitenbesluit.",
+      "Weigering opleggen maatwerkvoorschrift voor het lozen van afvalwater van een horecazaak zonder het vethoudend afvalwater voorafgaand door een vetafscheider te leiden."
+    ],
+    "governance_category_21": "sanitation_sewage",
+    "involves_connection_or_informal_settlement": false,
+    "mananciais_calibrated_label": "WATER",
+    "rationale": "The decision concerns an administrative dispute under Article 3.131 of the Dutch Activiteitenbesluit regarding the municipal executive's refusal to grant a custom prescription (maatwerkvoorschrift) allowing a catering establishment (horecazaak) to discharge grease-containing wastewater (vethoudend afvalwater) without first routing it through a grease separator (vetafscheider). Because it directly adjudicates commercial wastewater discharge rules and grease-trap requirements protecting wastewater/sewer infrastructure, both `mananciais_calibrated_label` and `strict_service_access_label` are `WATER`, the primary category is `sanitation_sewage` (closely intersecting with regulatory wastewater discharge governance), and it does not involve a utility connection refusal or informal settlement.",
+    "sample_id": "71",
+    "strict_service_access_label": "WATER"
+  }
+}
