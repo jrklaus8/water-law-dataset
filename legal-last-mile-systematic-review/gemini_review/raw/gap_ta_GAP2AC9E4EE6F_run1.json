@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP2AC9E4EE6F",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "34bdbb679661f79c905026e7b5c60c2f5d237055abaa79b3d53b16c86358fe2d",
+  "prompt_sha256": "75b372761276bffaeb6581610f4e5e1ebfc0f3a3d267b9b91472273187f6f5d0",
+  "started_at": "2026-11-21T14:37:03.798377+00:00",
+  "completed_at": "2026-11-21T14:37:45.786905+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "unclear",
+      "c3_empirical_or_systematic_review": "no",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Abstract",
+        "quote": "Household water insecurity is a pressing problem in developing countries."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "Water is not only a natural resource, but also an economic commodity, and a human consumption good or entitlement."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "In the framework of a multidisciplinary approach to the analysis of water problems, the paper elaborates on these three elements, defining sectoral and cross-sectoral knowledge gaps. The paper concludes with a research agenda in support of improved policy design and action."
+      }
+    ],
+    "exclusion_code": "E05",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "No difference in final screening verdict: although the abstract touches conceptually on water pricing, entitlement, and policy design (leaving Criterion 2 at best unclear), the record is excluded under both readings because it is a non-empirical conceptual issues and research-agenda paper failing Criterion 3.",
+    "rationale": "Although the paper focuses on household water insecurity, clean water access, and high prices paid by the poor in developing countries (meeting C1 and C4), both the title ('Issues and Research Needs') and abstract make clear that this is a conceptual, narrative scoping paper elaborating a multidisciplinary framework, identifying knowledge gaps, and proposing a research agenda rather than reporting primary empirical evidence or a systematic review/meta-analysis (failing C3; excluded under E05).",
+    "record_id": "GAP2AC9E4EE6F"
+  }
+}

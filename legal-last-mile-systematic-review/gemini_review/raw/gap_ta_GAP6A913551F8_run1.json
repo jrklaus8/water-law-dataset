@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP6A913551F8",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "177e806b910923bd5c8cad1775a43c432cb648f050c13f6b9b20694643dd044b",
+  "prompt_sha256": "d77757e75e1663708b065cb40a6ffe61e6c8d94de6b6bbc7ff9679ae0c2ad024",
+  "started_at": "2026-11-21T14:37:03.798864+00:00",
+  "completed_at": "2026-11-21T14:37:31.416723+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access & c4_access_outcome",
+        "page": "Abstract",
+        "quote": "An important criterion for the design of urban water prices is the affordability of water supply for poor customers."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "This paper presents a typology of water pricing options which policy-makers have at their disposal in order to address affordability."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "A review of theoretical insights and empirical experiences reveals, however, how the real-world performance of these options depends on the characteristics of their technological and socio-economic environment."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "No divergence between narrow and plain Criterion 2: urban water pricing/tariff options and administrative simplicity squarely satisfy both the narrow tariff/cost-recovery/subsidy mechanism reading and the plain regulatory/administrative reading. Both decisions are 'unsure' solely because Criterion 3 (whether the 'review of theoretical insights and empirical experiences' constitutes a systematic empirical synthesis or includes eligible primary/secondary empirical analysis rather than a narrative conceptual review) requires full-text verification.",
+    "rationale": "The record clearly addresses urban household water supply access (C1), tariff/pricing design and administrative simplicity mechanisms (C2 narrow and plain), and affordability for poor customers (C4). However, the abstract frames the study as a 'typology of water pricing options' supported by a 'review of theoretical insights and empirical experiences,' leaving unclear whether it conducts a systematic empirical synthesis or primary/secondary empirical evaluation versus an unsystematic narrative/conceptual review (C3). Under Phase 5 rules against premature exclusion of tariff/affordability studies, full-text inspection is required ('unsure').",
+    "record_id": "GAP6A913551F8"
+  }
+}

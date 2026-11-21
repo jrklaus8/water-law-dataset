@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP5A44685506",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "97d9330a5b426ddeac03a38707261abd7b0d9a4ab4bed63283add9960bcb773b",
+  "prompt_sha256": "ff9dd6e9de9bf52b5961818aea624b8e55c7ca709544c6a4d9bb980432d7b460",
+  "started_at": "2026-11-21T14:52:21.888444+00:00",
+  "completed_at": "2026-11-21T14:52:54.839939+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access & c2_legal_admin",
+        "page": "Title/Abstract",
+        "quote": "The objective of this study was to inform Solomon Water of potential service delivery models for the expansion of water and sanitation services in informal settlements in Honiara."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "As described below, many of do not result in safe and affordable drinking and domestic water."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "with input from Solomon Water, informal settlement residents and other stakeholders, together with analytical information and lessons about service delivery models used elsewhere"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under the literal/plain Criterion 2 wording, institutional utility service-delivery models for informal settlements (Solomon Water) clearly engage institutional/administrative governance factors (c2_legal_admin_plain = yes), whereas under the 2026-10-13 narrow rule-type reading it is unclear from the abstract alone whether tenure/documentation rules, tariff/subsidy structures, or regulatory mandates are specifically analysed (c2_legal_admin_narrow = unclear). Under both readings, the Phase 5 decision is 'unsure' because full-text retrieval is needed to verify empirical primary data collection (c3) and specific legal/regulatory/tariff mechanisms in informal settlements.",
+    "rationale": "The study examines water and sanitation service access, safety, and affordability for residents of informal settlements in Honiara served or targeted by the public utility Solomon Water (c1 = yes, c4 = yes). Utility service expansion into informal settlements plausibly examines tenure/documentation barriers, tariff/affordability rules, or utility regulatory mandates under the narrow Criterion 2 reading (c2_legal_admin_narrow = unclear), and clearly involves institutional service-delivery governance under the plain reading (c2_legal_admin_plain = yes). Because the abstract notes 'input from Solomon Water, informal settlement residents and other stakeholders, together with analytical information' without detailing whether systematic primary empirical research is reported versus a policy options consultancy assessment (c3 = unclear), full-text review is required ('unsure').",
+    "record_id": "GAP5A44685506"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPDFCEB64381",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "40bdd9b17b8d1c36f77bf83c1758580f498a5bcbbe2ff4941f2cb3e5f43225e6",
+  "prompt_sha256": "48fa3f72aba7badcd8e4d95f4143ee4b11da1dccb1d85730df26b8d1b94b3b32",
+  "started_at": "2026-11-21T14:39:15.830340+00:00",
+  "completed_at": "2026-11-21T14:39:48.240974+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "Toward the adaptation to new regulation on water pricing in the agricultural sector: a case study from northern Italy"
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "Specifically, the impact of current pricing criteria are compared to a new hypothetical pricing scenario, based on irrigation consumption, land allocation, and irrigation technology adoption."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "Main assumptions were that farmers seek to maximize profits, that observed cropdesigns and water-uses are optimal, and that the authority acts on behalf of its users, aiming to both supply cost recovery and minimize impact on farm profits."
+      }
+    ],
+    "exclusion_code": "E07",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "No difference in screening outcome: although the study examines regulatory water-pricing and full-cost-recovery tariff rules (meeting Criterion 2 under both plain and narrow rule-type readings), it is excluded under both readings because it exclusively concerns agricultural irrigation rather than household or community water or sanitation service access (E07).",
+    "rationale": "Excluded under E07 (wrong service). The study models Water Framework Directive agricultural water-pricing rules applied by Reclamation and Irrigation Boards in northern Italy, focusing entirely on agricultural irrigation water demand, crop yields, irrigation technology adoption, and farm profits rather than household or community water or sanitation service access.",
+    "record_id": "GAPDFCEB64381"
+  }
+}

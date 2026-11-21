@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPAB307904F6",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "3d7447ddc503745dbe15b5e0c1406ee13b9f3ab57ea476b63426f46eb21585c6",
+  "prompt_sha256": "8f0c7f7867d055465cbe5bc10b466970b4349ceb5a2e28d192bff81b54edd336",
+  "started_at": "2026-11-21T14:39:15.832159+00:00",
+  "completed_at": "2026-11-21T14:40:14.112332+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c4_service_access_and_outcome",
+        "page": "Abstract",
+        "quote": "A high proportion of the population resident in these medium sized towns is fully reliant on municipal services, which in 2003 were significantly unable to provide even the basic level of water supply"
+      },
+      {
+        "criterion": "c2_legal_admin",
+        "page": "Abstract",
+        "quote": "included a study of the legislative and the institutional framework, the structures of the institutions and in particular the SuKanals (water supply agencies) weaknesses"
+      },
+      {
+        "criterion": "c3_empirical_methods",
+        "page": "Abstract",
+        "quote": "from reconnaissance level surveys in 13 of them that were prioritised and from a detailed feasibility level study at three of them; Goychay, Agdash and Nakhchivan."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under the plain Criterion 2 wording, c2_legal_admin_plain is 'yes' because the sector analysis explicitly examines the legislative and institutional framework and the institutional weaknesses of the SuKanals (municipal water supply agencies). Under the narrow rule-type reading, c2_legal_admin_narrow is 'unclear' because the abstract does not specify whether concrete legal, regulatory, tariff/cost-recovery, or utility-structure rules are empirically analysed in relation to access outcomes or merely summarized as descriptive background to a prospective capital-investment spreadsheet simulation. Both readings yield 'unsure' at Title/Abstract screening because full-text review is required to verify empirical evaluation of the legal/institutional mechanisms versus ex-ante engineering/financial investment modelling.",
+    "rationale": "The record clearly concerns municipal household water supply and sanitation access, reliability, and affordability in 52 secondary towns in Azerbaijan (C1 and C4 met). It explicitly includes an examination of the legislative and institutional framework, SuKanal utility structures, and financial/affordability dimensions alongside reconnaissance-level surveys in 13 towns and feasibility studies in 3 towns, paired with a prospective 10-year spreadsheet investment model. Full-text retrieval is required ('unsure') to determine whether the report presents empirical socio-legal/institutional evidence linking regulatory, utility-governance, or tariff/cost-recovery mechanisms to service access outcomes, or whether the legislative/institutional section is purely descriptive background to an ex-ante capital-investment simulation.",
+    "record_id": "GAPAB307904F6"
+  }
+}

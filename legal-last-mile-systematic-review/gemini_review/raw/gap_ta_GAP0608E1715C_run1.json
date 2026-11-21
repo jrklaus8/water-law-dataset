@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP0608E1715C",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "48d6c1f131ca91bd7e4c565c5c9fdf389bea7acaac60c3f24814cfc212dedf37",
+  "prompt_sha256": "a95ced467177b07f201d0fd69aa0e2af2f691d632326793726baac235b5c5b39",
+  "started_at": "2026-11-21T14:39:15.827752+00:00",
+  "completed_at": "2026-11-21T14:39:46.050581+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title",
+        "quote": "The political economy of the peruvian urban water sector"
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "The study starts with a theoretical framework that is built on previous research on regulation and political economy."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "In section four, the qualitative analysis is presented. In section five the quantitative approaches are carried out."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under the plain Criterion 2 wording, institutional, political-economy and regulatory governance factors in the Peruvian urban water sector are clearly present (c2_legal_admin_plain = yes), whereas under the narrow rule-type reading it remains unclear from the structural abstract whether specific regulatory, tariff or utility-ownership rules are empirically evaluated (c2_legal_admin_narrow = unclear). However, both readings yield an 'unsure' Phase 5 decision because the abstract omits the specific empirical dependent variables needed to confirm Criterion 4 (water access, coverage, continuity, quality or affordability).",
+    "rationale": "This mixed-methods study investigates regulation and political economy in the Peruvian urban water sector using qualitative analysis and quantitative tests of political budget cycles, partisan effects and the median voter theorem. Because the abstract is written as a structural section overview without specifying the exact regulatory/tariff/utility-governance mechanisms or whether the empirical outcomes measure household water access, coverage, service continuity/quality or tariff affordability (versus purely fiscal or budgetary aggregates), full-text review is required; premature exclusion of an ambiguous urban water utility regulation and governance study is unwarranted.",
+    "record_id": "GAP0608E1715C"
+  }
+}

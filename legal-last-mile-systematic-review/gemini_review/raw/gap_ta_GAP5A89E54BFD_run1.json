@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP5A89E54BFD",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "6cf275eeb1edc2a44c4837bdaa5de873bdfed5baaf8d5291371f2b1cb416e20c",
+  "prompt_sha256": "a1304057f82fa01393a3b2438ee68e7e62793f2c930f7e1b73f4a1a364cbe2c2",
+  "started_at": "2026-11-21T14:39:15.831882+00:00",
+  "completed_at": "2026-11-21T14:42:59.791851+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "unclear",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "unclear",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "Using a crosssectional comparison of 74 treated households (already allocated AHP units) and 66 pipeline households (eligible but not yet housed), the study combines regression analysis of housing costs, payments, commuting, and satisfaction with semi-structured interviews and document review."
+      },
+      {
+        "criterion": "c1_service_access / c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "The findings show that AHP access is associated with modest but statistically uncertain reductions in housing cost burden, alongside significant improvements in sanitation, safety, service reliability, and residential stability, reflected in higher housing satisfaction."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "At the same time, access itself is shaped less by demographic need than by households' capacity to navigate digital registration and documentation requirements."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the plain/literal reading of Criterion 2 yield 'unsure'. Digital registration and documentation requirements (as well as payment obligations and comparison with KISIP upgrading) clearly qualify even under the narrow administrative/documentation rule-type standard; the uncertainty at Title/Abstract screening concerns whether the full text substantively analyses household sanitation and water service access/reliability in relation to those mechanisms or treats sanitation only as an incidental attribute within an affordable housing evaluation (E07).",
+    "rationale": "This mixed-methods empirical study (n=140 households, semi-structured interviews, and document review) evaluates Kenya's Affordable Housing Programme (AHP) in the Mukuru Kwa Njenga informal settlement and compares it with Kenya's Informal Settlements Improvement Programme (KISIP). Although the primary intervention is housing (raising potential E07 wrong-service exclusion), the abstract explicitly reports significant improvements in household sanitation and service reliability and finds that programme access is gated by administrative barriers—specifically digital registration and documentation requirements—alongside strained payment obligations. Full-text review is required to determine whether sanitation and water service access/reliability are substantively measured and linked to these administrative/documentation rules (or KISIP upgrading), or mentioned solely as peripheral components of general housing satisfaction.",
+    "record_id": "GAP5A89E54BFD"
+  }
+}

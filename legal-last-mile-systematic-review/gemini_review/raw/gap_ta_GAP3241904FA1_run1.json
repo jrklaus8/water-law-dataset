@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP3241904FA1",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "27da168ef750e48ca9db8085e0752771bc1e0f32219676fdae78aa77c5dd692a",
+  "prompt_sha256": "d833eb5e30bc864c98aac529a7f44fbd1f5cb383e98049e41523b5654b71340e",
+  "started_at": "2026-11-21T14:39:15.831285+00:00",
+  "completed_at": "2026-11-21T14:40:38.120451+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "no",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "This article examines the entrenched social and economic challenges faced by the children of manual scavengers in India, focusing on their limited access to education and healthcare."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "Despite legal prohibitions against manual scavenging, caste-based discrimination and systemic neglect continue to perpetuate cycles of poverty and exclusion."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "Ultimately, the piece argues for a coordinated, multi-sectoral approach to uphold the children's rights to dignity, sanitation, education, and health, essential for achieving true social justice and equality."
+      }
+    ],
+    "exclusion_code": "E07",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Under the plain wording of Criterion 2, the article discusses legal prohibitions against manual scavenging and government legislation (c2_legal_admin_plain = yes), whereas under the narrow reading those occupational caste-labour laws and social welfare initiatives do not constitute legal or administrative mechanisms governing household or community water or sanitation service access (c2_legal_admin_narrow = no). However, both decisions are exclude because the study focuses on access to education and healthcare rather than water/sanitation service access (C1/C4) and is a doctrinal/policy essay with no empirical evidence (C3).",
+    "rationale": "Excluded (primary code E07: wrong service; also fails C2 narrow, C3, and C4). Although the title invokes the right to dignity and sanitation in India's informal communities, the abstract explicitly states that the article focuses on the limited access to education and healthcare of children of manual scavengers (sanitation workers), treating poor sanitation only as one background hardship affecting children's educational and health prospects rather than examining household or community water or sanitation service access outcomes. Moreover, the legal discussion centres on prohibitions against manual scavenging labour rather than rules governing water/sanitation service access, and the abstract describes a purely normative/doctrinal essay arguing for a multi-sectoral policy approach with no primary empirical data or systematic review methodology.",
+    "record_id": "GAP3241904FA1"
+  }
+}

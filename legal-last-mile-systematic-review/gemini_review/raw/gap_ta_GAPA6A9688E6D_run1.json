@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPA6A9688E6D",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b2d4998eb6ee9635f0c6411842a8e510949bd3b034a107d86c11024432e48c5d",
+  "prompt_sha256": "e185e09a060f039970428ecfcad854b8ce1819d897909f1e5c7fc807e1d413e9",
+  "started_at": "2026-11-21T14:36:04.853229+00:00",
+  "completed_at": "2026-11-21T14:36:32.666232+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access; c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "Swedish municipalities initiated more than 80 evictions of vulnerable EU citizens, mostly Roma, from informal settlements on the grounds of poor sanitation between 2013 and 2016."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow; c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "these evictions violated human rights obligations when individuals were offered no alternative access to water and sanitation beyond a few days."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "As explained in this report by the Raoul Wallenberg Institute, Sodertorn University and the NuLawLab of Northeastern University School of Law"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "No divergence between narrow and plain Criterion 2: municipal eviction/enforcement actions, informal-settlement tenure status, and administrative/legal duties governing alternative water and sanitation provision clearly satisfy both the narrow rule-type reading and the literal plain wording. Full-text retrieval ('unsure') is required under both readings to verify whether the institutional report presents primary socio-legal empirical evidence (Criterion 3) or purely doctrinal legal analysis.",
+    "rationale": "The record directly examines access to water and sanitation in informal Roma settlements in Sweden (Criterion 1 & Criterion 4) and focuses on municipal eviction enforcement, informal tenure, and legal/administrative obligations to provide alternative water and sanitation access (Criterion 2 narrow and plain). Although the abstract cites empirical figures ('more than 80 evictions ... between 2013 and 2016') from a multi-university socio-legal report, it does not explicitly describe primary empirical data-collection methods versus doctrinal human rights analysis (Criterion 3 unclear). Per Phase 5 rules against prematurely excluding socio-legal and informal-settlement studies, the record is marked 'unsure' for full-text verification.",
+    "record_id": "GAPA6A9688E6D"
+  }
+}

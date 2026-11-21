@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPDC9EEBEDA2",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f7e8d4efbb4dc30b1a6525f51e8fcf3f2b697012ef6a8dc60bf472294a9928e9",
+  "prompt_sha256": "3331e5c78ac8c6847e6b157aac42aeafd56e5544eff82ce70b58e0936fb534c4",
+  "started_at": "2026-11-21T14:42:59.812405+00:00",
+  "completed_at": "2026-11-21T14:44:16.213810+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "This paper provides a 'back-of-the-envelope' assessment of the efficiency effects of the reforms of the water sector in Argentina."
+      },
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "While all have adopted incentive based regulatory regimes which require estimates of economic efficiency changes, none have actually issued any estimate yet."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "This paper provides upper bounds estimates of efficiency gains achieved for 4 operators."
+      }
+    ],
+    "exclusion_code": "E04",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the plain wording of Criterion 2 are satisfied because the paper examines utility privatization and incentive-based regulatory regimes. However, both decisions are exclude (E04) because the study evaluates only operator-level economic efficiency gains and regulatory accounting rather than household or community service access outcomes.",
+    "rationale": "Although the study examines water and sanitation sector privatization and incentive-based regulatory regimes in Argentina using empirical upper-bound estimates for four private operators, its outcome is strictly firm-level economic efficiency gains and regulatory accounting data processes. Neither the title nor the abstract indicates any evaluation of household or community water or sanitation access, coverage, connections, continuity, quality or affordability (failing Criterion 4, E04).",
+    "record_id": "GAPDC9EEBEDA2"
+  }
+}

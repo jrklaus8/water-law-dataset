@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP20817FF31B",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "ef4ae26becba21348dd2ace4387bb11b529e2c84e68ec3b64857c14b4cc1277d",
+  "prompt_sha256": "39913eb5f86a8efa63ca163dfb454825f498ec6719d42f8a49636287c1c22ee0",
+  "started_at": "2026-11-21T14:38:11.803065+00:00",
+  "completed_at": "2026-11-21T14:39:01.449720+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "yes",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "we investigate the effects of communal water provison (Comités Vecinales and Juntas Administrativas de Servicios de Saneamiento) on child health in Peru."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "Using detailed survey data at the household- and child-level for the years 2006-2010, we exploit the cross-section variability to assess the differential impact of this form of provision."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "The results show a negative and signi cant effect of comunal water provision on diarrhea among under- five year old children."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "No divergence between the narrow and plain Criterion 2 readings: communal/cooperative utility ownership and regulatory structure (Comités Vecinales and JASS versus public/private utilities, alongside administrative urban/rural municipal classification) satisfies both the narrow utility-ownership/regulatory-structure reading and the plain institutional/governance reading. Under both readings, the Phase 5 decision is 'unsure' because the abstract explicitly reports child diarrhea (health) rather than direct water-access metrics, requiring full-text inspection to verify Criterion 4.",
+    "rationale": "This quantitative empirical study (2006-2010 household- and child-level survey data in Peru using an IV strategy) examines household/municipal water service provision under communal/cooperative utility governance (Comités Vecinales and Juntas Administrativas de Servicios de Saneamiento, instrumented via municipal personnel resources and administrative urban/rural classification; keywords include 'water utilities, cooperatives, child health, regulation, Peru'). Criteria 1, 2 (both narrow utility-ownership/regulatory-structure and plain institutional/governance), and 3 are satisfied. However, the title and abstract report only child health ('diarrhea among under- five year old children') as the outcome; full-text retrieval is required to determine whether intermediate or secondary water service-access outcomes (such as household connection, coverage, continuity, chlorination/service quality, or affordability) are also empirically analysed (Criterion 4).",
+    "record_id": "GAP20817FF31B"
+  }
+}

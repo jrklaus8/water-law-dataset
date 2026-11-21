@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP09D4A2616D",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "a553be4a6bc43d78c74afbb3b40489799fbcf6d6677bb6a7227486bd7ed3beea",
+  "prompt_sha256": "7d7685a32ae9ce5978d73cb2c764ddff425a4c16c22a1854881da31f340886bd",
+  "started_at": "2026-11-21T14:42:59.808130+00:00",
+  "completed_at": "2026-11-21T14:44:47.303135+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title/Abstract",
+        "quote": "Specifically, this study investigates how electoral cycles influence water tariff revisions, explores the motivations behind political intervention, and identifies the conditions that affect the extent of water tariff adjustments."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "water tariff revisions are less likely to occur during mayoral elections and in the years preceding local assembly elections."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Title/Abstract",
+        "quote": "This study offers new empirical evidence on the impact of election cycles on water tariff policy, distinguishing itself by using Japanese data to disentangle and verify the separate effects of mayoral and local assembly elections."
+      }
+    ],
+    "exclusion_code": "E04",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Under the literal/plain Criterion 2 wording, local electoral institutions (mayoral vs. local assembly elections) and water tariff governance count as institutional/governance factors (c2_legal_admin_plain = yes), whereas under the 2026-10-13 narrow rule-type reading, electoral-cycle timing of utility rate revisions is not a legal, administrative, or tariff rule mechanism governing household service access (c2_legal_admin_narrow = no). Both readings still result in exclude because the dependent variable is utility tariff-revision occurrence/extent rather than a household or community water access or affordability outcome (c4_access_outcome = no, E04).",
+    "rationale": "This empirical political-economy paper analyses Japanese municipal water utilities to test how mayoral and local assembly election cycles, existing tariff rates, and utility financial health affect the probability and extent of utility water tariff revisions. Water tariff revision is the dependent variable (framed as balancing political timing with financially driven utility management) rather than an exposure governing household access, and the study measures no household or community water access, connection, coverage, availability, continuity, quality, consumer affordability, or disconnection/exclusion outcome (E04 wrong outcome; also fails narrow Criterion 2).",
+    "record_id": "GAP09D4A2616D"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP0F8075E88C",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "d2323f6e78bb6e08258c4a4d5f657ac09c180bdef18c7257053dc9b503a743d2",
+  "prompt_sha256": "1812a1e30d8884efa8d7ad437f7c5dddc476efc6e1eb5a829dae129a864ebdf3",
+  "started_at": "2026-11-21T14:42:59.807539+00:00",
+  "completed_at": "2026-11-21T14:43:50.103728+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "criteria": {
+      "c1_service_access": "unclear",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "unclear",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "unclear"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Abstract",
+        "quote": "Central to this endeavor are key objectives aimed at scrutinizing squatter settlements, discerning their typologies"
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "Abstract",
+        "quote": "Limited Basic Services, Social Marginalization, Health Risks, Inadequate Sanitation Facilities and Vulnerability."
+      },
+      {
+        "criterion": "c3_empirical_or_systematic_review",
+        "page": "Abstract",
+        "quote": "Employing a mixed-methods approach integrating field observations, surveys, Case Studies and literature review"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Both the narrow rule-type reading and the plain Criterion 2 reading yield 'unsure' at the Title/Abstract stage: the abstract centers on informal/squatter settlement typologies and urban planning in central Kandahar while listing 'Limited Basic Services' and 'Inadequate Sanitation Facilities' among assessed effects, requiring full-text review to determine whether any legal, tenure, administrative, or municipal governance mechanism shaping sanitation or water access is substantively examined.",
+    "rationale": "This mixed-methods empirical case study examines squatter settlements and informal subdivisions in central Kandahar and explicitly includes 'Limited Basic Services' and 'Inadequate Sanitation Facilities' among the assessed ramifications of informal settlements, alongside references to urban planning policy. However, from the abstract alone it is unclear whether water/sanitation access is substantively measured rather than mentioned among general living-condition indicators, and whether legal tenure status, formal recognition, or municipal planning rules governing service provision are analysed. Under Phase 5 rules against prematurely excluding ambiguous informal-settlement abstracts, full-text retrieval is required ('unsure').",
+    "record_id": "GAP0F8075E88C"
+  }
+}

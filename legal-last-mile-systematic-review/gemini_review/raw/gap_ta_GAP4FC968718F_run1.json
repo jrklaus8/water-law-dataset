@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP4FC968718F",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "7233ab8b12f8507bdc8d207e99c6aa668fce4d407e4684e776135de84b2496ab",
+  "prompt_sha256": "00e3543e5398870c5f2a0ad32959c795e2b53117254ec68dfed5ab5dd11b8464",
+  "started_at": "2026-11-21T14:37:03.799291+00:00",
+  "completed_at": "2026-11-21T14:38:04.035001+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_narrow": "unclear",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "yes"
+    },
+    "decision": "unsure",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_narrow",
+        "page": "Title",
+        "quote": "Covid-19 and Nairobi Metropolitan Services as Co-Catalysts of Waterscape Changes"
+      },
+      {
+        "criterion": "c2_legal_admin_plain",
+        "page": "Abstract",
+        "quote": "In our paper, we focus on changes in urban (water) governance and government water projects in Nairobi since early 2020."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Abstract",
+        "quote": "However, if these waterscape changes lead to greater equity in water access, and if they have helped to curb the spread of SARS-CoV-2, is more than questionable."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "plain_criterion2_decision": "unsure",
+    "plain_vs_narrow_note": "Under literal/plain Criterion 2, the study clearly examines institutional and urban water governance changes (Nairobi Metropolitan Services and city governance restructuring), whereas under the narrow rule-type reading it is unclear from the abstract whether specific legal, administrative, regulatory, tariff/subsidy, or utility-structure rules are analysed rather than generic government water project delivery. Both readings yield 'unsure' at Title/Abstract because full text is also needed to verify empirical methods (Criterion 3).",
+    "rationale": "The title and abstract clearly address urban household/community water access and equity outcomes in water-deprived areas of Nairobi (Criteria 1 and 4 met). Full-text retrieval is required ('unsure') for two reasons: (1) under the narrow Criterion 2 reading, examining Nairobi Metropolitan Services, changes in the city's overall governance structure, and pandemic water projects plausibly involves administrative/institutional restructuring, utility-governance rules, or emergency tariff/free-water mandates, though it could also be generic project delivery; and (2) the abstract does not explicitly state its empirical methodology (Criterion 3 unclear).",
+    "record_id": "GAP4FC968718F"
+  }
+}

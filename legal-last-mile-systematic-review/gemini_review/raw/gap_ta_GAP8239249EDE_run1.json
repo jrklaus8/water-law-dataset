@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAP8239249EDE",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "d7c18e7924ec9b14d1473b297ba7ff688bf458d2d91d187007b503456b3e4957",
+  "prompt_sha256": "cebfd84ff95fdea8cc6edc20c56a986092cff731bb3988144bc27519adb8abbc",
+  "started_at": "2026-11-21T14:37:03.798720+00:00",
+  "completed_at": "2026-11-21T14:37:38.038217+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "The focus of the study is the planning and licensing process of large-scale public-private agricultural investment projects with water/irrigation infrastructure as major components."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "For this reason, the Zambian Government has planned the gradual expansion of irrigated areas throughout the country to boost agricultural production and productivity to meet domestic food demands"
+      },
+      {
+        "criterion": "c2_legal_admin_plain",
+        "page": "Title/Abstract",
+        "quote": "The study analyses the modes at hand to coordinate activities of more or less independent public-sector units related to agricultural development activities, the kind of coordination problems and the barriers and hindrances to effective coordination."
+      }
+    ],
+    "exclusion_code": "E07",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Both the narrow rule-type Criterion 2 reading and the literal/plain Criterion 2 wording yield an exclude verdict because the study clearly fails Criterion 1 (wrong service: agricultural irrigation and water-land-food nexus rather than household or community water/sanitation service access) and Criterion 4 (no household/community WASH access outcome). While the abstract examines institutional coordination, agricultural investment licensing, and customary-versus-statutory land tenure (satisfying plain Criterion 2 governance/institutional factors in the abstract), none of these mechanisms govern household or community water or sanitation service access.",
+    "rationale": "Excluded under E07 (wrong service). The study examines cross-sectoral and vertical institutional coordination in Zambia's water-land-food nexus, specifically focusing on the expansion of agricultural irrigation and the planning and licensing of large-scale public-private agricultural investment projects rather than household or community drinking water or sanitation service access.",
+    "record_id": "GAP8239249EDE"
+  }
+}

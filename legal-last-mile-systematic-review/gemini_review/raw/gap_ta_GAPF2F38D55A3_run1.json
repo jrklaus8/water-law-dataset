@@ -1,0 +1,186 @@
+{
+  "candidate_id": "GAPF2F38D55A3",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "6286ba77d21a30feeaa6edfe7f705bdf3a970a666c29b349971ca536d27d2a3f",
+  "prompt_sha256": "279e7493b6ea9aaedd6d89e4ee2cc5dc9e87d1a7d7a49e93350d6687e0e31615",
+  "started_at": "2026-11-21T14:38:11.801887+00:00",
+  "completed_at": "2026-11-21T14:38:41.345043+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "Decarbonizing the Food and Beverages Industry: A Critical and Systematic Review of Developments, Sociotechnical Systems and Policy Options"
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "Title/Abstract",
+        "quote": "This paper presents a comprehensive, critical and systematic review of more than 350,000 sources of evidence, and a short list of 701 studies, on the topic of greenhouse gas emissions from the food and beverage industry."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "Title/Abstract",
+        "quote": "It examines the benefits to sector decarbonization—including energy and carbon savings, cost savings, and other co-benefits related to sustainability or health—as well as barriers across financial and economic, institutional and managerial, and behavioral and consumer dimensions."
+      }
+    ],
+    "exclusion_code": "E01",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Although the review mentions generic policy options and institutional barriers for industrial decarbonization (satisfying a literal unanchored reading of Criterion 2, though failing the narrow water/sanitation rule-type reading), it clearly fails Criterion 1 and Criterion 4 because it studies food and beverage industry greenhouse gas emissions rather than household or community water or sanitation service access. Both readings therefore result in exclusion (E01).",
+    "rationale": "Excluded under E01 (wrong topic). This systematic review examines greenhouse gas emissions, energy/carbon footprints, and decarbonization technologies and policies in the food and beverage industry. Aside from a passing background mention of industrial/supply-chain water consumption as an environmental impact of food and beverage consumption, it does not examine household or community water or sanitation service access (Criterion 1) or water/sanitation access outcomes (Criterion 4).",
+    "record_id": "GAPF2F38D55A3"
+  }
+}
