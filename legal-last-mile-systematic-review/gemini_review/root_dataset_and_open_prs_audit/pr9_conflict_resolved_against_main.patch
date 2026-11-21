@@ -1,0 +1,430 @@
+diff --git a/SUPERVISOR_REPORT_v0.3.0.md b/SUPERVISOR_REPORT_v0.3.0.md
+index 83b6b997..99f07534 100644
+--- a/SUPERVISOR_REPORT_v0.3.0.md
++++ b/SUPERVISOR_REPORT_v0.3.0.md
+@@ -5,6 +5,8 @@
+ **Date:** 17 May 2026
+ **Re:** Response to peer-review concerns — 69% residual, route A/B validation, revised cross-national statistics
+ 
++> **Correction note (2026-10-27).** This memo is kept as sent. Its baseline figures are wrong: the v0.2.x `other_water` residual was **57,695 decisions (69.0 %)**, not 74,607 (89.2 %), and 15,589 further decisions were already `not_water_related` under the narrow v0.2.x immigration filter; 10,312 decisions (12.3 %) were in substantive categories, not 8,989 (10.8 %). The figures 74,607 and 8,989 are v0.3.0 totals (`not_water_related` + `other_water`, and substantive categories). So "89.2 % → 8.3 %" should read **69.0 % → 8.3 %**, §3's "74,607 decisions in the v0.2.x residual" should read 57,695, and the "0 (net)" change in the §4.3 table is a fall in substantive categories from 10,312 to 8,989 (1,567 moved to `not_water_related`, 244 rescued from the residual). The checksum-verified reconciliation is §2 of `validation/RESIDUAL_AUDIT.md`. The 97.9 % false-positive share and the thesis conclusions in this memo were not recomputed here.
++
+ ---
+ 
+ ## 1. Executive Summary
+diff --git a/docs/index.html b/docs/index.html
+index f9718ca6..87bc8d90 100644
+--- a/docs/index.html
++++ b/docs/index.html
+@@ -175,7 +175,7 @@
+ <!-- ═══ v0.3.0 VALIDATION BANNER ═══ -->
+ <div style="background:linear-gradient(90deg,rgba(79,142,247,.12),rgba(79,142,247,.06));border-bottom:1px solid rgba(79,142,247,.3);padding:10px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+   <span style="font-size:11px;font-weight:700;color:#4f8ef7;text-transform:uppercase;letter-spacing:.5px">v0.3.0 · May 2026 · Validated</span>
+-  <span style="font-size:12px;color:#8892a8">Residual audit complete: genuine <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">other_water</code> residual reduced 89.2% → 8.3%. NWR filter precision 99.79% (207-case gold-standard, pop.-weighted). Cohen's κ = 0.568 three-label; binary WATER/NOT_WATER κ = 0.932 (n = 59, excludes UNCERTAIN).</span>
++  <span style="font-size:12px;color:#8892a8">Residual audit complete: genuine <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">other_water</code> residual reduced 69.0% → 8.3%. NWR filter precision 99.79% (207-case gold-standard, pop.-weighted). Cohen's κ = 0.568 three-label; binary WATER/NOT_WATER κ = 0.932 (n = 59, excludes UNCERTAIN).</span>
+   <a href="https://github.com/jrklaus8/water-law-dataset/blob/main/validation/RESIDUAL_AUDIT.md" target="_blank" style="font-size:11px;color:#4f8ef7;text-decoration:none;border:1px solid rgba(79,142,247,.4);padding:3px 8px;border-radius:4px;white-space:nowrap">Read Audit ↗</a>
+   <a href="https://github.com/jrklaus8/water-law-dataset/tree/main/validation" target="_blank" style="font-size:11px;color:#8892a8;text-decoration:none;border:1px solid rgba(136,146,168,.3);padding:3px 8px;border-radius:4px;white-space:nowrap">Validation Folder ↗</a>
+ </div>
+@@ -214,7 +214,7 @@
+     <h3>Global governance distribution</h3>
+     <div class="chart-title">All 83,596 Decisions — Top Categories Across All Countries</div>
+     <div class="chart-wrap"><canvas id="chartGlobalGov" height="100"></canvas></div>
+-    <div class="chart-note">not_water_related (81.0%) and other_water genuine residual (8.3%) excluded. v0.3.0 water-core vocabulary filter applied globally — residual reduced from 89.2% → 8.3%.</div>
++    <div class="chart-note">not_water_related (81.0%) and other_water genuine residual (8.3%) excluded. v0.3.0 water-core vocabulary filter applied globally — residual reduced from 69.0% → 8.3%.</div>
+   </div>
+ 
+   <div class="insight-grid">
+@@ -560,7 +560,7 @@
+       <div class="chart-title">Jurimetric Coding Engine (v2.0)</div>
+       <p style="color:var(--muted);font-size:13px;line-height:1.8">
+         <strong style="color:var(--text)">21 governance categories</strong> in Portuguese, English, Dutch, and French (expanded from 12 in v1.0). Applied via <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">jurimetric_coding.py</code> (GitHub) to decision summaries and titles.<br><br>
+-        <strong style="color:var(--text)">New in v0.3.0:</strong> Broad water-core vocabulary filter applied to ALL decisions (replaces narrow NL immigration filter). Three Brazil rescue patterns (tariff, connection, pipe). Result: genuine <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">other_water</code> reduced from 89.2% → 8.3%; 67,703 decisions reclassified as <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">not_water_related</code>. Validation infrastructure added: residual audit, kappa calculator, XLM-RoBERTa transformer classifier, second-coder protocol.<br><br>
++        <strong style="color:var(--text)">New in v0.3.0:</strong> Broad water-core vocabulary filter applied to ALL decisions (replaces narrow NL immigration filter). Three Brazil rescue patterns (tariff, connection, pipe). Result: genuine <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">other_water</code> reduced from 69.0% → 8.3%; 67,703 decisions reclassified as <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">not_water_related</code>. Validation infrastructure added: residual audit, kappa calculator, XLM-RoBERTa transformer classifier, second-coder protocol.<br><br>
+         <strong style="color:var(--text)">7 variables per decision:</strong> hr_language · sust_language · governance_cat · win_loss · mp_involvement · indigenous_water · public_interest
+       </p>
+     </div>
+diff --git a/validation/RESIDUAL_AUDIT.md b/validation/RESIDUAL_AUDIT.md
+index b5494d18..cef48fa2 100644
+--- a/validation/RESIDUAL_AUDIT.md
++++ b/validation/RESIDUAL_AUDIT.md
+@@ -10,8 +10,8 @@
+ 
+ ## 0. Reading This Document
+ 
+-This audit was prompted by a peer-review concern: the v0.2.x engine left 74,607 decisions
+-(89.2 % of the full corpus) in `other_water`, raising the question of whether the residual
++This audit was prompted by a peer-review concern: the v0.2.x engine left 57,695 decisions
++(69.0 % of the full corpus) in `other_water`, raising the question of whether the residual
+ concealed connection-refusal or informal-settlement cases that the Administrative Ghost thesis
+ claims are absent. The audit answers that question, applies a corrective filter, and documents
+ every material number change. **§1** restates the problem. **§2** is a full reconciliation table
+@@ -27,8 +27,15 @@ robustness check with v0.3.0 figures.
+ 
+ The jurimetric coding engine classifies 83,596 decisions across 21 substantive governance
+ categories plus one residual labelled `other_water`. Under v0.2.x, that residual contained
+-74,607 decisions — 89.2 % of the corpus. Only 8,989 decisions (10.8 %) were classified into
+-substantive categories.
++57,695 decisions — 69.0 % of the corpus; a narrow immigration filter had already set aside a
++further 15,589 as `not_water_related`, and 10,312 decisions (12.3 %) were classified into
++substantive categories (see the reconciliation table in §2.1).
++
++> **Correction (2026-10-27).** Earlier drafts of this audit, the v0.3.0 supervisor memo and the
++> dashboard banner quoted the v0.2.x residual as 74,607 decisions (89.2 %) and the substantive
++> categories as 8,989 (10.8 %). Those are v0.3.0 totals — 74,607 = 67,703 `not_water_related` +
++> 6,904 `other_water`, and 8,989 = the v0.3.0 substantive categories — not v0.2.x figures. The §2
++> reconciliation table is the checksum-verified source: v0.2.x `other_water` was 57,695 (69.0 %).
+ 
+ A peer reviewer at JELS, Law and Society Review, or Jurimetrics will ask: what is inside that
+ residual? Could it be hiding the connection-refusal or informal-settlement cases that the
+@@ -317,7 +324,7 @@ Results are in `validation/kappa_results.json` and `validation/kappa_agreement_d
+ | N cases | 91 |
+ | Observed agreement (with mananciais rule) | **90.1 %** (82/91) |
+ | Cohen's κ (with mananciais rule) | **0.832** |
+-| 95 % CI (bootstrap, 5,000 iterations) | [0.718, 0.926] |
++| 95 % CI (bootstrap, 5,000 iterations) | [0.721, 0.926] |
+ 
+ The rule applied: São Paulo *mananciais* watershed-protection cases coded UNCERTAIN by the
+ author are recoded as WATER for the purposes of this calibration (see Brazil stratum
+@@ -328,21 +335,26 @@ defensible, and resolves a *protocol* ambiguity rather than masking a reliabilit
+ 
+ | Specification | N | κ | 95 % CI | p_o |
+ |---|---|---|---|---|
+-| **Mananciais rule applied** (C1 UNCERTAIN→WATER for Brazil) | 91 | **0.832** | [0.718, 0.926] | **90.1 %** |
++| **Mananciais rule applied** (C1 UNCERTAIN→WATER for Brazil) | 91 | **0.832** | [0.721, 0.926] | **90.1 %** |
+ | Exclude-UNCERTAIN: neither coder said UNCERTAIN (binary WATER/NOT_WATER) | 59 | **0.932** | [0.830, 1.000] | 96.6 % |
+-| Coder1-confident: coder1 gave a non-UNCERTAIN label | 63 | **0.821** | [0.686, 0.938] | 90.5 % |
+-| Three-label, no rule (pre-calibration baseline) | 91 | 0.568 | [0.436, 0.695] | 71.4 % |
++| Coder1-confident: coder1 gave a non-UNCERTAIN label | 63 | **0.821** | [0.685, 0.938] | 90.5 % |
++| Three-label, no rule (pre-calibration baseline) | 91 | 0.568 | [0.440, 0.694] | 71.4 % |
+ 
+ The binary WATER/NOT_WATER kappa (0.932, n = 59) remains the operationally relevant
+ specification for the governance analysis, where UNCERTAIN labels result in exclusion rather
+ than classification. All four specifications exceed or approach the 0.75 publication threshold
+ once the Brazil calibration is resolved.
+ 
++These four rows are reproduced by `validation/kappa_sensitivity.py` (percentile bootstrap, 5,000 resamples,
++seed 42) and stored under `sensitivity_analysis` in `kappa_results.json`; `generate_all_outputs.py` regenerates them.
++The primary `ci_95` in `kappa_results.json` for the baseline ([0.4441, 0.6908]) uses 2,000 resamples, which is why it
++differs in the third decimal from the baseline row above.
++
+ **Disagreement breakdown (26 total disagreements, pre-rule):**
+ 
+ | Coder1 label | Coder2 label | Count | Interpretation |
+ |---|---|---|---|
+-| UNCERTAIN | WATER | 19 | Brazil *mananciais* ambiguity — resolved by decision rule |
++| UNCERTAIN | WATER | 19 | 17 Brazil *mananciais* cases (resolved by decision rule) and 2 Netherlands cases |
+ | WATER | UNCERTAIN | 3 | LLM coder more cautious on borderline NL cases |
+ | NOT_WATER | WATER | 2 | Genuine content disagreements |
+ | NOT_WATER | UNCERTAIN | 1 | Borderline NL case |
+@@ -358,7 +370,7 @@ once the Brazil calibration is resolved.
+ | BR_all | 20 | 5.0 % | 90.0 % |
+ 
+ **Brazil stratum — protocol question resolved by decision rule:** The Brazil stratum showed
+-only 5 % pre-rule agreement (1/20 cases). All 19 UNCERTAIN/WATER disagreements involve São
++only 5 % pre-rule agreement (1/20 cases). All 17 Brazilian UNCERTAIN/WATER disagreements involve São
+ Paulo state court enforcement of Law 9,866/1997 in *áreas de proteção de mananciais*
+ (watershed protection areas) — demolition orders protecting Guarapiranga and Billings reservoir
+ catchments. The author coded these as UNCERTAIN because they adjudicate demolition/land-use
+@@ -391,7 +403,7 @@ described here is likely sufficient without further work.
+ > Reproducibility of the upstream WATER/NOT_WATER classification was assessed by independent
+ > LLM-assisted relabelling of a 91-decision stratified sub-sample (Gilardi, Alizadeh and Kubli
+ > 2023; Ziems et al. 2024). Under the three-label scheme with the documented *mananciais*
+-> decision rule applied, agreement was 90.1 % (Cohen's κ = 0.832, 95 % CI: [0.718, 0.926]).
++> decision rule applied, agreement was 90.1 % (Cohen's κ = 0.832, 95 % CI: [0.721, 0.926]).
+ > Excluding cases where either coder expressed uncertainty — the operational specification for
+ > downstream analysis — binary WATER/NOT_WATER kappa was κ = 0.932 (n = 59, 95 % CI:
+ > [0.830, 1.000]). NOT_WATER precision was 97 %, confirming the filter removes non-water
+diff --git a/validation/generate_all_outputs.py b/validation/generate_all_outputs.py
+index b50a8a3d..ac4d72a4 100644
+--- a/validation/generate_all_outputs.py
++++ b/validation/generate_all_outputs.py
+@@ -149,6 +149,10 @@ kappa_results = {
+     "per_category": per_cat,
+ }
+ 
++# Sensitivity specifications reported in RESIDUAL_AUDIT.md section 5.2 (mananciais rule, exclude-UNCERTAIN, ...)
++from kappa_sensitivity import sensitivity_analysis
++kappa_results["sensitivity_analysis"] = sensitivity_analysis(detail_df.to_dict("records"))
++
+ with open(BASE / "kappa_results.json", "w", encoding="utf-8") as f:
+     json.dump(kappa_results, f, indent=2)
+ print(f"kappa = {kappa:.4f}  [{ci_lo:.4f}, {ci_hi:.4f}]  p_o={p_o:.4f}")
+diff --git a/validation/kappa_results.json b/validation/kappa_results.json
+index 4840d824..2138b7f6 100644
+--- a/validation/kappa_results.json
++++ b/validation/kappa_results.json
+@@ -31,5 +31,59 @@
+       "precision": 0.5625,
+       "recall": 0.9
+     }
+-  }
++  },
++  "sensitivity_analysis": [
++    {
++      "specification": "mananciais_rule",
++      "description": "Mananciais rule applied (coder 1 UNCERTAIN -> WATER for Brazil)",
++      "n_cases": 91,
++      "cohen_kappa": 0.8318,
++      "ci_95": [
++        0.7206,
++        0.9257
++      ],
++      "observed_agreement": 0.9011,
++      "n_boot": 5000,
++      "seed": 42
++    },
++    {
++      "specification": "exclude_uncertain",
++      "description": "Exclude UNCERTAIN: neither coder said UNCERTAIN (binary WATER / NOT_WATER)",
++      "n_cases": 59,
++      "cohen_kappa": 0.9321,
++      "ci_95": [
++        0.83,
++        1.0
++      ],
++      "observed_agreement": 0.9661,
++      "n_boot": 5000,
++      "seed": 42
++    },
++    {
++      "specification": "coder1_confident",
++      "description": "Coder 1 confident: coder 1 gave a non-UNCERTAIN label",
++      "n_cases": 63,
++      "cohen_kappa": 0.8208,
++      "ci_95": [
++        0.6847,
++        0.9379
++      ],
++      "observed_agreement": 0.9048,
++      "n_boot": 5000,
++      "seed": 42
++    },
++    {
++      "specification": "baseline",
++      "description": "Three labels, no rule (pre-calibration baseline)",
++      "n_cases": 91,
++      "cohen_kappa": 0.5684,
++      "ci_95": [
++        0.4397,
++        0.6939
++      ],
++      "observed_agreement": 0.7143,
++      "n_boot": 5000,
++      "seed": 42
++    }
++  ]
+ }
+\ No newline at end of file
+diff --git a/validation/kappa_sensitivity.py b/validation/kappa_sensitivity.py
+new file mode 100644
+index 00000000..7984fddd
+--- /dev/null
++++ b/validation/kappa_sensitivity.py
+@@ -0,0 +1,103 @@
++"""
++Kappa sensitivity specifications for the LLM-assisted reproducibility audit
++============================================================================
++Reproduces the four specifications reported in validation/RESIDUAL_AUDIT.md section 5.2 from the case-by-case file
++validation/kappa_agreement_detail.csv, and stores them under `sensitivity_analysis` in validation/kappa_results.json
++(and in validation_report_data.json when that file exists). Standard library only.
++
++Specifications (labels are WATER / NOT_WATER / UNCERTAIN):
++  mananciais_rule      coder 1's UNCERTAIN becomes WATER for Brazilian decisions (documented decision rule: Sao Paulo
++                       'mananciais' watershed-protection cases are water law for Legal Last Mile purposes)
++  exclude_uncertain    only decisions where neither coder said UNCERTAIN (binary WATER / NOT_WATER)
++  coder1_confident     only decisions where coder 1 gave a non-UNCERTAIN label
++  baseline             all 91 decisions, three labels, no rule (pre-calibration)
++
++Confidence intervals: percentile bootstrap, 5,000 resamples, seed 42 (same estimator as kappa_calculator.py, so the
++numbers are reproducible; the primary `ci_95` in kappa_results.json uses 2,000 resamples).
++
++Usage (from the repository root):
++    python validation/kappa_sensitivity.py
++"""
++import argparse
++import csv
++import json
++import random
++from collections import Counter
++from pathlib import Path
++
++N_BOOT = 5000
++SEED = 42
++BASE = Path(__file__).parent
++
++
++def cohen_kappa(y1, y2):
++    n = len(y1)
++    p_o = sum(a == b for a, b in zip(y1, y2)) / n
++    c1, c2 = Counter(y1), Counter(y2)
++    p_e = sum((c1[c] / n) * (c2[c] / n) for c in set(y1) | set(y2))
++    return (1.0 if p_e == 1.0 else (p_o - p_e) / (1 - p_e)), p_o
++
++
++def bootstrap_ci(y1, y2, n_boot=N_BOOT, seed=SEED, alpha=0.05):
++    rng = random.Random(seed)
++    pairs = list(zip(y1, y2))
++    ks = []
++    for _ in range(n_boot):
++        s1, s2 = zip(*rng.choices(pairs, k=len(pairs)))
++        ks.append(cohen_kappa(list(s1), list(s2))[0])
++    ks.sort()
++    return ks[int(alpha / 2 * n_boot)], ks[int((1 - alpha / 2) * n_boot)]
++
++
++def sensitivity_analysis(rows):
++    """rows: dicts with country, coder1_label, coder2_label. Returns a list of specification results."""
++    y1 = [r['coder1_label'] for r in rows]
++    y2 = [r['coder2_label'] for r in rows]
++    brazil = [r['country'] == 'Brazil' for r in rows]
++    y1_rule = ['WATER' if (b and a == 'UNCERTAIN') else a for a, b in zip(y1, brazil)]
++    both = [i for i in range(len(rows)) if y1[i] != 'UNCERTAIN' and y2[i] != 'UNCERTAIN']
++    c1conf = [i for i in range(len(rows)) if y1[i] != 'UNCERTAIN']
++    specs = [
++        ('mananciais_rule', 'Mananciais rule applied (coder 1 UNCERTAIN -> WATER for Brazil)', y1_rule, y2),
++        ('exclude_uncertain', 'Exclude UNCERTAIN: neither coder said UNCERTAIN (binary WATER / NOT_WATER)',
++         [y1[i] for i in both], [y2[i] for i in both]),
++        ('coder1_confident', 'Coder 1 confident: coder 1 gave a non-UNCERTAIN label',
++         [y1[i] for i in c1conf], [y2[i] for i in c1conf]),
++        ('baseline', 'Three labels, no rule (pre-calibration baseline)', y1, y2),
++    ]
++    out = []
++    for key, label, a, b in specs:
++        kappa, p_o = cohen_kappa(a, b)
++        lo, hi = bootstrap_ci(a, b)
++        out.append({'specification': key, 'description': label, 'n_cases': len(a),
++                    'cohen_kappa': round(kappa, 4), 'ci_95': [round(lo, 4), round(hi, 4)],
++                    'observed_agreement': round(p_o, 4), 'n_boot': N_BOOT, 'seed': SEED})
++    return out
++
++
++def main():
++    ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
++    ap.add_argument('--detail', default=str(BASE / 'kappa_agreement_detail.csv'))
++    ap.add_argument('--results', default=str(BASE / 'kappa_results.json'))
++    args = ap.parse_args()
++    with open(args.detail, newline='', encoding='utf-8') as f:
++        rows = list(csv.DictReader(f))
++    block = sensitivity_analysis(rows)
++    targets = [Path(args.results), Path(args.results).with_name('validation_report_data.json')]
++    for path in targets:
++        if not path.exists():
++            continue
++        data = json.loads(path.read_text(encoding='utf-8'))
++        holder = data['kappa'] if path.name == 'validation_report_data.json' else data
++        # the baseline row must agree with the kappa already stored (guards against a stale detail file)
++        base = next(b for b in block if b['specification'] == 'baseline')
++        assert abs(holder['cohen_kappa'] - base['cohen_kappa']) < 1e-4, f'{path.name}: stored kappa differs from the detail file'
++        holder['sensitivity_analysis'] = block
++        path.write_text(json.dumps(data, indent=2), encoding='utf-8')
++        print(f'updated {path.name}')
++    for b in block:
++        print(f"{b['specification']:<18} n={b['n_cases']:<3} kappa={b['cohen_kappa']:.3f}  95% CI [{b['ci_95'][0]:.3f}, {b['ci_95'][1]:.3f}]  agreement {b['observed_agreement'] * 100:.1f}%")
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/validation/validation_report_data.json b/validation/validation_report_data.json
+index 0b3e6a35..332cc4c4 100644
+--- a/validation/validation_report_data.json
++++ b/validation/validation_report_data.json
+@@ -32,7 +32,61 @@
+         "precision": 0.5625,
+         "recall": 0.9
+       }
+-    }
++    },
++    "sensitivity_analysis": [
++      {
++        "specification": "mananciais_rule",
++        "description": "Mananciais rule applied (coder 1 UNCERTAIN -> WATER for Brazil)",
++        "n_cases": 91,
++        "cohen_kappa": 0.8318,
++        "ci_95": [
++          0.7206,
++          0.9257
++        ],
++        "observed_agreement": 0.9011,
++        "n_boot": 5000,
++        "seed": 42
++      },
++      {
++        "specification": "exclude_uncertain",
++        "description": "Exclude UNCERTAIN: neither coder said UNCERTAIN (binary WATER / NOT_WATER)",
++        "n_cases": 59,
++        "cohen_kappa": 0.9321,
++        "ci_95": [
++          0.83,
++          1.0
++        ],
++        "observed_agreement": 0.9661,
++        "n_boot": 5000,
++        "seed": 42
++      },
++      {
++        "specification": "coder1_confident",
++        "description": "Coder 1 confident: coder 1 gave a non-UNCERTAIN label",
++        "n_cases": 63,
++        "cohen_kappa": 0.8208,
++        "ci_95": [
++          0.6847,
++          0.9379
++        ],
++        "observed_agreement": 0.9048,
++        "n_boot": 5000,
++        "seed": 42
++      },
++      {
++        "specification": "baseline",
++        "description": "Three labels, no rule (pre-calibration baseline)",
++        "n_cases": 91,
++        "cohen_kappa": 0.5684,
++        "ci_95": [
++          0.4397,
++          0.6939
++        ],
++        "observed_agreement": 0.7143,
++        "n_boot": 5000,
++        "seed": 42
++      }
++    ]
+   },
+   "precision_recall": {
+     "per_stratum": {
+
+diff --git a/validation/README.md b/validation/README.md
+--- a/validation/README.md
++++ b/validation/README.md
+@@ -5,8 +5,8 @@
+ 
+ ## The Problem
+ 
+-The jurimetric engine classified 83,596 decisions but left 57,695 (69%) in a
+-residual bucket labelled `other_water`. A peer reviewer at JELS, Law and Society
++The jurimetric engine classified 83,596 decisions across 21 substantive categories
++and left 57,695 (69.0%) in a residual bucket labelled `other_water` (plus 15,589 in the narrow v0.2.x immigration filter). A peer reviewer at JELS, Law and Society
+ Review, or Jurimetrics will ask: what is inside that residual? Could it be
+ hiding the very connection-refusal or informal-settlement cases the Administrative
+ Ghost thesis claims are absent?
+@@ -15,8 +15,8 @@
+ 
+ Mostly no — but the picture is more nuanced than v0.2.x documentation implied.
+ The `other_water` residual was dominated by false positives from the broad keyword scrape.
+-The v0.3.0 filter reclassifies 67,703 decisions to `not_water_related`, reducing the genuine
+-residual from 89.2% → 8.3%. However:
++The v0.3.0 filter holds 67,703 decisions in `not_water_related` (15,589 from v0.2.x plus 52,114 newly moved), reducing the genuine
++residual from 69.0% → 8.3% (57,695 → 6,904). However:
+ 
+ 1. **Reconciliation gap:** The full reconciliation (§2 of the audit) accounts for the ~17,120
+    NL decisions that appear in `not_water_related` beyond the vocabulary-audit count — they
+@@ -105,6 +105,8 @@
+ to every decision: any case with no substantive water vocabulary in its title or
+ summary is classified as `not_water_related` rather than `other_water`.
+ 
+-This reclassifies 56,488 decisions and reduces the genuine residual from 57,695
+-to approximately 1,207. Three rescue patterns were also added for Brazil tariff,
+-connection, and pipe-damage cases that the main regex had missed.
++This moves 52,114 decisions to `not_water_related` (50,547 from the old residual and 1,567 from old
++substantive categories), on top of the 15,589 the narrow v0.2.x filter had already set aside, so v0.3.0
++holds 67,703 in that category. The genuine residual falls from 57,695 to 6,904 (8.3%). Three rescue
++patterns were also added for Brazil tariff, connection, and pipe-damage cases that the main regex had
++missed (244 decisions rescued from the old residual). See §2 of `RESIDUAL_AUDIT.md`.

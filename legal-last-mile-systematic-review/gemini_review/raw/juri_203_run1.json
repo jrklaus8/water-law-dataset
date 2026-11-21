@@ -1,0 +1,107 @@
+{
+  "sample_id": "203",
+  "case_id": "00172024520118260053",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "76f86a99fe437bb9578d14fb8368b0388292afd93953eb42e4680c130fcc124b",
+  "prompt_sha256": "aea7f1c9989487c1a17c937b13bde421a160aeb7da1b742b8760b5d23af7262a",
+  "started_at": "2026-11-21T14:47:47.468394+00:00",
+  "completed_at": "2026-11-21T14:48:33.534495+00:00",
+  "raw_request": {
+    "type_name": "blind_jurimetric_coder",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "sample_id",
+        "mananciais_calibrated_label",
+        "strict_service_access_label",
+        "governance_category_21",
+        "involves_connection_or_informal_settlement",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "sample_id": {
+          "type": "string"
+        },
+        "mananciais_calibrated_label": {
+          "type": "string",
+          "enum": [
+            "WATER",
+            "NOT_WATER",
+            "UNCERTAIN"
+          ]
+        },
+        "strict_service_access_label": {
+          "type": "string",
+          "enum": [
+            "WATER",
+            "NOT_WATER",
+            "UNCERTAIN"
+          ]
+        },
+        "governance_category_21": {
+          "type": "string",
+          "enum": [
+            "tariff_dispute",
+            "connection_refusal",
+            "water_quality",
+            "informal_settlement",
+            "groundwater",
+            "sanitation_sewage",
+            "flooding",
+            "riparian_waterway",
+            "environmental_protection",
+            "spatial_planning_water",
+            "waterboard_governance",
+            "pipe_leak_damage",
+            "water_theft_fraud",
+            "regulatory_permit",
+            "hydroelectric_dam",
+            "irrigation_agricultural",
+            "fisheries_water",
+            "water_infrastructure_contract",
+            "not_water_related",
+            "other_water",
+            "unclear"
+          ]
+        },
+        "involves_connection_or_informal_settlement": {
+          "type": "boolean"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes": [
+      "O objetivo da ação é responsabilizar particulares e a prefeitura pela construção de loteamento em área de proteção de mananciais.",
+      "Explica que se trata de uma área de loteamento em área de proteção de mananciais hídricos da Represa Billings, compreendendo área de preservação permanente."
+    ],
+    "governance_category_21": "environmental_protection",
+    "involves_connection_or_informal_settlement": false,
+    "mananciais_calibrated_label": "WATER",
+    "rationale": "This TJSP decision adjudicates civil/environmental liability of private subdividers and municipal oversight omissions for creating an irregular subdivision (loteamento irregular) in a watershed protection zone (área de proteção de mananciais hídricos da Represa Billings) and permanent preservation area, involving permanent environmental harm including soil sealing, native vegetation loss, and uncollected domestic sewage effluents. Under the mananciais-calibrated protocol it is clearly WATER and falls under environmental_protection (manancial). Because the dispute concerns illegal land-parceling/construction liability in a mananciais protection zone rather than direct water utility service access or standalone water abstraction/discharge permitting, strict_service_access_label is coded UNCERTAIN per Rule 2, and involves_connection_or_informal_settlement is false.",
+    "sample_id": "203",
+    "strict_service_access_label": "UNCERTAIN"
+  }
+}
