@@ -9,7 +9,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/); versions fol
 ### Added
 - `utils/nl_outcome_coding.py`: resumable Rechtspraak.nl retrieval and rule-based outcome classifier (FUTURE_WORK.md Priority 1). Each label records the rule that fired; unresolved cases stay UNCLASSIFIED.
 - `tests/test_nl_outcome_coding.py`: 13 offline tests, including the multi-step disposition that the recipe in FUTURE_WORK.md mislabels.
-- `validation/nl_outcomes/`: 3,682 machine-coded decisions, per-category summary with Wilson intervals, a 150-row blind check sheet for a human coder, and a README stating the limits. **Not human-validated.**
+- `validation/nl_outcomes/`: 4,980 machine-coded decisions (2,182 specific-category, 1,337 keyword-matched `other_water`, plus a random `other_water` sample), per-category summary with Wilson intervals, a 150-row blind check sheet for a human coder, and a README stating the limits. **Not human-validated.**
 
 ### Changed
 - `FUTURE_WORK.md`: status note on Priority 1 recording two defects in its recipe.
