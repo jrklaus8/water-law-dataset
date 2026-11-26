@@ -8,6 +8,11 @@ see the issue tracker or open a pull request.
 
 ## Priority 1 — Outcome Coding for the Netherlands Sub-Dataset
 
+> **Status update (2026-11-26): first pass done on 3,682 decisions, not yet human-validated.** See `validation/nl_outcomes/README.md`.
+> The recipe below contains two defects (the `<section role>` lookup does not match the XML, and the regex mislabels
+> "hoger beroep gegrond ... beroep ongegrond" as WIN). `utils/nl_outcome_coding.py` supersedes it. The 48,000 remaining
+> `other_water` rows, appellant identity coding and the human check are still open.
+
 ### The Gap
 
 The 68,654 Dutch cases in `water_law_global_coded.csv` classify dispute type,

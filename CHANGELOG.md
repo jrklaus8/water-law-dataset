@@ -4,6 +4,16 @@ All notable changes to the repository root (the court-decision dataset tools and
 
 The format follows [Keep a Changelog](https://keepachangelog.com/); versions follow the numbers in `pyproject.toml` and `CITATION.cff`. History before version 0.3.0 is **not reconstructed here**: it is in Git history and in the version list of the Zenodo record `10.5281/zenodo.19836413`. No entry below was written from memory.
 
+## [Unreleased] — 2026-11-26, Netherlands outcome coding (first pass)
+
+### Added
+- `utils/nl_outcome_coding.py`: resumable Rechtspraak.nl retrieval and rule-based outcome classifier (FUTURE_WORK.md Priority 1). Each label records the rule that fired; unresolved cases stay UNCLASSIFIED.
+- `tests/test_nl_outcome_coding.py`: 13 offline tests, including the multi-step disposition that the recipe in FUTURE_WORK.md mislabels.
+- `validation/nl_outcomes/`: 3,682 machine-coded decisions, per-category summary with Wilson intervals, a 150-row blind check sheet for a human coder, and a README stating the limits. **Not human-validated.**
+
+### Changed
+- `FUTURE_WORK.md`: status note on Priority 1 recording two defects in its recipe.
+
 ## [Unreleased] — 2026-10-27, open-research and reproducibility audit
 
 This entry records changes made while auditing the repository; see [`docs/audit-report.md`](docs/audit-report.md). Nothing here changes the collected data, the scrapers' behaviour or the coding rules.
