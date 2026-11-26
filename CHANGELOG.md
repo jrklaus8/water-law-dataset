@@ -9,6 +9,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/); versions fol
 This entry records changes made while auditing the repository; see [`docs/audit-report.md`](docs/audit-report.md). Nothing here changes the collected data, the scrapers' behaviour or the coding rules.
 
 ### Added
+- `utils/nl_outcome_coding.py` and `tests/test_nl_outcome_coding.py`: offline first-pass outcome classifier for Dutch decisions (FUTURE_WORK.md, Priority 1). Classifies only the Beslissing segment; XML extraction is unverified against the live API. Not yet run on the dataset (data and Rechtspraak API not available in the build environment). Needs a manual validation sample before any analysis.
 - `tests/`: offline characterisation tests for helper functions of the scrapers, `utils/merge_national.py` and `utils/jurimetric_coding.py` (synthetic fixtures; no network), and repository-hygiene tests (credential patterns, environment-variable documentation, versions agree, Python 3.8 syntax, links, required files). Known defects are encoded as expected failures. `tests/_safe_load.py` loads functions from scripts that run collection code at import time without executing that code.
 - `docs/`: `audit-report.md`, `findings-register.csv`, `standards-matrix.md`, `release-checklist.md`, `research-protocol.md`, `data-management.md`, `source-register.md`, `ai-use-and-disclosure.md`, `reproducibility.md`, `limitations.md`.
 - `CONTRIBUTING.md`, `SECURITY.md` and this changelog.
