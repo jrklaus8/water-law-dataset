@@ -4,6 +4,13 @@ All notable changes to the repository root (the court-decision dataset tools and
 
 The format follows [Keep a Changelog](https://keepachangelog.com/); versions follow the numbers in `pyproject.toml` and `CITATION.cff`. History before version 0.3.0 is **not reconstructed here**: it is in Git history and in the version list of the Zenodo record `10.5281/zenodo.19836413`. No entry below was written from memory.
 
+## [Unreleased] — 2026-11-27, appellant identity, relevance test, data-quality checks
+
+### Added
+- `utils/nl_text_features.py` and `utils/nl_appellant_coding.py` with 9 offline tests: caption-based coding of who brought the challenge for 3,519 Dutch decisions, plus a water-term density test against random control samples. Results and caveats in `validation/nl_outcomes/README.md` (addendum). Not human-validated.
+- `validation/DATA_QUALITY_REPORT_2026-11-27.md`: missing-field and consistency audit of the deposited coded dataset (Brazil court unidentified for 1,884 rows; Canada text empty for all rows; documents that disagree with the file).
+- `validation/brazil_outcomes/`: audit of the 61.8% `unclear` Brazil outcomes. Diagnosis only; no labels changed.
+
 ## [Unreleased] — 2026-11-26, Netherlands outcome coding (first pass)
 
 ### Added

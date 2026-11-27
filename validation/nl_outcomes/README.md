@@ -47,3 +47,43 @@ The upheld rate is almost identical (about 24%) across every sample, which sugge
 1. Fill `human_label` in `manual_check_sample_BLIND.csv` (WIN, LOSS, PARTIAL, INADMISSIBLE, REMAND, INTERIM, NO_MERITS_RULING, or UNCLEAR, from the appellant's perspective) and compute agreement against the key rebuilt from `nl_outcomes_coded.csv`.
 2. Decide whether to extend retrieval to the other 48,000 `other_water` rows (about 2 hours at 8 requests per second) or first test water relevance on the random sample.
 3. Decide how to code appellant identity (FUTURE_WORK.md optional extension), since it is what the hypotheses need.
+
+---
+
+## Addendum 2026-11-27: appellant identity and a direct relevance test
+
+Retrieved the opening paragraphs and water-term counts for the 3,519 core decisions (specific categories plus keyword matches) and for two random control samples (300 keyword-negative `other_water` rows, 100 `not_water_related` rows). `utils/nl_text_features.py` keeps only derived features, not full texts. `utils/nl_appellant_coding.py` (9 offline tests) reads the caption.
+
+### 1. Relevance: how much of the corpus is about water? (`nl_relevance_check.csv`)
+
+| Group | n | No body text | Median water terms per 1,000 words | % of decisions with 3 or more per 1,000 words |
+|---|---|---|---|---|
+| Specific categories | 2,182 | 0 | 0.29 | 27.4% |
+| `other_water`, keyword in summary | 1,337 | 0 | 0.42 | 17.7% |
+| `other_water`, no keyword (random 300) | 300 | 53 | 0.0 | 4.0% |
+| `not_water_related` (control, random 100) | 100 | 0 | 0.0 | 0.0% |
+
+Reading: even the "specific water category" rows are mostly not water-dense (about a quarter reach 3 water terms per 1,000 words; the dike and flood-protection category is at 19.6%, groundwater 82.8%, waterboard governance 80.5%). The keyword-negative `other_water` sample behaves almost like the control. The density threshold is an arbitrary screen, not a validated relevance test, and a dike or flood decision may use few of these words. The direction is nonetheless clear: **the 68,654 count is not a count of water-law decisions.** A human-coded relevance sample (the 150 rows of `manual_check_sample_BLIND.csv` could be extended with a relevance column) is needed before any figure about the corpus size is quoted.
+
+### 2. Who brought the challenge (`nl_appellant_outcome_summary.csv`)
+
+| Appellant type (first-party at that instance) | n | Decided | Upheld, % of decided (95% CI) |
+|---|---|---|---|
+| Anonymised placeholder only | 1,752 | 1,525 | 20.7 (18.8 to 22.8) |
+| Company (B.V., V.O.F., maatschap, ...) | 644 | 588 | 23.3 (20.1 to 26.9) |
+| Association or foundation | 329 | 275 | 30.9 (25.7 to 36.6) |
+| Municipality | 94 | 80 | 28.8 (20.0 to 39.5) |
+| State body | 72 | 57 | 26.3 (16.6 to 39.0) |
+| Province | 27 | 17 | 52.9 (31.0 to 73.8) |
+| Water board | 22 | 17 | 35.3 (17.3 to 58.7) |
+| Several party types together | 117 | 98 | 43.9 (34.5 to 53.7) |
+| Unresolved | 461 | 380 | 26.6 (22.4 to 31.2) |
+| Water utility | 1 | 1 | not estimable |
+
+What this does and does not support:
+- **Placeholder means unknown, not "individual".** Rechtspraak.nl replaces the names of natural persons, and often of companies, with placeholders. The 1,752 rows cannot be called households. Only a legal-form word or an institutional name identifies the party.
+- **Hypothesis 3 ("litigation reshuffles incumbents") cannot be tested with this coding**: water utilities appear as appellants once. Utilities are mostly respondents or absent (the corpus is administrative-law appeals against public authorities), and respondent identity is not coded.
+- The differences between the placeholder group and the association group (about 10 points, non-overlapping intervals) are descriptive and unadjusted for court level, year or topic.
+- Coding accuracy is unmeasured; `manual_check_appellant_BLIND.csv` (120 random rows, caption text, label hidden) is for you to fill in.
+
+Rebuild: `python validation/nl_outcomes/build_appellant_table.py FEATURES_JSONL[,MORE] NEG_IDS CTL_IDS` (the features are retrieved with `utils/nl_text_features.py`).
