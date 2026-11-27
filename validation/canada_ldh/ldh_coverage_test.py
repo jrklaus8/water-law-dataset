@@ -60,26 +60,41 @@ courts = [c for c, _ in sorted(by.items(), key=lambda x: -len(x[1]))][:maxc]
 sample = [r for c in courts for r in random.sample(by[c], min(per, len(by[c])))]
 rpc("initialize", {"protocolVersion": "2024-11-05", "capabilities": {}, "clientInfo": {"name": "research", "version": "1.0"}})
 time.sleep(1)
-out = []
-for n, r in enumerate(sample, 1):
+from concurrent.futures import ThreadPoolExecutor  # noqa: E402
+
+
+def one(args):
+    n, r = args
     cit = re.sub(r"\s*\(CanLII\)\s*$", "", r["case_id"]).strip()
-    res = rpc("tools/call", {"name": "resolve_reference", "arguments": {"reference": cit, "hint_country": "CA", "hint_type": "case_law"}}, n + 1)
+    res = {"_error": "timeout_or_network"}
+    for attempt in range(3):
+        try:
+            res = rpc("tools/call", {"name": "resolve_reference", "arguments": {"reference": cit, "hint_country": "CA", "hint_type": "case_law"}}, n + 1)
+            break
+        except SystemExit:
+            raise
+        except Exception:  # noqa: BLE001
+            time.sleep(5 * (attempt + 1))
     docs = res.get("documents") or []
     d = docs[0] if docs else {}
-    out.append({"tribunal": r["tribunal"], "citation": cit, "resolved": int(bool(res.get("resolved"))), "reason": res.get("reason", "") or res.get("_error", "") and "error",
-                "source": d.get("source", ""), "full_text_size": d.get("full_text_size", ""), "date": d.get("date", "")})
-    time.sleep(0.5)
-    if n % 25 == 0:
-        print(n, "of", len(sample), flush=True)
+    return {"tribunal": r["tribunal"], "citation": cit, "resolved": int(bool(res.get("resolved"))), "reason": res.get("reason", "") or ("ERROR" if res.get("_error") else ""),
+            "source": d.get("source", ""), "full_text_size": d.get("full_text_size", ""), "date": d.get("date", "")}
+
+
+with ThreadPoolExecutor(max_workers=3) as ex:
+    out = list(ex.map(one, enumerate(sample, 1)))
 with open(sys.argv[2], "w", newline="", encoding="utf-8") as f:
     w = csv.DictWriter(f, fieldnames=list(out[0].keys()))
     w.writeheader()
     w.writerows(out)
+errors = [o for o in out if o["reason"] == "ERROR"]
+out_ok = [o for o in out if o["reason"] != "ERROR"]
+print("errors excluded from the rate:", len(errors))
 t = collections.defaultdict(lambda: [0, 0])
-for o in out:
+for o in out_ok:
     t[o["tribunal"]][0] += 1
     t[o["tribunal"]][1] += o["resolved"]
-print("overall resolved:", sum(o["resolved"] for o in out), "of", len(out))
+print("overall resolved:", sum(o["resolved"] for o in out_ok), "of", len(out_ok), "(errors excluded)")
 for c, (n, k) in sorted(t.items(), key=lambda x: -x[1][0]):
     print("  %-8s %2d of %2d" % (c, k, n))
 print("reasons:", collections.Counter(o["reason"] for o in out if not o["resolved"]))

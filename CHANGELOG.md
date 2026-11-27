@@ -9,6 +9,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/); versions fol
 ### Added
 - `utils/nl_text_features.py` and `utils/nl_appellant_coding.py` with 9 offline tests: caption-based coding of who brought the challenge for 3,519 Dutch decisions, plus a water-term density test against random control samples. Results and caveats in `validation/nl_outcomes/README.md` (addendum). Not human-validated.
 - `validation/DATA_QUALITY_REPORT_2026-11-27.md`: missing-field and consistency audit of the deposited coded dataset (Brazil court unidentified for 1,884 rows; Canada text empty for all rows; documents that disagree with the file).
+- `validation/canada_ldh/`: coverage test of Legal Data Hunter for the Canadian rows (143 citations): full text for BC courts only, about 10% of the set.
 - `validation/brazil_outcomes/`: audit of the 61.8% `unclear` Brazil outcomes. Diagnosis only; no labels changed.
 
 ## [Unreleased] — 2026-11-26, Netherlands outcome coding (first pass)
